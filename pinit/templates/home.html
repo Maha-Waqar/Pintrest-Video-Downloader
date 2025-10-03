@@ -1,0 +1,445 @@
+ <!-- Main Content -->
+    <div class="container">
+        <div class="main-header">
+            <h1>Pinterest Video Downloader</h1>
+            <p>You can quickly download Pinterest videos, images, and GIFs online without a watermark in HD quality,
+                including 1080p,
+                2K, and 4K, free on any device within seconds.</p>
+        </div>
+        <section class="download-section" id="downloadSection">
+            <p><b>PASTE YOUR PINTEREST LINK HERE</b></p>
+            <div class="input-group">
+                <input type="text" id="pinterestUrl" placeholder="https://www.pinterest.com/pin/..../">
+                <button id="downloadBtn">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+            <p class="policy">By using our service you accept our <a href="#">Terms of Service</a> and <a
+                    href="#">Privacy Policy</a>!</p>
+
+            <div class="tutorial">
+                <a href="#">How to download? Watch the tutorial</a>
+            </div>
+
+            <div class="security-badge">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzVkMSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bS0yIDE1bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6Ii8+PC9zdmc+"
+                    alt="Security Badge">
+                <span>Scanned by Norton™ Safe Web</span>
+            </div>
+        </section>
+        <div class="loader" id="loader" style="display: none;"></div>
+        <!-- Preview Video Section -->
+        <div id="player-overlay">
+            <video width="100%" height="300px" controls id="videoPreview" style="display:none; margin: 20px;">
+                
+            </video>
+        </div>
+        <!-- Download Video Button section -->
+        <div style="text-align: center; width: 100%;">
+            <div class="button-row" id="downloadBtnSection" style="display: none;">
+                <form id="downloadVideoForm" method="POST" action="{% url 'downloadVideo' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="video_url" id="hiddenVideoUrl">
+                    <input type="hidden" name="filename" id="hiddenFilename" value="pinterest.mp4">
+                    <button type="submit" id="downloadVideoBtn">
+                        <i class="fas fa-download"></i>
+                        Download video
+                    </button>
+                </form>
+                <script>
+                document.getElementById('downloadVideoBtn').onclick = function(e) {
+                    var video = document.getElementById('videoPreview');
+                    var hiddenInput = document.getElementById('hiddenVideoUrl');
+                    if (video && video.currentSrc) {
+                        hiddenInput.value = video.currentSrc;
+                    } else {
+                        e.preventDefault();
+                        alert('No video loaded to download.');
+                    }
+                };
+                </script>
+
+                <a href="{% url 'home' %}" id="downloadMoreBtn" class="btn">
+                    <button id="downloadMoreBtn" style="background-color: gray;">
+                        <i class="fas fa-plus"></i> Download More Videos
+                    </button>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Features Overview Section -->
+        <h2 class="features-heading">All Pinterest Downloader Resources</h2>
+
+        <section class="features">
+            <div class="feature-card"> <i class="fas fa-download"></i>
+                <h3>Pinterest Image Downloader</h3>
+            </div>
+            <div class="feature-card"><i class="fas fa-download"></i>
+                <h3>Pinterest GIFs Downloader</h3>
+            </div>
+            <div class="feature-card"><i class="fas fa-download"></i>
+                <h3>Pinterest Bulk Video Downloader</h3>
+            </div>
+        </section>
+        <section class="features">
+            <div class="feature-card"> <i class="fas fa-download"></i>
+                <h3>Pinterest Profile Picture Downloader</h3>
+            </div>
+            <div class="feature-card"><i class="fas fa-download"></i>
+                <h3>Pinterest URL Downloader</h3>
+            </div>
+            <div class="feature-card"><i class="fas fa-download"></i>
+                <h3>Pinterest Mp4 Downloader</h3>
+            </div>
+        </section>
+
+        <!-- How to Download Video Section -->
+        <section class="how-it-works">
+            <h2>How to Download Pinterest Videos?</h2>
+            <p>Download your favorite Pinterest pins quickly and easily in just a few steps.</p>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Copy Pinterest URL</h3>
+                    <p>Find the video on Pinterest and copy its URL</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <h3>Paste URL</h3>
+                    <p>Paste the URL in the input field above</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Download Video</h3>
+                    <p>Click download and save your video instantly</p>
+                </div>
+            </div>
+        </section>
+        <!-- Easy Guide Section -->
+        <section class="easy-guide">
+            <div class="guide-header">
+                <h2>What’s the best way to download Pinterest videos on iPhone?</h2>
+                <p>Step-by-step with screenshots, learn how to quickly download Pinterest videos, images, and GIFs using
+                    our Pint Downloader tool in a simple and easy way.</p>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section"≥>
+            <h2>What are the features of Pinterest Video Downloader?</h2>
+            <p>PVD Tool is dedicated to making your Pinterest video downloading experience smooth and effortless.</p>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon f-one">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Easy To Use</h3>
+                        <p>Just three steps, download a Pinterest video to your computer in no time.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon f-two">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Powerful</h3>
+                        <p>Our Pinterest video downloader also supports download images, Story Pins.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon f-three">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Full Free</h3>
+                        <p>PVD Tool Pinterest video downloader is made with love and we promise it will always be free.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-item ">
+                    <div class="feature-icon f-four">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Efficient</h3>
+                        <p>PVD Tool provides a Chrome extension to help you improve the efficiency of Pinterest video
+                            downloads.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item ">
+                    <div class="feature-icon f-five">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>No Account Needed</h3>
+                        <p>PVD Tool doesn't want you to register an account in order to use the Pinterest free
+                            downloader.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item ">
+                    <div class="feature-icon f-six">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>All Platform Supported</h3>
+                        <p>PVD Tool is an online service that works on all platforms like Android or iOS, windows, mac,
+                            or Linux.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2>What are the Benefits of Using Pinterest Video Downloader Online?</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <h3>All-in-One Tool</h3>
+                    <p>PVD Tool brings you a complete set of Pinterest download tools, including video, image, GIF, and
+                        Story Pin downloaders, making it the easiest way to save your favorite content.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-circle-play"></i>
+                    </div>
+                    <h3>High-Quality Downloads</h3>
+                    <p>Download Pinterest videos in 4K or the best quality available, so you always enjoy clear and
+                        sharp visuals.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Works on Any Device</h3>
+                    <p>Whether you're on Android, iOS, Windows, Mac, or even Xiaomi, the Pinterest video downloader
+                        works smoothly across all devices and systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+
+    <div class="container">
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <h2>What People Saying</h2>
+            <p>Eusmod tempor dui incididunt utas labore dolore magna ipsum dique sed enim aud lorem ipsum dolor sit amet
+                consectetur adipiscing elit.</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Eusmod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem ipsum do dolor sit
+                        amet consectetur adipiscing elit sed eiusmod tempor incididunt.
+                    </div>
+                    <div class="testimonial-author">Oliver Zendu</div>
+                    <div class="testimonial-role">Pinterest User</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Enumod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem ipsum do dolor sit
+                        amet consectetur adipiscing elit sed eiusmod tempor incididunt.
+                    </div>
+                    <div class="testimonial-author">Ameda Hilson</div>
+                    <div class="testimonial-role">Pinterest User</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Enumod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem ipsum do dolor sit
+                        amet consectetur adipiscing elit sed eiusmod tempor incididunt.
+                    </div>
+                    <div class="testimonial-author">Linus William</div>
+                    <div class="testimonial-role">Pinterest User</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Enumod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem ipsum do dolor sit
+                        amet consectetur adipiscing elit sed eiusmod tempor incididunt.
+                    </div>
+                    <div class="testimonial-author">Linus William</div>
+                    <div class="testimonial-role">Pinterest User</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Knowledge Base Section -->
+    <section class="articles-section">
+        <div class="container">
+            <h2>Knowledge Base</h2>
+            <div class="articles-grid">
+                <div class="article-card">
+
+                    <div class="card-body">
+                        <div class="feature-item-card">
+                            <div class="feature-icon-card">
+                                <img src="/blog.jpg">
+                            </div>
+                            <div class="feature-content">
+                                <h3>Why Small Businesses Win Big With Local Marketing</h3>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="article-card">
+
+                    <div class="card-body">
+                        <div class="feature-item-card">
+                            <div class="feature-icon-card">
+                                <img src="/blog.jpg">
+                            </div>
+                            <div class="feature-content">
+                                <h3>Why Small Businesses Win Big With Local Marketing</h3>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="article-card">
+
+                    <div class="card-body">
+                        <div class="feature-item-card">
+                            <div class="feature-icon-card">
+                                <img src="/blog.jpg">
+                            </div>
+                            <div class="feature-content">
+                                <h3>Why Small Businesses Win Big With Local Marketing</h3>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <h3>Is pinterest downloader safe?</h3>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    Most orders ship within 1–2 business days and arrive in 3–7 days depending on location.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <h3>How can I download Pinterest content on my PC?</h3>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    Yes, we ship worldwide. Taxes and duties may apply based on destination.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">
+                    Is there a Pinterest downloader available for Mac?
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    Items can be returned within 30 days in original packaging. Start a return in your account.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <h3>What’s the best way to download Pinterest videos on iPhone?</h3>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    Items can be returned within 30 days in original packaging. Start a return in your account.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <h3>Can i pinterest video downloader without watermark?</h3>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    Items can be returned within 30 days in original packaging. Start a return in your account.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <h3>Where do pinterest downloads go on iphone?</h3>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    Items can be returned within 30 days in original packaging. Start a return in your account.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <h3>Why is my pinterest not downloading pictures?</h3>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    Items can be returned within 30 days in original packaging. Start a return in your account.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">
+                    <h3>Can books be downloaded from pinterest?</h3>
+                    <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </summary>
+                <div class="faq-answer">
+                    Items can be returned within 30 days in original packaging. Start a return in your account.
+                </div>
+            </details>
+
+        </section>
+
+
+    </div>

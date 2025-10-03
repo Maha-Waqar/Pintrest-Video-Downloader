@@ -1,0 +1,31 @@
+"""
+URL configuration for pinit project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from pinit.views import home
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path("", home.index, name="home"),
+    path("download", home.download_pinterest_video, name="downloadPinterestVideo"),
+    path("downloadVideo", home.download_video, name="downloadVideo"),
+]
+
+# No changes needed for CSRF, User-Agent, or rate limiting in urls.py itself.
+# Just a comment for maintainability
+# Only the protected views (with CSRF, ratelimit, and header checks) are exposed here.
+# All protections are handled in the view functions themselves.
