@@ -1,0 +1,68 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container">
+    <h1 style="text-align: center; margin-bottom: 32px;">All Blog Posts</h1>
+
+    <div class="blogs-grid"
+        style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        {% if blogs %}
+        {% for blog in blogs %}
+        <a href="{% url 'blog_detail' blog.id %}" style="text-decoration: none; color: inherit;">
+            <div class="blog-card"
+                style="background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); width: 320px; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; transition: box-shadow 0.2s;">
+                {% if blog.image %}
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }}"
+                    style="width: 100%; height: 180px; object-fit: cover;">
+                {% else %}
+                <div
+                    style="width: 100%; height: 180px; background: #eee; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 2rem;">
+                    No Image
+                </div>
+                {% endif %}
+                <div
+                    style="padding: 18px 16px 14px 16px; flex: 1; display: flex; flex-direction: column;">
+                    <h2 style="font-size: 1.3rem; margin-bottom: 8px;">{{ blog.title }}</h2>
+                    <!-- <h3 style="font-size: 1.3rem; margin-bottom: 8px;">{{ blog.category.name }}</h3>
+                                <small>
+                {{ post.created_on.date }} | Categories:
+                {% for category in post.categories.all %}
+                    <a href="{% url 'blog_category' category.name %}"> 
+                        {{ category.name }}
+                    </a>
+                {% endfor %} -->
+            </small>
+            <p>{{ post.body | slice:":400" }}...</p>
+                    <!-- <p
+                        style="color: #666; font-size: 1rem; margin-bottom: 12px; flex: 1;">
+                        {{ blog.summary|default:blog.body|truncatewords:25 }}
+                    </p> -->
+                    <span
+                        style="font-size: 0.95rem; color: #999;">Last Modified: {{ blog.last_modified|date:"F j, Y"}}</span>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+        {% else %}
+        <p>No blog posts found.</p>
+        {% endif %}
+    </div>
+
+    {% if is_paginated %}
+    <div class="pagination" style="margin: 32px 0; display: flex; justify-content: center; gap: 8px;">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" style="padding: 8px 14px; background: #eee; border-radius: 5px; text-decoration: none; color: #333;">&laquo; Prev</a>
+        {% endif %}
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <span style="padding: 8px 14px; background: var(--primary-color); color: #fff; border-radius: 5px;">{{ num }}</span>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a href="?page={{ num }}" style="padding: 8px 14px; background: #eee; border-radius: 5px; text-decoration: none; color: #333;">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" style="padding: 8px 14px; background: #eee; border-radius: 5px; text-decoration: none; color: #333;">Next &raquo;</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

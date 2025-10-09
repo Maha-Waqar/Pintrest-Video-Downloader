@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest Video Downloader - Image, GIFs & Without Watermark</title>
+    <meta name="description"
+        content="Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.">
+    <link rel="canonical" href="https://pincatch.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {{ importmap }}
+ 
+</head>
+<body> 
+    {% include 'header.html' %}
+    {% block content %} {% endblock %}
+    {% include 'footer.html' %}
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

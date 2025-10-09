@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block content %}
+  <div class="container">
+        <main class="article-container">
+            <!-- Top Illustration -->
+            <div class="article-hero">
+                {% if blog.image %}
+                  <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                {% else %}
+                  <div style="width:100%;height:320px;background:#eee;display: flex;align-items:center;justify-content:center;color:#aaa;font-size:2rem;">
+                    No Image
+                  </div>
+                {% endif %}
+            </div>
+
+            <!-- Article Content -->
+            <article class="article-content">
+                <p class="article-category">{{ blog.category }}</p>
+                <h1 class="article-title">{{ blog.title }}</h1>
+                <p class="article-meta">Blog Meta</p>
+
+                <!-- Social Share -->
+                <div class="social-share">
+                    <a href="#" class="social-btn fb">F</a>
+                    <a href="#" class="social-btn x">X</a>
+                    <a href="#" class="social-btn in">in</a>
+                    <a href="#" class="social-btn wa">W</a>
+                </div>
+
+                <!-- Article Text -->
+                <div class="article-text">
+                    {{ blog.body|safe }}
+                </div>
+            </article>
+        </main>
+    </div>
+{% endblock %}

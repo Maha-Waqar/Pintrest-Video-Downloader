@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "blog.apps.BlogConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pinit',
+    "django_prose_editor",
 ]
 
 MIDDLEWARE = [
@@ -50,18 +52,19 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'pinit.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    'DIRS': [BASE_DIR / 'pinit' / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "js_asset.context_processors.importmap",
             ],
         },
     },
@@ -103,7 +106,33 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('bd', 'Bengali'),
+    ('ph', 'Filipino'),
+    ('az', 'Azerbaijani'),
+    ('br', 'Brazilian Portuguese'),
+    ('de', 'German'),
+    ('es', 'Spanish'),
+    ('fr', 'French'),
+    ('ru', 'Russian'),
+    ('ar', 'Arabic'),
+    ('vi', 'Vietnamese'),
+    ('pt', 'Portuguese'),
+    ('tr', 'Turkish'),
+    ('id', 'Indonesian'),
+    ('it', 'Italian'),
+    ('ua', 'Ukrainian'),
+    ('np', 'Nepali'),
+    ('kr', 'Korean'),
+    ('jp', 'Japanese'),
+    ('zh-cn', 'Chinese Simplified'),
+    ('zh-tw', 'Chinese Traditional'),
+]
+
+LANGUAGE_BIDI = True # Languages that are written right to left (like Arabic, Hebrew, etc.
 
 TIME_ZONE = 'UTC'
 
@@ -117,7 +146,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")

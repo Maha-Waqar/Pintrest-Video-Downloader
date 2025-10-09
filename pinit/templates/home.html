@@ -1,4 +1,6 @@
- <!-- Main Content -->
+{% extends 'index.html' %}
+{% block content %}
+<!-- Main Content -->
     <div class="container">
         <div class="main-header">
             <h1>Pinterest Video Downloader</h1>
@@ -6,6 +8,7 @@
                 including 1080p,
                 2K, and 4K, free on any device within seconds.</p>
         </div>
+        <div id="toast-container"></div>
         <section class="download-section" id="downloadSection">
             <p><b>PASTE YOUR PINTEREST LINK HERE</b></p>
             <div class="input-group">
@@ -35,7 +38,7 @@
             </video>
         </div>
         <!-- Download Video Button section -->
-        <div style="text-align: center; width: 100%;">
+        <div style="text-align: center; width: 100%; margin: 2%;" class ="downloadSection">
             <div class="button-row" id="downloadBtnSection" style="display: none;">
                 <form id="downloadVideoForm" method="POST" action="{% url 'downloadVideo' %}" style="display:inline;">
                     {% csrf_token %}
@@ -47,16 +50,7 @@
                     </button>
                 </form>
                 <script>
-                document.getElementById('downloadVideoBtn').onclick = function(e) {
-                    var video = document.getElementById('videoPreview');
-                    var hiddenInput = document.getElementById('hiddenVideoUrl');
-                    if (video && video.currentSrc) {
-                        hiddenInput.value = video.currentSrc;
-                    } else {
-                        e.preventDefault();
-                        alert('No video loaded to download.');
-                    }
-                };
+            
                 </script>
 
                 <a href="{% url 'home' %}" id="downloadMoreBtn" class="btn">
@@ -245,7 +239,6 @@
     </section>
 
     <div class="container">
-
         <!-- Testimonials Section -->
         <section class="testimonials-section">
             <h2>What People Saying</h2>
@@ -347,7 +340,6 @@
     <div class="container">
         <section class="faq-section">
             <h2>Frequently Asked Questions</h2>
-
             <details class="faq-item">
                 <summary class="faq-question">
                     <h3>Is pinterest downloader safe?</h3>
@@ -438,8 +430,6 @@
                     Items can be returned within 30 days in original packaging. Start a return in your account.
                 </div>
             </details>
-
         </section>
-
-
     </div>
+{% endblock %}

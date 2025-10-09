@@ -14,9 +14,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from django_ratelimit.decorators import ratelimit
 import re
 
-def index(request):
-    return render(request, 'index.html', { 'video_url': '' })
-
 # helper function to download video
 def _download_video_file(video_url, filename):
     try:
@@ -156,26 +153,3 @@ def download_pinterest_video(request):
     data = {'video_url': video_url}
     return JsonResponse(data)
 
-def is_valid_url(url):
-    return re.match(r'^https?://(www\.)?pinterest\.com/', url)
-
-def home(request):
-    # CSRF protection is enabled by default with csrf_protect
-    @csrf_protect
-    @ratelimit(key='ip', rate='10/m', block=True)
-    def protected_home(request):
-        # User-Agent check
-        user_agent = request.META.get('HTTP_USER_AGENT', '')
-        if 'python' in user_agent.lower() or not user_agent:
-            return HttpResponse('Forbidden: Suspicious User-Agent', status=403)
-        # Referrer check (optional, can be commented out if not needed)
-        referrer = request.META.get('HTTP_REFERER', '')
-        if referrer and not referrer.startswith('https://yourdomain.com'):
-            return HttpResponse('Forbidden: Invalid Referrer', status=403)
-        # Example: Validate input URL if present
-        page_url = request.GET.get('url')
-        if page_url and not is_valid_url(page_url):
-            return HttpResponse('Invalid Pinterest URL', status=400)
-        # ...existing logic...
-        return render(request, 'index.html', { 'video_url': '' })
-    return protected_home(request)
