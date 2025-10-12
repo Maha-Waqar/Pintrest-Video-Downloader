@@ -40,11 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pinit',
     "django_prose_editor",
+    "rosetta",
+    "parler"
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -106,30 +109,35 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
+from django.utils.translation import gettext_lazy as _
+
 LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
-    ('en', 'English'),
-    ('bd', 'Bengali'),
-    ('ph', 'Filipino'),
-    ('az', 'Azerbaijani'),
-    ('br', 'Brazilian Portuguese'),
-    ('de', 'German'),
-    ('es', 'Spanish'),
-    ('fr', 'French'),
-    ('ru', 'Russian'),
-    ('ar', 'Arabic'),
-    ('vi', 'Vietnamese'),
-    ('pt', 'Portuguese'),
-    ('tr', 'Turkish'),
-    ('id', 'Indonesian'),
-    ('it', 'Italian'),
-    ('ua', 'Ukrainian'),
-    ('np', 'Nepali'),
-    ('kr', 'Korean'),
-    ('jp', 'Japanese'),
-    ('zh-cn', 'Chinese Simplified'),
-    ('zh-tw', 'Chinese Traditional'),
+    ('en', _('English')),
+    ('bn', _('Bengali')),
+    # ('fil', _('Filipino')),
+    ('az', _('Azerbaijani')),
+    ('pt-br', _('Brazilian Portuguese')),
+    ('de', _('German')),
+    ('es', _('Spanish')),
+    ('fr', _('French')),
+    ('ru', _('Russian')),
+    ('ar', _('Arabic')),
+    ('vi', _('Vietnamese')),
+    ('pt', _('Portuguese')),
+    ('tr', _('Turkish')),
+    ('id', _('Indonesian')),
+    ('it', _('Italian')),
+    ('uk', _('Ukrainian')),
+    ('ne', _('Nepali')),
+    ('ko', _('Korean')),
+    ('ja', _('Japanese')),
+    ('zh-hans', _('Chinese Simplified')),
+    ('zh-hant', _('Chinese Traditional')),
+]
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
 ]
 
 LANGUAGE_BIDI = True # Languages that are written right to left (like Arabic, Hebrew, etc.
@@ -140,11 +148,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),

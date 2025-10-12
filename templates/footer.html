@@ -1,12 +1,10 @@
+{% load i18n %}
 <!-- Footer Section -->
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-column">
-            <h2>About PVD Tool</h2>
-            <p>PVD Tool is a free online service that allows you to download Pinterest videos, images, and GIFs
-                quickly and easily. Our mission is to provide a seamless downloading experience for all
-                Pinterest
-                users.</p>
+            <h2>{% trans "About PVD Tool" %}</h2>
+            <p>{% trans "PVD Tool is a free online service that allows you to download Pinterest videos, images, and GIFs quickly and easily. Our mission is to provide a seamless downloading experience for all Pinterest users." %}</p>
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -16,42 +14,40 @@
         </div>
 
         <div class="footer-column">
-            <h2>Quick Links</h2>
+            <h2>{% trans "Quick Links" %}</h2>
             <ul class="footer-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">How It Works</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Benefits</a></li>
-                <li><a href="#">Testimonials</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="#">{% trans "Home" %}</a></li>
+                <li><a href="#">{% trans "How It Works" %}</a></li>
+                <li><a href="#">{% trans "Features" %}</a></li>
+                <li><a href="#">{% trans "Benefits" %}</a></li>
+                <li><a href="#">{% trans "Testimonials" %}</a></li>
+                <li><a href="#">{% trans "FAQ" %}</a></li>
             </ul>
         </div>
 
         <div class="footer-column">
-            <h2>Support</h2>
+            <h2>{% trans "Support" %}</h2>
             <ul class="footer-links">
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">{% trans "Contact Us" %}</a></li>
+                <li><a href="#">{% trans "Help Center" %}</a></li>
+                <li><a href="#">{% trans "Privacy Policy" %}</a></li>
+                <li><a href="#">{% trans "Terms of Service" %}</a></li>
+                <li><a href="#">{% trans "Cookie Policy" %}</a></li>
             </ul>
         </div>
 
         <div class="footer-column">
-            <h2>Disclaimer</h2>
-            <p>PinCatch Tool is not affiliated with Pinterest. All trademarks, logos, and videos belong to their
-                respective owners. This service is for personal use only.</p>
+            <h2>{% trans "Disclaimer" %}</h2>
+            <p>{% trans "PinCatch Tool is not affiliated with Pinterest. All trademarks, logos, and videos belong to their respective owners. This service is for personal use only." %}</p>
             <!-- <form class="newsletter-form">
                 <input type="email" placeholder="Your email address" required>
                 <button type="submit">Subscribe</button>
             </form> -->
         </div>
     </div>
-
     <div class="footer-bottom">
-        <p>&copy; 2025 PinCatch. All Rights Reserved. | Designed with <i class="fas fa-heart"
-                style="color: var(--primary-color);"></i> for Pinterest users</p>
+        <p>&copy; {% trans "2025 PinCatch. All Rights Reserved. | Designed with" %} <i class="fas fa-heart"
+                style="color: var(--primary-color);"></i> {% trans "for Pinterest users" %}</p>
     </div>
 </footer>
  

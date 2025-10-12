@@ -147,7 +147,10 @@ def get_video_url(page_url):
         driver.quit()
 
 def download_pinterest_video(request):
-    data = json.loads(request.body)
+    try:
+        data = json.loads(request.body)
+    except (json.JSONDecodeError, TypeError):
+        return JsonResponse({'error': 'Invalid or empty JSON body.'}, status=400)
     page_url = data.get('url')
     video_url = get_video_url(page_url)
     data = {'video_url': video_url}

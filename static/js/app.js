@@ -10,9 +10,8 @@
         const loader = document.getElementById('loader');
 
         downloadBtn.addEventListener('click', function() {
-            console.log("Button clicked");
             const url = pinterestUrl.value.trim();
-            console.log("User entered URL:");
+            console.log("User entered URL:", url);
             if (!url) {
                 console.log("No URL entered");
                 showToast('Please enter a Pinterest URL','error');
@@ -26,7 +25,6 @@
             }
             
             loader.style.display = 'block';
-            const videoUrl = document.getElementById('pinterestUrl').value;
             const downloadSection = document.getElementById('downloadSection');
             fetch('/pin/download', {  // URL to your download endpoint
                 method: 'POST',
@@ -34,11 +32,10 @@
                     'Content-Type': 'application/json',
                     'X-CSRFToken': getCookie('csrftoken') // Include CSRF token
                 },
-                body: JSON.stringify({'url': videoUrl}) // Send any necessary data
+                body: JSON.stringify({'url': pinterestUrl.value}) // Send any necessary data
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data.video_url);
                 var video = document.getElementById('videoPreview');
                 var source = document.createElement('source');
                 source.setAttribute('src', data.video_url);
@@ -55,15 +52,17 @@
         });
 
         document.getElementById('downloadVideoBtn').onclick = function(e) {
-                    var video = document.getElementById('videoPreview');
-                    var hiddenInput = document.getElementById('hiddenVideoUrl');
-                    if (video && video.currentSrc) {
-                        hiddenInput.value = video.currentSrc;
-                    } else {
-                        e.preventDefault();
-                        showToast('No video loaded to download.', 'error');
-                    }
-                };
+            loader.style.display = 'block';
+            var video = document.getElementById('videoPreview');
+            var hiddenInput = document.getElementById('hiddenVideoUrl');
+            if (video && video.currentSrc) {
+                hiddenInput.value = video.currentSrc;
+            } else {
+                e.preventDefault();
+                showToast('No video loaded to download.', 'error');
+            }
+            loader.style.display = 'none';
+        };
 
         // Function to get CSRF token from cookies (required for Django POST requests)
         function getCookie(name) {

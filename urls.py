@@ -19,12 +19,17 @@ from django.urls import path, include
 import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns, set_language
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
+    path('rosetta/', include('rosetta.urls')),
     path("", views.index, name="home"),
+    path('blogs/', include('blog.urls')),
+    path('i18n/setlang/', set_language, name='set_language'),
+)
+urlpatterns += [
     path('pin/', include('pinit.urls')),
-    path('blogs/', include('blog.urls'))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

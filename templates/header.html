@@ -1,29 +1,42 @@
+{% load i18n %}
 <!-- Header Section -->
 <header class="header">
     <div class="header-container">
         <div class="logo-container">
-            <div class="logo">
+            <a href="{% url 'home' %}" class="logo" style="text-decoration: none; color: inherit;">
                 <div class="logo-icon">
                     <i class="fas fa-download"></i>
                 </div>
                 PinCatch
-            </div>
+            </a>
         </div>
-
         <div class="header-controls">
-
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
-
             <ul class="nav-menu" id="navMenu">
-                <li><a href="{% url 'home' %}"> Home</a></li>
-                <li><a href="#"> Pinterest Image Downloader</a></li>
-                <li><a href="#"> Pinterest GIF Downloader</a></li>
-                <li><a href="{% url 'blogs' %}"> Blogs</a></li>
-                <li><a href="#"> About</a></li>
+                <li><a href="{% url 'home' %}"> {% trans "Home" %}</a></li>
+                <li><a href="#"> {% trans "Pinterest Image Downloader" %}</a></li>
+                <li><a href="#"> {% trans "Pinterest GIF Downloader" %}</a></li>
+                <li><a href="{% url 'blogs' %}"> {% trans "Blogs" %}</a></li>
+                <li><a href="#"> {% trans "About" %}</a></li>
             </ul>
+        </div>
+        {% get_current_language as CURRENT_LANGUAGE %}
+        {% get_available_languages as AVAILABLE_LANGUAGES %}
+        {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+        <div class="languages">
+            <form action="{% url 'set_language' %}" method="post" style="display: flex; align-items: center; gap: 8px;">
+                {% csrf_token %}
+                <label for="language-select">{% trans "Language" %}:</label>
+                <select name="language" id="language-select" onchange="this.form.submit()">
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == CURRENT_LANGUAGE %} selected{% endif %}>{{ language.name_local }}</option>
+                    {% endfor %}
+                </select>
+            </form>
         </div>
     </div>
 </header>
+
 
