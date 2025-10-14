@@ -1,51 +1,56 @@
 from django.db import models
 from django_prose_editor.fields import ProseEditorField
-from parler.models import TranslatableModel, TranslatedFields
-
-class Category(TranslatableModel):
-    translations = TranslatedFields(
-        name=models.CharField(max_length=30)
-    )
-
+# Create your models here.
+class Category(models.Model):
+    name = models.CharField(max_length=30, unique=True, default="None")
     class Meta:
         verbose_name_plural = "categories"
 
     def __str__(self):
-        return self.safe_translation_getter('name', any_language=True) or ""
+        return self.name
 
-class Post():
-    # translations = TranslatedFields(
-    title=models.CharField(max_length=255),
-    body=ProseEditorField(
-        extensions={
-            "Bold": True,
-            "Italic": True,
-            "Strike": True,
-            "Underline": True,
-            "HardBreak": True,
-            "Heading": {"levels": [1, 2, 3]},
-            "BulletList": True,
-            "OrderedList": True,
-            "ListItem": True,
-            "Blockquote": True,
-            "Link": {
-                "enableTarget": True,
-                "protocols": ["http", "https", "mailto"],
+class Post(models.Model):
+    title = models.CharField(max_length=255, default="No Title")
+    body =  ProseEditorField(
+                default="none",
+                extensions={
+                # Core text formatting
+                "Bold": True,
+                "Italic": True,
+                "Strike": True,
+                "Underline": True,
+                "HardBreak": True,
+
+                # Structure
+                "Heading": {
+                    "levels": [1, 2, 3]  # Only allow h1, h2, h3
+                },
+                "BulletList": True,
+                "OrderedList": True,
+                "ListItem": True, # Used by BulletList and OrderedList
+                "Blockquote": True,
+
+                # Advanced extensions
+                "Link": {
+                    "enableTarget": True,  # Enable "open in new window"
+                    "protocols": ["http", "https", "mailto"],  # Limit protocols
+                },
+                "Table": True,
+                "TableRow": True,
+                "TableHeader": True,
+                "TableCell": True,
+
+                # Editor capabilities
+                "History": True,       # Enables undo/redo
+                "HTML": True,          # Allows HTML view
+                "Typographic": True,   # Enables typographic chars
+    
             },
-            "Table": True,
-            "TableRow": True,
-            "TableHeader": True,
-            "TableCell": True,
-            "History": True,
-            "HTML": True,
-            "Typographic": True,
-        },
-        sanitize=True
-    ),
-    categories = models.ManyToManyField("Category", related_name="posts"),
-    created_on = models.DateTimeField(auto_now_add=True),
-    last_modified = models.DateTimeField(auto_now=True),
+            sanitize=True  # Strongly recommended for security
+        )
+    created_on = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+    categories = models.ManyToManyField("Category", related_name="posts")
     image = models.ImageField(upload_to="uploads/", null=True, blank=True)
-
     def __str__(self):
         return self.title
