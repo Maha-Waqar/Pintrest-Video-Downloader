@@ -3,36 +3,24 @@
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-column">
-            <h2>{% trans "About PVD Tool" %}</h2>
-            <p>{% trans "PVD Tool is a free online service that allows you to download Pinterest videos, images, and GIFs quickly and easily. Our mission is to provide a seamless downloading experience for all Pinterest users." %}</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-
-        <div class="footer-column">
             <h2>{% trans "Quick Links" %}</h2>
             <ul class="footer-links">
-                <li><a href="#">{% trans "Home" %}</a></li>
-                <li><a href="#">{% trans "How It Works" %}</a></li>
-                <li><a href="#">{% trans "Features" %}</a></li>
-                <li><a href="#">{% trans "Benefits" %}</a></li>
-                <li><a href="#">{% trans "Testimonials" %}</a></li>
-                <li><a href="#">{% trans "FAQ" %}</a></li>
+                <li><a href="#downloadSection">{% trans "Home" %}</a></li>
+                <li><a href="#howItWorksSection">{% trans "How It Works" %}</a></li>
+                <li><a href="#featuresSection">{% trans "Features" %}</a></li>
+                <li><a href="#benefitsSection">{% trans "Benefits" %}</a></li>
+                <li><a href="#testimonialsSection">{% trans "Testimonials" %}</a></li>
+                <li><a href="#faqSection">{% trans "FAQ" %}</a></li>
             </ul>
         </div>
 
         <div class="footer-column">
             <h2>{% trans "Support" %}</h2>
             <ul class="footer-links">
-                <li><a href="#">{% trans "Contact Us" %}</a></li>
-                <li><a href="#">{% trans "Help Center" %}</a></li>
-                <li><a href="#">{% trans "Privacy Policy" %}</a></li>
-                <li><a href="#">{% trans "Terms of Service" %}</a></li>
-                <li><a href="#">{% trans "Cookie Policy" %}</a></li>
+                <li><a href="{% url 'contactUs' %}">{% trans "Contact Us" %}</a></li>  
+                <li><a href="{% url 'privacyPolicy' %}">{% trans "Privacy Policy" %}</a></li>
+                <li><a href="{% url 'termsAndConditions' %}">{% trans "Terms And Conditions" %}</a></li>
+                <li><a href="{% url 'copyrightPolicy' %}">{% trans "Copyright Policy" %}</a></li>
             </ul>
         </div>
 

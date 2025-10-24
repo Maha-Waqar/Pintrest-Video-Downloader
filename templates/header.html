@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load translate_urls %}
+
 <!-- Header Section -->
 <header class="header">
     <div class="header-container">
@@ -17,23 +19,46 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="{% url 'home' %}"> {% trans "Home" %}</a></li>
                 <li><a href="#"> {% trans "Pinterest Image Downloader" %}</a></li>
-                <li><a href="#"> {% trans "Pinterest GIF Downloader" %}</a></li>
+                <li><a href="#"> {% trans "Pinterest GIF Downloader" %}</a></li>       
                 <li><a href="{% url 'blogs' %}"> {% trans "Blogs" %}</a></li>
-                <li><a href="#"> {% trans "About" %}</a></li>
+                <li><a href="{% url 'about' %}"> {% trans "About" %}</a></li>
             </ul>
         </div>
+        <!-- Language Dropdown -->
         {% get_current_language as CURRENT_LANGUAGE %}
         {% get_available_languages as AVAILABLE_LANGUAGES %}
         {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
         <div class="languages">
-            <form action="{% url 'set_language' %}" method="post" style="display: flex; align-items: center; gap: 8px;">
+            <form action="{% url 'set_language' %}" method="post" class="language-form">
                 {% csrf_token %}
-                <label for="language-select">{% trans "Language" %}:</label>
-                <select name="language" id="language-select" onchange="this.form.submit()">
-                    {% for language in languages %}
-                        <option value="{{ language.code }}"{% if language.code == CURRENT_LANGUAGE %} selected{% endif %}>{{ language.name_local }}</option>
-                    {% endfor %}
-                </select>
+                {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                {% else %}
+                    {% translate_url CURRENT_LANGUAGE request as translated_current_url %}
+                    <input type="hidden" name="next" value="{{ translated_current_url }}">
+                {% endif %}
+                <div class="language-dropdown">
+                    <button type="button" class="language-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="language-menu">
+                        <span class="language-label">{% trans "Language" %}</span>
+                        <span class="language-current">{{ CURRENT_LANGUAGE|upper }}</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <ul class="language-menu" id="language-menu" role="menu" aria-hidden="true" hidden>
+                        {% for language in languages %}
+                            <li role="none">
+                                <button type="submit"
+                                        name="language"
+                                        value="{{ language.code }}"
+                                        class="language-option{% if language.code == CURRENT_LANGUAGE %} active{% endif %}"
+                                        role="menuitem"
+                                        data-language-code="{{ language.code }}"
+                                        data-language-url="{% translate_url language.code request %}">
+                                    {{ language.name_local }}
+                                </button>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </form>
         </div>
     </div>

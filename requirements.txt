@@ -9,3 +9,4 @@ flask-cors==4.0.0
 django-ratelimit==4.1.0
 nh3
 django_prose_editor
+django_restful_translator

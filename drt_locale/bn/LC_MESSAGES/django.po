@@ -1,0 +1,30 @@
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# category__name__1
+#, fuzzy
+msgid "Technology"
+msgstr ""
+
+# post__title__1
+#, fuzzy
+msgid "Mobile Phone"
+msgstr ""
+
+# post__body__1
+#, fuzzy
+msgid ""
+"<p>Django's internationalization framework doesn't support translating "
+"models out-of-the-box, so we'll use a third-party library called <a "
+"title=\"\" href=\"https://github.com/django-parler/django-parler\">django-"
+"parler</a>. There are a number of <a title=\"\" "
+"href=\"https://djangopackages.org/grids/g/model-translation/\">plugins</a> "
+"that perform this function; however, this is one of the more popular "
+"ones.</p><p><strong>How does it work?</strong></p><p>django-parler will "
+"create a separate database table for each model that contains translations. "
+"This table includes all of the translated fields. It also has a foreign key "
+"to link to the original object.</p>"
+msgstr ""

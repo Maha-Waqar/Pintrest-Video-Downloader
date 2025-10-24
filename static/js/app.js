@@ -4,6 +4,114 @@
             document.getElementById('navMenu').classList.toggle('active');
         });
         
+        // Language dropdown functionality
+        const languageDropdown = document.querySelector('.language-dropdown');
+        const languageTrigger = document.querySelector('.language-trigger');
+        const languageMenu = document.querySelector('.language-menu');
+
+        if (languageDropdown && languageTrigger && languageMenu) {
+            const languageForm = document.querySelector('.language-form');
+            const nextInput = languageForm ? languageForm.querySelector('input[name="next"]') : null;
+
+            const closeMenu = () => {
+                languageDropdown.classList.remove('open');
+                languageTrigger.setAttribute('aria-expanded', 'false');
+                languageMenu.setAttribute('aria-hidden', 'true');
+                languageMenu.hidden = true;
+            };
+
+            const openMenu = () => {
+                languageDropdown.classList.add('open');
+                languageTrigger.setAttribute('aria-expanded', 'true');
+                languageMenu.setAttribute('aria-hidden', 'false');
+                languageMenu.hidden = false;
+            };
+
+            const toggleMenu = () => {
+                if (languageDropdown.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            };
+
+            languageTrigger.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                toggleMenu();
+            });
+
+            languageTrigger.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openMenu();
+                    const firstOption = languageMenu.querySelector('button');
+                    if (firstOption) {
+                        firstOption.focus();
+                    }
+                }
+            });
+
+            languageMenu.addEventListener('click', (event) => {
+                const target = event.target.closest('button.language-option');
+                if (!target) {
+                    return;
+                }
+                const targetUrl = target.getAttribute('data-language-url');
+                if (nextInput && targetUrl) {
+                    nextInput.value = targetUrl;
+                }
+                closeMenu();
+            });
+
+            languageMenu.addEventListener('keydown', (event) => {
+                const options = Array.from(languageMenu.querySelectorAll('button'));
+                const currentIndex = options.indexOf(document.activeElement);
+
+                switch (event.key) {
+                    case 'ArrowDown':
+                        event.preventDefault();
+                        options[(currentIndex + 1) % options.length].focus();
+                        break;
+                    case 'ArrowUp':
+                        event.preventDefault();
+                        options[(currentIndex - 1 + options.length) % options.length].focus();
+                        break;
+                    case 'Escape':
+                        closeMenu();
+                        languageTrigger.focus();
+                        break;
+                    case 'Tab':
+                        closeMenu();
+                        break;
+                    case 'Enter':
+                    case ' ': {
+                        const targetUrl = document.activeElement.getAttribute('data-language-url');
+                        if (nextInput && targetUrl) {
+                            nextInput.value = targetUrl;
+                        }
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!languageDropdown.contains(event.target)) {
+                    closeMenu();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeMenu();
+                }
+            });
+
+            window.addEventListener('resize', closeMenu);
+        }
+        
         // DOM Elements
         const pinterestUrl = document.getElementById('pinterestUrl');
         const downloadBtn = document.getElementById('downloadBtn');

@@ -16,7 +16,7 @@
                     <i class="fas fa-download"></i> {% trans "Download" %}
                 </button>
             </div>
-            <p class="policy">{% trans "By using our service you accept our" %} <a href="#">{% trans "Terms of Service" %}</a> {% trans "and" %} <a href="#">{% trans "Privacy Policy" %}</a>!</p>
+            <p class="policy">{% trans "By using our service you accept our" %} <a href="{% url 'termsAndConditions' %}">{% trans "Terms of Service" %}</a> {% trans "and" %} <a href="{% url 'privacyPolicy' %}">{% trans "Privacy Policy" %}</a></p>
 
             <div class="tutorial">
                 <a href="#">{% trans "How to download? Watch the tutorial" %}</a>
@@ -81,7 +81,7 @@
         </section>
 
         <!-- How to Download Video Section -->
-        <section class="how-it-works">
+        <section class="how-it-works" id="howItWorksSection">
             <h2>{% trans "How to Download Pinterest Videos?" %}</h2>
             <p>{% trans "Getting your favorite Pinterest content has never been easier. Just follow these three quick steps:" %}</p>
 
@@ -113,15 +113,14 @@
         </section>
         <!-- Easy Guide Section -->
         <section class="easy-guide">
-            <div class="guide-header">
-                <h2>{% trans "What’s the best way to download Pinterest videos on iPhone?" %}</h2>
-                <p>{% trans "Using PinCatch on iOS is super simple and works perfectly on Safari or any browser. Here's how:
-Open Pinterest on your iPhone and find the video you want. Tap the three dots and select 'Copy Link.' Then open Safari, visit PinCatch, paste the URL in the field, and tap download. Your video will save directly to your Photos app in full HD quality with sound included. No app required; just your browser and a few taps." %}</p>
-            </div>
+           
+                <h2>{% trans "What is the best way to download Pinterest videos on iPhone?" %}</h2>
+                <p>{% trans "Using PinCatch on iOS is super simple and works perfectly on Safari or any browser. Here's how: Open Pinterest on your iPhone and find the video you want. Tap the three dots and select 'Copy Link.' Then open Safari, visit PinCatch, paste the URL in the field, and tap download. Your video will save directly to your Photos app in full HD quality with sound included. No app required; just your browser and a few taps." %}</p>
+          
         </section>
 
         <!-- Features Section -->
-        <section class="features-section"≥>
+        <section class="features-section" id="featuresSection" style="text-align: center;">
             <h2>{% trans "What are the features of Pinterest Video Downloader?" %}</h2>
             <p>{% trans "PinCatch is your go-to online tool for downloading Pinterest content quickly and safely." %}</p>
 
@@ -190,7 +189,7 @@ Open Pinterest on your iPhone and find the video you want. Tap the three dots an
 
     </div>
     <!-- Benefits Section -->
-    <section class="benefits-section">
+    <section class="benefits-section" id="benefitsSection">
         <div class="container">
             <h2>{% trans "What are the Benefits of Using Pinterest Video Downloader Online?" %}</h2>
 
@@ -255,10 +254,9 @@ Open Pinterest on your iPhone and find the video you want. Tap the three dots an
         </div>
     </section>
     </section>
-
     <div class="container">
         <!-- Testimonials Section -->
-        <section class="testimonials-section">
+        <section class="testimonials-section" id="testimonialsSection">
             <h2>{% trans "What People Saying" %}</h2>
         
             <div class="testimonials-grid">
@@ -295,62 +293,44 @@ Open Pinterest on your iPhone and find the video you want. Tap the three dots an
             </div>
         </section>
     </div>
-
     <!-- Knowledge Base Section -->
     <section class="articles-section">
         <div class="container">
             <h2>{% trans "Knowledge Base" %}</h2>
             <div class="articles-grid">
+                {% if blogs %}
+                {% for blog in blogs %}
+                <a href="{% url 'blog_detail' blog.get_translated_slug %}" style="text-decoration: none; color: inherit;">
                 <div class="article-card">
-
                     <div class="card-body">
                         <div class="feature-item-card">
                             <div class="feature-icon-card">
-                                <img src="/blog.jpg">
+                                {% if blog.image %}
+                                <img src="{{ blog.image.url }}" alt="{{ blog.title }}"
+                                    style="width: 100%; height: 180px; object-fit: cover;">
+                                {% else %}
+                                <div
+                                    style="width: 100%; height: 180px; background: #eee; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 2rem;">
+                                    No Image
+                                </div>
+                                {% endif %}
                             </div>
                             <div class="feature-content">
-                                <h3>{% trans "Why Small Businesses Win Big With Local Marketing" %}</h3>
-
+                                <h3 style="color: red; margin-top: 2%;">{{ blog.title }}</h3>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div class="article-card">
-
-                    <div class="card-body">
-                        <div class="feature-item-card">
-                            <div class="feature-icon-card">
-                                <img src="/blog.jpg">
-                            </div>
-                            <div class="feature-content">
-                                <h3>{% trans "Why Small Businesses Win Big With Local Marketing" %}</h3>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="article-card">
-
-                    <div class="card-body">
-                        <div class="feature-item-card">
-                            <div class="feature-icon-card">
-                                <img src="/blog.jpg">
-                            </div>
-                            <div class="feature-content">
-                                <h3>{% trans "Why Small Businesses Win Big With Local Marketing" %}</h3>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                </a>
+                {% endfor %}
+                {% else %}
+                <p>No articles found.</p>
+                {% endif %}
             </div>
         </div>
     </section>
     <div class="container">
-        <section class="faq-section">
+        <section class="faq-section" id="faqSection">
             <h2>{% trans "Frequently Asked Questions" %}</h2>
             <details class="faq-item">
                 <summary class="faq-question">

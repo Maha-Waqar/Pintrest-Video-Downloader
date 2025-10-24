@@ -1,15 +1,163 @@
-from django.contrib import admin
+from django.contrib import admin, messages
+from django.http import HttpResponseRedirect
+from django.urls import path, reverse
+from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 
-# Register your models here.
-# from modeltranslation.admin import TranslationAdmin
 from blog.models import Category, Post
-from modeltranslation.admin import TranslationAdmin
+from blog import translations
+from django_restful_translator.admin import TranslationInline
+
+
+class BaseTranslationAdmin(admin.ModelAdmin):
+    readonly_fields = ("created_on", "last_modified")
+    inlines = (TranslationInline,)
+
+    def get_list_display(self, request):
+        base_fields = super().get_list_display(request)
+        merged = []
+        seen = set()
+        for field in base_fields + ("translate_action",):
+            if field not in seen:
+                seen.add(field)
+                merged.append(field)
+        return tuple(merged)
+
 
 @admin.register(Category)
-class CategoryAdmin(TranslationAdmin):
-    pass
+class CategoryAdmin(BaseTranslationAdmin):
+    list_display = ("name", "translate_action", "created_on", "last_modified")
+
+    actions = ["translate_categories"]
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path(
+                "<int:category_id>/translate/",
+                self.admin_site.admin_view(self.translate_view),
+                name="blog_category_translate",
+            )
+        ]
+        return custom_urls + urls
+
+    def translate_view(self, request, category_id):
+        redirect_url = self._get_redirect_target(request)
+        category = self.get_object(request, category_id)
+        if category is None:
+            self.message_user(request, _("Category not found."), level=messages.ERROR)
+            return HttpResponseRedirect(redirect_url)
+        try:
+            translations.trigger_category_translation(category.pk, reset_existing=True)
+            self.message_user(
+                request,
+                _("Successfully triggered translation for %(name)s.") % {"name": category.name},
+                level=messages.SUCCESS,
+            )
+        except Exception as exc:  # pragma: no cover - admin feedback only
+            self.message_user(
+                request,
+                _("Failed to translate %(name)s: %(error)s") % {"name": category.name, "error": exc},
+                level=messages.ERROR,
+            )
+        return HttpResponseRedirect(redirect_url)
+
+    def _get_redirect_target(self, request):  # pragma: no cover - simple helper
+        return request.META.get("HTTP_REFERER") or reverse("admin:blog_category_changelist")
+
+    def translate_categories(self, request, queryset):
+        """Bulk translate selected categories."""
+        count = 0
+        for category in queryset:
+            try:
+                translations.trigger_category_translation(category.pk, reset_existing=False)
+                count += 1
+            except Exception as exc:  # pragma: no cover - admin feedback only
+                self.message_user(
+                    request,
+                    _("Failed to translate %(name)s: %(error)s") % {"name": category.name, "error": exc},
+                    level=messages.ERROR,
+                )
+        if count:
+            self.message_user(
+                request,
+                _("Successfully queued translation for %(count)d categories.") % {"count": count},
+                level=messages.SUCCESS,
+            )
+    translate_categories.short_description = _("Translate selected categories")
+
+    def translate_action(self, obj):
+        url = reverse("admin:blog_category_translate", args=[obj.pk])
+        return format_html('<a class="button" href="{}">{}</a>', url, _("Translate"))
+
+    translate_action.short_description = _("Translate")
+
 
 @admin.register(Post)
-class PostAdmin(TranslationAdmin):
-    pass
+class PostAdmin(BaseTranslationAdmin):
+    list_display = ("title", "translate_action", "created_on", "last_modified")
+
+    actions = ["translate_posts"]
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path(
+                "<int:post_id>/translate/",
+                self.admin_site.admin_view(self.translate_view),
+                name="blog_post_translate",
+            )
+        ]
+        return custom_urls + urls
+
+    def translate_view(self, request, post_id):
+        redirect_url = self._get_redirect_target(request)
+        post = self.get_object(request, post_id)
+        if post is None:
+            self.message_user(request, _("Post not found."), level=messages.ERROR)
+            return HttpResponseRedirect(redirect_url)
+        try:
+            translations.trigger_post_translation(post.pk, reset_existing=True)
+            self.message_user(
+                request,
+                _("Successfully triggered translation for %(title)s.") % {"title": post.title},
+                level=messages.SUCCESS,
+            )
+        except Exception as exc:  # pragma: no cover - admin feedback only
+            self.message_user(
+                request,
+                _("Failed to translate %(title)s: %(error)s") % {"title": post.title, "error": exc},
+                level=messages.ERROR,
+            )
+        return HttpResponseRedirect(redirect_url)
+
+    def _get_redirect_target(self, request):  # pragma: no cover - simple helper
+        return request.META.get("HTTP_REFERER") or reverse("admin:blog_post_changelist")
+
+    def translate_posts(self, request, queryset):
+        """Bulk translate selected posts."""
+        count = 0
+        for post in queryset:
+            try:
+                translations.trigger_post_translation(post.pk, reset_existing=False)
+                count += 1
+            except Exception as exc:  # pragma: no cover - admin feedback only
+                self.message_user(
+                    request,
+                    _("Failed to translate %(title)s: %(error)s") % {"title": post.title, "error": exc},
+                    level=messages.ERROR,
+                )
+        if count:
+            self.message_user(
+                request,
+                _("Successfully queued translation for %(count)d posts.") % {"count": count},
+                level=messages.SUCCESS,
+            )
+    translate_posts.short_description = _("Translate selected posts")
+
+    def translate_action(self, obj):
+        url = reverse("admin:blog_post_translate", args=[obj.pk])
+        return format_html('<a class="button" href="{}">{}</a>', url, _("Translate"))
+
+    translate_action.short_description = _("Translate")
 

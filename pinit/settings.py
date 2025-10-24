@@ -32,16 +32,17 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "blog.apps.BlogConfig",
-    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',   
     'pinit',
     "django_prose_editor",
     "rosetta",
+    "django_restful_translator",
+    "django_social_share",
 ]
 
 MIDDLEWARE = [
@@ -115,29 +116,30 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
     ('en', _('English')),
-    ('bn', _('Bengali')),
+    # ('bn', _('Bengali')),
     # ('fil', _('Filipino')),
-    ('az', _('Azerbaijani')),
-    ('pt-br', _('Brazilian Portuguese')),
+    # ('az', _('Azerbaijani')),
+    # ('pt-br', _('Brazilian Portuguese')),
     ('de', _('German')),
-    ('es', _('Spanish')),
+    # ('es', _('Spanish')),
     ('fr', _('French')),
-    ('ru', _('Russian')),
-    ('ar', _('Arabic')),
-    ('vi', _('Vietnamese')),
-    ('pt', _('Portuguese')),
-    ('tr', _('Turkish')),
-    ('id', _('Indonesian')),
-    ('it', _('Italian')),
-    ('uk', _('Ukrainian')),
-    ('ne', _('Nepali')),
-    ('ko', _('Korean')),
-    ('ja', _('Japanese')),
-    ('zh-hans', _('Chinese Simplified')),
-    ('zh-hant', _('Chinese Traditional')),
+    # ('ru', _('Russian')),
+    # ('ar', _('Arabic')),
+    # ('vi', _('Vietnamese')),
+    # ('pt', _('Portuguese')),
+    # ('tr', _('Turkish')),
+    # ('id', _('Indonesian')),
+    # ('it', _('Italian')),
+    # ('uk', _('Ukrainian')),
+    # ('ne', _('Nepali')),
+    # ('ko', _('Korean')),
+    # ('ja', _('Japanese')),
+    # ('zh-hans', _('Chinese Simplified')),
+    # ('zh-hant', _('Chinese Traditional')),
 ]
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
+    BASE_DIR / "drt_locale",
 ]
 
 LANGUAGE_BIDI = True # Languages that are written right to left (like Arabic, Hebrew, etc.
@@ -168,3 +170,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+DEEPL_AUTH_KEY = '4345252a-f29c-4799-85f6-20ccc3dbf199:fx'

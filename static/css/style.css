@@ -42,7 +42,7 @@ body {
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -83,6 +83,130 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
+    margin-top: 1%;
+}
+
+.languages {
+    position: relative;
+}
+
+.language-form {
+    position: relative;
+}
+
+.language-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.language-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    padding: 6px 12px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    appearance: none;
+    font: inherit;
+    line-height: 1;
+}
+
+.language-trigger:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.language-trigger i {
+    font-size: 0.75rem;
+    transition: transform 0.3s;
+}
+
+.language-trigger:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 2px;
+}
+
+.language-dropdown.open .language-trigger {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.language-dropdown.open .language-trigger i {
+    transform: rotate(180deg);
+}
+
+.language-label {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.language-current {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.language-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 200px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+    z-index: 1200;
+}
+
+.language-menu li {
+    list-style: none;
+}
+
+.language-dropdown.open .language-menu {
+    display: block;
+}
+
+.language-dropdown.open .language-menu[hidden] {
+    display: block;
+}
+
+.language-option {
+    width: 100%;
+    text-align: left;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.language-option:hover:not(.active),
+.language-option:focus-visible:not(.active) {
+    background-color: var(--border-color);
+    color: var(--primary-color);
+}
+
+.language-option.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.language-option.active:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.language-option:focus {
+    outline: none;
 }
 
 .nav-menu {
@@ -103,6 +227,48 @@ body {
 
 .nav-menu a:hover {
     opacity: 0.8;
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-dropdown {
+    padding-bottom: 10px;
+}
+
+.nav-dropdown > a i {
+    font-size: 0.8rem;
+}
+
+.nav-dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    list-style: none;
+    padding: 10px 0;
+    min-width: 200px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+}
+
+.nav-dropdown .dropdown-menu li a {
+    color: var(--text-color);
+    padding: 10px 20px;
+    display: block;
+    font-weight: 500;
+}
+
+.nav-dropdown .dropdown-menu li a:hover {
+    background-color: var(--border-color);
+    color: var(--primary-color);
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 .nav-menu a i {
@@ -670,11 +836,11 @@ button:hover {
 }
 
 #toast-container {
-    position: fixed;
+    /* position: fixed; */
     bottom: 20px;
     right: 20px;
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     gap: 10px;
     z-index: 1000;
 }
@@ -1059,7 +1225,7 @@ button:hover {
         order: 3;
         width: 100%;
         justify-content: space-between;
-        margin-top: 15px;
+        margin-top: 5px;
     }
 
     .mobile-menu-btn {
