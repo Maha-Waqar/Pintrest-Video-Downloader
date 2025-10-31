@@ -17,24 +17,38 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import views
+from blog.views import upload_image
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns, set_language
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemaps import StaticViewSitemap, PostSitemap, CategorySitemap, PinToolSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'posts': PostSitemap,
+    'categories': CategorySitemap,
+    'pin_tools': PinToolSitemap,
+}
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('rosetta/', include('rosetta.urls')),
     path("", views.index, name="home"),
+    path("pintrest-image-downloader", views.imageDownload, name="imageDownloader"),
+    path("pintrest-gif-downloader", views.gifDownload, name="gifDownloader"),
     path("about", views.about, name="about"),
     path("contact-us", views.contactUs, name="contactUs"),
     path("privacy-policy", views.privacyPolicy, name="privacyPolicy"),
     path("terms-and-conditions", views.termsAndConditions, name="termsAndConditions"),
     path("copyright-policy", views.copyrightPolicy, name="copyrightPolicy"),
-    path('blogs/', include('blog.urls')),
+    path('blog/', include('blog.urls')),
     path('i18n/setlang/', set_language, name='set_language'),
 )
 urlpatterns += [
     path('pin/', include('pinit.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

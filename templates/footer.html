@@ -5,12 +5,12 @@
         <div class="footer-column">
             <h2>{% trans "Quick Links" %}</h2>
             <ul class="footer-links">
-                <li><a href="#downloadSection">{% trans "Home" %}</a></li>
-                <li><a href="#howItWorksSection">{% trans "How It Works" %}</a></li>
-                <li><a href="#featuresSection">{% trans "Features" %}</a></li>
-                <li><a href="#benefitsSection">{% trans "Benefits" %}</a></li>
-                <li><a href="#testimonialsSection">{% trans "Testimonials" %}</a></li>
-                <li><a href="#faqSection">{% trans "FAQ" %}</a></li>
+                <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li><a href="{% url 'home' %}#howItWorksSection">{% trans "How It Works" %}</a></li>
+                <li><a href="{% url 'home' %}#featuresSection">{% trans "Features" %}</a></li>
+                <li><a href="{% url 'home' %}#benefitsSection">{% trans "Benefits" %}</a></li>
+                <li><a href="{% url 'home' %}#testimonialsSection">{% trans "Testimonials" %}</a></li>
+                <li><a href="{% url 'home' %}#faqSection">{% trans "FAQ" %}</a></li>
             </ul>
         </div>
 

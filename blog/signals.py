@@ -1,3 +1,4 @@
+import html
 import logging
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
@@ -27,8 +28,7 @@ LANGUAGE_CODE_MAP = {
     'es': 'ES',         # Spanish - SUPPORTED
     'pt': 'PT-PT',      # Portuguese (Portugal) - SUPPORTED
     'ru': 'RU',         # Russian - SUPPORTED
-    'zh_CN': 'ZH',      # Chinese (Simplified) - SUPPORTED
-    'zh_TW': 'ZH',      # Chinese (Traditional) - SUPPORTED
+    'zh-hans': 'ZH',      # Chinese (Simplified) - SUPPORTED
     'ja': 'JA',         # Japanese - SUPPORTED
     'ko': 'KO',         # Korean - SUPPORTED
     'it': 'IT',         # Italian - SUPPORTED
@@ -38,6 +38,7 @@ LANGUAGE_CODE_MAP = {
     'id': 'ID',         # Indonesian - SUPPORTED
     'az': None,         # Azerbaijani - NOT SUPPORTED by DeepL
     'br': 'PT-BR',      # Brazilian Portuguese - SUPPORTED
+    'uk': 'UK',         # Ukrainian - SUPPORTED
 }
 
 
@@ -116,6 +117,7 @@ def translate_model_instance(instance, model_class, reset_existing=False):
                 if not translation_obj:
                     if original_value:
                         logger.info(f"Creating translation placeholder for {field_name} in {target_language}")
+                        print(f"Creating translation placeholder for {field_name} in {target_language}")
                         Translation.objects.create(
                             content_type=content_type,
                             object_id=instance.pk,
@@ -155,22 +157,36 @@ class NormalizedTranslationService(TranslationService):
         super().__init__(provider, normalized_target)
     
     def translate_item(self, translation):
-        """
-        Translate a single translation object.
-        The parent class will use self.target_language (which is already normalized).
-        We just need to restore the original Django language code after translation.
-        """
         try:
-            # Call parent's translate_item - it will translate using self.target_language (normalized)
-            result = super().translate_item(translation)
-            
-            # Restore original Django language code and save
+            original_text = translation.get_original_text()
+            is_slug_field = translation.field_name == 'slug'
+            prepared_text = original_text.replace('-', ' ') if is_slug_field else original_text
+            text_with_tokens, tokens = self._replace_placeholders_with_tokens(prepared_text)
+            translated_text = self.provider.translate_text(
+                text_with_tokens,
+                settings.LANGUAGE_CODE,
+                self.target_language
+            )
+            translated_text = self._replace_tokens_with_placeholders(translated_text, tokens)
+            decoded_text = html.unescape(translated_text)
+
+            if is_slug_field:
+                normalized_value = slugify(decoded_text.replace(' ', '-'), allow_unicode=True)
+                if not normalized_value:
+                    normalized_value = translation.content_object.slug
+                translation.field_value = normalized_value
+            else:
+                translation.field_value = decoded_text
+
             if self.target_language != self.original_target_language:
-                logger.info(f"Restoring original language code: {self.target_language} -> {self.original_target_language}")
                 translation.language = self.original_target_language
-                translation.save()
-            
-            return result
+
+            translation.save()
+            print(
+                f'Translated {translation.content_object._meta.model_name} '
+                f'field {translation.field_name} to {self.target_language}'
+            )
+            return translation
         except Exception as e:
             logger.error(f"Error in NormalizedTranslationService.translate_item: {e}", exc_info=True)
             raise
@@ -261,28 +277,37 @@ def translate_with_provider(instance, model_class, provider_name='deepl'):
 
 
 def _ensure_translated_slugs(post: Post) -> None:
-    """Derive localized slugs from translated titles for every active language."""
     default_language = settings.LANGUAGE_CODE
     target_languages = [lang for lang, _ in settings.LANGUAGES if lang != default_language]
 
     for language in target_languages:
         try:
-            derived_slug = post.get_translated_slug(language=language)
-            if derived_slug:
-                logger.info(
-                    "Post %s slug for %s ensured via title-derived slug: %s",
-                    post.pk,
-                    language,
-                    derived_slug,
-                )
-                continue
-
             translation_obj = post.translations.filter(
                 language=language,
                 field_name='slug'
             ).first()
 
-            fallback_slug = slugify(post.title, allow_unicode=True) or post.slug
+            if translation_obj and translation_obj.field_value:
+                normalized_value = slugify(translation_obj.field_value, allow_unicode=True)
+                if normalized_value and translation_obj.field_value != normalized_value:
+                    translation_obj.field_value = normalized_value
+                    translation_obj.save(update_fields=['field_value'])
+                    logger.info(
+                        "Post %s slug for %s normalized to %s",
+                        post.pk,
+                        language,
+                        normalized_value,
+                    )
+                else:
+                    logger.info(
+                        "Post %s slug for %s already valid: %s",
+                        post.pk,
+                        language,
+                        translation_obj.field_value,
+                    )
+                continue
+
+            fallback_slug = post.slug
             if translation_obj:
                 translation_obj.field_value = fallback_slug
                 translation_obj.save(update_fields=['field_value'])
@@ -293,7 +318,7 @@ def _ensure_translated_slugs(post: Post) -> None:
                     field_value=fallback_slug
                 )
             logger.warning(
-                "Post %s slug for %s fell back to default-language slug: %s",
+                "Post %s slug for %s set to default slug: %s",
                 post.pk,
                 language,
                 fallback_slug,

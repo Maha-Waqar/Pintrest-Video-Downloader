@@ -3,6 +3,7 @@
 {% block content %}
 <!-- Main Content -->
     <div class="container">
+        {% include 'breadcrumbs.html' %}
         <div class="main-header">
             <h1>{% trans "Pinterest Video Downloader" %}</h1>
             <p>{% trans "Download Pinterest videos, images, and GIFs instantly in HD, Full HD, 1080p, 2K, and 4K quality. Our browser-based downloader works on any device, no app required, completely free to use." %}</p>
@@ -42,15 +43,14 @@
                     {% csrf_token %}
                     <input type="hidden" name="video_url" id="hiddenVideoUrl">
                     <input type="hidden" name="filename" id="hiddenFilename" value="pinterest.mp4">
-                    <button type="submit" id="downloadVideoBtn">
+                    <button type="submit" id="downloadVideoBtn" class="btn btn-danger">
                         <i class="fas fa-download"></i>
                         {% trans "Download video" %}
                     </button>
                 </form>
-                <a href="{% url 'home' %}" id="downloadMoreBtn" style="background-color: rgb(133, 130, 130);text-decoration: none; color: white;" class="btn">
+                <a href="{% url 'home' %}" id="downloadMoreBtn" class="btn btn-outline-secondary">
                     <i class="fas fa-plus"></i> {% trans "Download More Videos" %}
                 </a>
-
             </div>
         </div>
 

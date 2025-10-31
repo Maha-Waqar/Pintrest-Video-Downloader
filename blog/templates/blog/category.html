@@ -2,8 +2,8 @@
 {% load i18n %}
 {% block content %}
 <div class="container">
-    <h1 style="text-align: center; margin-bottom: 32px;">{{ category.get_translated_name }}</h1>
-    
+    {% include 'breadcrumbs.html' %}
+    <h1 style="text-align: center; margin-bottom: 32px;">{{ category.get_translated_name }}</h1>    
     <div class="row">
         {% if blogs %}
         {% for blog in blogs %}

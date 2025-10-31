@@ -1,0 +1,143 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block content %}
+<style>
+#imagePreview {
+  display: block;
+  margin: auto;
+}
+</style>
+<!-- Main Content -->
+    <div class="container">
+        {% include 'breadcrumbs.html' %}
+        <div class="main-header">
+            <h1>{% trans "Pinterest Image Downloader" %}</h1>
+            <p>{% trans "Download Pinterest videos, images, and GIFs instantly in HD, Full HD, 1080p, 2K, and 4K quality. Our browser-based downloader works on any device, no app required, completely free to use." %}</p>
+        </div>
+        <div id="toast-container"></div>
+        <section class="download-section" id="downloadSection">
+            <p><b>{% trans "PASTE YOUR PINTEREST LINK HERE" %}</b></p>
+            <div class="input-group">
+                <input type="text" id="pinterestImageUrl" placeholder="https://www.pinterest.com/pin/..../">
+                <button id="downloadImageButton">
+                    <i class="fas fa-download"></i> {% trans "Download" %}
+                </button>
+            </div>
+            <p class="policy">{% trans "By using our service you accept our" %} <a href="{% url 'termsAndConditions' %}">{% trans "Terms of Service" %}</a> {% trans "and" %} <a href="{% url 'privacyPolicy' %}">{% trans "Privacy Policy" %}</a></p>
+
+            <div class="tutorial">
+                <a href="#">{% trans "How to download? Watch the tutorial" %}</a>
+            </div>
+
+            <div class="security-badge">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzVkMSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bS0yIDE1bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6Ii8+PC9zdmc+"
+                    alt="Security Badge">
+                <span>{% trans "Scanned by Norton™ Safe Web" %}</span>
+            </div>
+        </section>
+        <div class="loader" id="loader" style="display: none;"></div>
+        <!-- Preview Image Section -->
+        <div id="player-overlay" id="playerOverlay">
+            <a href="" id="imagePreviewUrl">
+            <img  id="imagePreview" style="width: 50%; height: 600px;display: none;" >
+            </a>
+        </div>
+
+        <!-- Download Image Button section -->
+        <div style="text-align: center; width: 100%; margin: 2%;" class ="downloadSection">
+            <div class="button-row" id="downloadImageBtnSection" style="display: none;">
+                <form id="downloadImageForm" method="POST" action="{% url 'downloadImage' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="image_url" id="hiddenImageUrl">
+                    <input type="hidden" name="filename" id="hiddenImageFilename" value="pinterest.jpg">
+                    <button type="submit" class="btn btn-danger" id="downloadImageFileBtn">
+                        <i class="fas fa-download"></i>
+                        {% trans "Download image" %}
+                    </button>
+                </form>
+                <a href="{% url 'imageDownloader' %}"  class="btn btn-outline-secondary">
+                    <i class="fas fa-plus"></i> {% trans "Download More Images" %}
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <script>
+    const pinterestImageUrl = document.getElementById('pinterestImageUrl');
+    const downloadImageButton = document.getElementById('downloadImageButton');
+
+    if (pinterestImageUrl && downloadImageButton) {
+    downloadImageButton.addEventListener('click', function() {
+        const url = pinterestImageUrl.value.trim();
+        console.log("User entered URL:", url);
+        if (!url) {
+            console.log("No URL entered");
+            showToast('Please enter a Pinterest URL','error');
+            return;
+        }
+        
+        if (!isValidPinterestUrl(url)) {
+            console.log("Invalid URL format");
+            showToast('Please enter a valid Pinterest URL. Example: https://www.pinterest.com/pin/1234567890/', 'error');
+            return;
+        }
+        
+        const loader = document.getElementById('loader');
+        loader.style.display = 'block';
+        const downloadSection = document.getElementById('downloadSection');
+        fetch('/pin/downloadPinterestImage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({'url': pinterestImageUrl.value})
+        })
+        .then(response => response.json())
+        .then(data => {
+            loader.style.display = 'none';
+            if (data.image_url) {
+                const imagePreview = document.getElementById('imagePreview');
+                if (imagePreview) {
+                    imagePreview.src = data.image_url;
+                    imagePreview.style.display = 'block';
+                    downloadSection.setAttribute('style', 'display: none;');
+                    document.getElementById('downloadImageBtnSection').style.display = 'block';
+                    document.getElementById('imagePreviewUrl').href = data.image_url;
+                    document.getElementById('imagePreviewUrl').target = '_blank';
+                    const hiddenImageUrl = document.getElementById('hiddenImageUrl');
+                    if (hiddenImageUrl) {
+                        hiddenImageUrl.value = data.image_url;
+                    }
+                } else {
+                    showToast('Image preview element not found', 'error');
+                }
+            } else {
+                showToast('Failed to extract image URL from Pinterest', 'error');
+            }
+        })
+        .catch(error => {
+            loader.style.display = 'none';
+            console.error('Error:', error);
+            showToast('An error occurred while processing your request', 'error');
+        });
+    });
+
+    document.getElementById('downloadImageFileBtn').onclick = function(e) {
+        const loader = document.getElementById('loader');
+        loader.style.display = 'block';
+        const imagePreview = document.getElementById('imagePreview');
+        const hiddenImageUrl = document.getElementById('hiddenImageUrl');
+        if (imagePreview && imagePreview.src) {
+            hiddenImageUrl.value = imagePreview.src;
+        } else {
+            e.preventDefault();
+            showToast('No image loaded to download.', 'error');
+        }
+        loader.style.display = 'none';
+    };
+}
+   
+</script>
+
+{% endblock %}

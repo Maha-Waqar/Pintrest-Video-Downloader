@@ -2,7 +2,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import requests, json
 from bs4 import BeautifulSoup
-import os
+import os, re
 import tempfile
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.utils.encoding import smart_str
@@ -12,7 +12,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from django_ratelimit.decorators import ratelimit
-import re
 
 # helper function to download video
 def _download_video_file(video_url, filename):
@@ -73,7 +72,6 @@ def extract_video_url_from_soup(soup):
         src = meta['content']
         if not src.startswith('blob:'):
             return src
-    import re
     scripts = soup.find_all('script')
     for script in scripts:
         if script.string:

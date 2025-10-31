@@ -12,20 +12,58 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+def get_env(name, default=None, required=False):
+    value = os.environ.get(name, default)
+    if required and value in (None, ""):
+        raise ImproperlyConfigured(f"{name} is required")
+    return value
+
+
+def get_env_bool(name, default=False):
+    value = os.environ.get(name)
+    if value is None:
+        return default
+    return value.lower() in {"1", "true", "yes", "on"}
+
+
+def normalise_path(value, fallback):
+    candidate = (value or fallback).strip("/")
+    return f"{candidate}/" if candidate else fallback
+
+
+def rosetta_access_control(user):
+    return user.is_authenticated and user.is_staff
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3m$dk^=%_k7@_c8i-@#%h+hy7!924u8&af8_s2!(=+9od3h8%*'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = get_env_bool("DJANGO_DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = get_env("DJANGO_SECRET_KEY", None)
+if not SECRET_KEY:
+    if DEBUG:
+        SECRET_KEY = "insecure-development-secret"
+    else:
+        raise ImproperlyConfigured("DJANGO_SECRET_KEY is required")
+
+allowed_hosts_value = get_env("DJANGO_ALLOWED_HOSTS", None)
+if allowed_hosts_value:
+    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_value.split(",") if host.strip()]
+elif DEBUG:
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+else:
+    raise ImproperlyConfigured("DJANGO_ALLOWED_HOSTS is required")
+
+csrf_trusted_value = get_env("DJANGO_CSRF_TRUSTED_ORIGINS", "")
+CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in csrf_trusted_value.split(",") if origin.strip()]
 
 
 # Application definition
@@ -37,12 +75,16 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',   
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'pinit',
     "django_prose_editor",
     "rosetta",
     "django_restful_translator",
     "django_social_share",
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -116,25 +158,25 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
     ('en', _('English')),
-    # ('bn', _('Bengali')),
-    # ('fil', _('Filipino')),
-    # ('az', _('Azerbaijani')),
-    # ('pt-br', _('Brazilian Portuguese')),
+    # ('bn', _('Bengali')),   #Not supported by DeepL
+    # ('fil', _('Filipino')),   #Not supported by DeepL
+    # ('az', _('Azerbaijani')), #Not supported by DeepL
+    ('br', _('Brazilian Portuguese')),
     ('de', _('German')),
-    # ('es', _('Spanish')),
+    ('es', _('Spanish')),
     ('fr', _('French')),
-    # ('ru', _('Russian')),
-    # ('ar', _('Arabic')),
-    # ('vi', _('Vietnamese')),
-    # ('pt', _('Portuguese')),
-    # ('tr', _('Turkish')),
-    # ('id', _('Indonesian')),
-    # ('it', _('Italian')),
-    # ('uk', _('Ukrainian')),
-    # ('ne', _('Nepali')),
-    # ('ko', _('Korean')),
-    # ('ja', _('Japanese')),
-    # ('zh-hans', _('Chinese Simplified')),
+    ('ru', _('Russian')),
+    ('ar', _('Arabic')),
+    # ('vi', _('Vietnamese')),  #Not supported by DeepL
+    ('pt', _('Portuguese')),
+    ('tr', _('Turkish')),
+    ('id', _('Indonesian')),
+    ('it', _('Italian')),
+    ('uk', _('Ukrainian')),
+    # ('ne', _('Nepali')),    #Not supported by DeepL
+    ('ko', _('Korean')),
+    ('ja', _('Japanese')),
+    ('zh-hans', _('Chinese Simplified')),
     # ('zh-hant', _('Chinese Traditional')),
 ]
 LOCALE_PATHS = [
@@ -167,8 +209,19 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SITE_ID = 1
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-DEEPL_AUTH_KEY = '4345252a-f29c-4799-85f6-20ccc3dbf199:fx'
+DEEPL_AUTH_KEY = get_env("DEEPL_AUTH_KEY", "")
+if not DEEPL_AUTH_KEY and not DEBUG:
+    raise ImproperlyConfigured("DEEPL_AUTH_KEY is required")
+
+ADMIN_URL = normalise_path(get_env("DJANGO_ADMIN_URL", "admin/"), "admin/")
+ROSETTA_URL = normalise_path(get_env("DJANGO_ROSETTA_URL", "rosetta/"), "rosetta/")
+
+ROSETTA_LOGIN_REQUIRED = True
+ROSETTA_ACCESS_CONTROL_FUNCTION = "pinit.settings.rosetta_access_control"
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'

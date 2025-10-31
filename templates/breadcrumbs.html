@@ -1,0 +1,16 @@
+{% load i18n %}
+{% if breadcrumbs %}
+<nav aria-label="breadcrumb" class="my-3">
+    <ol class="breadcrumb bg-light p-3 rounded">
+        {% for breadcrumb in breadcrumbs %}
+            {% if breadcrumb.url %}
+                <li class="breadcrumb-item">
+                    <a href="{% url breadcrumb.url %}" class="text-decoration-none">{{ breadcrumb.title }}</a>
+                </li>
+            {% else %}
+                <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb.title }}</li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</nav>
+{% endif %}
