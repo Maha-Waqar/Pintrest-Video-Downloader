@@ -79,7 +79,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'pinit',
-    "django_prose_editor",
     "rosetta",
     "django_restful_translator",
     "django_social_share",
