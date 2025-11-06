@@ -44,23 +44,18 @@ def rosetta_access_control(user):
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = get_env_bool("DJANGO_DEBUG", default=False)
+DEBUG =  False
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env("DJANGO_SECRET_KEY", None)
+SECRET_KEY = 'arFvYvHDDdhLGQYzqngfKQnN4eCvJ1MzZIZoCZDTYYlD0o8gtcUO2UmpZJL4k00y4Z8'
 if not SECRET_KEY:
     if DEBUG:
         SECRET_KEY = "insecure-development-secret"
     else:
         raise ImproperlyConfigured("DJANGO_SECRET_KEY is required")
 
-allowed_hosts_value = get_env("DJANGO_ALLOWED_HOSTS", None)
-if allowed_hosts_value:
-    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_value.split(",") if host.strip()]
-elif DEBUG:
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
-else:
-    raise ImproperlyConfigured("DJANGO_ALLOWED_HOSTS is required")
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1","202.155.8.42"]
 
 csrf_trusted_value = get_env("DJANGO_CSRF_TRUSTED_ORIGINS", "")
 CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in csrf_trusted_value.split(",") if origin.strip()]
@@ -123,8 +118,12 @@ WSGI_APPLICATION = 'pinit.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pincatch',
+        'USER': 'mitch',
+        'PASSWORD': 'theSEO101-',
+        'HOST':'localhost',
+        'PORT': '', 
     }
 }
 
@@ -197,12 +196,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For production use with collectstatic
-STATICFILES_DIRS = [
-    BASE_DIR / 'static', 
-    # or os.path.join(BASE_DIR, 'static')
-]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # For production use with collectstatic
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -213,10 +208,11 @@ MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-DEEPL_AUTH_KEY = get_env("DEEPL_AUTH_KEY", "")
+DEEPL_AUTH_KEY = "4345252a-f29c-4799-85f6-20ccc3dbf199:fx"
 if not DEEPL_AUTH_KEY and not DEBUG:
     raise ImproperlyConfigured("DEEPL_AUTH_KEY is required")
 
+RATELIMIT_IP_META_KEY = get_env("RATELIMIT_IP_META_KEY", "REMOTE_ADDR")
 ADMIN_URL = normalise_path(get_env("DJANGO_ADMIN_URL", "admin/"), "admin/")
 ROSETTA_URL = normalise_path(get_env("DJANGO_ROSETTA_URL", "rosetta/"), "rosetta/")
 
