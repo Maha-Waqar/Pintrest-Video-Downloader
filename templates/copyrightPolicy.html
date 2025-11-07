@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container">
+    {% include 'breadcrumbs.html' %}
+    <main class="article-container">
+        <!-- Article Content -->
+        <article class="article-content">
+            <h1 class="article-title">{% trans "Copyright Infringement Policy" %}</h1>
+            <!-- Article Text -->
+            <div class="article-text">
+                <p>{% trans "This Anti-Copyright Policy is for compliance with the DMCA (Digital Millennium Copyright Act) in the U.S. and similar laws elsewhere. We aim to respond quickly to remove infringing content when owners assert rights." %}</p>
+                <b>{% trans "Our Role & Safe Harbor" %}</b>
+                <p>{% trans "PinCatch acts as a service that helps users fetch content from Pinterest. We are not the origin of copyrighted material. Under U.S. law, we may qualify for “safe harbor” protection under DMCA if we follow the rules of takedown and counter notice." %}</p>
+                <b>{% trans "How to File a DMCA Notice (Takedown Request)" %}</b>
+                <p>{% trans "If you own a copyrighted video or content and you believe it is accessible via PinCatch in violation of your rights, send us a written notice with:" %}</p>
+                <ul>
+                    <li>{% trans "Your full name, address, phone number, and email address" %}</li>
+                    <li>{% trans "A description (title, URL, etc.) of your copyrighted work" %}</li>
+                    <li>{% trans "The exact URL on PinCatch (or in our logs) where the content appears" %}</li>
+                    <li>{% trans "A statement that you believe in good faith that the use is not allowed by the copyright owner" %}</li>
+                    <li>{% trans "A statement under penalty of perjury that the information is accurate and that you are the copyright owner or authorized agent" %}</li>
+                    <li>{% trans "Your electronic signature (or physical signature)" %}</li>
+                </ul>
+                <p>{% trans "Send your notice via email to: dmca@pincatch.com" %}</p>
+                <b>{% trans "Once we get a valid DMCA notice, we will:" %}</b>
+                <ul>
+                    <li>{% trans "Remove or disable access to the infringing content" %}</li>
+                    <li>{% trans "Notify the user who requested the content" %}</li>
+                    <li>{% trans "Keep records of the request" %}</li>
+                </ul>
+                <b>{% trans " Counter-Notice by the User" %}</b>
+                <p>{% trans "If someone believes the content was wrongly removed (for example, they had the right to use it), they may send a counter-notice containing:" %}</p>
+                <ul>
+                    <li>{% trans "Their name, address, and email" %}</li>
+                    <li>{% trans "Description of content removed and its previous location" %}</li>
+                    <li>{% trans "Statement that under penalty of perjury, they believe the content was wrongly removed" %}</li>
+                    <li>{% trans "Consent to jurisdiction of a federal court (if in the  U.S.)" %}</li>
+                    <li>{% trans "Their signature" %}</li>
+                </ul>
+                <p>{% trans "If valid, we may restore the content after waiting the required time (e.g., 10-14 business days) unless the copyright owner files a lawsuit." %}</p>
+                <b>{% trans "Repeat Infringers" %}</b>
+                <p>{% trans "We may terminate accounts or block users who repeatedly infringe copyrights." %}</p>
+                <b>{% trans "Designated Copyright Agent" %}</b>
+                <p>{% trans "If you wish, register a “Designated Copyright Agent” to receive notices legally. This helps your site comply with DMCA." %}</p>
+                <b>{% trans "False Claims" %}</b>
+                <p>{% trans "If someone knowingly misuses DMCA notices or counter-notices (for example, false claims), they may be liable for damages under the law." %}</p>
+                <b>{% trans "Other Jurisdictions" %}</b>
+                <p>{% trans "Even though the DMCA is U.S. law, copyright laws exist in many countries. We aim to follow global rules and remove infringing content when we are notified, regardless of where the owner or user is." %}</p>
+            </div>
+        </article>
+    </main>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container">
+    {% include 'breadcrumbs.html' %}
+    <main class="article-container">
+        <!-- Article Content -->
+        <article class="article-content">
+            <h1 class="article-title">{% trans "CONTACT US" %}</h1>
+            <!-- Article Text -->
+            <div class="article-text">
+                <p>{% trans "If you want to get in touch with us, here is how: " %}</p>
+                <p><strong>{% trans "Email: " %}</strong>  {% trans "support@pincatch.com" %}</p>
+                <p><strong>{% trans "Website: " %}</strong> {% trans "www.pincatch.com" %}</p>
+                <p><strong>{% trans "You can send us:" %}</strong></p>
+                <ul>
+                    <li>{% trans "Questions or Feedback" %}</li>
+                    <li>{% trans "Requests to remove content" %}</li>
+                    <li>{% trans "Privacy concerns" %}</li>
+                    <li>{% trans "Legal or copyright notices" %}</li>
+                </ul>
+                <p>{% trans "We aim to respond within 24 to 48 hours." %}</p>
+            </div>
+        </article>
+    </main>
+</div>
+
+{% endblock %}

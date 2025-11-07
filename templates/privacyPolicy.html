@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container">
+    {% include 'breadcrumbs.html' %}
+    <main class="article-container">
+        <!-- Article Content -->
+        <article class="article-content">
+            <h1 class="article-title">{% trans "PRIVACY POLICY" %}</h1>
+            <!-- Article Text -->
+            <div class="article-text">
+                <p>{% trans "This Privacy Policy explains what information PinCatch may collect, how we use it, and your rights. We take your privacy seriously." %}</p>
+                <h2>{% trans "Information We Collect" %}</h2>
+                <p>{% trans "We collect limited information to run the site safely and show ads (like Google AdSense). The kinds of information include:" %}</p>
+                <ul>
+                    <li>{% trans "Technical data: your browser type, your device kind, your IP address (or a part of it), and how you use our website (pages you visit, clicks, etc.)" %}</li>
+                    <li>{% trans "Cookies and tracking: we use cookies and similar tools to remember your preferences and to support advertisement networks." %}</li>
+                    <li>{% trans "No personal profile unless you provide it: we do not require you to register. If you do contact us / send notices, we may have your email or other contact info." %}</li>
+                </ul>
+                <h2>{% trans "How We Use Information" %}</h2>
+                <p>{% trans "We use your data to:" %}</p>
+                <ul>
+                    <li>{% trans "Keep the website running properly and securely" %}</li>
+                    <li>{% trans "Analyze and improve our service" %}</li>
+                    <li>{% trans "Show relevant ads (AdSense)" %}</li>
+                    <li>{% trans "Detect abuse, fraud, or bad use" %}</li>
+                    <li>{% trans "Process legal requests (for example, copyright takedown notices)" %}</li>
+                </ul>
+                <h2>{% trans "Sharing Information" %}</h2>
+                <p>{% trans "We do not sell your personal data to third parties. But we may share limited, anonymized data (not your name or email) with:" %}</p>
+                <ul>
+                    <li>{% trans "Ad networks (Google AdSense)" %}</li>
+                    <li>{% trans "Analytics services (to understand website traffic)" %}</li>
+                    <li>{% trans "Legal authorities if required by law" %}</li>
+                </ul>
+                <h2>{% trans "Cookies & Similar Technologies" %}</h2>
+                <p>{% trans "We use cookies to:" %}</p>
+                <ul>
+                    <li>{% trans "Remember your preferences" %}</li>
+                    <li>{% trans "Help ads know which ads to show" %}</li>
+                    <li>{% trans "Monitor usage patterns" %}</li>
+                </ul>
+                <p>{% trans "You can disable or block cookies from your browser settings, but some features of the site may not work well if cookies are disabled." %}</p>
+                <h2>{% trans "Children’s Privacy" %}</h2>
+                <p>{% trans "PinCatch does not knowingly collect personal information from children under age 13. If we become aware that a child under 13 gave us personal info, we will remove it." %}</p>
+                <h2>{% trans "Links to Other Sites" %}</h2>
+                <p>{% trans "PinCatch might show ads or links to third-party sites. These sites have their own privacy policies. We are not responsible for what they do. We encourage you to read their privacy policies." %}</p>
+                <h2>{% trans "Changes to Privacy Policy" %}</h2>
+                <p>{% trans "We may change this policy from time to time. When we do, we will post the updated version here with a “Last Updated” date. By using PinCatch after changes, you accept the new policy." %}</p>
+            </div>
+        </article>
+    </main>
+</div>
+
+{% endblock %}

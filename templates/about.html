@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container">
+    {% include 'breadcrumbs.html' %}
+    <main class="article-container">
+        <!-- Article Content -->
+        <article class="article-content">
+            <h1 class="article-title">{% trans "ABOUT" %}</h1>
+            <!-- Article Text -->
+            <div class="article-text">
+                <p>{% trans "Welcome to PinCatch!" %}</p>
+                <p>{% trans "PinCatch is a website where you can download videos from Pinterest that are publicly available. Our mission is to give people a way to save Pinterest videos for personal use only. For example, you might want to watch a favorite video offline, or keep it to view later when you have no internet." %}</p>
+                <p>{% trans "We want to be open and clear:" %}</p>
+                <ul>
+                    <li>{% trans "PinCatch does not host or store any of the videos on our own servers. We only fetch the video from Pinterest’s server when you make a request." %}</li>
+                    <li>{% trans "We do not change video content. We only provide a method to download what is already available publicly." %}</li>
+                    <li>{% trans "We respect the rights of the creators. If someone owns a video, and they want it removed from our service, we will remove it quickly when they show proof they own it." %}</li>
+                    <li>{% trans "We try to follow Pinterest’s rules and copyright laws. If any rule or law changes, we will update our policies." %}</li>
+                </ul>
+                <p>{% trans "Thank you for using PinCatch. We hope it helps you enjoy Pinterest videos more flexibly." %}</p>
+            </div>
+        </article>
+    </main>
+</div>
+
+{% endblock %}

@@ -1,0 +1,513 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-10 12:48+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+#: pinit/settings.py:115
+msgid "English"
+msgstr ""
+
+#: pinit/settings.py:116
+msgid "Bengali"
+msgstr ""
+
+#: pinit/settings.py:117
+msgid "Filipino"
+msgstr ""
+
+#: pinit/settings.py:118
+msgid "Azerbaijani"
+msgstr ""
+
+#: pinit/settings.py:119
+msgid "Brazilian Portuguese"
+msgstr ""
+
+#: pinit/settings.py:120
+msgid "German"
+msgstr ""
+
+#: pinit/settings.py:121
+msgid "Spanish"
+msgstr ""
+
+#: pinit/settings.py:122
+msgid "French"
+msgstr ""
+
+#: pinit/settings.py:123
+msgid "Russian"
+msgstr ""
+
+#: pinit/settings.py:124
+msgid "Arabic"
+msgstr ""
+
+#: pinit/settings.py:125
+msgid "Vietnamese"
+msgstr ""
+
+#: pinit/settings.py:126
+msgid "Portuguese"
+msgstr ""
+
+#: pinit/settings.py:127
+msgid "Turkish"
+msgstr ""
+
+#: pinit/settings.py:128
+msgid "Indonesian"
+msgstr ""
+
+#: pinit/settings.py:129
+msgid "Italian"
+msgstr ""
+
+#: pinit/settings.py:130
+msgid "Ukrainian"
+msgstr ""
+
+#: pinit/settings.py:131
+msgid "Nepali"
+msgstr ""
+
+#: pinit/settings.py:132
+msgid "Korean"
+msgstr ""
+
+#: pinit/settings.py:133
+msgid "Japanese"
+msgstr ""
+
+#: pinit/settings.py:134
+msgid "Chinese Simplified"
+msgstr ""
+
+#: pinit/settings.py:135
+msgid "Chinese Traditional"
+msgstr ""
+
+#: pinit/templates/home.html:7
+msgid "Pinterest Video Downloader"
+msgstr ""
+
+#: pinit/templates/home.html:8
+msgid ""
+"You can quickly download Pinterest videos, images, and GIFs online without a "
+"watermark in HD quality, including 1080p, 2K, and 4K, free on any device "
+"within seconds."
+msgstr ""
+
+#: pinit/templates/home.html:12
+msgid "PASTE YOUR PINTEREST LINK HERE"
+msgstr ""
+
+#: pinit/templates/home.html:16
+msgid "Download"
+msgstr ""
+
+#: pinit/templates/home.html:19
+msgid "By using our service you accept our"
+msgstr ""
+
+#: pinit/templates/home.html:19 templates/footer.html:34
+msgid "Terms of Service"
+msgstr ""
+
+#: pinit/templates/home.html:19
+msgid "and"
+msgstr ""
+
+#: pinit/templates/home.html:19 templates/footer.html:33
+msgid "Privacy Policy"
+msgstr ""
+
+#: pinit/templates/home.html:22
+msgid "How to download? Watch the tutorial"
+msgstr ""
+
+#: pinit/templates/home.html:28
+msgid "Scanned by Norton™ Safe Web"
+msgstr ""
+
+#: pinit/templates/home.html:47
+msgid "Download video"
+msgstr ""
+
+#: pinit/templates/home.html:65
+msgid "Download More Videos"
+msgstr ""
+
+#: pinit/templates/home.html:73
+msgid "All Pinterest Downloader Resources"
+msgstr ""
+
+#: pinit/templates/home.html:77 templates/header.html:22
+msgid "Pinterest Image Downloader"
+msgstr ""
+
+#: pinit/templates/home.html:80
+msgid "Pinterest GIFs Downloader"
+msgstr ""
+
+#: pinit/templates/home.html:83
+msgid "Pinterest Bulk Video Downloader"
+msgstr ""
+
+#: pinit/templates/home.html:88
+msgid "Pinterest Profile Picture Downloader"
+msgstr ""
+
+#: pinit/templates/home.html:91
+msgid "Pinterest URL Downloader"
+msgstr ""
+
+#: pinit/templates/home.html:94
+msgid "Pinterest Mp4 Downloader"
+msgstr ""
+
+#: pinit/templates/home.html:100
+msgid "How to Download Pinterest Videos?"
+msgstr ""
+
+#: pinit/templates/home.html:101
+msgid ""
+"Download your favorite Pinterest pins quickly and easily in just a few steps."
+msgstr ""
+
+#: pinit/templates/home.html:108
+msgid "Copy Pinterest URL"
+msgstr ""
+
+#: pinit/templates/home.html:109
+msgid "Find the video on Pinterest and copy its URL"
+msgstr ""
+
+#: pinit/templates/home.html:116
+msgid "Paste URL"
+msgstr ""
+
+#: pinit/templates/home.html:117
+msgid "Paste the URL in the input field above"
+msgstr ""
+
+#: pinit/templates/home.html:124
+msgid "Download Video"
+msgstr ""
+
+#: pinit/templates/home.html:125
+msgid "Click download and save your video instantly"
+msgstr ""
+
+#: pinit/templates/home.html:132 pinit/templates/home.html:378
+msgid "What’s the best way to download Pinterest videos on iPhone?"
+msgstr ""
+
+#: pinit/templates/home.html:133
+msgid ""
+"Step-by-step with screenshots, learn how to quickly download Pinterest "
+"videos, images, and GIFs using our Pint Downloader tool in a simple and easy "
+"way."
+msgstr ""
+
+#: pinit/templates/home.html:139
+msgid "What are the features of Pinterest Video Downloader?"
+msgstr ""
+
+#: pinit/templates/home.html:140
+msgid ""
+"PVD Tool is dedicated to making your Pinterest video downloading experience "
+"smooth and effortless."
+msgstr ""
+
+#: pinit/templates/home.html:148
+msgid "Easy To Use"
+msgstr ""
+
+#: pinit/templates/home.html:149
+msgid ""
+"Just three steps, download a Pinterest video to your computer in no time."
+msgstr ""
+
+#: pinit/templates/home.html:158
+msgid "Powerful"
+msgstr ""
+
+#: pinit/templates/home.html:159
+msgid ""
+"Our Pinterest video downloader also supports download images, Story Pins."
+msgstr ""
+
+#: pinit/templates/home.html:168
+msgid "Full Free"
+msgstr ""
+
+#: pinit/templates/home.html:169
+msgid ""
+"PVD Tool Pinterest video downloader is made with love and we promise it will "
+"always be free."
+msgstr ""
+
+#: pinit/templates/home.html:178
+msgid "Efficient"
+msgstr ""
+
+#: pinit/templates/home.html:179
+msgid ""
+"PVD Tool provides a Chrome extension to help you improve the efficiency of "
+"Pinterest video downloads."
+msgstr ""
+
+#: pinit/templates/home.html:188
+msgid "No Account Needed"
+msgstr ""
+
+#: pinit/templates/home.html:189
+msgid ""
+"PVD Tool doesn't want you to register an account in order to use the "
+"Pinterest free downloader."
+msgstr ""
+
+#: pinit/templates/home.html:198
+msgid "All Platform Supported"
+msgstr ""
+
+#: pinit/templates/home.html:199
+msgid ""
+"PVD Tool is an online service that works on all platforms like Android or "
+"iOS, windows, mac, or Linux."
+msgstr ""
+
+#: pinit/templates/home.html:209
+msgid "What are the Benefits of Using Pinterest Video Downloader Online?"
+msgstr ""
+
+#: pinit/templates/home.html:216
+msgid "All-in-One Tool"
+msgstr ""
+
+#: pinit/templates/home.html:217
+msgid ""
+"PVD Tool brings you a complete set of Pinterest download tools, including "
+"video, image, GIF, and Story Pin downloaders, making it the easiest way to "
+"save your favorite content."
+msgstr ""
+
+#: pinit/templates/home.html:225
+msgid "High-Quality Downloads"
+msgstr ""
+
+#: pinit/templates/home.html:226
+msgid ""
+"Download Pinterest videos in 4K or the best quality available, so you always "
+"enjoy clear and sharp visuals."
+msgstr ""
+
+#: pinit/templates/home.html:235
+msgid "Works on Any Device"
+msgstr ""
+
+#: pinit/templates/home.html:236
+msgid ""
+"Whether you're on Android, iOS, Windows, Mac, or even Xiaomi, the Pinterest "
+"video downloader works smoothly across all devices and systems."
+msgstr ""
+
+#: pinit/templates/home.html:247
+msgid "What People Saying"
+msgstr ""
+
+#: pinit/templates/home.html:248
+msgid ""
+"Eusmod tempor dui incididunt utas labore dolore magna ipsum dique sed enim "
+"aud lorem ipsum dolor sit amet consectetur adipiscing elit."
+msgstr ""
+
+#: pinit/templates/home.html:253
+msgid ""
+"Eusmod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem "
+"ipsum do dolor sit amet consectetur adipiscing elit sed eiusmod tempor "
+"incididunt."
+msgstr ""
+
+#: pinit/templates/home.html:256 pinit/templates/home.html:264
+#: pinit/templates/home.html:272 pinit/templates/home.html:279
+msgid "Pinterest User"
+msgstr ""
+
+#: pinit/templates/home.html:261 pinit/templates/home.html:269
+#: pinit/templates/home.html:276
+msgid ""
+"Enumod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem "
+"ipsum do dolor sit amet consectetur adipiscing elit sed eiusmod tempor "
+"incididunt."
+msgstr ""
+
+#: pinit/templates/home.html:288
+msgid "Knowledge Base"
+msgstr ""
+
+#: pinit/templates/home.html:298 pinit/templates/home.html:313
+#: pinit/templates/home.html:328
+msgid "Why Small Businesses Win Big With Local Marketing"
+msgstr ""
+
+#: pinit/templates/home.html:340
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: pinit/templates/home.html:343
+msgid "Is pinterest downloader safe?"
+msgstr ""
+
+#: pinit/templates/home.html:349
+msgid ""
+"Most orders ship within 1–2 business days and arrive in 3–7 days depending "
+"on location."
+msgstr ""
+
+#: pinit/templates/home.html:355
+msgid "How can I download Pinterest content on my PC?"
+msgstr ""
+
+#: pinit/templates/home.html:361
+msgid ""
+"Yes, we ship worldwide. Taxes and duties may apply based on destination."
+msgstr ""
+
+#: pinit/templates/home.html:367
+msgid "Is there a Pinterest downloader available for Mac?"
+msgstr ""
+
+#: pinit/templates/home.html:373 pinit/templates/home.html:384
+#: pinit/templates/home.html:395 pinit/templates/home.html:406
+#: pinit/templates/home.html:417 pinit/templates/home.html:428
+msgid ""
+"Items can be returned within 30 days in original packaging. Start a return "
+"in your account."
+msgstr ""
+
+#: pinit/templates/home.html:389
+msgid "Can i pinterest video downloader without watermark?"
+msgstr ""
+
+#: pinit/templates/home.html:400
+msgid "Where do pinterest downloads go on iphone?"
+msgstr ""
+
+#: pinit/templates/home.html:411
+msgid "Why is my pinterest not downloading pictures?"
+msgstr ""
+
+#: pinit/templates/home.html:422
+msgid "Can books be downloaded from pinterest?"
+msgstr ""
+
+#: templates/footer.html:6
+msgid "About PVD Tool"
+msgstr ""
+
+#: templates/footer.html:7
+msgid ""
+"PVD Tool is a free online service that allows you to download Pinterest "
+"videos, images, and GIFs quickly and easily. Our mission is to provide a "
+"seamless downloading experience for all Pinterest users."
+msgstr ""
+
+#: templates/footer.html:17
+msgid "Quick Links"
+msgstr ""
+
+#: templates/footer.html:19 templates/header.html:21
+msgid "Home"
+msgstr ""
+
+#: templates/footer.html:20
+msgid "How It Works"
+msgstr ""
+
+#: templates/footer.html:21
+msgid "Features"
+msgstr ""
+
+#: templates/footer.html:22
+msgid "Benefits"
+msgstr ""
+
+#: templates/footer.html:23
+msgid "Testimonials"
+msgstr ""
+
+#: templates/footer.html:24
+msgid "FAQ"
+msgstr ""
+
+#: templates/footer.html:29
+msgid "Support"
+msgstr ""
+
+#: templates/footer.html:31
+msgid "Contact Us"
+msgstr ""
+
+#: templates/footer.html:32
+msgid "Help Center"
+msgstr ""
+
+#: templates/footer.html:35
+msgid "Cookie Policy"
+msgstr ""
+
+#: templates/footer.html:40
+msgid "Disclaimer"
+msgstr ""
+
+#: templates/footer.html:41
+msgid ""
+"PinCatch Tool is not affiliated with Pinterest. All trademarks, logos, and "
+"videos belong to their respective owners. This service is for personal use "
+"only."
+msgstr ""
+
+#: templates/footer.html:49
+msgid "2025 PinCatch. All Rights Reserved. | Designed with"
+msgstr ""
+
+#: templates/footer.html:50
+msgid "for Pinterest users"
+msgstr ""
+
+#: templates/header.html:23
+msgid "Pinterest GIF Downloader"
+msgstr ""
+
+#: templates/header.html:24
+msgid "Blogs"
+msgstr ""
+
+#: templates/header.html:25
+msgid "About"
+msgstr ""
+
+#: templates/header.html:39
+msgid "Change"
+msgstr ""
+
+#: templates/index.html:8
+msgid "Pinterest Video Downloader - Image, GIFs & Without Watermark"
+msgstr ""

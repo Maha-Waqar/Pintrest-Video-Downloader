@@ -1,0 +1,154 @@
+# django-view-breadcrumbs
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Tonye Jack jtonye@ymail.com, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.5.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-15 16:51-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Tonye Jack jtonye@ymail.com\n"
+"Language: English US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: custom/models.py:11
+msgid "library"
+msgstr ""
+
+#: custom/models.py:12
+msgid "libraries"
+msgstr ""
+
+#: demo/models.py:13
+msgid "test model"
+msgstr ""
+
+#: demo/models.py:14
+msgid "test models"
+msgstr ""
+
+#: demo/templates/demo/index.html:24
+msgid "Custom view"
+msgstr ""
+
+#: demo/templates/demo/index.html:25
+msgid "CRUD views"
+msgstr ""
+
+#: demo/templates/demo/index.html:26
+msgid "Libraries"
+msgstr ""
+
+#: demo/templates/demo/index.html:27
+msgid "Table views"
+msgstr ""
+
+#: demo/templates/demo/index.html:28
+msgid "Multi Table views"
+msgstr ""
+
+#: demo/templates/demo/test-create.html:7
+msgid "Submit"
+msgstr ""
+
+#: demo/templates/demo/test-detail.html:4
+msgid "Name"
+msgstr ""
+
+#: demo/templates/demo/test-detail.html:6
+msgid "Created at"
+msgstr ""
+
+#: demo/templates/demo/test-detail.html:9
+msgid "Updated at"
+msgstr ""
+
+#: demo/templates/demo/test-detail.html:11
+msgid "Edit"
+msgstr ""
+
+#: demo/templates/demo/test-detail.html:14
+msgid "Delete"
+msgstr ""
+
+#: demo/templates/demo/test-list.html:5
+msgid "Create"
+msgstr ""
+
+#: demo/views.py:39
+msgid "My Test Breadcrumb"
+msgstr ""
+
+#: demo/views.py:44
+msgid "List tests"
+msgstr ""
+
+#: demo/views.py:79 demo/views.py:121
+msgid "My new home"
+msgstr ""
+
+#: view_breadcrumbs/constants.py:3
+msgid "list"
+msgstr ""
+
+#: view_breadcrumbs/constants.py:4
+msgid "create"
+msgstr ""
+
+#: view_breadcrumbs/constants.py:5
+msgid "update"
+msgstr ""
+
+#: view_breadcrumbs/constants.py:6
+msgid "delete"
+msgstr ""
+
+#: view_breadcrumbs/constants.py:7
+msgid "detail"
+msgstr ""
+
+#: view_breadcrumbs/generic/base.py:38
+#, python-format
+msgid "%(class_name)s should have a crumbs property."
+msgstr ""
+
+#: view_breadcrumbs/generic/base.py:47
+msgid "Home"
+msgstr ""
+
+#: view_breadcrumbs/generic/base.py:55
+msgid "Breadcrumb requires a tuple of label and view name."
+msgstr ""
+
+#: view_breadcrumbs/generic/create.py:10
+#, python-format
+msgid "Add %(model)s"
+msgstr ""
+
+#: view_breadcrumbs/generic/create.py:35
+msgid "model"
+msgstr ""
+
+#: view_breadcrumbs/generic/detail.py:12 view_breadcrumbs/generic/update.py:12
+msgid "instance"
+msgstr ""
+
+#: view_breadcrumbs/generic/detail.py:17
+#, python-format
+msgid "%(instance)s"
+msgstr ""
+
+#: view_breadcrumbs/generic/update.py:17
+#, python-format
+msgid "Update: %(instance)s"
+msgstr ""
+
+#: view_breadcrumbs/utils.py:45
+#, python-format
+msgid "%(model)s is not installed or missing from the app registry."
+msgstr ""

@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container">
+    {% include 'breadcrumbs.html' %}
+    <main class="article-container">
+        <!-- Article Content -->
+        <article class="article-content">
+            <h1 class="article-title">{% trans "TERMS AND CONDITIONS" %}</h1>
+            <!-- Article Text -->
+            <div class="article-text">
+                <p>{% trans "These Terms & Conditions (“Terms”) tell you the rules for using PinCatch. By using our website, you accept these rules." %}</p>
+                <h2>{% trans "Use for Personal, Non-Commercial Purposes Only" %}</h2>
+                <p>{% trans "You may use PinCatch only to download Pinterest videos for your personal, noncommercial use. You may not use it to download videos for sale or for posting somewhere else without permission." %}</p>
+                <h2>{% trans "No Hosting or Redistribution by PinCatch" %}</h2>
+                <p>{% trans "PinCatch does not store, host, or upload videos. We link/content fetch from Pinterest servers only when you request. We are not the origin of the media content." %}</p>
+                <h2>{% trans "Respect Copyright and Intellectual Property" %}</h2>
+                <ul>
+                    <li>{% trans "You must respect the rights of content creators. If a video is copyrighted, you must have permission to use it beyond personal viewing." %}</li>
+                    <li>{% trans "You may not use downloaded videos to infringe copyright. For example, do not upload or share videos you don’t have the right to." %}</li>
+                    <li>{% trans "If you use downloaded content in a way that violates copyright laws, you are solely responsible." %}</li>
+                </ul>
+                <h2>{% trans "Prohibited Uses" %}</h2>
+                <p>{% trans "You may not use PinCatch to:" %}</p>
+                <ul>
+                    <li>{% trans "Violate laws or regulations" %}</li>
+                    <li>{% trans "Harass, defame, or harm others" %}</li>
+                    <li>{% trans "Send spam or do malicious acts" %}</li>
+                    <li>{% trans "Violate copyrights or intellectual property" %}</li>
+                    <li>{% trans "Reverse engineer or misuse our service" %}</li>
+                </ul>
+                <h2>{% trans "Disclaimers & Limitations" %}</h2>
+                <ul>
+                    <li>{% trans "PinCatch is not endorsed, authorized, or affiliated with Pinterest." %}</li>
+                    <li>{% trans "We don’t guarantee that our service will always or perfect. Sometimes videos may not download." %}</li>
+                    <li>{% trans "We are not responsible for loss or damage from using the service." %}</li>
+                    <li>{% trans "We do not guarantee that the content is legal to download in your country. You must check local law." %}</li>
+                </ul>
+                <h2>{% trans "Termination" %}</h2>
+                <p>{% trans "We may suspend or terminate your access at any time if you break these Terms. We may remove content or block users who misuse the service." %}</p>
+                <h2>{% trans "Changes to Terms" %}</h2>
+                <p>{% trans "We may update these Terms. We will post a new version on this page with a “Last Updated” date. By continuing to use PinCatch after changes, you accept the new Terms." %}</p>
+                <h2>{% trans "Governing Law & Jurisdiction" %}</h2>
+                <p>{% trans "These Terms are governed by the laws of the jurisdiction where PinCatch is registered (for example, your country). Any legal claims must be brought before the courts in that jurisdiction." %}</p>
+            </div>
+        </article>
+    </main>
+</div>
+
+{% endblock %}
