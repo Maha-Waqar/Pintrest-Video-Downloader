@@ -1,0 +1,5 @@
+venv
+locale
+drt_locale
+__pycache__
+media

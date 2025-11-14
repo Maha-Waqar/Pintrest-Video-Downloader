@@ -1,4 +1,3 @@
-{% extends 'index.html' %}
 {% load i18n %}
 {% block content %}
 <!-- Main Content -->
@@ -59,24 +58,24 @@
 
         <section class="features">
             <div class="feature-card"> <i class="fas fa-download"></i>
-                <h3><a href="{% url 'imageDownloader' %}">{% trans "Pinterest Image Downloader" %}</a></h3>
+                <h3>{% trans "Pinterest Image Downloader" %}</h3>
             </div>
             <div class="feature-card"><i class="fas fa-download"></i>
-                <h3><a href="{% url 'gifDownloader' %}">{% trans "Pinterest GIFs Downloader" %}</a></h3>
+                <h3>{% trans "Pinterest GIFs Downloader" %}</h3>
             </div>
             <div class="feature-card"><i class="fas fa-download"></i>
-                <h3><a href="{% url 'home' %}">{% trans "Pinterest Bulk Video Downloader" %}</a></h3>
+                <h3>{% trans "Pinterest Bulk Video Downloader" %}</h3>
             </div>
         </section>
         <section class="features">
             <div class="feature-card"> <i class="fas fa-download"></i>
-                <h3><a href="{% url 'imageDownloader' %}">{% trans "Pinterest Profile Picture Downloader" %}</a></h3>
+                <h3>{% trans "Pinterest Profile Picture Downloader" %}</h3>
             </div>
             <div class="feature-card"><i class="fas fa-download"></i>
-                <h3><a href="{% url 'home' %}">{% trans "Pinterest URL Downloader" %}</a></h3>
+                <h3>{% trans "Pinterest URL Downloader" %}</h3>
             </div>
             <div class="feature-card"><i class="fas fa-download"></i>
-                <h3><a href="{% url 'home' %}">{% trans "Pinterest Mp4 Downloader" %}</a></h3>
+                <h3>{% trans "Pinterest Mp4 Downloader" %}</h3>
             </div>
         </section>
 
@@ -112,24 +111,11 @@
             </div>
         </section>
         <!-- Easy Guide Section -->
-        <section class="easy-guide" style="padding: 0% 15%;">         
+        <section class="easy-guide">
+           
                 <h2>{% trans "What is the best way to download Pinterest videos on iPhone?" %}</h2>
-                <p>{% trans "Using PinCatch on iOS is super simple and works perfectly on Safari or any browser. Here's how: " %} </p>
-                <p>{% trans "Open Pinterest on your iPhone and find the video you want. Tap the three dots and select 'Copy Link.' Then open Safari, visit PinCatch, paste the URL in the field, and tap download. Your video will save directly to your Photos app in full HD quality with sound included. No app required; just your browser and a few taps." %}</p>        
-        </section>
-        <section class="easy-guide" style="padding: 0% 15%;">         
-            <h2>{% trans "How to Download Pinterest Content Without Software?" %}</h2>
-            <p>{% trans "You don't need apps or software to save Pinterest videos and images. Browser-based downloaders work directly in any web browser on any device, requiring no installation and wasting no storage. " %} </p>
-            <p>{% trans "Copy the Pinterest link, paste it into an online downloader, and click download. Your content saves instantly in HD, 1080p, 2K, or 4K quality. Works on Android, iOS, PC, Mac, and Linux. No login required, multi-format support, and download without watermark." %}</p>        
-        </section>
-        <section class="easy-guide" style="padding: 0% 15%;">       
-            <h2>{% trans "Understanding Video Quality: 1080p vs 2K vs 4K" %}</h2>
-            <p>{% trans "Video quality is about resolution, how many pixels make up your picture. More pixels mean sharper videos." %}</p>
-            <ul>
-                <li><b>{% trans "1080p (Full HD): " %}</b>{% trans "looks fantastic on phones and tablets without massive file sizes. It is perfect for everyday content and plays smoothly on any device." %}</li>
-                <li><b>{% trans "2K: " %}</b>{% trans "offers subtle improvements over 1080p. Great for larger screens or content you plan to edit, without the huge file sizes of 4K." %}</li>
-                <li><b>{% trans "4K (Ultra HD): " %}</b>{% trans "delivers maximum detail, 4 times more pixels than 1080p. Ideal for travel videos or home design content when details matter. Files are larger, but the quality is unbeatable." %}</li>
-            </ul>
+                <p>{% trans "Using PinCatch on iOS is super simple and works perfectly on Safari or any browser. Here's how: Open Pinterest on your iPhone and find the video you want. Tap the three dots and select 'Copy Link.' Then open Safari, visit PinCatch, paste the URL in the field, and tap download. Your video will save directly to your Photos app in full HD quality with sound included. No app required; just your browser and a few taps." %}</p>
+          
         </section>
 
         <!-- Features Section -->
