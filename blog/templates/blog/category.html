@@ -1,5 +1,10 @@
-{% extends 'index.html' %}
+{% extends 'blog/base.html' %}
 {% load i18n %}
+{% block head_title %}{{ category.get_translated_name }} - PinCatch{% endblock %}
+{% block head_description %}{{ category.get_translated_name }} articles on PinCatch.{% endblock %}
+{% block og_title %}{{ category.get_translated_name }} - PinCatch{% endblock %}
+{% block og_description %}{{ category.get_translated_name }} articles on PinCatch.{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
 {% block content %}
 <div class="container">
     {% include 'breadcrumbs.html' %}

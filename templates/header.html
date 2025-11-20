@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load translate_urls %}
+{% load page_links %}
 
 <!-- Header Section -->
 <header class="header">
@@ -18,8 +19,8 @@
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="{% url 'home' %}"> {% trans "Home" %}</a></li>
-                <li><a href="{% url 'imageDownloader' %}"> {% trans "Pinterest Image Downloader" %}</a></li>
-                <li><a href="{% url 'gifDownloader' %}"> {% trans "Pinterest GIF Downloader" %}</a></li>       
+                <li><a href="{% page_url 'pinterest-image-downloader' 'imageDownloader' %}"> {% trans "Pinterest Image Downloader" %}</a></li>
+                <li><a href="{% page_url 'pinterest-gif-downloader' 'gifDownloader' %}"> {% trans "Pinterest GIF Downloader" %}</a></li>       
                 <li><a href="{% url 'blog' %}"> {% trans "Blog" %}</a></li>
                 <li><a href="{% url 'about' %}"> {% trans "About" %}</a></li>
             </ul>
@@ -63,5 +64,4 @@
         </div>
     </div>
 </header>
-
 

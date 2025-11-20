@@ -3,6 +3,9 @@ from django_restful_translator.models import TranslatableModel
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
 from blog.translation_cleanup import build_slug_lookup, clean_translation_html
+from django.core.exceptions import ValidationError
+from django.core.validators import URLValidator
+from django.conf import settings
 
 
 class Category(TranslatableModel):
@@ -35,6 +38,8 @@ class Category(TranslatableModel):
 class Post(TranslatableModel):
     title = models.CharField(max_length=255, default="No Title")
     body = RichTextUploadingField()
+    meta_title = models.CharField(default="Meta Title")
+    meta_description = models.TextField(default="Meta Description")
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField("Category", related_name="posts")
@@ -74,6 +79,7 @@ class Post(TranslatableModel):
         if language is None:
             from django.utils import translation
             language = translation.get_language()
+        default_language = settings.LANGUAGE_CODE
 
         translation_obj = self.translations.filter(
             language=language,
@@ -90,6 +96,9 @@ class Post(TranslatableModel):
             return translation_obj.field_value
 
         fallback_slug = getattr(self, 'slug', None)
+        if language == default_language:
+            return fallback_slug
+
         if fallback_slug:
             if translation_obj:
                 if not translation_obj.field_value:

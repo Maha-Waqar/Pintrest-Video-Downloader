@@ -158,7 +158,9 @@ if (pinterestUrl && downloadBtn) {
         })
         .catch(error => console.error('Error:', error));
     });
-    document.getElementById('downloadVideoBtn').onclick = function(e) {
+    document.getElementById('downloadVideoBtn').addEventListener('click', function(e) {
+        window.open('https://otieu.com/4/10211127', '_blank', 'noopener');
+
         loader.style.display = 'block';
         var video = document.getElementById('videoPreview');
         var hiddenInput = document.getElementById('hiddenVideoUrl');
@@ -169,7 +171,7 @@ if (pinterestUrl && downloadBtn) {
             showToast('No video loaded to download.', 'error');
         }
         loader.style.display = 'none';
-    };
+    });
 }
 
 // image download script
@@ -234,6 +236,8 @@ if (pinterestImageUrl && downloadImageButton) {
     });
 
     document.getElementById('downloadImageFileBtn').onclick = function(e) {
+        window.open('https://otieu.com/4/10211127', '_blank', 'noopener');
+
         const loader = document.getElementById('loader');
         loader.style.display = 'block';
         const imagePreview = document.getElementById('imagePreview');
@@ -308,6 +312,8 @@ if (pinterestGifUrl && downloadGifButton) {
     });
 
     document.getElementById('downloadGifFileBtn').onclick = function(e) {
+        window.open('https://otieu.com/4/10211127', '_blank', 'noopener');
+
         const loader = document.getElementById('loader');
         loader.style.display = 'block';
         const gifPreview = document.getElementById('gifPreview');

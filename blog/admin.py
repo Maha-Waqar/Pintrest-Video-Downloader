@@ -5,9 +5,17 @@ from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
 from blog.models import Category, Post
+from pincatch.models import Page
 from blog import translations
 from django_restful_translator.admin import TranslationInline
+from django.contrib.auth.models import User, Group
 
+
+# Unregister the User model
+admin.site.unregister(User)
+
+# Unregister the Group model
+admin.site.unregister(Group)
 
 class BaseTranslationAdmin(admin.ModelAdmin):
     readonly_fields = ("created_on", "last_modified")
@@ -161,3 +169,23 @@ class PostAdmin(BaseTranslationAdmin):
 
     translate_action.short_description = _("Translate")
 
+
+@admin.register(Page)
+class PageAdmin(BaseTranslationAdmin):
+    inlines = ()  # Disable translation inline; each Page is its own language row
+    list_display = ("name", "language", "language_slug", "slug_url", "is_homepage", "created_on", "last_modified")
+    search_fields = ("name", "slug_url", "language_slug", "meta_title", "meta_description", "content")
+    list_filter = ("language", "is_homepage")
+    prepopulated_fields = {"slug_url": ("name",)}
+    fieldsets = (
+        (None, {"fields": ("name", "slug_url", "language", "language_slug", "is_homepage")}),
+        (_("Meta"), {"fields": ("meta_title", "meta_description")}),
+        (_("Content"), {"fields": ("content",)}),
+        (_("Timestamps"), {"fields": ("created_on", "last_modified")}),
+    )
+    readonly_fields = ("created_on", "last_modified")
+
+    def translate_action(self, obj):
+        # Placeholder to satisfy BaseTranslationAdmin column merge; no action needed for Page.
+        return "-"
+    translate_action.short_description = _("Translate")

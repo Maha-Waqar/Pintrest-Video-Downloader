@@ -1,0 +1,395 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block content %}
+<!-- Main Content -->
+<div class="container">
+    <div class="main-header">
+        <h1>{% trans "Free Pinterest GIF Downloader Online" %}</h1>
+        <p>{% trans "Now easily download Pinterest GIFs and images in HD, Full HD, 1080p, 2K, and 4K quality. This browser-based tool works smoothly on any device, requires no app installation, and is entirely free to use." %}</p>
+    </div>
+    <div id="toast-container"></div>
+    <section class="download-section" id="downloadSection">
+        <p><b>{% trans "PASTE YOUR PINTEREST GIF LINK HERE" %}</b></p>
+        <div class="input-group">
+            <input type="text" id="pinterestGifUrl" placeholder="https://www.pinterest.com/pin/..../">
+            <button id="downloadGifButton">
+                <i class="fas fa-download"></i> {% trans "Download" %}
+            </button>
+        </div>
+        <p class="policy">{% trans "By using our service you accept our" %} <a href="{% url 'termsAndConditions' %}">{% trans "Terms of Service" %}</a> {% trans "and" %} <a href="{% url 'privacyPolicy' %}">{% trans "Privacy Policy" %}</a></p>
+
+        <div class="tutorial">
+            <a href="#">{% trans "How to download? Watch the tutorial" %}</a>
+        </div>
+
+        <div class="security-badge">
+            <img src="data:gif/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzVkMSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bS0yIDE1bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6Ii8+PC9zdmc+"
+                alt="Security Badge">
+            <span>{% trans "Scanned by Norton™ Safe Web" %}</span>
+        </div>
+    </section>
+    <div class="loader" id="loader" style="display: none;"></div>
+    <!-- Preview Gif Section -->
+    <div id="player-overlay">
+            <video width="100%" height="300px" controls id="gifPreview" style="display:none; margin: 20px;">         
+        </video>        
+    </div>
+    <!-- Download Gif Button section -->
+    <div style="text-align: center; width: 100%; margin: 2%;" class ="downloadSection">
+        <div class="button-row" id="downloadGifBtnSection" style="display: none;">
+            <form id="downloadGifForm" method="POST" action="{% url 'downloadGif' %}" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="gif_url" id="hiddenGifUrl">
+                <input type="hidden" name="filename" id="hiddenGifFilename" value="pinterest.gif">
+                <button type="submit" id="downloadGifFileBtn" class="btn btn-danger">
+                    <i class="fas fa-download"></i>
+                    {% trans "Download Gif" %}
+                </button>
+            </form>
+            <a href="{% url 'gifDownloader' %}" id="downloadMoreGifBtn" class="btn btn-outline-secondary">
+                <i class="fas fa-plus"></i> {% trans "Download More Gifs" %}
+            </a>
+
+        </div>
+    </div>
+    
+     <!-- Features Overview Section -->
+    <h2 class="features-heading">{% trans "All Pinterest Downloader Resources" %}</h2>
+
+    <section class="features">
+        <div class="feature-card"> <i class="fas fa-download"></i>
+            <h3><a href="{% url 'imageDownloader' %}">{% trans "Pinterest Image Downloader" %}</a></h3>
+        </div>
+        <div class="feature-card"><i class="fas fa-download"></i>
+            <h3><a href="{% url 'gifDownloader' %}">{% trans "Pinterest GIFs Downloader" %}</a></h3>
+        </div>
+        <div class="feature-card"><i class="fas fa-download"></i>
+            <h3><a href="{% url 'home' %}">{% trans "Pinterest Bulk Video Downloader" %}</a></h3>
+        </div>
+    </section>
+    <section class="features">
+        <div class="feature-card"> <i class="fas fa-download"></i>
+            <h3><a href="{% url 'imageDownloader' %}">{% trans "Pinterest Profile Picture Downloader" %}</a></h3>
+        </div>
+        <div class="feature-card"><i class="fas fa-download"></i>
+            <h3><a href="{% url 'home' %}">{% trans "Pinterest URL Downloader" %}</a></h3>
+        </div>
+        <div class="feature-card"><i class="fas fa-download"></i>
+            <h3><a href="{% url 'home' %}">{% trans "Pinterest Mp4 Downloader" %}</a></h3>
+        </div>
+    </section>
+    <!-- How to Download Video Section -->
+    <section class="how-it-works" id="howItWorksSection">
+        <h2>{% trans "How to Download High-Quality Pinterest GIFs in Bulk?" %}</h2>
+        <p>{% trans "Downloading your favorite Pinterest GIF is quick and simple. Follow these steps:" %}</p>
+
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>{% trans "Copy Pinterest URL" %}</h3>
+                <p>{% trans "Locate the GIF or image you want on Pinterest. Tap the share button and select 'Copy Link' on mobile, or right-click and select 'Copy Link' on your PC." %}</p>
+            </div>
+
+            <div class="step">
+                <div class="step-icon">
+                    <i class="fas fa-copy"></i>
+                </div>
+                <h3>{% trans "Paste URL" %}</h3>
+                <p>{% trans "Return to this page and paste the copied Pinterest link into the input field above. The downloader will automatically detect the content." %}</p>
+            </div>
+
+            <div class="step">
+                <div class="step-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3>{% trans "Download Gif" %}</h3>
+                <p>{% trans "Click the download button to save the GIF or image directly to your device. No software installation is required, and it works directly in your browser." %}</p>
+            </div>
+        </div>
+    </section>
+    <!-- Easy Guide Section -->
+    <section class="easy-guide" style="padding: 0% 15%;">       
+            <h2>{% trans "Is There a Way to Download GIFs on Pinterest?" %}</h2>
+            <p>{% trans "Yes, PinCatch makes it easy to download Pinterest GIFs on iOS or any browser." %}</p>
+            <p>{% trans "These steps help you out on how to do it on an iPhone:" %}</p>
+            <ul>
+                <li>{% trans "Open Pinterest and find the video or GIF you want." %}</li>
+                <li>{% trans "Tap the three dots and select 'Copy Link.'" %}</li>
+                <li>{% trans "Open Safari, visit PinCatch, paste the link into the input field, and tap download." %}</li>
+            </ul>
+            <p>{% trans "The file will be saved directly to your Photos app in full HD, including sound. No app installation is needed, just your browser and a few taps."%}</p>
+        
+    </section>
+    <section class="easy-guide" style="padding: 0% 15%;">       
+            <h2>{% trans "How to Download Pinterest GIFs Without Software?" %}</h2>
+            <p>{% trans "You don’t need apps or software to save Pinterest videos and images. Browser-based downloaders like PinCatch work directly in any web browser on any device, saving you storage space and time." %}</p>
+            <ul>
+                <li>{% trans "Copy the Pinterest link." %}</li>
+                <li>{% trans "Paste it into the online downloader." %}</li>
+                <li>{% trans "Click download to save your content instantly in HD, 1080p, 2K, or 4K quality." %}</li>
+            </ul>
+            <p>{% trans "This method works on Android, iOS, PC, Mac, and Linux. No login is required, and you can download without watermarks."%}</p>     
+    </section>
+    <section class="easy-guide" style="padding: 0% 15%;">       
+            <h2>{% trans "Understanding GIF Quality: 1080p vs 2K vs 4K" %}</h2>
+            <p>{% trans "Video quality depends on resolution, which determines the sharpness of the image:" %}</p>
+            <ul>
+                <li><b>{% trans "1080p (Full HD): " %}</b>{% trans "Perfect for phones and tablets, offering excellent quality without large file sizes. Ideal for everyday use." %}</li>
+                <li><b>{% trans "2K: " %}</b>{% trans "Provides slightly better quality than 1080p, suitable for larger screens or content you plan to edit." %}</li>
+                <li><b>{% trans "4K (Ultra HD): " %}</b>{% trans "Offers the highest level of detail, with four times the pixels of 1080p. Best for travel videos or design content where clarity is essential. Keep in mind that 4K files are larger but deliver unmatched quality." %}</li>
+            </ul>
+    </section>
+    <!-- Features Section -->
+    <section class="features-section" id="featuresSection" style="text-align: center;">
+        <h2>{% trans "What are the features of Pinterest Gif Downloader?" %}</h2>
+        <p>{% trans "PinCatch is your go-to online tool for downloading Pinterest content quickly and safely." %}</p>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon f-one">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="feature-text">
+                    <h3>{% trans "Easy To Use" %}</h3>
+                    <p>{% trans "Just three simple steps: copy link, paste URL, and click download. Get your Pinterest gif saved to your device in seconds, with no complicated process." %}</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon f-two">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="feature-text">
+                    <h3>{% trans "Powerful" %}</h3>
+                    <p>{% trans "Our Pinterest downloader supports videos, images, Story Pins, and GIFs. Download in multiple formats, including MP4 and MP3, all in high resolution." %}</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon f-three">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="feature-text">
+                    <h3>{% trans "Full Free" %}</h3>
+                    <p>{% trans "PinCatch is made with love, and we promise it will always be free; no hidden fees, no premium plans, just a free download for everyone." %}</p>
+                </div>
+            </div>
+
+            <div class="feature-item ">
+                <div class="feature-icon f-four">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div class="feature-text">
+                    <h3>{% trans "Efficient" %}</h3>
+                    <p>{% trans "Fast download speeds and stable connections mean you get your content instantly. We also offer a Chrome extension to make Pinterest video downloads even quicker." %}</p>
+                </div>
+            </div>
+
+            <div class="feature-item ">
+                <div class="feature-icon f-five">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="feature-text">
+                    <h3>{% trans "No Account Needed" %}</h3>
+                    <p>{% trans "No login required, no sign-up forms. Just paste your link and download—that's it. We respect your privacy and don't store your data." %}</p>
+                </div>
+            </div>
+
+            <div class="feature-item ">
+                <div class="feature-icon f-six">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <div class="feature-text">
+                    <h3>{% trans "All Platform Supported" %}</h3>
+                    <p>{% trans "Works on Android, iOS, PC, Mac, Linux, tablets, and mobile devices. Whether you're on Windows or Xiaomi, our cross-device tool works seamlessly everywhere." %}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="benefitsSection">
+        <div class="container">
+            <h2>{% trans "What are the benefits of Using Pinterest Gif Downloader Online?" %}</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <h3>{% trans "All-in-One Tool" %}</h3>
+                    <p>{% trans "PinCatch brings you a complete set of Pinterest download tools. Save videos, images, GIFs, and Story Pins all in one place. It is the easiest way to keep your favorite Pinterest content." %}</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-circle-play"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>{% trans "High-Quality Downloads" %}</h3>
+                        <p>{% trans "Download Pinterest videos in 4K, 2K, Full HD, or 1080p whatever quality is available. Enjoy crystal-clear visuals and sound with every download. Our multi-format support ensures device-compatible files every time." %}</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>{% trans "Works on Any Device" %}</h3>
+                        <p>{% trans "Whether you're browsing on Android, iOS, Windows, Mac, or tablet, our browser-based downloader works smoothly. No app installation needed, you just need to open your browser and start downloading. Mobile-friendly design means easy access on the go." %}</p>
+                    </div>
+                </div>
+            </div>
+             <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>{% trans "Safe and Private" %}</h3>
+                    <p>{% trans "Your privacy matters. We don't require personal information, don't store your videos, and don't track what you download. Our privacy-safe tool uses secure CDN-based delivery to protect your data." %}</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-id-badge"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>{% trans "No Watermark" %}</h3>
+                        <p>{% trans "Download Pinterest videos without a watermark, clean files ready to view or share. Get the original content quality without any branding or marks." %}</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>{% trans "Multi-Format Support" %}</h3>
+                        <p>{% trans "Need video? Download as MP4 with high-quality sound. Want just audio? Convert to MP3 instantly. Our tool handles whatever format you need." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+ 
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonialsSection">
+        <h2>{% trans "What People Saying" %}</h2>
+    
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    {% trans "I've been using Pincatch for a few weeks now and it's been a great experience. Just paste the Pinterest link, click download, and you're done. No registration or software installation needed. The GIF quality remains perfect, which is important for my design work." %}
+                </div>
+                <div class="testimonial-author">Elle Brown</div>
+                <div class="testimonial-role">{% trans "Pinterest User" %}</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    {% trans "Pincatch works well for downloading Pinterest GIFs quickly and easily. It's free, browser-based, and gets the job done without complications. The download process is usually fast, though some larger GIFs take a bit longer to process. My only wish is for a batch download feature to save multiple GIFs at once. " %}
+                </div>
+                <div class="testimonial-author">William Jones</div>
+                <div class="testimonial-role">{% trans "Pinterest User" %}</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    {% trans "As someone who creates visual content daily, Pincatch has become essential in my workflow. Pinterest has incredible GIFs but downloading them was always frustrating until I found this tool. It's completely free, works on any device since it's online, and the process is instant - just copy the link and download. " %}
+                </div>
+                <div class="testimonial-author">Nancy Carpenter</div>
+                <div class="testimonial-role">{% trans "Pinterest User" %}</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    {% trans "Pincatch does what it promises - downloads GIFs from Pinterest without much worry. The interface is simple and functional. I've used it about a dozen times and it's been reliable. It would be great to see additional features like quality settings or a browser extension for quicker access. Despite being basic, it's still a useful free tool that beats taking screenshots or screen recording." %}
+                </div>
+                <div class="testimonial-author">Millie Mike Buyers</div>
+                <div class="testimonial-role">{% trans "Pinterest User" %}</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Knowledge Base Section -->
+    <section class="articles-section">
+        <div class="container">
+            <h2>{% trans "Knowledge Base" %}</h2>
+            <div class="articles-grid">
+                {% if blogs %}
+                {% for blog in blogs %}
+                <a href="{% url 'blog_detail' blog.get_translated_slug %}" style="text-decoration: none; color: inherit;">
+                <div class="article-card">
+                    <div class="card-body">
+                        <div class="feature-item-card">
+                            <div class="feature-icon-card">
+                                {% if blog.image %}
+                                <img src="{{ blog.image.url }}" alt="{{ blog.title }}"
+                                    style="width: 100%; height: 180px; object-fit: cover;">
+                                {% else %}
+                                <div
+                                    style="width: 100%; height: 180px; background: #eee; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 2rem;">
+                                    No Image
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="feature-content">
+                                <h3 style="color: red; margin-top: 2%;">{{ blog.title }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+                {% endfor %}
+                {% else %}
+                <p>No articles found.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faqSection">
+        <h2>{% trans "Frequently Asked Questions" %}</h2>
+        <details class="faq-item">
+            <summary class="faq-question">
+                <h3>{% trans "Is it possible to download animated GIFs on Pinterest?" %}</h3>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </summary>
+            <div class="faq-answer">
+                {% trans "Yes, you can download animated GIFs from Pinterest using PinCatch. Simply copy the GIF link, paste it into the downloader, and click download. The GIF will save directly to your device in high quality, with no app or software required." %}
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-question">
+                <h3>{% trans "How do I save a GIF from Pinterest to my Camera Roll?" %}</h3>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </summary>
+            <div class="faq-answer">
+                {% trans "Copy the Pinterest GIF link, open PinCatch in your browser, paste the link, and tap download. The GIF will save directly to your Camera Roll in HD quality. This process works on iOS devices without needing any additional apps." %}
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-question">
+                <h3>{% trans "Does Pinterest allow GIFs?" %}</h3>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </summary>
+            <div class="faq-answer">
+                {% trans "Yes, Pinterest supports GIFs, and you can view, share, and download them. Tools like PinCatch make it easy to save GIFs directly to your device in high quality, without requiring any software installation or account login." %}
+            </div>
+        </details>
+    </section>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+__pycache__
+blog/__pycache__
+pincatch/__pycache__
+venv
+media
+db.sqlite3
+locale
+drt_locale

@@ -2,7 +2,7 @@
 
 ## Step 1: Configure Logging
 
-Add this to your `pinit/settings.py` to see detailed logs:
+Add this to your `pincatch/settings.py` to see detailed logs:
 
 ```python
 LOGGING = {
@@ -161,7 +161,7 @@ Run this script to test everything:
 import os
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pinit.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pincatch.settings')
 django.setup()
 
 from blog.models import Post, Category
@@ -255,7 +255,7 @@ print(f"Receivers for Post save signal: {len(receivers)}")
 
 ## Step 7: Enable Full Debug Mode
 
-In `pinit/settings.py`, add:
+In `pincatch/settings.py`, add:
 
 ```python
 # Add at the end

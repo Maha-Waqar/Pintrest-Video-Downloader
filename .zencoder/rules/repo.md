@@ -5,7 +5,7 @@
 - **Primary Framework**: Django
 - **Description**: Pinterest-focused web application featuring blog content with multilingual support.
 - **Modules**:
-  - **pinit/**: Django project configuration and site-level views/templates.
+  - **pincatch/**: Django project configuration and site-level views/templates.
   - **blog/**: Blog application handling posts, categories, translations, and related views.
 
 ## Key Dependencies
@@ -18,8 +18,8 @@ Refer to `requirements.txt` for the complete dependency list.
 
 ## Important Files
 - **manage.py**: Django management script.
-- **pinit/settings.py**: Project settings including installed apps and localization configuration.
-- **pinit/urls.py**: Root URL configuration.
+- **pincatch/settings.py**: Project settings including installed apps and localization configuration.
+- **pincatch/urls.py**: Root URL configuration.
 - **blog/models.py**: Post and Category models with translation helpers.
 - **blog/views.py**: View functions for listing and detail pages.
 - **blog/signals.py**: Translation management logic triggered on model save.
@@ -41,4 +41,3 @@ Refer to `requirements.txt` for the complete dependency list.
 - Keep translation logic consistent between templates, views, and signals.
 - Avoid editing auto-generated translation strings directly; use the provided translation workflows.
 - When adding new routes, update `blog/urls.py` and corresponding views/templates.
-

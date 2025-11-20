@@ -1,5 +1,10 @@
-{% extends 'index.html' %}
+{% extends 'blog/base.html' %}
 {% load i18n %}
+{% block head_title %}Blog - PinCatch{% endblock %}
+{% block head_description %}Pinterest Knowledge Base Forum by PinCatch: Find simple guides, FAQs, and tips to fix Pinterest issues, download pins safely, and use PinCatch like a pro.{% endblock %}
+{% block og_title %}Blog - PinCatch{% endblock %}
+{% block og_description %}Pinterest Knowledge Base Forum by PinCatch: Find simple guides, FAQs, and tips to fix Pinterest issues, download pins safely, and use PinCatch like a pro.{% endblock %}
+{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}
 {% block content %}
 <div class="container">
 {% include 'breadcrumbs.html' %}

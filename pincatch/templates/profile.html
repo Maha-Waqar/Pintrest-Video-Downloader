@@ -1,0 +1,269 @@
+{% extends 'index.html' %}
+{% load i18n %}
+{% block content %}
+<style>
+#imagePreview {
+  display: block;
+  margin: auto;
+}
+</style>
+<!-- Main Content -->
+<div class="container">
+    <div class="main-header">
+        <h1>{% trans "Pinterest Profile Picture Downloader" %}</h1>
+        <p>{% trans "Download any Pinterest profile picture in HD, 1080p, 2K, or 4K with PinCatch. Use our free online tool on any device, no app, no login, just paste the link and save the DP in crystal-clear quality." %}</p>
+    </div>
+    <div id="toast-container"></div>
+    <section class="download-section" id="downloadSection">
+        <p><b>{% trans "PASTE YOUR PINTEREST LINK HERE" %}</b></p>
+        <div class="input-group">
+            <input type="text" id="pinterestImageUrl" placeholder="https://www.pinterest.com/pin/..../">
+            <button id="downloadImageButton">
+                <i class="fas fa-download"></i> {% trans "Download" %}
+            </button>
+        </div>
+        <p class="policy">{% trans "By using our service you accept our" %} <a href="{% url 'termsAndConditions' %}">{% trans "Terms of Service" %}</a> {% trans "and" %} <a href="{% url 'privacyPolicy' %}">{% trans "Privacy Policy" %}</a></p>
+
+        <div class="tutorial">
+            <a href="#">{% trans "How to download? Watch the tutorial" %}</a>
+        </div>
+
+        <div class="security-badge">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzVkMSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bS0yIDE1bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6Ii8+PC9zdmc+"
+                alt="Security Badge">
+            <span>{% trans "Scanned by Norton™ Safe Web" %}</span>
+        </div>
+    </section>
+    <div class="loader" id="loader" style="display: none;"></div>
+    <!-- Preview Image Section -->
+    <div id="player-overlay" id="playerOverlay">
+        <a href="" id="imagePreviewUrl">
+        <img  id="imagePreview" style="width: 50%; height: 600px;display: none;" >
+        </a>
+    </div>
+
+    <!-- Download Image Button section -->
+    <div style="text-align: center; width: 100%; margin: 2%;" class ="downloadSection">
+        <div class="button-row" id="downloadImageBtnSection" style="display: none;">
+            <form id="downloadImageForm" method="POST" action="{% url 'downloadImage' %}" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="image_url" id="hiddenImageUrl">
+                <input type="hidden" name="filename" id="hiddenImageFilename" value="pinterest.jpg">
+                <button type="submit" class="btn btn-danger" id="downloadImageFileBtn">
+                    <i class="fas fa-download"></i>
+                    {% trans "Download Picture" %}
+                </button>
+            </form>
+            <a href="{% url 'imageDownloader' %}"  class="btn btn-outline-secondary">
+                <i class="fas fa-plus"></i> {% trans "Download More Pictures" %}
+            </a>
+
+        </div>
+    </div>
+        <!-- Features Overview Section -->
+    <h2 class="features-heading">{% trans "All Pinterest Downloader Resources" %}</h2>
+
+    <section class="features">
+        <div class="feature-card"> <i class="fas fa-download"></i>
+            <h3><a href="{% url 'imageDownloader' %}">{% trans "Pinterest Image Downloader" %}</a></h3>
+        </div>
+        <div class="feature-card"><i class="fas fa-download"></i>
+            <h3><a href="{% url 'gifDownloader' %}">{% trans "Pinterest GIFs Downloader" %}</a></h3>
+        </div>
+        <div class="feature-card"><i class="fas fa-download"></i>
+            <h3><a href="{% url 'home' %}">{% trans "Pinterest Bulk Video Downloader" %}</a></h3>
+        </div>
+    </section>
+    <section class="features">
+        <div class="feature-card"> <i class="fas fa-download"></i>
+            <h3><a href="{% url 'imageDownloader' %}">{% trans "Pinterest Profile Picture Downloader" %}</a></h3>
+        </div>
+        <div class="feature-card"><i class="fas fa-download"></i>
+            <h3><a href="{% url 'home' %}">{% trans "Pinterest URL Downloader" %}</a></h3>
+        </div>
+        <div class="feature-card"><i class="fas fa-download"></i>
+            <h3><a href="{% url 'home' %}">{% trans "Pinterest Mp4 Downloader" %}</a></h3>
+        </div>
+    </section>
+    <!-- How to Download Video Section -->
+    <section class="how-it-works" id="howItWorksSection">
+        <h2>{% trans "How to Download High-Quality Pinterest PFP in Bulk?" %}</h2>
+        <p>{% trans "Saving beautiful Pinterest images is incredibly simple. Complete these 3 simple steps:" %}</p>
+
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>{% trans "Copy Pinterest URL" %}</h3>
+                <p>{% trans "Locate your desired image or photo on Pinterest, then grab its URL. Simply hit the share icon and choose 'Copy Link' on mobile devices, or use right-click on desktop computers." %}</p>
+            </div>
+
+            <div class="step">
+                <div class="step-icon">
+                    <i class="fas fa-copy"></i>
+                </div>
+                <h3>{% trans "Paste URL" %}</h3>
+                <p>{% trans "Return to our page and drop the Pinterest URL into the input box shown above. Our web-based tool will immediately detect your selected content." %}</p>
+            </div>
+
+            <div class="step">
+                <div class="step-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3>{% trans "Download Image" %}</h3>
+                <p>{% trans "Press the download button to transfer your image or photo straight to your device storage. You don’t need to download any software; everything works seamlessly right in your web browser." %}</p>
+            </div>
+        </div>
+    </section>
+    <!-- Easy Guide Section -->
+    <section class="easy-guide" style="padding: 0% 15%;">       
+            <h2>{% trans "What's the Best Way to Download Pinterest DP Image?" %}</h2>
+            <p>{% trans "Downloading on iOS devices is easy and functions flawlessly with Safari or alternative browsers. " %}</p>
+            <p>{% trans "Follow this method:" %}</p>
+            <ul>
+                <li>{% trans "Launch Pinterest on your iPhone, and find the image you prefer" %}</li>
+                <li>{% trans "Tap the three-dot menu and select 'Copy Link.'" %}</li>
+                <li>{% trans "Next, open Safari, navigate to PinCatch, insert the URL into the designated field, and hit download." %}</li>
+            </ul>
+            <p>{% trans "The image transfers immediately to your Photos library in pristine HD resolution without any watermarks. Skip the app store entirely; your browser handles everything with just a couple of taps."%}</p>
+        
+    </section>
+    <section class="easy-guide" style="padding: 0% 15%;">       
+            <h2>{% trans "How to Download Pinterest Profile Image Without Software?" %}</h2>
+            <p>{% trans "You can download any Pinterest profile image without installing software. Just use an online downloader in your browser on any device, so you save storage and skip app installs." %}</p>
+            <p>{% trans "Copy the Pinterest profile URL, paste it into the web tool, and click download. Your profile picture will save instantly in HD, 1080p, 2K, or 4K. It works on Android, iOS, PC, Mac, and Linux, with no login, no watermark, and support for multiple file formats."%}</p>     
+    </section>
+    <section class="easy-guide" style="padding: 0% 15%;">       
+            <h2>{% trans "Understanding PFP Image Quality: 1080p vs 2K vs 4K" %}</h2>
+            <p>{% trans "Picture quality depends on resolution, as the total number of pixels forming your visual content. Higher pixel counts produce crisper, more detailed images." %}</p>
+            <ul>
+                <li><b>{% trans "1080p (Full HD): " %}</b>{% trans "Delivers excellent results on smartphones and tablets while maintaining reasonable file dimensions. This resolution works perfectly for standard usage and renders beautifully across all screen types." %}</li>
+                <li><b>{% trans "2K: " %}</b>{% trans "Provides noticeable enhancements compared to 1080p. This is an excellent choice for larger displays or pictures you intend to print or modify, while avoiding the enormous file dimensions associated with 4K." %}</li>
+                <li><b>{% trans "4K (Ultra HD): " %}</b>{% trans "Provides supreme clarity, containing four times the pixel density of 1080p. This is perfect for professional photo collections, creative inspiration boards, or interior design references where fine details are crucial. Storage requirements are higher, but the visual excellence is unmatched." %}</li>
+            </ul>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonialsSection">
+        <h2>{% trans "What People Saying" %}</h2>
+    
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    {% trans "Been using this for months now and it's a lifesaver! I run a design blog and need high-quality images regularly. Works like a charm on my laptop, super fast, and the images always come out crisp." %}
+                </div>
+                <div class="testimonial-author">Jessica Chen</div>
+                <div class="testimonial-role">{% trans "Blogger" %}</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    {% trans "Honestly didn't think I'd find something this simple that actually works. No signup, no weird redirects, just paste and download. The quality is great too—way better than screenshots" %}
+                </div>
+                <div class="testimonial-author">Marcus Thompson</div>
+                <div class="testimonial-role">{% trans "Small Business Owner" %}</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    {% trans "Perfect for my mood board projects. I'm always collecting inspiration on Pinterest, and this makes it so easy to save everything. Love that I can use it on my iPad without any hassle." %}
+                </div>
+                <div class="testimonial-author">Emily Rodriguez,</div>
+                <div class="testimonial-role">{% trans "Interior Designer" %}</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    {% trans "Game changer for my wedding planning! I was losing my mind trying to save all my Pinterest ideas. This tool saved me hours. Plus, the 4K option means I can actually print some of these for my vision board." %}
+                </div>
+                <div class="testimonial-author">Rachel Patel</div>
+                <div class="testimonial-role">{% trans "Bride-to-be" %}</div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faqSection">
+        <h2>{% trans "Frequently Asked Questions" %}</h2>
+        <details class="faq-item">
+            <summary class="faq-question">
+                <h3>{% trans "How to Pinterest image downloader for PC?" %}</h3>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </summary>
+            <div class="faq-answer">
+                {% trans "Access PinCatch through your computer by launching any web browser, copying your Pinterest image URL, inserting it into our download box, and pressing the download button. Zero software setup is necessary." %}
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-question">
+                <h3>{% trans "How to Pinterest profile picture downloader for Android?" %}</h3>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </summary>
+            <div class="faq-answer">
+                {% trans "To download Pinterest on your Android smartphone, copy the profile link, open PinCatch in your mobile browser, paste the URL, and press download. The picture saves straight to your device's gallery." %}
+            </div>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-question">
+                <h3>{% trans "How to download Pinterest profile pictures in high quality?" %}</h3>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </summary>
+            <div class="faq-answer">
+                {% trans "PinCatch intelligently identifies the maximum available resolution for every Pinterest image, providing downloads in HD, 2K, or 4K quality based on the source file's original resolution." %}
+            </div>
+        </details>
+
+         <details class="faq-item">
+            <summary class="faq-question">
+                <h3>{% trans "Why is Pinterest not downloading profile pictures?" %}</h3>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </summary>
+            <div class="faq-answer">
+                {% trans "When downloads fail, verify your browser settings, confirm your internet connectivity, or attempt to clear your browser cache. PinCatch functions properly on all current browsers without limitations." %}
+            </div>
+        </details>
+         <details class="faq-item">
+            <summary class="faq-question">
+                <h3>{% trans "Is downloading profile pictures from Pinterest safe?" %}</h3>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </summary>
+            <div class="faq-answer">
+                {% trans "PinCatch usage is entirely secure. We never retain your information or saved images. Remember to honor copyright laws and utilize images responsibly." %}
+            </div>
+        </details>
+         <details class="faq-item">
+            <summary class="faq-question">
+                <h3>{% trans "Can I use an profile picture from Pinterest?" %}</h3>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </summary>
+            <div class="faq-answer">
+                {% trans "Pinterest content is frequently protected by copyright. You may save images for personal reference and inspiration, though commercial applications demand authorization from the original artist or rights holder." %}
+            </div>
+        </details>
+        <details class="faq-item">
+            <summary class="faq-question">
+                <h3>{% trans "Can I use pictures from Pinterest for my book?" %}</h3>
+                <svg class="faq-arrow" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </summary>
+            <div class="faq-answer">
+                {% trans "Using Pinterest images in published books generally requires obtaining licenses or explicit consent from the copyright holder. Always confirm usage permissions before any commercial publishing." %}
+            </div>
+        </details>
+    </section>
+</div>
+
+{% endblock %}

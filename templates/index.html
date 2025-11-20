@@ -5,10 +5,282 @@
 <head>
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans "Pinterest Video Downloader - Image, GIFs & Without Watermark" %}</title>
+    {% with default_title=_("Pinterest Video Downloader - Image, GIFs & Without Watermark") default_description=_("Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.") default_canonical="https://pincatch.com/" %}
+    {% with resolved_title=meta_title|default:default_title resolved_description=meta_description|default:default_description resolved_canonical=canonical_url|default:default_canonical %}
+    <title>{% block title %}{{ resolved_title }}{% endblock %}</title>
     <meta name="description"
-        content="Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.">
-    <link rel="canonical" href="https://pincatch.com">
+        content="{% block meta_description %}{{ resolved_description }}{% endblock %}">
+    <meta name="keywords" content="{% trans 'pinterest video downloader, pinterest downloader, download pinterest videos, pinterest mp4, pinterest gif, pinterest image downloader, bulk download pinterest' %}">
+    <meta name="author" content="Pinterest Video Downloader">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#E60023">
+    <link rel="canonical" href="{{ resolved_canonical }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ resolved_canonical }}">
+    <meta property="og:title" content="{{ resolved_title }}">
+    <meta property="og:description" content="{{ resolved_description }}">
+    <meta property="og:image" content="https://pincatch.com/static/images/og-image.jpg">
+    <meta property="og:site_name" content="Pinterest Video Downloader">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ resolved_canonical }}">
+    <meta property="twitter:title" content="{{ resolved_title }}">
+    <meta property="twitter:description" content="{{ resolved_description }}">
+    <meta property="twitter:image" content="https://pincatch.com/static/images/og-image.jpg">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+    <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
+
+    <!-- hreflang for internationalization -->
+    <link rel="alternate" hreflang="en" href="https://pincatch.com/">
+    <link rel="alternate" hreflang="es" href="https://pincatch.com/es">
+    <link rel="alternate" hreflang="fr" href="https://pincatch.com/fr">
+    <link rel="alternate" hreflang="de" href="https://pincatch.com/de">
+    <link rel="alternate" hreflang="x-default" href="https://pincatch.com/">
+
+    <meta name="google-site-verification" content="Dgtvc51uKBF0ne3wCrGjZVFQ9ebKxNVigCABUERP_Vg" />
+    <meta name="monetag" content="176dc79c73d671149a8d03647524857a">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G84CQNSNKS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G84CQNSNKS');
+    </script>
+
+     <!-- Schema.org Structured Data -->
+
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+        "@type": "Organization",
+        "@id": "https://pincatch.com/#org",
+        "name": "PinCatch",
+        "url": "https://pincatch.com/",
+        "logo": "https://pincatch.com/static/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/pincatch",
+            "https://www.x.com/pincatch",
+            "https://www.youtube.com/pincatch"
+        ]
+        },
+        {
+        "@type": "WebSite",
+        "@id": "https://pincatch.com/#website",
+        "url": "https://pincatch.com/",
+        "name": "PinCatch - Pinterest Video Downloader",
+        "publisher": { "@id": "https://pincatch.com/#org" },
+        "inLanguage": "en"
+        },
+        {
+        "@type": "WebPage",
+        "@id": "{{ resolved_canonical }}#webpage",
+        "url": "{{ resolved_canonical }}",
+        "name": "{{ resolved_title|escapejs }}",
+        "headline": "{{ resolved_title|escapejs }}",
+        "description": "{{ resolved_description|escapejs }}",
+        "isPartOf": { "@id": "https://pincatch.com/#website" },
+        "inLanguage": "en",
+        "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://pincatch.com/static/og-image.jpg"
+        },
+        "breadcrumb": { "@id": "https://pincatch.com/#breadcrumbs" },
+        "mainEntity": [
+            { "@id": "https://pincatch.com/#home" },
+            { "@id": "https://pincatch.com/#blog" }
+        ],
+        "about": [
+            {"@type": "Thing","name": "download","sameAs": ["https://en.wikipedia.org/wiki/Download","https://www.google.com/search?q=download&kgmid=/m/0bm3b"]},
+            {"@type": "Thing","name": "gifs","sameAs": ["https://en.wikipedia.org/wiki/GIF","https://www.google.com/search?q=gifs&kgmid=/m/03bfb"]},
+            {"@type": "Thing","name": "url","sameAs": ["https://en.wikipedia.org/wiki/URL","https://www.google.com/search?q=url&kgmid=/m/07xy0"]},
+            {"@type": "Thing","name": "button","sameAs": ["https://en.wikipedia.org/wiki/Button","https://www.google.com/search?q=button&kgmid=/m/01s_bn"]},
+            {"@type": "Thing","name": "pc","sameAs": ["https://en.wikipedia.org/wiki/Personal_computer","https://www.google.com/search?q=pc&kgmid=/m/0643t"]},
+            {"@type": "Thing","name": "iphone","sameAs": ["https://en.wikipedia.org/wiki/IPhone","https://www.google.com/search?q=iphone&kgmid=/m/027lnzs"]},
+            {"@type": "Thing","name": "ai","sameAs": ["https://en.wikipedia.org/wiki/Artificial_intelligence","https://www.google.com/search?q=ai&kgmid=/m/0mkz"]},
+            {"@type": "Thing","name": "servers","sameAs": ["https://en.wikipedia.org/wiki/Server_(computing)","https://www.google.com/search?q=servers&kgmid=/m/0bkxj"]},
+            {"@type": "Thing","name": "pin","sameAs": ["https://en.wikipedia.org/wiki/Pin","https://www.google.com/search?q=pin&kgmid=/m/05p368"]},
+            {"@type": "Thing","name": "tiktok","sameAs": ["https://en.wikipedia.org/wiki/TikTok","https://www.google.com/search?q=tiktok&kgmid=/m/0125yxs0"]},
+            {"@type": "Thing","name": "reels","sameAs": ["https://en.wikipedia.org/wiki/Instagram","https://www.google.com/search?q=reels&kgmid=/m/0glpjll"]},
+            {"@type": "Thing","name": "social media","sameAs": ["https://en.wikipedia.org/wiki/Social_media","https://www.google.com/search?q=social+media&kgmid=/m/0fch0p"]},
+            {"@type": "Thing","name": "videos","sameAs": ["https://en.wikipedia.org/wiki/Video","https://www.google.com/search?q=videos&kgmid=/m/07z4p"]},
+            {"@type": "Thing","name": "mp4","sameAs": ["https://en.wikipedia.org/wiki/MP4_file_format","https://www.google.com/search?q=mp4&kgmid=/m/02kqnb"]},
+            {"@type": "Thing","name": "android","sameAs": ["https://en.wikipedia.org/wiki/Android_(operating_system)","https://www.google.com/search?q=android&kgmid=/m/02wxtgw"]},
+            {"@type": "Thing","name": "pinterest","sameAs": ["https://en.wikipedia.org/wiki/Pinterest","https://www.google.com/search?q=pinterest&kgmid=/m/0h3tm0f"]}
+        ],
+        "mentions": [
+            {"@type": "Thing","name": "google play store","sameAs": ["https://en.wikipedia.org/wiki/Google_Play","https://www.google.com/search?q=google+play+store&kgmid=/m/05n02d2"]},
+            {"@type": "Thing","name": "pinterest.com","sameAs": ["https://en.wikipedia.org/wiki/Pinterest","https://www.google.com/search?q=pinterest.com&kgmid=/m/0h3tm0f"]},
+            {"@type": "Thing","name": "mobile app","sameAs": ["https://en.wikipedia.org/wiki/Mobile_app","https://www.google.com/search?q=mobile+app&kgmid=/m/0h94y36"]},
+            {"@type": "Thing","name": "safari","sameAs": ["https://en.wikipedia.org/wiki/Safari_(web_browser)","https://www.google.com/search?q=safari&kgmid=/m/0168s_"]},
+            {"@type": "Thing","name": "chrome","sameAs": ["https://en.wikipedia.org/wiki/Google_Chrome","https://www.google.com/search?q=chrome&kgmid=/m/04j7cyf"]},
+            {"@type": "Thing","name": "png","sameAs": ["https://en.wikipedia.org/wiki/PNG","https://www.google.com/search?q=png&kgmid=/m/06279"]},
+            {"@type": "Thing","name": "ios","sameAs": ["https://en.wikipedia.org/wiki/IOS","https://www.google.com/search?q=ios&kgmid=/m/03wbl14"]},
+            {"@type": "Thing","name": "ai-generated","sameAs": ["https://en.wikipedia.org/wiki/Generative_artificial_intelligence","https://www.google.com/search?q=ai-generated&kgmid=/m/0ndhq90"]},
+            {"@type": "Thing","name": "reels","sameAs": ["https://en.wikipedia.org/wiki/Instagram","https://www.google.com/search?q=reels&kgmid=/m/0glpjll"]},
+            {"@type": "Thing","name": "cdn","sameAs": ["https://en.wikipedia.org/wiki/Content_delivery_network","https://www.google.com/search?q=cdn&kgmid=/m/03l9cn"]},
+            {"@type": "Thing","name": "4k","sameAs": ["https://en.wikipedia.org/wiki/4K_resolution","https://www.google.com/search?q=4k&kgmid=/m/0bwh1_7"]},
+            {"@type": "Thing","name": "firefox","sameAs": ["https://en.wikipedia.org/wiki/Firefox","https://www.google.com/search?q=firefox&kgmid=/m/01dyhm"]},
+            {"@type": "Thing","name": "instagram","sameAs": ["https://en.wikipedia.org/wiki/Instagram","https://www.google.com/search?q=instagram&kgmid=/m/0glpjll"]},
+            {"@type": "Thing","name": "microsoft edge","sameAs": ["https://en.wikipedia.org/wiki/Microsoft_Edge","https://www.google.com/search?q=microsoft+edge&kgmid=/m/012kxdw8"]},
+            {"@type": "Thing","name": "app","sameAs": ["https://en.wikipedia.org/wiki/Mobile_app","https://www.google.com/search?q=app&kgmid=/m/0h94y36"]},
+            {"@type": "Thing","name": "learning management system","sameAs": ["https://en.wikipedia.org/wiki/Learning_management_system","https://www.google.com/search?q=learning+management+system&kgmid=/m/05rqm1"]},
+            {"@type": "Thing","name": "file","sameAs": ["https://en.wikipedia.org/wiki/Computer_file","https://www.google.com/search?q=file&kgmid=/m/020s1"]},
+            {"@type": "Thing", "name": "MP3", "sameAs": ["https://en.wikipedia.org/wiki/MP3","https://www.google.com/search?q=mp3&kgmid=/m/04zc0"]},
+            {"@type": "Thing", "name": "High-definition video", "sameAs": ["https://en.wikipedia.org/wiki/High-definition_video","https://www.google.com/search?q=high-definition+video&kgmid=/m/0592g0"]},
+            {"@type": "Thing", "name": "1080p", "sameAs": ["https://en.wikipedia.org/wiki/1080p","https://www.google.com/search?q=1080p&kgmid=/m/05lg4x"]},
+            {"@type": "Thing", "name": "Music", "sameAs": ["https://en.wikipedia.org/wiki/Music","https://www.google.com/search?q=music&kgmid=/m/04rlf"]},
+            {"@type": "Thing", "name": "Video file format", "sameAs": ["https://en.wikipedia.org/wiki/Video_file_format","https://www.google.com/search?q=video+file+format&kgmid=/m/042z83l"]},
+            {"@type": "Thing", "name": "Image file format", "sameAs": ["https://en.wikipedia.org/wiki/Image_file_format","https://www.google.com/search?q=image+file+format&kgmid=/m/07xhlx"]},
+            {"@type": "Thing", "name": "Freemake Video Downloader", "sameAs": ["https://en.wikipedia.org/wiki/Freemake_Video_Downloader","https://www.google.com/search?q=Freemake+Video+Downloader&kgmid=/m/0dscn2g"]},
+            {"@type": "Thing", "name": "1440p", "sameAs": ["https://en.wikipedia.org/wiki/1440p","https://www.google.com/search?q=1440p&kgmid=/m/043tv3t"]},
+            {"@type": "Thing", "name": "4K resolution", "sameAs": ["https://en.wikipedia.org/wiki/4K_resolution","https://www.google.com/search?q=4K+resolution&kgmid=/m/0bwh1_7"]},
+            {"@type": "Thing", "name": "Mobile phone", "sameAs": ["https://en.wikipedia.org/wiki/Mobile_phone","https://www.google.com/search?q=mobile+phone&kgmid=/m/050k8"]},
+            {"@type": "Thing", "name": "Desktop computer", "sameAs": ["https://en.wikipedia.org/wiki/Desktop_computer","https://www.google.com/search?q=desktop+computer&kgmid=/m/0dvvc"]},
+            {"@type": "Thing", "name": "Laptop", "sameAs": ["https://en.wikipedia.org/wiki/Laptop","https://www.google.com/search?q=laptop&kgmid=/m/01c648"]},
+            {"@type": "Thing", "name": "Computer", "sameAs": ["https://en.wikipedia.org/wiki/Computer","https://www.google.com/search?q=computer&kgmid=/m/01m3v"]},
+            {"@type": "Thing", "name": "Personal computer", "sameAs": ["https://en.wikipedia.org/wiki/Personal_computer","https://www.google.com/search?q=personal+computer&kgmid=/m/0643t"]},
+            {"@type": "Thing", "name": "Android (operating system)", "sameAs": ["https://en.wikipedia.org/wiki/Android_(operating_system)","https://www.google.com/search?q=android&kgmid=/m/02wxtgw"]},
+            {"@type": "Thing", "name": "Tablet computer", "sameAs": ["https://en.wikipedia.org/wiki/Tablet_computer","https://www.google.com/search?q=tablet+computer&kgmid=/m/0bh9flk"]}
+        ]
+        },
+        {
+        "@type": "WebApplication",
+        "@id": "https://pincatch.com/#app",
+        "name": "PinCatch - Pinterest Video Downloader",
+        "url": "https://pincatch.com/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Web",
+        "description": "Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "bestRating": "5",
+            "worstRating": "1",
+            "ratingCount": "156720"
+        },
+        "publisher": { "@id": "https://pincatch.com/#org" }
+        },
+        {
+        "@type": "FAQPage",
+    "@id": "https://pincatch.com/#faq",
+    "mainEntity": [
+        {
+        "@type": "Question",
+        "name": "Is this Pinterest downloader free to use?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, PinCatch is entirely safe to use. We don't require a login, don't store your videos, and use secure connections. Our privacy-protected tool has been scanned by Norton Safe Web."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "How can I download Pinterest content on my PC?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simply open PinCatch in your browser on Windows, Mac, or Linux. Copy the Pinterest link, paste it in our input field, and click download. The video or image will save directly to your computer, no software installation needed."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "Is there a Pinterest downloader available for Mac?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PinCatch works on Mac through any browser. It's an online downloader, just visit our site and start downloading without installing anything."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "What’s the best way to download Pinterest videos on iPhone?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open Pinterest in Safari, copy the video link, visit PinCatch, paste the URL, and tap download. Your video saves directly to Photos in full HD quality. Works perfectly on iOS without any app."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "Can the Pinterest video downloader work without a watermark?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! PinCatch downloads Pinterest videos without a watermark. You get clean, original-quality files ready to watch or share."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "Where do Pinterest downloads go on iPhone?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Downloaded videos save to your iPhone's Photos app, while images and GIFs also go to Photos. Check your Downloads folder in Files for other formats."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "Why is my Pinterest not downloading pictures?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This might be a browser permission issue. Make sure you've allowed downloads in your browser settings. Try copying the link again and ensure you have a stable internet connection."
+        }
+        },
+        {
+        "@type": "Question",
+        "name": "Can books be downloaded from Pinterest?",
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While Pinterest may have book-related pins, PinCatch specializes in downloading videos, images, and GIFs. For actual books, you'll need to visit the original source linked in the pin."
+        }
+            }
+        ]
+        },
+        {
+        "@type": "BreadcrumbList",
+        "@id": "https://pincatch.com/#breadcrumbs",
+        "itemListElement": [
+            {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://pincatch.com/"
+            },
+            {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "blog",
+            "item": "https://pincatch.com/blog/"
+            }
+        ]
+        }
+    ]
+    }
+    </script>
+    {% endwith %}
+    {% endwith %}
+    <meta name="google-site-verification" content="Dgtvc51uKBF0ne3wCrGjZVFQ9ebKxNVigCABUERP_Vg" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G84CQNSNKS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-G84CQNSNKS');
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -17,7 +289,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {{ importmap }}
- 
+
 </head>
 <body> 
     {% include 'header.html' %}

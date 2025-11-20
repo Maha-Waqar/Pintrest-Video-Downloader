@@ -1,5 +1,5 @@
 """
-URL configuration for pinit project.
+URL configuration for pincatch project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -16,8 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 import views
-from blog.views import upload_image
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns, set_language
@@ -34,9 +35,6 @@ sitemaps = {
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('rosetta/', include('rosetta.urls')),
-    path("", views.index, name="home"),
-    path("pintrest-image-downloader", views.imageDownload, name="imageDownloader"),
-    path("pintrest-gif-downloader", views.gifDownload, name="gifDownloader"),
     path("about", views.about, name="about"),
     path("contact-us", views.contactUs, name="contactUs"),
     path("privacy-policy", views.privacyPolicy, name="privacyPolicy"),
@@ -46,9 +44,16 @@ urlpatterns = i18n_patterns(
     path('i18n/setlang/', set_language, name='set_language'),
 )
 urlpatterns += [
-    path('pin/', include('pinit.urls')),
+    path("", views.index, name="home"),
+    # path("pinterest-image-downloader", views.imageDownload, name="imageDownloader"),
+    # path("pinterest-gif-downloader", views.gifDownload, name="gifDownloader"),
+    path('pin/', include('pincatch.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('robots.txt', views.robot , name='robot'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path("<slug:language_slug>/", views.localized_home, name="home_language"),
+    path("<slug:language_slug>", views.localized_home, name="home_language_no_slash"),
+    path('<slug:slug>/<slug:language_slug>', views.page_view, name='page_view'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

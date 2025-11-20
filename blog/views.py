@@ -4,12 +4,15 @@ from blog.models import Post, Category
 from django.http import Http404, JsonResponse
 from django.utils import translation
 from django.utils.text import slugify
+from django.utils.translation import gettext as _
 from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 import os
 from django.conf import settings
 from django.core.files.storage import default_storage
+from django.templatetags.static import static
+from pincatch.seo import build_seo_context
 
 def blogs(request):
     posts = Post.objects.all().order_by("-created_on")
@@ -26,6 +29,11 @@ def blogs(request):
         "current_language": translation.get_language(),
         "breadcrumbs": breadcrumbs,
     }
+    context.update(build_seo_context(
+        request,
+        _("Pinterest Blog - Latest Guides & Tutorials"),
+        _("Read fresh tips about Pinterest marketing, video downloading, and product updates from the PinCatch blog.")
+    ))
     return render(request, "blog/index.html", context)
 
 def blog_category(request, category):
@@ -53,6 +61,11 @@ def blog_category(request, category):
         "current_language": language,
         "breadcrumbs": breadcrumbs,
     }
+    context.update(build_seo_context(
+        request,
+        _("Pinterest Blog: %(category)s") % {"category": category},
+        _("Browse %(category)s articles and tutorials for Pinterest downloads, growth, and PinCatch updates.") % {"category": category},
+    ))
     return render(request, "blog/category.html", context)
 
 def blog_detail(request, slug):
@@ -80,11 +93,26 @@ def blog_detail(request, slug):
         {'title': post.get_translated_title(), 'url': None}
     ]
 
+    default_cover = request.build_absolute_uri(static("images/blog-cover.png"))
+    image_url = default_cover
+    if post.image:
+        try:
+            image_url = request.build_absolute_uri(post.image.url)
+        except ValueError:
+            image_url = default_cover
+
     context = {
         "blog": post,
         "current_language": language,
         "breadcrumbs": breadcrumbs,
+        "og_image_url": image_url,
     }
+    seo_title = post.meta_title or post.get_translated_title(language)
+    context.update(build_seo_context(
+        request,
+        seo_title,
+        post.meta_description,
+    ))
     return render(request, "blog/detail.html", context)
 
 @csrf_exempt

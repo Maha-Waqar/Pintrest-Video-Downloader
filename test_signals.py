@@ -8,7 +8,7 @@ import os
 import sys
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pinit.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pincatch.settings')
 django.setup()
 
 from blog.models import Post

@@ -14,7 +14,7 @@ When you save a new `Post` or `Category` model, the following happens automatica
 
 ### 1. **Configured Languages**
 
-In `pinit/settings.py`, you have:
+In `pincatch/settings.py`, you have:
 
 ```python
 LANGUAGES = [
@@ -36,7 +36,7 @@ The system uses **DeepL** by default (set in `signals.py`).
 Make sure you have `DEEPL_AUTH_KEY` in your settings:
 
 ```python
-# pinit/settings.py
+# pincatch/settings.py
 DEEPL_AUTH_KEY = 'your-deepl-key-here'
 ```
 
