@@ -41,6 +41,8 @@ def _find_home_page_by_language(language_code):
 def index(request, language_slug=None):
     target_page = None
     target_language = settings.LANGUAGE_CODE
+    default_home = _find_home_page_by_language(settings.LANGUAGE_CODE)
+
     if language_slug:
         target_page = _find_home_page_by_slug(language_slug)
         if target_page:
@@ -48,8 +50,25 @@ def index(request, language_slug=None):
         elif language_slug in dict(settings.LANGUAGES):
             target_language = language_slug
             target_page = _find_home_page_by_language(target_language)
-    if not target_page and not language_slug:
-        target_page = _find_home_page_by_language(settings.LANGUAGE_CODE)
+        else:
+            target_page = default_home
+
+        # If the requested slug doesn't match the canonical slug for the home page, issue a 301 to the canonical slug.
+        if target_page:
+            canonical_slug = target_page.get_language_slug()
+            if canonical_slug != language_slug:
+                response = redirect("home_language", language_slug=canonical_slug, permanent=True)
+                response["Cache-Control"] = "no-store"
+                return response
+    else:
+        # Request to root; if default home has a custom language_slug (e.g., en or en1), redirect to it.
+        if default_home and default_home.language_slug:
+            # Use a permanent redirect so search engines treat the language slug URL as canonical.
+            response = redirect("home_language", language_slug=default_home.language_slug, permanent=True)
+            # Prevent long-lived client caching so an updated language slug takes effect immediately.
+            response["Cache-Control"] = "no-store"
+            return response
+        target_page = default_home
 
     # CSRF protection is enabled by default with csrf_protect
     @csrf_protect
@@ -76,8 +95,6 @@ def index(request, language_slug=None):
 
 
 def localized_home(request, language_slug):
-    if language_slug == settings.LANGUAGE_CODE:
-        return redirect('home')
     return index(request, language_slug=language_slug)
 
 def imageDownload(request):
@@ -122,6 +139,28 @@ def gifDownload(request):
             _("Convert and download Pinterest GIFs instantly in high quality with the free PinCatch GIF downloader.")
         ))
         return render(request, 'gif.html', context)
+    return protected_home(request)
+
+def profileDownload(request):
+    # CSRF protection is enabled by default with csrf_protect
+    @csrf_protect
+    @ratelimit(key='header:x-real-ip', rate='10/m', block=True)
+    def protected_home(request):
+        # User-Agent check
+        user_agent = request.META.get('HTTP_USER_AGENT', '')
+        if 'python' in user_agent.lower() or not user_agent:
+            return HttpResponse('Forbidden', status=403)
+        # ...existing logic...
+        breadcrumbs = [{'title': 'Home', 'url': 'home'}, {'title': 'Profile Picture Downloader', 'url': None}]
+        context = {
+            'breadcrumbs': breadcrumbs,
+        }
+        context.update(build_seo_context(
+            request,
+            _("Pinterest URL Downloader - Save Animated Pins Online"),
+            _("Convert and download Pinterest URLs instantly in high quality with the free PinCatch Url downloader.")
+        ))
+        return render(request, 'profile.html', context)
     return protected_home(request)
 
 def is_valid_url(url):
@@ -180,14 +219,14 @@ def copyrightPolicy(request):
 def robot(request):
     return render(request, 'robots.txt')
 
-def page_view(request, slug, language_slug):
+def page_view(request, language_slug, slug):
     """
     Dynamic view for handling all Page instances
     """
     # CSRF protection is enabled by default with csrf_protect
     @csrf_protect
     @ratelimit(key='header:x-real-ip', rate='10/m', block=True)
-    def protected_page_view(request, slug, language_slug):
+    def protected_page_view(request, language_slug, slug):
         # User-Agent check
         user_agent = request.META.get('HTTP_USER_AGENT', '')
         if 'python' in user_agent.lower() or not user_agent:
@@ -197,4 +236,4 @@ def page_view(request, slug, language_slug):
         page = get_object_or_404(Page, slug_url=slug, language_slug=language_slug)
         return _render_page_instance(request, page)
 
-    return protected_page_view(request, slug, language_slug)
+    return protected_page_view(request, language_slug, slug)

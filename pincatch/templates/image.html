@@ -1,12 +1,6 @@
 {% extends 'index.html' %}
-{% load i18n %}
+{% load i18n page_links %}
 {% block content %}
-<style>
-#imagePreview {
-  display: block;
-  margin: auto;
-}
-</style>
 <!-- Main Content -->
 <div class="container">
     <div class="main-header">
@@ -63,26 +57,26 @@
         <!-- Features Overview Section -->
     <h2 class="features-heading">{% trans "All Pinterest Downloader Resources" %}</h2>
 
-    <section class="features">
-        <div class="feature-card"> <i class="fas fa-download"></i>
-            <h3><a href="{% url 'imageDownloader' %}">{% trans "Pinterest Image Downloader" %}</a></h3>
+        <section class="features">
+            <div class="feature-card"> <i class="fas fa-download"></i>
+            <h3><a href="{% page_url 'pinterest-image-downloader' 'imageDownloader' %}">{% trans "Pinterest Image Downloader" %}</a></h3>
         </div>
         <div class="feature-card"><i class="fas fa-download"></i>
-            <h3><a href="{% url 'gifDownloader' %}">{% trans "Pinterest GIFs Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-gif-downloader' 'gifDownloader' %}">{% trans "Pinterest GIFs Downloader" %}</a></h3>
         </div>
         <div class="feature-card"><i class="fas fa-download"></i>
-            <h3><a href="{% url 'home' %}">{% trans "Pinterest Bulk Video Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-bulk-video-downloader' 'home' %}">{% trans "Pinterest Bulk Video Downloader" %}</a></h3>
         </div>
     </section>
     <section class="features">
         <div class="feature-card"> <i class="fas fa-download"></i>
-            <h3><a href="{% url 'imageDownloader' %}">{% trans "Pinterest Profile Picture Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-profile-picture-downloader' 'profileDownloader' %}">{% trans "Pinterest Profile Picture Downloader" %}</a></h3>
         </div>
         <div class="feature-card"><i class="fas fa-download"></i>
-            <h3><a href="{% url 'home' %}">{% trans "Pinterest URL Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-url-downloader' 'home' %}">{% trans "Pinterest URL Downloader" %}</a></h3>
         </div>
         <div class="feature-card"><i class="fas fa-download"></i>
-            <h3><a href="{% url 'home' %}">{% trans "Pinterest Mp4 Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-mp4-downloader' 'home' %}">{% trans "Pinterest Mp4 Downloader" %}</a></h3>
         </div>
     </section>
     <!-- How to Download Video Section -->

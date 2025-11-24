@@ -45,15 +45,17 @@ urlpatterns = i18n_patterns(
 )
 urlpatterns += [
     path("", views.index, name="home"),
-    # path("pinterest-image-downloader", views.imageDownload, name="imageDownloader"),
-    # path("pinterest-gif-downloader", views.gifDownload, name="gifDownloader"),
+    path("pinterest-image-downloader", views.imageDownload, name="imageDownloader"),
+    path("pinterest-gif-downloader", views.gifDownload, name="gifDownloader"),
+    path("pinterest-profile-picture-downloader", views.profileDownload, name="profileDownloader"),
     path('pin/', include('pincatch.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('robots.txt', views.robot , name='robot'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path("<slug:language_slug>/", views.localized_home, name="home_language"),
     path("<slug:language_slug>", views.localized_home, name="home_language_no_slash"),
-    path('<slug:slug>/<slug:language_slug>', views.page_view, name='page_view'),
+    path("<slug:language_slug>/<slug:slug>/", views.page_view, name='page_view'),
+    path("<slug:language_slug>/<slug:slug>", views.page_view, name='page_view_no_slash'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

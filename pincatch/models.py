@@ -77,7 +77,11 @@ class Page(models.Model):
     def save(self, *args, **kwargs):
         self.clean()
         if not self.language_slug:
-            self.language_slug = self.language
+            if self.is_homepage and self.language == settings.LANGUAGE_CODE:
+                # Leave blank to keep default language at root when desired.
+                self.language_slug = ""
+            else:
+                self.language_slug = self.language
         super().save(*args, **kwargs)
         if self.group_id:
             PageGroup.objects.filter(pk=self.group_id).update(slug_url=self.slug_url)

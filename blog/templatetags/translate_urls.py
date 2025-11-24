@@ -52,15 +52,16 @@ def _translate_page_view(match, language_code):
 
 
 def _get_home_language_slug(language_code):
-    if language_code == settings.LANGUAGE_CODE:
-        return None
     page = (
         Page.objects.filter(is_homepage=True, language=language_code)
         .only("language_slug")
         .first()
     )
     if page:
-        return page.get_language_slug()
+        slug = page.get_language_slug()
+        return slug or None
+    if language_code == settings.LANGUAGE_CODE:
+        return None
     return language_code
 
 

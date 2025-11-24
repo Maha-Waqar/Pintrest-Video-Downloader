@@ -35,7 +35,7 @@ def page_url(slug_url, fallback_name=None):
     if page:
         return reverse(
             "page_view",
-            kwargs={"slug": page.slug_url, "language_slug": page.get_language_slug()},
+            kwargs={"language_slug": page.get_language_slug(), "slug": page.slug_url},
         )
     if fallback_name:
         try:

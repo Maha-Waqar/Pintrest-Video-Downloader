@@ -160,23 +160,23 @@ LANGUAGES = [
     # ('bn', _('Bengali')),   #Not supported by DeepL
     # ('fil', _('Filipino')),   #Not supported by DeepL
     # ('az', _('Azerbaijani')), #Not supported by DeepL
-    ('br', _('Brazilian Portuguese')),
-    ('de', _('German')),
-    ('es', _('Spanish')),
-    ('fr', _('French')),
-    ('ru', _('Russian')),
+    # ('br', _('Brazilian Portuguese')),
+    # ('de', _('German')),
+    # ('es', _('Spanish')),
+    # ('fr', _('French')),
+    # ('ru', _('Russian')),
     ('ar', _('Arabic')),
     # ('vi', _('Vietnamese')),  #Not supported by DeepL
-    ('pt', _('Portuguese')),
-    ('tr', _('Turkish')),
-    ('id', _('Indonesian')),
-    ('it', _('Italian')),
-    ('uk', _('Ukrainian')),
+    # ('pt', _('Portuguese')),
+    # ('tr', _('Turkish')),
+    # ('id', _('Indonesian')),
+    # ('it', _('Italian')),
+    # ('uk', _('Ukrainian')),
     # ('ne', _('Nepali')),    #Not supported by DeepL
-    ('ko', _('Korean')),
-    ('ja', _('Japanese')),
-    ('zh-hans', _('Chinese Simplified')),
-    # ('zh-hant', _('Chinese Traditional')),
+    # ('ko', _('Korean')),
+    # ('ja', _('Japanese')),
+    # ('zh-hans', _('Chinese Simplified')),
+    # ('zh-hant', _('Chinese Traditional')),  #Not supported by DeepL
 ]
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
@@ -197,7 +197,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [

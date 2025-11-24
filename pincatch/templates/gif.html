@@ -1,5 +1,5 @@
 {% extends 'index.html' %}
-{% load i18n %}
+{% load i18n page_links %}
 {% block content %}
 <!-- Main Content -->
 <div class="container">
@@ -23,7 +23,7 @@
         </div>
 
         <div class="security-badge">
-            <img src="data:gif/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzVkMSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bS0yIDE1bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6Ii8+PC9zdmc+"
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzVkMSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bS0yIDE1bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6Ii8+PC9zdmc+"
                 alt="Security Badge">
             <span>{% trans "Scanned by Norton™ Safe Web" %}</span>
         </div>
@@ -58,24 +58,24 @@
 
     <section class="features">
         <div class="feature-card"> <i class="fas fa-download"></i>
-            <h3><a href="{% url 'imageDownloader' %}">{% trans "Pinterest Image Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-image-downloader' 'imageDownloader' %}">{% trans "Pinterest Image Downloader" %}</a></h3>
         </div>
         <div class="feature-card"><i class="fas fa-download"></i>
-            <h3><a href="{% url 'gifDownloader' %}">{% trans "Pinterest GIFs Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-gif-downloader' 'gifDownloader' %}">{% trans "Pinterest GIFs Downloader" %}</a></h3>
         </div>
         <div class="feature-card"><i class="fas fa-download"></i>
-            <h3><a href="{% url 'home' %}">{% trans "Pinterest Bulk Video Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-bulk-video-downloader' 'home' %}">{% trans "Pinterest Bulk Video Downloader" %}</a></h3>
         </div>
     </section>
     <section class="features">
         <div class="feature-card"> <i class="fas fa-download"></i>
-            <h3><a href="{% url 'imageDownloader' %}">{% trans "Pinterest Profile Picture Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-profile-picture-downloader' 'profileDownloader' %}">{% trans "Pinterest Profile Picture Downloader" %}</a></h3>
         </div>
         <div class="feature-card"><i class="fas fa-download"></i>
-            <h3><a href="{% url 'home' %}">{% trans "Pinterest URL Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-url-downloader' 'home' %}">{% trans "Pinterest URL Downloader" %}</a></h3>
         </div>
         <div class="feature-card"><i class="fas fa-download"></i>
-            <h3><a href="{% url 'home' %}">{% trans "Pinterest Mp4 Downloader" %}</a></h3>
+            <h3><a href="{% page_url 'pinterest-mp4-downloader' 'home' %}">{% trans "Pinterest Mp4 Downloader" %}</a></h3>
         </div>
     </section>
     <!-- How to Download Video Section -->
@@ -313,44 +313,6 @@
             </div>
         </div>
     </section>
-    
-    <!-- Knowledge Base Section -->
-    <section class="articles-section">
-        <div class="container">
-            <h2>{% trans "Knowledge Base" %}</h2>
-            <div class="articles-grid">
-                {% if blogs %}
-                {% for blog in blogs %}
-                <a href="{% url 'blog_detail' blog.get_translated_slug %}" style="text-decoration: none; color: inherit;">
-                <div class="article-card">
-                    <div class="card-body">
-                        <div class="feature-item-card">
-                            <div class="feature-icon-card">
-                                {% if blog.image %}
-                                <img src="{{ blog.image.url }}" alt="{{ blog.title }}"
-                                    style="width: 100%; height: 180px; object-fit: cover;">
-                                {% else %}
-                                <div
-                                    style="width: 100%; height: 180px; background: #eee; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 2rem;">
-                                    No Image
-                                </div>
-                                {% endif %}
-                            </div>
-                            <div class="feature-content">
-                                <h3 style="color: red; margin-top: 2%;">{{ blog.title }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </a>
-                {% endfor %}
-                {% else %}
-                <p>No articles found.</p>
-                {% endif %}
-            </div>
-        </div>
-    </section>
-
     <section class="faq-section" id="faqSection">
         <h2>{% trans "Frequently Asked Questions" %}</h2>
         <details class="faq-item">

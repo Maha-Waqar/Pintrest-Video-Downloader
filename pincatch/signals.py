@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 import logging
 from django.conf import settings
@@ -27,6 +28,10 @@ LANGUAGE_CODE_MAP = {
     'ko': 'KO',
     'ja': 'JA',
     'zh-hans': 'ZH',
+}
+
+RTL_LANGS = {
+    'ar', 'ar-ye', 'ar-eg', 'ar-sa', 'fa', 'he', 'ur', 'ps'
 }
 
 @receiver(pre_save, sender=Page)
@@ -181,6 +186,53 @@ def _safe_translate(provider, text, source_lang, target_lang):
     if getattr(provider, "_disable_after_error", False):
         return text
     normalized_target = LANGUAGE_CODE_MAP.get(target_lang, target_lang)
+    # Preserve HTML structure by translating only text nodes when markup is present.
+    def _translate_html(html_text):
+        try:
+            from bs4 import BeautifulSoup
+        except Exception:
+            return None
+
+        def _apply_rtl(soup_obj):
+            block_tags = {"p", "li", "ul", "ol", "h1", "h2", "h3", "h4", "h5", "h6", "div", "section", "article", "details", "summary"}
+            for tag in soup_obj.find_all(block_tags):
+                if not tag.has_attr("dir"):
+                    tag["dir"] = "rtl"
+                # Keep existing alignment; only set if none
+                current_style = tag.get("style", "")
+                if "text-align" not in current_style:
+                    tag["style"] = (current_style + "; text-align: right;").strip("; ")
+
+        def _preserve_whitespace(original, translated):
+            match = re.match(r"(\s*)(.*?)(\s*)$", original, flags=re.DOTALL)
+            if not match:
+                return translated
+            prefix, core, suffix = match.groups()
+            return f"{prefix}{translated}{suffix}"
+
+        try:
+            soup = BeautifulSoup(html_text, "html.parser")
+            for node in soup.find_all(string=True):
+                if getattr(node, "parent", None) and node.parent.name in {"script", "style"}:
+                    continue
+                original = str(node)
+                if not original.strip():
+                    continue
+                try:
+                    translated = provider.translate_text(original, source_lang, normalized_target)
+                except Exception:
+                    translated = original
+                node.replace_with(_preserve_whitespace(original, translated))
+            if normalized_target.lower() in RTL_LANGS:
+                _apply_rtl(soup)
+            return str(soup)
+        except Exception:
+            return None
+
+    if "<" in text and ">" in text:
+        translated_html = _translate_html(text)
+        if translated_html is not None:
+            return translated_html
     try:
         return provider.translate_text(text, source_lang, normalized_target)
     except Exception as exc:
