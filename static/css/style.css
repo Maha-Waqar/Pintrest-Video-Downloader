@@ -377,7 +377,7 @@ button:hover {
 }
 
 .policy {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-light);
     margin-top: 20px;
 }
@@ -410,7 +410,7 @@ button:hover {
     justify-content: center;
     margin: 25px 0;
     color: var(--text-light);
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .security-badge img {
@@ -947,7 +947,7 @@ button:hover {
     color: #6b7280;
     margin-top: 10px;
     line-height: 1.6;
-    font-size: 14px;
+    font-size: 16px;
     padding-right: 20px;
 }
 
@@ -990,7 +990,7 @@ button:hover {
 
 /* Meta */
 .article-meta {
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     color: #666;
     margin-bottom: 25px;
@@ -1207,6 +1207,10 @@ button:hover {
     margin-right: 8px;
 }
 
+#imagePreview {
+  display: block;
+  margin: auto;
+}
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
