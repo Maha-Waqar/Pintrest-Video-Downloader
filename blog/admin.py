@@ -3,10 +3,12 @@ from django.http import HttpResponseRedirect
 from django.urls import path, reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 
 from blog.models import Category, Post
 from pincatch.models import Page
 from blog import translations
+from pincatch import translations as page_translations
 from django_restful_translator.admin import TranslationInline
 from django.contrib.auth.models import User, Group
 
@@ -96,7 +98,11 @@ class CategoryAdmin(BaseTranslationAdmin):
 
     def translate_action(self, obj):
         url = reverse("admin:blog_category_translate", args=[obj.pk])
-        return format_html('<a class="button" href="{}">{}</a>', url, _("Translate"))
+        return format_html(
+            '<a class="button" style="background:#0d6efd;color:#fff;border-color:#0a58ca;padding:6px 12px;border-radius:4px;" href="{}">{}</a>',
+            url,
+            _("Translate"),
+        )
 
     translate_action.short_description = _("Translate")
 
@@ -165,7 +171,11 @@ class PostAdmin(BaseTranslationAdmin):
 
     def translate_action(self, obj):
         url = reverse("admin:blog_post_translate", args=[obj.pk])
-        return format_html('<a class="button" href="{}">{}</a>', url, _("Translate"))
+        return format_html(
+            '<a class="button" style="background:#0d6efd;color:#fff;border-color:#0a58ca;padding:6px 12px;border-radius:4px;" href="{}">{}</a>',
+            url,
+            _("Translate"),
+        )
 
     translate_action.short_description = _("Translate")
 
@@ -173,7 +183,7 @@ class PostAdmin(BaseTranslationAdmin):
 @admin.register(Page)
 class PageAdmin(BaseTranslationAdmin):
     inlines = ()  # Disable translation inline; each Page is its own language row
-    list_display = ("name", "language", "language_slug", "slug_url", "is_homepage", "created_on", "last_modified")
+    list_display = ("name", "translate_action", "language", "language_slug", "slug_url", "is_homepage", "created_on", "last_modified")
     search_fields = ("name", "slug_url", "language_slug", "meta_title", "meta_description", "content")
     list_filter = ("language", "is_homepage")
     prepopulated_fields = {"slug_url": ("name",)}
@@ -184,8 +194,81 @@ class PageAdmin(BaseTranslationAdmin):
         (_("Timestamps"), {"fields": ("created_on", "last_modified")}),
     )
     readonly_fields = ("created_on", "last_modified")
+    actions = ["translate_pages"]
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path(
+                "<int:page_id>/translate/",
+                self.admin_site.admin_view(self.translate_view),
+                name="pincatch_page_translate",
+            )
+        ]
+        return custom_urls + urls
+
+    def translate_view(self, request, page_id):
+        redirect_url = self._get_redirect_target(request)
+        page = self.get_object(request, page_id)
+        if page is None:
+            self.message_user(request, _("Page not found."), level=messages.ERROR)
+            return HttpResponseRedirect(redirect_url)
+        if page.language != settings.LANGUAGE_CODE:
+            self.message_user(
+                request,
+                _("Translation can only be triggered from the default language (%(lang)s).") % {"lang": settings.LANGUAGE_CODE},
+                level=messages.ERROR,
+            )
+            return HttpResponseRedirect(redirect_url)
+        try:
+            page_translations.trigger_page_translation(page.pk, reset_existing=True)
+            self.message_user(
+                request,
+                _("Successfully triggered translation for %(name)s.") % {"name": page.name},
+                level=messages.SUCCESS,
+            )
+        except Exception as exc:  # pragma: no cover - admin feedback only
+            self.message_user(
+                request,
+                _("Failed to translate %(name)s: %(error)s") % {"name": page.name, "error": exc},
+                level=messages.ERROR,
+            )
+        return HttpResponseRedirect(redirect_url)
+
+    def translate_pages(self, request, queryset):
+        """Bulk translate selected pages (default language only)."""
+        count = 0
+        for page in queryset:
+            if page.language != settings.LANGUAGE_CODE:
+                continue
+            try:
+                page_translations.trigger_page_translation(page.pk, reset_existing=False)
+                count += 1
+            except Exception as exc:  # pragma: no cover - admin feedback only
+                self.message_user(
+                    request,
+                    _("Failed to translate %(name)s: %(error)s") % {"name": page.name, "error": exc},
+                    level=messages.ERROR,
+                )
+        if count:
+            self.message_user(
+                request,
+                _("Successfully queued translation for %(count)d pages.") % {"count": count},
+                level=messages.SUCCESS,
+            )
+    translate_pages.short_description = _("Translate selected pages")
 
     def translate_action(self, obj):
-        # Placeholder to satisfy BaseTranslationAdmin column merge; no action needed for Page.
-        return "-"
+        if obj.language != settings.LANGUAGE_CODE:
+            return "-"
+        url = reverse("admin:pincatch_page_translate", args=[obj.pk])
+        return format_html(
+            '<a class="button" style="background:#0d6efd;color:#fff;border-color:#0a58ca;padding:6px 12px;border-radius:4px;" href="{}">{}</a>',
+            url,
+            _("Translate"),
+        )
+
     translate_action.short_description = _("Translate")
+
+    def _get_redirect_target(self, request):  # pragma: no cover - simple helper
+        return request.META.get("HTTP_REFERER") or reverse("admin:pincatch_page_changelist")
