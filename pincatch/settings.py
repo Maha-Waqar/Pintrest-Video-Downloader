@@ -212,7 +212,7 @@ MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-DEEPL_AUTH_KEY = "4345252a-f29c-4799-85f6-20ccc3dbf199:fx"
+DEEPL_AUTH_KEY = "a62afd64-5b46-4b6d-8ea7-bc4d52e36806:fx"
 if not DEEPL_AUTH_KEY and not DEBUG:
     raise ImproperlyConfigured("DEEPL_AUTH_KEY is required")
 
@@ -224,3 +224,15 @@ ROSETTA_LOGIN_REQUIRED = True
 ROSETTA_ACCESS_CONTROL_FUNCTION = "pincatch.settings.rosetta_access_control"
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+# Preserve pasted HTML structure in the CKEditor body field
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "Full",
+        "allowedContent": True,  # disable CKEditor's HTML filtering/rewrites
+        "extraAllowedContent": "*(*);*[*];",  # allow classes/styles/attributes
+        "forcePasteAsPlainText": False,
+        "removeFormatTags": "",
+        "height": 400,
+    }
+}
