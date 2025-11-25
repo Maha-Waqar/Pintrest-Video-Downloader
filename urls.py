@@ -35,11 +35,11 @@ sitemaps = {
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('rosetta/', include('rosetta.urls')),
-    path("about", views.about, name="about"),
-    path("contact-us", views.contactUs, name="contactUs"),
-    path("privacy-policy", views.privacyPolicy, name="privacyPolicy"),
-    path("terms-and-conditions", views.termsAndConditions, name="termsAndConditions"),
-    path("copyright-policy", views.copyrightPolicy, name="copyrightPolicy"),
+    path("about/", views.about, name="about"),
+    path("contact-us/", views.contactUs, name="contactUs"),
+    path("privacy-policy/", views.privacyPolicy, name="privacyPolicy"),
+    path("terms-and-conditions/", views.termsAndConditions, name="termsAndConditions"),
+    path("copyright-policy/", views.copyrightPolicy, name="copyrightPolicy"),
     path('blog/', include('blog.urls')),
     path('i18n/setlang/', set_language, name='set_language'),
 )

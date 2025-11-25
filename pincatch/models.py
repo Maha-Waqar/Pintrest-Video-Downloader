@@ -88,4 +88,7 @@ class Page(models.Model):
 
     def get_language_slug(self):
         """Return the URL slug used for this language."""
+        # Keep default-language home at root if language_slug is intentionally blank.
+        if self.is_homepage and self.language == settings.LANGUAGE_CODE and not self.language_slug:
+            return ""
         return self.language_slug or self.language

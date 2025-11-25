@@ -23,8 +23,12 @@ def _render_page_instance(request, page):
         'content': page.content,
         'breadcrumbs': breadcrumbs,
     }
+    # Surface latest blogs for dynamic home pages so templates can render them.
+    if page.slug_url == Page.HOME_SLUG:
+        context['blogs'] = Post.objects.all().order_by("-created_on").prefetch_related('translations')[:3]
     context.update(build_seo_context(request, page.meta_title, page.meta_description))
-    template_name = f'{page.slug_url}/{page.get_language_slug()}.html'
+    lang_slug = page.get_language_slug() or settings.LANGUAGE_CODE
+    template_name = f'{page.slug_url}/{lang_slug}.html'
     return render(request, template_name, context)
 
 
@@ -57,9 +61,15 @@ def index(request, language_slug=None):
         if target_page:
             canonical_slug = target_page.get_language_slug()
             if canonical_slug != language_slug:
-                response = redirect("home_language", language_slug=canonical_slug, permanent=True)
-                response["Cache-Control"] = "no-store"
-                return response
+                # If canonical slug is empty, render at root instead of redirecting to a prefixed path.
+                if canonical_slug == "":
+                    response = redirect("home", permanent=True)
+                    response["Cache-Control"] = "no-store"
+                    return response
+                else:
+                    response = redirect("home_language", language_slug=canonical_slug, permanent=True)
+                    response["Cache-Control"] = "no-store"
+                    return response
     else:
         # Request to root; if default home has a custom language_slug (e.g., en or en1), redirect to it.
         if default_home and default_home.language_slug:
