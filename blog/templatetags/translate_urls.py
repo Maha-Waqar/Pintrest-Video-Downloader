@@ -32,20 +32,57 @@ def _translate_page_view(match, language_code):
     Return kwargs for the dynamic Page view in the target language.
     """
     slug = match.kwargs.get("slug")
+    current_language_slug = match.kwargs.get("language_slug")
     if not slug:
         return {}
+    current_page = None
+    try:
+        current_page = (
+            Page.objects.filter(slug_url=slug, language_slug=current_language_slug)
+            .only("group_id", "slug_url")
+            .first()
+        )
+    except Exception:
+        current_page = None
+    group_id = current_page.group_id if current_page else None
     try:
         page = (
-            Page.objects.filter(slug_url=slug, language=language_code)
+            Page.objects.filter(
+                slug_url=slug,
+                language=language_code,
+            )
             .only("slug_url", "language_slug")
             .first()
         )
     except Exception:
         page = None
+    if not page and group_id:
+        try:
+            page = (
+                Page.objects.filter(group_id=group_id, language=language_code)
+                .only("slug_url", "language_slug")
+                .first()
+            )
+        except Exception:
+            page = None
     if page:
         return {
             "slug": page.slug_url,
             "language_slug": page.get_language_slug(),
+        }
+    # If target language page is missing, fall back to the default language page so the dropdown still works.
+    try:
+        default_page = (
+            Page.objects.filter(slug_url=slug, language=settings.LANGUAGE_CODE)
+            .only("slug_url", "language_slug")
+            .first()
+        )
+    except Exception:
+        default_page = None
+    if default_page:
+        return {
+            "slug": default_page.slug_url,
+            "language_slug": default_page.get_language_slug() or settings.LANGUAGE_CODE,
         }
     fallback_language_slug = match.kwargs.get("language_slug") or language_code
     return {"slug": slug, "language_slug": fallback_language_slug}

@@ -88,19 +88,14 @@ def generate_page_templates(sender, instance, created, **kwargs):
         old_language_slug = getattr(instance, "_old_language_slug", None)
         if not moved and old_slug and old_language_slug and (old_slug != instance.slug_url or old_language_slug != new_language_slug):
             _remove_template_file(old_slug, old_language_slug)
-    # Keep non-default pages in sync when default page changes
-    try:
-        if instance.language == settings.LANGUAGE_CODE:
-            # Always propagate English changes to all languages
-            _translate_page_to_other_languages(instance, force_override=True)
-    except Exception as e:
-        logger.error(f"Error translating page {instance.slug_url}/{instance.language}: {e}", exc_info=True)
+    # Translation to other languages is triggered explicitly via admin actions, not automatically on save.
 
 def _generate_page_template(page_instance):
     """
     Generate HTML template for a specific language
     """
-    language_slug = page_instance.get_language_slug()
+    # Use default language code when language_slug is blank so templates have a concrete filename.
+    language_slug = page_instance.get_language_slug() or settings.LANGUAGE_CODE
     template_dir, template_path = _get_template_paths(page_instance.slug_url, language_slug)
 
     # Create directory if it doesn't exist
