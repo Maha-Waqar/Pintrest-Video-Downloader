@@ -1,7 +1,6 @@
 {% extends 'index.html' %}
 {% load page_links %}
 {% block content %}
-<!-- Main Content -->
 <div class="container">
     <div class="main-header">
         <h1>Pinterest Image Downloader</h1>
@@ -29,14 +28,12 @@
         </div>
     </section>
     <div class="loader" id="loader" style="display: none;"></div>
-    <!-- Preview Image Section -->
     <div id="player-overlay" id="playerOverlay">
         <a href="" id="imagePreviewUrl">
         <img  id="imagePreview" style="width: 50%; height: 600px;display: none;" >
         </a>
     </div>
 
-    <!-- Download Image Button section -->
     <div style="text-align: center; width: 100%; margin: 2%;" class ="downloadSection">
         <div class="button-row" id="downloadImageBtnSection" style="display: none;">
             <form id="downloadImageForm" method="POST" action="{% url 'downloadImage' %}" style="display:inline;">
@@ -54,8 +51,7 @@
 
         </div>
     </div>
-        <!-- Features Overview Section -->
-    <h2 class="features-heading">All Pinterest Downloader Resources</h2>
+        <h2 class="features-heading">All Pinterest Downloader Resources</h2>
 
         <section class="features">
             <div class="feature-card"> <i class="fas fa-download"></i>
@@ -79,7 +75,6 @@
             <h3><a href="{% page_url 'pinterest-mp4-downloader' 'home' %}">Pinterest Mp4 Downloader</a></h3>
         </div>
     </section>
-    <!-- How to Download Video Section -->
     <section class="how-it-works" id="howItWorksSection">
         <h2>How to Download High-Quality Pinterest Images in Bulk?</h2>
         <p>Saving beautiful Pinterest images is incredibly simple. Complete these 3 simple steps:</p>
@@ -110,7 +105,6 @@
             </div>
         </div>
     </section>
-    <!-- Easy Guide Section -->
     <section class="easy-guide" style="padding: 0% 15%;">       
             <h2>What's the Best Way to Download Pinterest Board Image?</h2>
             <p>Downloading on iOS devices is easy and functions flawlessly with Safari or alternative browsers. </p>
@@ -137,7 +131,6 @@
                 <li><b>4K (Ultra HD): </b>Provides supreme clarity, containing four times the pixel density of 1080p. This is perfect for professional photo collections, creative inspiration boards, or interior design references where fine details are crucial. Storage requirements are higher, but the visual excellence is unmatched.</li>
             </ul>
     </section>
-    <!-- Testimonials Section -->
     <section class="testimonials-section" id="testimonialsSection">
         <h2>What People Saying</h2>
     
@@ -174,7 +167,6 @@
             </div>
         </div>
     </section>
-    <!-- FAQ Section -->
     <section class="faq-section" id="faqSection">
         <h2>Frequently Asked Questions</h2>
         <details class="faq-item">

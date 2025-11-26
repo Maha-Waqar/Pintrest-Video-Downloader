@@ -5,12 +5,15 @@
 <head>
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% with default_title=_("Pinterest Video Downloader - Image, GIFs & Without Watermark") default_description=_("Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.") default_canonical="https://pincatch.com/" %}
-    {% with resolved_title=meta_title|default:default_title resolved_description=meta_description|default:default_description resolved_canonical=canonical_url|default:default_canonical %}
+    {% translate "Pinterest Video Downloader - Image, GIFs & Without Watermark" as default_title_text %}
+    {% translate "Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web." as default_description_text %}
+    {% translate "pinterest video downloader, pinterest downloader, download pinterest videos, pinterest mp4, pinterest gif, pinterest image downloader, bulk download pinterest" as default_keywords_text %}
+    {% with default_title=default_title_text default_description=default_description_text default_canonical="https://pincatch.com/" default_keywords=default_keywords_text %}
+    {% with resolved_title=meta_title|default:default_title resolved_description=meta_description|default:default_description resolved_canonical=canonical_url|default:default_canonical resolved_keywords=meta_keywords|default:default_keywords %}
     <title>{% block title %}{{ resolved_title }}{% endblock %}</title>
     <meta name="description"
         content="{% block meta_description %}{{ resolved_description }}{% endblock %}">
-    <meta name="keywords" content="{% trans 'pinterest video downloader, pinterest downloader, download pinterest videos, pinterest mp4, pinterest gif, pinterest image downloader, bulk download pinterest' %}">
+    <meta name="keywords" content="{% block meta_keywords %}{{ resolved_keywords }}{% endblock %}">
     <meta name="author" content="Pinterest Video Downloader">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="theme-color" content="#E60023">
@@ -57,8 +60,31 @@
     gtag('config', 'G-G84CQNSNKS');
     </script>
 
-     <!-- Schema.org Structured Data -->
+    <!-- Schema.org Structured Data -->
 
+    {% translate "PinCatch" as org_name_text %}
+    {% translate "PinCatch - Pinterest Video Downloader" as website_name_text %}
+    {% translate "PinCatch - Pinterest Video Downloader" as webapp_name_text %}
+    {% translate "Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web." as webapp_desc_text %}
+    {% translate "Home" as breadcrumb_home_text %}
+    {% translate "blog" as breadcrumb_blog_text %}
+    {% translate "Is this Pinterest downloader free to use?" as faq_q1 %}
+    {% translate "Yes, PinCatch is entirely safe to use. We don't require a login, don't store your videos, and use secure connections. Our privacy-protected tool has been scanned by Norton Safe Web." as faq_a1 %}
+    {% translate "How can I download Pinterest content on my PC?" as faq_q2 %}
+    {% translate "Simply open PinCatch in your browser on Windows, Mac, or Linux. Copy the Pinterest link, paste it in our input field, and click download. The video or image will save directly to your computer, no software installation needed." as faq_a2 %}
+    {% translate "Is there a Pinterest downloader available for Mac?" as faq_q3 %}
+    {% translate "PinCatch works on Mac through any browser. It's an online downloader, just visit our site and start downloading without installing anything." as faq_a3 %}
+    {% translate "What’s the best way to download Pinterest videos on iPhone?" as faq_q4 %}
+    {% translate "Open Pinterest in Safari, copy the video link, visit PinCatch, paste the URL, and tap download. Your video saves directly to Photos in full HD quality. Works perfectly on iOS without any app." as faq_a4 %}
+    {% translate "Can the Pinterest video downloader work without a watermark?" as faq_q5 %}
+    {% translate "Yes! PinCatch downloads Pinterest videos without a watermark. You get clean, original-quality files ready to watch or share." as faq_a5 %}
+    {% translate "Where do Pinterest downloads go on iPhone?" as faq_q6 %}
+    {% translate "Downloaded videos save to your iPhone's Photos app, while images and GIFs also go to Photos. Check your Downloads folder in Files for other formats." as faq_a6 %}
+    {% translate "Why is my Pinterest not downloading pictures?" as faq_q7 %}
+    {% translate "This might be a browser permission issue. Make sure you've allowed downloads in your browser settings. Try copying the link again and ensure you have a stable internet connection." as faq_a7 %}
+    {% translate "Can books be downloaded from Pinterest?" as faq_q8 %}
+    {% translate "While Pinterest may have book-related pins, PinCatch specializes in downloading videos, images, and GIFs. For actual books, you'll need to visit the original source linked in the pin." as faq_a8 %}
+    {% with org_name=org_name_text website_name=website_name_text webapp_name=webapp_name_text webapp_desc=webapp_desc_text breadcrumb_home=breadcrumb_home_text breadcrumb_blog=breadcrumb_blog_text %}
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
@@ -66,7 +92,7 @@
         {
         "@type": "Organization",
         "@id": "https://pincatch.com/#org",
-        "name": "PinCatch",
+        "name": "{{ org_name|escapejs }}",
         "url": "https://pincatch.com/",
         "logo": "https://pincatch.com/static/logo.png",
         "sameAs": [
@@ -79,9 +105,9 @@
         "@type": "WebSite",
         "@id": "https://pincatch.com/#website",
         "url": "https://pincatch.com/",
-        "name": "PinCatch - Pinterest Video Downloader",
+        "name": "{{ website_name|escapejs }}",
         "publisher": { "@id": "https://pincatch.com/#org" },
-        "inLanguage": "en"
+        "inLanguage": "{{ LANGUAGE_CODE }}"
         },
         {
         "@type": "WebPage",
@@ -158,11 +184,11 @@
         {
         "@type": "WebApplication",
         "@id": "https://pincatch.com/#app",
-        "name": "PinCatch - Pinterest Video Downloader",
+        "name": "{{ webapp_name|escapejs }}",
         "url": "https://pincatch.com/",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Web",
-        "description": "Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.",
+        "description": "{{ webapp_desc|escapejs }}",
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -183,66 +209,66 @@
     "mainEntity": [
         {
         "@type": "Question",
-        "name": "Is this Pinterest downloader free to use?",
+        "name": "{{ faq_q1|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, PinCatch is entirely safe to use. We don't require a login, don't store your videos, and use secure connections. Our privacy-protected tool has been scanned by Norton Safe Web."
+            "text": "{{ faq_a1|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "How can I download Pinterest content on my PC?",
+        "name": "{{ faq_q2|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Simply open PinCatch in your browser on Windows, Mac, or Linux. Copy the Pinterest link, paste it in our input field, and click download. The video or image will save directly to your computer, no software installation needed."
+            "text": "{{ faq_a2|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "Is there a Pinterest downloader available for Mac?",
+        "name": "{{ faq_q3|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PinCatch works on Mac through any browser. It's an online downloader, just visit our site and start downloading without installing anything."
+            "text": "{{ faq_a3|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "What’s the best way to download Pinterest videos on iPhone?",
+        "name": "{{ faq_q4|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Open Pinterest in Safari, copy the video link, visit PinCatch, paste the URL, and tap download. Your video saves directly to Photos in full HD quality. Works perfectly on iOS without any app."
+            "text": "{{ faq_a4|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "Can the Pinterest video downloader work without a watermark?",
+        "name": "{{ faq_q5|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes! PinCatch downloads Pinterest videos without a watermark. You get clean, original-quality files ready to watch or share."
+            "text": "{{ faq_a5|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "Where do Pinterest downloads go on iPhone?",
+        "name": "{{ faq_q6|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Downloaded videos save to your iPhone's Photos app, while images and GIFs also go to Photos. Check your Downloads folder in Files for other formats."
+            "text": "{{ faq_a6|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "Why is my Pinterest not downloading pictures?",
+        "name": "{{ faq_q7|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "This might be a browser permission issue. Make sure you've allowed downloads in your browser settings. Try copying the link again and ensure you have a stable internet connection."
+            "text": "{{ faq_a7|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "Can books be downloaded from Pinterest?",
+        "name": "{{ faq_q8|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "While Pinterest may have book-related pins, PinCatch specializes in downloading videos, images, and GIFs. For actual books, you'll need to visit the original source linked in the pin."
+            "text": "{{ faq_a8|escapejs }}"
         }
             }
         ]
@@ -254,13 +280,13 @@
             {
             "@type": "ListItem",
             "position": 1,
-            "name": "Home",
+            "name": "{{ breadcrumb_home|escapejs }}",
             "item": "https://pincatch.com/"
             },
             {
             "@type": "ListItem",
             "position": 2,
-            "name": "blog",
+            "name": "{{ breadcrumb_blog|escapejs }}",
             "item": "https://pincatch.com/blog/"
             }
         ]
@@ -270,6 +296,10 @@
     </script>
     {% endwith %}
     {% endwith %}
+    {% endwith %}
+    {% block extra_head %}
+    {% if head_html %}{{ head_html|safe }}{% endif %}
+    {% endblock %}
     <meta name="google-site-verification" content="Dgtvc51uKBF0ne3wCrGjZVFQ9ebKxNVigCABUERP_Vg" />
 
     <!-- Google tag (gtag.js) -->

@@ -1,7 +1,6 @@
 {% extends 'index.html' %}
 {% load page_links %}
 {% block content %}
-<!-- Main Content -->
 <div class="container">
     <div class="main-header">
         <h1>Free Pinterest GIF Downloader Online</h1>
@@ -29,12 +28,10 @@
         </div>
     </section>
     <div class="loader" id="loader" style="display: none;"></div>
-    <!-- Preview Gif Section -->
     <div id="player-overlay">
             <video width="100%" height="300px" controls id="gifPreview" style="display:none; margin: 20px;">         
         </video>        
     </div>
-    <!-- Download Gif Button section -->
     <div style="text-align: center; width: 100%; margin: 2%;" class ="downloadSection">
         <div class="button-row" id="downloadGifBtnSection" style="display: none;">
             <form id="downloadGifForm" method="POST" action="{% url 'downloadGif' %}" style="display:inline;">
@@ -53,8 +50,7 @@
         </div>
     </div>
     
-     <!-- Features Overview Section -->
-    <h2 class="features-heading">All Pinterest Downloader Resources</h2>
+     <h2 class="features-heading">All Pinterest Downloader Resources</h2>
 
     <section class="features">
         <div class="feature-card"> <i class="fas fa-download"></i>
@@ -78,7 +74,6 @@
             <h3><a href="{% page_url 'pinterest-mp4-downloader' 'home' %}">Pinterest Mp4 Downloader</a></h3>
         </div>
     </section>
-    <!-- How to Download Video Section -->
     <section class="how-it-works" id="howItWorksSection">
         <h2>How to Download High-Quality Pinterest GIFs in Bulk?</h2>
         <p>Downloading your favorite Pinterest GIF is quick and simple. Follow these steps:</p>
@@ -109,7 +104,6 @@
             </div>
         </div>
     </section>
-    <!-- Easy Guide Section -->
     <section class="easy-guide" style="padding: 0% 15%;">       
             <h2>Is There a Way to Download GIFs on Pinterest?</h2>
             <p>Yes, PinCatch makes it easy to download Pinterest GIFs on iOS or any browser.</p>
@@ -141,7 +135,6 @@
                 <li><b>4K (Ultra HD): </b>Offers the highest level of detail, with four times the pixels of 1080p. Best for travel videos or design content where clarity is essential. Keep in mind that 4K files are larger but deliver unmatched quality.</li>
             </ul>
     </section>
-    <!-- Features Section -->
     <section class="features-section" id="featuresSection" style="text-align: center;">
         <h2>What are the features of Pinterest Gif Downloader?</h2>
         <p>PinCatch is your go-to online tool for downloading Pinterest content quickly and safely.</p>
@@ -209,7 +202,6 @@
         </div>
     </section>
 
-    <!-- Benefits Section -->
     <section class="benefits-section" id="benefitsSection">
         <div class="container">
             <h2>What are the benefits of Using Pinterest Gif Downloader Online?</h2>
@@ -276,7 +268,6 @@
     </section>
    
  
-    <!-- Testimonials Section -->
     <section class="testimonials-section" id="testimonialsSection">
         <h2>What People Saying</h2>
     

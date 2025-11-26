@@ -189,7 +189,8 @@ class PageAdmin(BaseTranslationAdmin):
     prepopulated_fields = {"slug_url": ("name",)}
     fieldsets = (
         (None, {"fields": ("name", "slug_url", "language", "language_slug", "is_homepage")}),
-        (_("Meta"), {"fields": ("meta_title", "meta_description")}),
+        (_("Meta"), {"fields": ("meta_title", "meta_description", "meta_keywords")}),
+        (_("Head"), {"fields": ("head_html",)}),
         (_("Content"), {"fields": ("content",)}),
         (_("Timestamps"), {"fields": ("created_on", "last_modified")}),
     )

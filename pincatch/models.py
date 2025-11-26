@@ -27,6 +27,8 @@ class Page(models.Model):
     name = models.CharField(max_length=255, default="No Title")
     meta_title = models.CharField(default="Meta Title")
     meta_description = models.TextField(default="Meta Description")
+    meta_keywords = models.CharField(max_length=255, blank=True, default="")
+    head_html = models.TextField(blank=True, default="")
     content = RichTextUploadingField()
     slug_url = models.CharField(
         max_length=255,

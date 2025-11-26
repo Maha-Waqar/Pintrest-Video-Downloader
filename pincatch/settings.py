@@ -164,10 +164,10 @@ LANGUAGES = [
     # ('de', _('German')),
     # ('es', _('Spanish')),
     # ('fr', _('French')),
-    # ('ru', _('Russian')),
+    ('ru', _('Russian')),
     ('ar', _('Arabic')),
     # ('vi', _('Vietnamese')),  #Not supported by DeepL
-    # ('pt', _('Portuguese')),
+    ('pt', _('Portuguese')),
     # ('tr', _('Turkish')),
     # ('id', _('Indonesian')),
     # ('it', _('Italian')),
@@ -212,7 +212,7 @@ MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-DEEPL_AUTH_KEY = "a62afd64-5b46-4b6d-8ea7-bc4d52e36806:fx"
+DEEPL_AUTH_KEY = "8cbe9884-5525-432a-af44-74ced2b3e3d3:fx"
 if not DEEPL_AUTH_KEY and not DEBUG:
     raise ImproperlyConfigured("DEEPL_AUTH_KEY is required")
 

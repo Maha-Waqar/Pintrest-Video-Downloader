@@ -20,6 +20,8 @@ def _render_page_instance(request, page):
         'page_title': page.name,
         'meta_title': page.meta_title,
         'meta_description': page.meta_description,
+        'meta_keywords': page.meta_keywords,
+        'head_html': page.head_html,
         'content': page.content,
         'breadcrumbs': breadcrumbs,
     }

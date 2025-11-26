@@ -156,6 +156,8 @@ def _translate_page_to_other_languages(source_page, force_override=True):
         target_page.name = _safe_translate(provider, source_page.name, default_lang, language)
         target_page.meta_title = _safe_translate(provider, source_page.meta_title, default_lang, language)
         target_page.meta_description = _safe_translate(provider, source_page.meta_description, default_lang, language)
+        target_page.meta_keywords = _safe_translate(provider, source_page.meta_keywords, default_lang, language)
+        target_page.head_html = _safe_translate(provider, source_page.head_html, default_lang, language)
         target_page.content = _safe_translate(provider, source_page.content, default_lang, language)
 
         target_page.save()
@@ -206,8 +208,13 @@ def _safe_translate(provider, text, source_lang, target_lang):
             return f"{prefix}{translated}{suffix}"
 
         try:
+            from bs4 import Comment
+
             soup = BeautifulSoup(html_text, "html.parser")
             for node in soup.find_all(string=True):
+                if isinstance(node, Comment):
+                    # Preserve comments untouched so they don't become visible text after translation.
+                    continue
                 if getattr(node, "parent", None) and node.parent.name in {"script", "style"}:
                     continue
                 original = str(node)
