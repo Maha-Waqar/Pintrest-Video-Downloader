@@ -152,13 +152,20 @@ def _translate_page_to_other_languages(source_page, force_override=True):
             target_page.language_slug = language
         target_page.is_homepage = source_page.is_homepage
 
-        # Always overwrite translated fields from the English source so all languages stay in sync.
-        target_page.name = _safe_translate(provider, source_page.name, default_lang, language)
-        target_page.meta_title = _safe_translate(provider, source_page.meta_title, default_lang, language)
-        target_page.meta_description = _safe_translate(provider, source_page.meta_description, default_lang, language)
-        target_page.meta_keywords = _safe_translate(provider, source_page.meta_keywords, default_lang, language)
-        target_page.head_html = _safe_translate(provider, source_page.head_html, default_lang, language)
-        target_page.content = _safe_translate(provider, source_page.content, default_lang, language)
+        def _maybe_translate(field_name):
+            current = getattr(target_page, field_name)
+            source_val = getattr(source_page, field_name)
+            if force_override or not current or current == source_val:
+                translated = _safe_translate(provider, source_val, default_lang, language)
+                setattr(target_page, field_name, translated)
+
+        # Keep translations in sync; translate when forced, empty, or still matching the source language.
+        _maybe_translate("name")
+        _maybe_translate("meta_title")
+        _maybe_translate("meta_description")
+        _maybe_translate("meta_keywords")
+        _maybe_translate("head_html")
+        _maybe_translate("content")
 
         target_page.save()
 
@@ -227,7 +234,11 @@ def _safe_translate(provider, text, source_lang, target_lang):
                 node.replace_with(_preserve_whitespace(original, translated))
             if normalized_target.lower() in RTL_LANGS:
                 _apply_rtl(soup)
-            return str(soup)
+            # Return inner HTML without BeautifulSoup adding extra wrappers/whitespace.
+            if soup.body:
+                return soup.body.decode_contents(formatter="minimal")
+            # Fallback to all top-level contents joined.
+            return "".join(child.decode(formatter="minimal") if hasattr(child, "decode") else str(child) for child in soup.contents)
         except Exception:
             return None
 

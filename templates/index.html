@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE|default:'en' }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
 <head>
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,11 +42,17 @@
     <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
 
     <!-- hreflang for internationalization -->
-    <link rel="alternate" hreflang="en" href="https://pincatch.com/">
-    <link rel="alternate" hreflang="es" href="https://pincatch.com/es">
-    <link rel="alternate" hreflang="fr" href="https://pincatch.com/fr">
-    <link rel="alternate" hreflang="de" href="https://pincatch.com/de">
-    <link rel="alternate" hreflang="x-default" href="https://pincatch.com/">
+    {% get_current_language as CURRENT_LANG %}
+    {% with site_url=base_site_url|default:"https://pincatch.com/" %}
+    {% for code,name in LANGUAGES %}
+    {% if code == LANGUAGE_CODE %}
+    <link rel="alternate" hreflang="{{ code }}" href="{{ site_url }}">
+    {% else %}
+    <link rel="alternate" hreflang="{{ code }}" href="{{ site_url }}{{ code }}/">
+    {% endif %}
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ site_url }}">
+    {% endwith %}
 
     <meta name="google-site-verification" content="Dgtvc51uKBF0ne3wCrGjZVFQ9ebKxNVigCABUERP_Vg" />
     <meta name="monetag" content="176dc79c73d671149a8d03647524857a">
@@ -300,8 +306,6 @@
     {% block extra_head %}
     {% if head_html %}{{ head_html|safe }}{% endif %}
     {% endblock %}
-    <meta name="google-site-verification" content="Dgtvc51uKBF0ne3wCrGjZVFQ9ebKxNVigCABUERP_Vg" />
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G84CQNSNKS"></script>
     <script>
