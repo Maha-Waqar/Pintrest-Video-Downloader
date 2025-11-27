@@ -5,55 +5,50 @@
 <head>
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% translate "Pinterest Video Downloader - Image, GIFs & Without Watermark" as default_title_text %}
-    {% translate "Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web." as default_description_text %}
-    {% translate "pinterest video downloader, pinterest downloader, download pinterest videos, pinterest mp4, pinterest gif, pinterest image downloader, bulk download pinterest" as default_keywords_text %}
-    {% with default_title=default_title_text default_description=default_description_text default_canonical="https://pincatch.com/" default_keywords=default_keywords_text %}
-    {% with resolved_title=meta_title|default:default_title resolved_description=meta_description|default:default_description resolved_canonical=canonical_url|default:default_canonical resolved_keywords=meta_keywords|default:default_keywords %}
-    <title>{% block title %}{{ resolved_title }}{% endblock %}</title>
+    <title>{% block title %}{{ meta_title|default:_("Pinterest Video Downloader - Image, GIFs & Without Watermark") }}{% endblock %}</title>
     <meta name="description"
-        content="{% block meta_description %}{{ resolved_description }}{% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %}{{ resolved_keywords }}{% endblock %}">
+        content="{% block meta_description %}{{ meta_description|default:_("Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.") }}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{{ meta_keywords|default:_("pinterest video downloader, pinterest downloader, download pinterest videos, pinterest mp4, pinterest gif, pinterest image downloader, bulk download pinterest") }}{% endblock %}">
     <meta name="author" content="Pinterest Video Downloader">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="theme-color" content="#E60023">
-    <link rel="canonical" href="{{ resolved_canonical }}">
-
+    <link rel="canonical" href="{{ canonical_url|default:'https://pincatch.com/' }}">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ resolved_canonical }}">
-    <meta property="og:title" content="{{ resolved_title }}">
-    <meta property="og:description" content="{{ resolved_description }}">
+    <meta property="og:url" content="{{ canonical_url|default:'https://pincatch.com/' }}">
+    <meta property="og:title" content="{{ meta_title|default:_('Pinterest Video Downloader - Image, GIFs & Without Watermark') }}">
+    <meta property="og:description" content="{{ meta_description|default:_('Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.') }}">
     <meta property="og:image" content="https://pincatch.com/static/images/og-image.jpg">
     <meta property="og:site_name" content="Pinterest Video Downloader">
-
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ resolved_canonical }}">
-    <meta property="twitter:title" content="{{ resolved_title }}">
-    <meta property="twitter:description" content="{{ resolved_description }}">
+    <meta property="twitter:url" content="{{ canonical_url|default:'https://pincatch.com/' }}">
+    <meta property="twitter:title" content="{{ meta_title|default:_('Pinterest Video Downloader - Image, GIFs & Without Watermark') }}">
+    <meta property="twitter:description" content="{{ meta_description|default:_('Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.') }}">
     <meta property="twitter:image" content="https://pincatch.com/static/images/og-image.jpg">
-
     <!-- Icons -->
     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
     <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
-
     <!-- hreflang for internationalization -->
-    {% get_current_language as CURRENT_LANG %}
-    {% with site_url=base_site_url|default:"https://pincatch.com/" %}
-    {% for code,name in LANGUAGES %}
-    {% if code == LANGUAGE_CODE %}
-    <link rel="alternate" hreflang="{{ code }}" href="{{ site_url }}">
-    {% else %}
-    <link rel="alternate" hreflang="{{ code }}" href="{{ site_url }}{{ code }}/">
-    {% endif %}
-    {% endfor %}
-    <link rel="alternate" hreflang="x-default" href="{{ site_url }}">
-    {% endwith %}
-
+    <link rel="alternate" hreflang="en" href="https://pincatch.com/">
+    <link rel="alternate" hreflang="br" href="https://pincatch.com/br/">
+    <link rel="alternate" hreflang="es" href="https://pincatch.com/es/">
+    <link rel="alternate" hreflang="fr" href="https://pincatch.com/fr/">
+    <link rel="alternate" hreflang="de" href="https://pincatch.com/de/">
+    <link rel="alternate" hreflang="ru" href="https://pincatch.com/ru/">
+    <link rel="alternate" hreflang="ar" href="https://pincatch.com/ar/">
+    <link rel="alternate" hreflang="pt" href="https://pincatch.com/pt/">
+    <link rel="alternate" hreflang="tr" href="https://pincatch.com/tr/">
+    <link rel="alternate" hreflang="id" href="https://pincatch.com/id/">
+    <link rel="alternate" hreflang="it" href="https://pincatch.com/it/">
+    <link rel="alternate" hreflang="uk" href="https://pincatch.com/uk/">
+    <link rel="alternate" hreflang="ko" href="https://pincatch.com/ko/">
+    <link rel="alternate" hreflang="ja" href="https://pincatch.com/ja/">
+    <link rel="alternate" hreflang="zh-hans" href="https://pincatch.com/zh-hans/">
+    <link rel="alternate" hreflang="x-default" href="https://pincatch.com/">
     <meta name="google-site-verification" content="Dgtvc51uKBF0ne3wCrGjZVFQ9ebKxNVigCABUERP_Vg" />
     <meta name="monetag" content="176dc79c73d671149a8d03647524857a">
     <!-- Google tag (gtag.js) -->
@@ -62,35 +57,14 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-G84CQNSNKS');
     </script>
-
-    <!-- Schema.org Structured Data -->
-
-    {% translate "PinCatch" as org_name_text %}
-    {% translate "PinCatch - Pinterest Video Downloader" as website_name_text %}
-    {% translate "PinCatch - Pinterest Video Downloader" as webapp_name_text %}
-    {% translate "Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web." as webapp_desc_text %}
-    {% translate "Home" as breadcrumb_home_text %}
-    {% translate "blog" as breadcrumb_blog_text %}
-    {% translate "Is this Pinterest downloader free to use?" as faq_q1 %}
-    {% translate "Yes, PinCatch is entirely safe to use. We don't require a login, don't store your videos, and use secure connections. Our privacy-protected tool has been scanned by Norton Safe Web." as faq_a1 %}
-    {% translate "How can I download Pinterest content on my PC?" as faq_q2 %}
-    {% translate "Simply open PinCatch in your browser on Windows, Mac, or Linux. Copy the Pinterest link, paste it in our input field, and click download. The video or image will save directly to your computer, no software installation needed." as faq_a2 %}
-    {% translate "Is there a Pinterest downloader available for Mac?" as faq_q3 %}
-    {% translate "PinCatch works on Mac through any browser. It's an online downloader, just visit our site and start downloading without installing anything." as faq_a3 %}
-    {% translate "What’s the best way to download Pinterest videos on iPhone?" as faq_q4 %}
-    {% translate "Open Pinterest in Safari, copy the video link, visit PinCatch, paste the URL, and tap download. Your video saves directly to Photos in full HD quality. Works perfectly on iOS without any app." as faq_a4 %}
-    {% translate "Can the Pinterest video downloader work without a watermark?" as faq_q5 %}
-    {% translate "Yes! PinCatch downloads Pinterest videos without a watermark. You get clean, original-quality files ready to watch or share." as faq_a5 %}
-    {% translate "Where do Pinterest downloads go on iPhone?" as faq_q6 %}
-    {% translate "Downloaded videos save to your iPhone's Photos app, while images and GIFs also go to Photos. Check your Downloads folder in Files for other formats." as faq_a6 %}
-    {% translate "Why is my Pinterest not downloading pictures?" as faq_q7 %}
-    {% translate "This might be a browser permission issue. Make sure you've allowed downloads in your browser settings. Try copying the link again and ensure you have a stable internet connection." as faq_a7 %}
-    {% translate "Can books be downloaded from Pinterest?" as faq_q8 %}
-    {% translate "While Pinterest may have book-related pins, PinCatch specializes in downloading videos, images, and GIFs. For actual books, you'll need to visit the original source linked in the pin." as faq_a8 %}
-    {% with org_name=org_name_text website_name=website_name_text webapp_name=webapp_name_text webapp_desc=webapp_desc_text breadcrumb_home=breadcrumb_home_text breadcrumb_blog=breadcrumb_blog_text %}
+  
+    {% block extra_head %}
+    {% if head_html %}
+    {{ head_html|safe }}
+    {% else %}
+      <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
@@ -98,7 +72,7 @@
         {
         "@type": "Organization",
         "@id": "https://pincatch.com/#org",
-        "name": "{{ org_name|escapejs }}",
+        "name": "{{ _("PinCatch")|escapejs }}",
         "url": "https://pincatch.com/",
         "logo": "https://pincatch.com/static/logo.png",
         "sameAs": [
@@ -111,17 +85,17 @@
         "@type": "WebSite",
         "@id": "https://pincatch.com/#website",
         "url": "https://pincatch.com/",
-        "name": "{{ website_name|escapejs }}",
+        "name": "{{ _("PinCatch - Pinterest Video Downloader")|escapejs }}",
         "publisher": { "@id": "https://pincatch.com/#org" },
         "inLanguage": "{{ LANGUAGE_CODE }}"
         },
         {
         "@type": "WebPage",
-        "@id": "{{ resolved_canonical }}#webpage",
-        "url": "{{ resolved_canonical }}",
-        "name": "{{ resolved_title|escapejs }}",
-        "headline": "{{ resolved_title|escapejs }}",
-        "description": "{{ resolved_description|escapejs }}",
+        "@id": "{{ canonical_url|default:'https://pincatch.com/' }}#webpage",
+        "url": "{{ canonical_url|default:'https://pincatch.com/' }}",
+        "name": "{{ meta_title|default:_('Pinterest Video Downloader - Image, GIFs & Without Watermark')|escapejs }}",
+        "headline": "{{ meta_title|default:_('Pinterest Video Downloader - Image, GIFs & Without Watermark')|escapejs }}",
+        "description": "{{ meta_description|default:_('Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.')|escapejs }}",
         "isPartOf": { "@id": "https://pincatch.com/#website" },
         "inLanguage": "en",
         "primaryImageOfPage": {
@@ -190,11 +164,11 @@
         {
         "@type": "WebApplication",
         "@id": "https://pincatch.com/#app",
-        "name": "{{ webapp_name|escapejs }}",
+        "name": "{{ _("PinCatch - Pinterest Video Downloader")|escapejs }}",
         "url": "https://pincatch.com/",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Web",
-        "description": "{{ webapp_desc|escapejs }}",
+        "description": "{{ _("Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web.")|escapejs }}",
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -215,66 +189,66 @@
     "mainEntity": [
         {
         "@type": "Question",
-        "name": "{{ faq_q1|escapejs }}",
+        "name": "{{ _("Is this Pinterest downloader free to use?")|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "{{ faq_a1|escapejs }}"
+            "text": "{{ _("Yes, PinCatch is entirely safe to use. We don't require a login, don't store your videos, and use secure connections. Our privacy-protected tool has been scanned by Norton Safe Web.")|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "{{ faq_q2|escapejs }}",
+        "name": "{{ _("How can I download Pinterest content on my PC?")|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "{{ faq_a2|escapejs }}"
+            "text": "{{ _("Simply open PinCatch in your browser on Windows, Mac, or Linux. Copy the Pinterest link, paste it in our input field, and click download. The video or image will save directly to your computer, no software installation needed.")|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "{{ faq_q3|escapejs }}",
+        "name": "{{ _("Is there a Pinterest downloader available for Mac?")|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "{{ faq_a3|escapejs }}"
+            "text": "{{ _("PinCatch works on Mac through any browser. It's an online downloader, just visit our site and start downloading without installing anything.")|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "{{ faq_q4|escapejs }}",
+        "name": "{{ _("What’s the best way to download Pinterest videos on iPhone?")|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "{{ faq_a4|escapejs }}"
+            "text": "{{ _("Open Pinterest in Safari, copy the video link, visit PinCatch, paste the URL, and tap download. Your video saves directly to Photos in full HD quality. Works perfectly on iOS without any app.")|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "{{ faq_q5|escapejs }}",
+        "name": "{{ _("Can the Pinterest video downloader work without a watermark?")|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "{{ faq_a5|escapejs }}"
+            "text": "{{ _("Yes! PinCatch downloads Pinterest videos without a watermark. You get clean, original-quality files ready to watch or share.")|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "{{ faq_q6|escapejs }}",
+        "name": "{{ _("Where do Pinterest downloads go on iPhone?")|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "{{ faq_a6|escapejs }}"
+            "text": "{{ _("Downloaded videos save to your iPhone's Photos app, while images and GIFs also go to Photos. Check your Downloads folder in Files for other formats.")|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "{{ faq_q7|escapejs }}",
+        "name": "{{ _("Why is my Pinterest not downloading pictures?")|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "{{ faq_a7|escapejs }}"
+            "text": "{{ _("This might be a browser permission issue. Make sure you've allowed downloads in your browser settings. Try copying the link again and ensure you have a stable internet connection.")|escapejs }}"
         }
         },
         {
         "@type": "Question",
-        "name": "{{ faq_q8|escapejs }}",
+        "name": "{{ _("Can books be downloaded from Pinterest?")|escapejs }}",
         "acceptedAnswer": {
             "@type": "Answer",
-            "text": "{{ faq_a8|escapejs }}"
+            "text": "{{ _("While Pinterest may have book-related pins, PinCatch specializes in downloading videos, images, and GIFs. For actual books, you'll need to visit the original source linked in the pin.")|escapejs }}"
         }
             }
         ]
@@ -286,13 +260,13 @@
             {
             "@type": "ListItem",
             "position": 1,
-            "name": "{{ breadcrumb_home|escapejs }}",
+            "name": "{{ _("Home")|escapejs }}",
             "item": "https://pincatch.com/"
             },
             {
             "@type": "ListItem",
             "position": 2,
-            "name": "{{ breadcrumb_blog|escapejs }}",
+            "name": "{{ _("blog")|escapejs }}",
             "item": "https://pincatch.com/blog/"
             }
         ]
@@ -300,11 +274,7 @@
     ]
     }
     </script>
-    {% endwith %}
-    {% endwith %}
-    {% endwith %}
-    {% block extra_head %}
-    {% if head_html %}{{ head_html|safe }}{% endif %}
+    {% endif %}
     {% endblock %}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G84CQNSNKS"></script>
@@ -323,7 +293,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {{ importmap }}
-
 </head>
 <body> 
     {% include 'header.html' %}
