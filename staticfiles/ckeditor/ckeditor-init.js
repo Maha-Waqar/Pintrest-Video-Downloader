@@ -11,6 +11,13 @@
       return
     }
 
+    // Keep empty <i>/<span> tags so icon fonts (Font Awesome, etc.)
+    // are not stripped out when re-saving content in the admin.
+    if (CKEDITOR.dtd && CKEDITOR.dtd.$removeEmpty) {
+      CKEDITOR.dtd.$removeEmpty.i = false
+      CKEDITOR.dtd.$removeEmpty.span = false
+    }
+
     initialiseCKEditor()
     initialiseCKEditorInInlinedForms()
   }
