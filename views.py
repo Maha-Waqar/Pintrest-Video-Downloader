@@ -11,6 +11,9 @@ from pincatch.models import Page
 from pincatch.seo import build_seo_context
 
 def _render_page_instance(request, page):
+    # Ensure template context reflects the page's language (lang/dir attributes, translations).
+    translation.activate(page.language)
+    request.LANGUAGE_CODE = page.language
     breadcrumbs = [{'title': 'Home', 'url': 'home'}]
     if page.slug_url == Page.HOME_SLUG:
         breadcrumbs[-1]['url'] = None
