@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable, List, Optional, Set
+import re
+from typing import Dict, Iterable, List, Optional, Set, Tuple
 from urllib.parse import urlparse, urlunparse
 
 from bs4 import BeautifulSoup, NavigableString, Tag
@@ -113,6 +114,99 @@ def _strip_redundant_breaks(translated_soup: BeautifulSoup, allowed_tags: Set[st
         br.decompose()
 
 
+def _structure_is_fragmented(original_soup: BeautifulSoup, translated_soup: BeautifulSoup) -> bool:
+    """
+    Return True when the translated markup lost too much of the original structure.
+
+    We compare total tag counts and a subset of critical tags (headings, lists, and
+    paragraphs). If the translated HTML is mostly plain text or strips these tags,
+    we rebuild it from the source skeleton so spacing and hierarchy stay intact.
+    """
+    original_tags = original_soup.find_all(True)
+    translated_tags = translated_soup.find_all(True)
+
+    if not original_tags:
+        return False
+    if not translated_tags:
+        return True
+
+    original_count = len(original_tags)
+    translated_count = len(translated_tags)
+    if translated_count / original_count < 0.5:
+        return True
+
+    critical = {"p", "ol", "ul", "li", "h1", "h2", "h3", "h4", "h5", "h6"}
+    original_critical = sum(1 for tag in original_tags if tag.name in critical)
+    translated_critical = sum(1 for tag in translated_tags if tag.name in critical)
+    if original_critical and (translated_critical / original_critical) < 0.6:
+        return True
+
+    return False
+
+
+def _restore_structure_from_original(
+    original_soup: BeautifulSoup, translated_soup: BeautifulSoup
+) -> BeautifulSoup:
+    """
+    Clone the original HTML skeleton and populate its text nodes with translated copy.
+
+    This fallback keeps the same tag hierarchy as the source while still using the
+    translated strings we received (in order) so the rendered page layout matches.
+    """
+    def _extract_translation_segments() -> List[str]:
+        segments = [string.strip() for string in translated_soup.stripped_strings if string.strip()]
+        if len(segments) <= 1:
+            raw_text = translated_soup.get_text("\n", strip=True)
+            parts = re.split(r"\n{2,}|\n(?=\d+\.\s)", raw_text)
+            segments = [part.strip() for part in parts if part and part.strip()]
+            line_split = [line.strip() for line in raw_text.splitlines() if line.strip()]
+            if len(line_split) > len(segments):
+                segments = line_split
+        if len(segments) <= 1:
+            raw_text = translated_soup.get_text(" ", strip=True)
+            parts = re.split(r"(?<=[.!?])\s+", raw_text)
+            segments = [part.strip() for part in parts if part.strip()]
+        return segments
+
+    def _fill_target_with_segment(target: Tag, segment: str) -> None:
+        link_children = [
+            child for child in target.contents if isinstance(child, Tag) and child.name == "a"
+        ]
+
+        if len(link_children) == 1 and all(
+            isinstance(child, (Tag, NavigableString)) and (
+                (isinstance(child, NavigableString) and not child.strip()) or child == link_children[0]
+            )
+            for child in target.contents
+        ):
+            anchor = link_children[0]
+            target.clear()
+            target.append(anchor)
+            anchor.clear()
+            anchor.append(segment)
+            return
+
+        target.clear()
+        target.append(segment)
+
+    translated_segments = _extract_translation_segments()
+    if not translated_segments:
+        return BeautifulSoup(str(original_soup), "html.parser")
+
+    rebuilt = BeautifulSoup(str(original_soup), "html.parser")
+    targets = rebuilt.find_all(["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "blockquote"])
+
+    for idx, target in enumerate(targets):
+        fallback = target.get_text(" ", strip=True)
+        if idx < len(translated_segments):
+            segment = translated_segments[idx]
+        else:
+            segment = fallback or (translated_segments[-1] if translated_segments else "")
+        _fill_target_with_segment(target, segment)
+
+    return rebuilt
+
+
 def _rewrite_internal_hrefs(translated_soup: BeautifulSoup, slug_lookup: Dict[str, str]) -> None:
     """Update anchor href attributes so they use localized slugs."""
     if not slug_lookup:
@@ -175,6 +269,8 @@ def clean_translation_html(
     _remove_disallowed_tags(translated_soup, allowed_tags)
     _strip_redundant_breaks(translated_soup, allowed_tags)
     _normalize_lists(original_soup, translated_soup)
+    if _structure_is_fragmented(original_soup, translated_soup):
+        translated_soup = _restore_structure_from_original(original_soup, translated_soup)
     _rewrite_internal_hrefs(translated_soup, slug_lookup)
 
     # Trim leading/trailing whitespace-only nodes at the top level

@@ -117,7 +117,9 @@ def get_gif_url(page_url):
             soup = BeautifulSoup(resp.text, 'html.parser')
             url = extract_gif_url_from_soup(soup)
             print("Extracted URL:", url);
-            if url and is_valid_gif_url(url):
+            # Return the first extracted URL even if the HEAD validation fails,
+            # since Pinterest often blocks HEAD requests.
+            if url:
                 return url
     except Exception:
         pass
@@ -133,7 +135,9 @@ def get_gif_url(page_url):
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         url = extract_gif_url_from_soup(soup)
         driver.quit()
-        if url and is_valid_gif_url(url):
+        # Same here: accept the extracted URL without HEAD validation to avoid
+        # false negatives from Pinterest blocking HEAD requests.
+        if url:
             return url
         return None
     except Exception:

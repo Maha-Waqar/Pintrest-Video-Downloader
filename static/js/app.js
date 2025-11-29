@@ -328,6 +328,46 @@ if (pinterestGifUrl && downloadGifButton) {
     };
 }
 
+// Reload GIF downloader page on "Download More Gifs" click
+(() => {
+    const reloadBtn = document.getElementById('downloadMoreGifBtn');
+    if (!reloadBtn) return;
+    reloadBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.location.reload();
+    });
+})();
+
+// Reload image downloader page on "Download More Images" click
+(() => {
+    const reloadBtn = document.getElementById('downloadMoreImageBtn');
+    if (!reloadBtn) return;
+    reloadBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.location.reload();
+    });
+})();
+
+// Reload profile downloader page on "Download More Pictures" click
+(() => {
+    const reloadBtn = document.getElementById('downloadMoreProfileBtn');
+    if (!reloadBtn) return;
+    reloadBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.location.reload();
+    });
+})();
+
+// Reload video downloader page on "Download More Videos" click
+(() => {
+    const reloadBtn = document.getElementById('downloadMoreBtn');
+    if (!reloadBtn) return;
+    reloadBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.location.reload();
+    });
+})();
+
 
 // Function to get CSRF token from cookies (required for Django POST requests)
 function getCookie(name) {
