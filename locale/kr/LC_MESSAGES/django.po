@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 12:48+0500\n"
+"POT-Creation-Date: 2025-11-28 19:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,496 +17,998 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pinit/settings.py:115
+#: blog/admin.py:58
+msgid "Category not found."
+msgstr "카테고리를 찾을 수 없습니다."
+
+#: blog/admin.py:64 blog/admin.py:228
+#, python-format
+msgid "Successfully triggered translation for %(name)s."
+msgstr "(이름)에 대한 번역을 성공적으로 트리거했습니다."
+
+#: blog/admin.py:70 blog/admin.py:88 blog/admin.py:234 blog/admin.py:251
+#, python-format
+msgid "Failed to translate %(name)s: %(error)s"
+msgstr "(이름)을(를) 번역하지 못했습니다: %(오류)를(를) 번역하지 못했습니다."
+
+#: blog/admin.py:94
+#, python-format
+msgid "Successfully queued translation for %(count)d categories."
+msgstr "(카운트)d 카테고리에 대한 번역을 성공적으로 대기열에 추가했습니다."
+
+#: blog/admin.py:97
+msgid "Translate selected categories"
+msgstr "선택한 카테고리 번역"
+
+#: blog/admin.py:104 blog/admin.py:107 blog/admin.py:177 blog/admin.py:180
+#: blog/admin.py:269 blog/admin.py:272
+msgid "Translate"
+msgstr "번역"
+
+#: blog/admin.py:131
+msgid "Post not found."
+msgstr "게시물을 찾을 수 없습니다."
+
+#: blog/admin.py:137
+#, python-format
+msgid "Successfully triggered translation for %(title)s."
+msgstr "(title)에 대한 번역을 성공적으로 트리거했습니다."
+
+#: blog/admin.py:143 blog/admin.py:161
+#, python-format
+msgid "Failed to translate %(title)s: %(error)s"
+msgstr "(제목)을(를) 번역하지 못했습니다: %(오류)를(를) 번역하지 못했습니다."
+
+#: blog/admin.py:167
+#, python-format
+msgid "Successfully queued translation for %(count)d posts."
+msgstr "(카운트)개 게시물에 대한 번역을 성공적으로 대기열에 추가했습니다."
+
+#: blog/admin.py:170
+msgid "Translate selected posts"
+msgstr "선택한 게시물 번역"
+
+#: blog/admin.py:192
+msgid "Meta"
+msgstr "메타"
+
+#: blog/admin.py:193
+msgid "Head"
+msgstr "Head"
+
+#: blog/admin.py:194
+msgid "Content"
+msgstr "콘텐츠"
+
+#: blog/admin.py:195
+msgid "Timestamps"
+msgstr "타임스탬프"
+
+#: blog/admin.py:215
+msgid "Page not found."
+msgstr "페이지를 찾을 수 없습니다."
+
+#: blog/admin.py:220
+#, python-format
+msgid ""
+"Translation can only be triggered from the default language (%(lang)s)."
+msgstr "번역은 기본 언어(%(lang)s)에서만 트리거할 수 있습니다."
+
+#: blog/admin.py:257
+#, python-format
+msgid "Successfully queued translation for %(count)d pages."
+msgstr "(카운트)개 페이지에 대한 번역을 성공적으로 대기열에 추가했습니다."
+
+#: blog/admin.py:260
+msgid "Translate selected pages"
+msgstr "선택한 페이지 번역"
+
+#: blog/templates/blog/detail.html:30
+msgid "Published on"
+msgstr "에 게시됨"
+
+#: blog/views.py:34
+msgid "Pinterest Blog - Latest Guides & Tutorials"
+msgstr "Pinterest 블로그 - 최신 가이드 및 튜토리얼"
+
+#: blog/views.py:35
+msgid ""
+"Read fresh tips about Pinterest marketing, video downloading, and product "
+"updates from the PinCatch blog."
+msgstr "Pinterest 마케팅, 동영상 다운로드 및 제품 업데이트에 대한 새로운 팁을 PinCatch 블로그에서 확인하세요."
+
+#: blog/views.py:66
+#, python-format
+msgid "Pinterest Blog: %(category)s"
+msgstr "Pinterest 블로그: %(카테고리)"
+
+#: blog/views.py:67
+#, python-format
+msgid ""
+"Browse %(category)s articles and tutorials for Pinterest downloads, growth, "
+"and PinCatch updates."
+msgstr "(카테고리)의 글과 튜토리얼에서 Pinterest 다운로드, 성장 및 PinCatch 업데이트에 대해 알아보세요."
+
+#: pincatch/seo.py:3 templates/index.html:8 templates/index.html:19
+#: templates/index.html:26 templates/index.html:96 templates/index.html:97
+msgid "Pinterest Video Downloader - Image, GIFs & Without Watermark"
+msgstr "Pinterest 동영상 다운로더 - 이미지, GIF 및 워터마크 없음"
+
+#: pincatch/seo.py:5 templates/index.html:10 templates/index.html:20
+#: templates/index.html:27 templates/index.html:98 templates/index.html:171
+msgid ""
+"Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K "
+"videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web."
+msgstr ""
+"PC, Mac, iPhone용 대량 무료 온라인 Pinterest 동영상 다운로더. 워터마크 없이 4K 비디오를 MP4로 빠르고 쉽게 "
+"저장하세요. Norton™ Safe Web으로 스캔합니다."
+
+#: pincatch/settings.py:160
 msgid "English"
-msgstr ""
+msgstr "영어"
 
-#: pinit/settings.py:116
-msgid "Bengali"
-msgstr ""
-
-#: pinit/settings.py:117
-msgid "Filipino"
-msgstr ""
-
-#: pinit/settings.py:118
-msgid "Azerbaijani"
-msgstr ""
-
-#: pinit/settings.py:119
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: pinit/settings.py:120
-msgid "German"
-msgstr ""
-
-#: pinit/settings.py:121
-msgid "Spanish"
-msgstr ""
-
-#: pinit/settings.py:122
-msgid "French"
-msgstr ""
-
-#: pinit/settings.py:123
-msgid "Russian"
-msgstr ""
-
-#: pinit/settings.py:124
+#: pincatch/settings.py:169
 msgid "Arabic"
-msgstr ""
+msgstr "아랍어"
 
-#: pinit/settings.py:125
-msgid "Vietnamese"
-msgstr ""
+#: templates/about.html:8
+msgid "ABOUT"
+msgstr "정보"
 
-#: pinit/settings.py:126
-msgid "Portuguese"
-msgstr ""
+#: templates/about.html:11
+msgid "Welcome to PinCatch!"
+msgstr "PinCatch에 오신 것을 환영합니다!"
 
-#: pinit/settings.py:127
-msgid "Turkish"
-msgstr ""
-
-#: pinit/settings.py:128
-msgid "Indonesian"
-msgstr ""
-
-#: pinit/settings.py:129
-msgid "Italian"
-msgstr ""
-
-#: pinit/settings.py:130
-msgid "Ukrainian"
-msgstr ""
-
-#: pinit/settings.py:131
-msgid "Nepali"
-msgstr ""
-
-#: pinit/settings.py:132
-msgid "Korean"
-msgstr ""
-
-#: pinit/settings.py:133
-msgid "Japanese"
-msgstr ""
-
-#: pinit/settings.py:134
-msgid "Chinese Simplified"
-msgstr ""
-
-#: pinit/settings.py:135
-msgid "Chinese Traditional"
-msgstr ""
-
-#: pinit/templates/home.html:7
-msgid "Pinterest Video Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:8
+#: templates/about.html:12
 msgid ""
-"You can quickly download Pinterest videos, images, and GIFs online without a "
-"watermark in HD quality, including 1080p, 2K, and 4K, free on any device "
-"within seconds."
+"PinCatch is a website where you can download videos from Pinterest that are "
+"publicly available. Our mission is to give people a way to save Pinterest "
+"videos for personal use only. For example, you might want to watch a "
+"favorite video offline, or keep it to view later when you have no internet."
 msgstr ""
+"PinCatch는 Pinterest에서 공개적으로 제공되는 동영상을 다운로드할 수 있는 웹사이트입니다. 저희의 사명은 사람들이 개인적인 "
+"용도로만 Pinterest 동영상을 저장할 수 있는 방법을 제공하는 것입니다. 예를 들어, 좋아하는 동영상을 오프라인에서 보거나 나중에 "
+"인터넷이 없을 때 보기 위해 보관하고 싶을 수 있습니다."
 
-#: pinit/templates/home.html:12
-msgid "PASTE YOUR PINTEREST LINK HERE"
-msgstr ""
+#: templates/about.html:13
+msgid "We want to be open and clear:"
+msgstr "우리는 투명하고 명확하게 공개하고자 합니다:"
 
-#: pinit/templates/home.html:16
-msgid "Download"
-msgstr ""
-
-#: pinit/templates/home.html:19
-msgid "By using our service you accept our"
-msgstr ""
-
-#: pinit/templates/home.html:19 templates/footer.html:34
-msgid "Terms of Service"
-msgstr ""
-
-#: pinit/templates/home.html:19
-msgid "and"
-msgstr ""
-
-#: pinit/templates/home.html:19 templates/footer.html:33
-msgid "Privacy Policy"
-msgstr ""
-
-#: pinit/templates/home.html:22
-msgid "How to download? Watch the tutorial"
-msgstr ""
-
-#: pinit/templates/home.html:28
-msgid "Scanned by Norton™ Safe Web"
-msgstr ""
-
-#: pinit/templates/home.html:47
-msgid "Download video"
-msgstr ""
-
-#: pinit/templates/home.html:65
-msgid "Download More Videos"
-msgstr ""
-
-#: pinit/templates/home.html:73
-msgid "All Pinterest Downloader Resources"
-msgstr ""
-
-#: pinit/templates/home.html:77 templates/header.html:22
-msgid "Pinterest Image Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:80
-msgid "Pinterest GIFs Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:83
-msgid "Pinterest Bulk Video Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:88
-msgid "Pinterest Profile Picture Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:91
-msgid "Pinterest URL Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:94
-msgid "Pinterest Mp4 Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:100
-msgid "How to Download Pinterest Videos?"
-msgstr ""
-
-#: pinit/templates/home.html:101
+#: templates/about.html:15
 msgid ""
-"Download your favorite Pinterest pins quickly and easily in just a few steps."
+"PinCatch does not host or store any of the videos on our own servers. We "
+"only fetch the video from Pinterest’s server when you make a request."
 msgstr ""
+"PinCatch는 자체 서버에 동영상을 호스팅하거나 저장하지 않습니다. 사용자가 요청할 때만 Pinterest의 서버에서 동영상을 "
+"가져옵니다."
 
-#: pinit/templates/home.html:108
-msgid "Copy Pinterest URL"
-msgstr ""
-
-#: pinit/templates/home.html:109
-msgid "Find the video on Pinterest and copy its URL"
-msgstr ""
-
-#: pinit/templates/home.html:116
-msgid "Paste URL"
-msgstr ""
-
-#: pinit/templates/home.html:117
-msgid "Paste the URL in the input field above"
-msgstr ""
-
-#: pinit/templates/home.html:124
-msgid "Download Video"
-msgstr ""
-
-#: pinit/templates/home.html:125
-msgid "Click download and save your video instantly"
-msgstr ""
-
-#: pinit/templates/home.html:132 pinit/templates/home.html:378
-msgid "What’s the best way to download Pinterest videos on iPhone?"
-msgstr ""
-
-#: pinit/templates/home.html:133
+#: templates/about.html:16
 msgid ""
-"Step-by-step with screenshots, learn how to quickly download Pinterest "
-"videos, images, and GIFs using our Pint Downloader tool in a simple and easy "
-"way."
-msgstr ""
+"We do not change video content. We only provide a method to download what is"
+" already available publicly."
+msgstr "동영상 콘텐츠는 변경하지 않습니다. 이미 공개적으로 제공되는 콘텐츠를 다운로드할 수 있는 방법만 제공합니다."
 
-#: pinit/templates/home.html:139
-msgid "What are the features of Pinterest Video Downloader?"
-msgstr ""
-
-#: pinit/templates/home.html:140
+#: templates/about.html:17
 msgid ""
-"PVD Tool is dedicated to making your Pinterest video downloading experience "
-"smooth and effortless."
+"We respect the rights of the creators. If someone owns a video, and they "
+"want it removed from our service, we will remove it quickly when they show "
+"proof they own it."
 msgstr ""
+"당사는 크리에이터의 권리를 존중합니다. 누군가 동영상을 소유하고 있고 해당 동영상을 서비스에서 삭제해 달라고 요청하는 경우, 소유하고 "
+"있다는 증거를 제시하면 신속하게 삭제합니다."
 
-#: pinit/templates/home.html:148
-msgid "Easy To Use"
-msgstr ""
-
-#: pinit/templates/home.html:149
+#: templates/about.html:18
 msgid ""
-"Just three steps, download a Pinterest video to your computer in no time."
-msgstr ""
+"We try to follow Pinterest’s rules and copyright laws. If any rule or law "
+"changes, we will update our policies."
+msgstr "당사는 Pinterest의 규정과 저작권법을 준수하기 위해 노력합니다. 규칙이나 법률이 변경되면 정책을 업데이트할 것입니다."
 
-#: pinit/templates/home.html:158
-msgid "Powerful"
-msgstr ""
-
-#: pinit/templates/home.html:159
+#: templates/about.html:20
 msgid ""
-"Our Pinterest video downloader also supports download images, Story Pins."
-msgstr ""
+"Thank you for using PinCatch. We hope it helps you enjoy Pinterest videos "
+"more flexibly."
+msgstr "PinCatch를 이용해 주셔서 감사합니다. Pinterest 동영상을 더욱 유연하게 즐기는 데 도움이 되길 바랍니다."
 
-#: pinit/templates/home.html:168
-msgid "Full Free"
-msgstr ""
+#: templates/contactUs.html:8
+msgid "CONTACT US"
+msgstr "문의하기"
 
-#: pinit/templates/home.html:169
+#: templates/contactUs.html:11
+msgid "If you want to get in touch with us, here is how: "
+msgstr "문의를 원하시면 여기를 클릭하세요:"
+
+#: templates/contactUs.html:12
+msgid "Email: "
+msgstr "이메일:"
+
+#: templates/contactUs.html:13
+msgid "Website: "
+msgstr "웹사이트:"
+
+#: templates/contactUs.html:14
+msgid "You can send us:"
+msgstr "보내주세요:"
+
+#: templates/contactUs.html:16
+msgid "Questions or Feedback"
+msgstr "질문 또는 피드백"
+
+#: templates/contactUs.html:17
+msgid "Requests to remove content"
+msgstr "콘텐츠 삭제 요청"
+
+#: templates/contactUs.html:18
+msgid "Privacy concerns"
+msgstr "개인 정보 보호 문제"
+
+#: templates/contactUs.html:19
+msgid "Legal or copyright notices"
+msgstr "법률 또는 저작권 고지"
+
+#: templates/contactUs.html:21
+msgid "We aim to respond within 24 to 48 hours."
+msgstr "24시간에서 48시간 이내에 답변하는 것을 목표로 하고 있습니다."
+
+#: templates/copyrightPolicy.html:8
+msgid "Copyright Infringement Policy"
+msgstr "저작권 침해 정책"
+
+#: templates/copyrightPolicy.html:11
 msgid ""
-"PVD Tool Pinterest video downloader is made with love and we promise it will "
-"always be free."
+"This Anti-Copyright Policy is for compliance with the DMCA (Digital "
+"Millennium Copyright Act) in the U.S. and similar laws elsewhere. We aim to "
+"respond quickly to remove infringing content when owners assert rights."
 msgstr ""
+"본 저작권 침해 방지 정책은 미국의 DMCA(디지털 밀레니엄 저작권법) 및 기타 유사한 법률을 준수하기 위한 것입니다. 당사는 소유자가 "
+"권리를 주장할 경우 신속하게 대응하여 저작권을 침해하는 콘텐츠를 삭제하는 것을 목표로 합니다."
 
-#: pinit/templates/home.html:178
-msgid "Efficient"
-msgstr ""
+#: templates/copyrightPolicy.html:12
+msgid "Our Role & Safe Harbor"
+msgstr "당사의 역할 및 세이프하버"
 
-#: pinit/templates/home.html:179
+#: templates/copyrightPolicy.html:13
 msgid ""
-"PVD Tool provides a Chrome extension to help you improve the efficiency of "
-"Pinterest video downloads."
+"PinCatch acts as a service that helps users fetch content from Pinterest. We"
+" are not the origin of copyrighted material. Under U.S. law, we may qualify "
+"for “safe harbor” protection under DMCA if we follow the rules of takedown "
+"and counter notice."
 msgstr ""
+"PinCatch는 사용자가 Pinterest에서 콘텐츠를 가져올 수 있도록 도와주는 서비스 역할을 합니다. 당사는 저작권이 있는 자료의 "
+"출처가 아닙니다. 미국 법률에 따라 당사는 게시 중단 및 반대 통지 규칙을 준수하는 경우 DMCA에 따른 '세이프 하버' 보호를 받을 "
+"자격이 있을 수 있습니다."
 
-#: pinit/templates/home.html:188
-msgid "No Account Needed"
-msgstr ""
+#: templates/copyrightPolicy.html:14
+msgid "How to File a DMCA Notice (Takedown Request)"
+msgstr "DMCA 신고(게시 중단 요청) 제출 방법"
 
-#: pinit/templates/home.html:189
+#: templates/copyrightPolicy.html:15
 msgid ""
-"PVD Tool doesn't want you to register an account in order to use the "
-"Pinterest free downloader."
+"If you own a copyrighted video or content and you believe it is accessible "
+"via PinCatch in violation of your rights, send us a written notice with:"
 msgstr ""
+"저작권이 있는 동영상이나 콘텐츠를 소유하고 있으며 해당 콘텐츠가 귀하의 권리를 침해하여 PinCatch를 통해 액세스되고 있다고 생각되면"
+" 서면 통지를 보내주세요:"
 
-#: pinit/templates/home.html:198
-msgid "All Platform Supported"
-msgstr ""
+#: templates/copyrightPolicy.html:17
+msgid "Your full name, address, phone number, and email address"
+msgstr "귀하의 성명, 주소, 전화번호, 이메일 주소"
 
-#: pinit/templates/home.html:199
+#: templates/copyrightPolicy.html:18
+msgid "A description (title, URL, etc.) of your copyrighted work"
+msgstr "저작권이 있는 저작물에 대한 설명(제목, URL 등)"
+
+#: templates/copyrightPolicy.html:19
+msgid "The exact URL on PinCatch (or in our logs) where the content appears"
+msgstr "콘텐츠가 표시되는 PinCatch의 정확한 URL(또는 로그에 있는 URL)"
+
+#: templates/copyrightPolicy.html:20
 msgid ""
-"PVD Tool is an online service that works on all platforms like Android or "
-"iOS, windows, mac, or Linux."
-msgstr ""
+"A statement that you believe in good faith that the use is not allowed by "
+"the copyright owner"
+msgstr "저작권 소유자가 사용을 허용하지 않는다고 선의로 믿는다는 진술서"
 
-#: pinit/templates/home.html:209
-msgid "What are the Benefits of Using Pinterest Video Downloader Online?"
-msgstr ""
-
-#: pinit/templates/home.html:216
-msgid "All-in-One Tool"
-msgstr ""
-
-#: pinit/templates/home.html:217
+#: templates/copyrightPolicy.html:21
 msgid ""
-"PVD Tool brings you a complete set of Pinterest download tools, including "
-"video, image, GIF, and Story Pin downloaders, making it the easiest way to "
-"save your favorite content."
-msgstr ""
+"A statement under penalty of perjury that the information is accurate and "
+"that you are the copyright owner or authorized agent"
+msgstr "위증 시 처벌을 받을 수 있다는 조건 하에 정보가 정확하며 귀하가 저작권 소유자 또는 권한이 있는 대리인임을 확인하는 진술서"
 
-#: pinit/templates/home.html:225
-msgid "High-Quality Downloads"
-msgstr ""
+#: templates/copyrightPolicy.html:22
+msgid "Your electronic signature (or physical signature)"
+msgstr "전자 서명(또는 실제 서명)"
 
-#: pinit/templates/home.html:226
+#: templates/copyrightPolicy.html:24
+msgid "Send your notice via email to:"
+msgstr "이메일을 통해 알림을 보내세요:"
+
+#: templates/copyrightPolicy.html:25
+msgid "Once we get a valid DMCA notice, we will:"
+msgstr "유효한 DMCA 통지를 받으면 바로 처리합니다:"
+
+#: templates/copyrightPolicy.html:27
+msgid "Remove or disable access to the infringing content"
+msgstr "침해 콘텐츠에 대한 액세스 제거 또는 비활성화"
+
+#: templates/copyrightPolicy.html:28
+msgid "Notify the user who requested the content"
+msgstr "콘텐츠를 요청한 사용자에게 알림"
+
+#: templates/copyrightPolicy.html:29
+msgid "Keep records of the request"
+msgstr "요청 기록 보관"
+
+#: templates/copyrightPolicy.html:31
+msgid " Counter-Notice by the User"
+msgstr " 사용자에 의한 반대 통지"
+
+#: templates/copyrightPolicy.html:32
 msgid ""
-"Download Pinterest videos in 4K or the best quality available, so you always "
-"enjoy clear and sharp visuals."
+"If someone believes the content was wrongly removed (for example, they had "
+"the right to use it), they may send a counter-notice containing:"
 msgstr ""
+"콘텐츠가 잘못 삭제되었다고 생각하는 경우(예: 콘텐츠에 대한 사용 권한이 있음), 해당 콘텐츠에 대한 이의제기 통지를 보낼 수 있습니다:"
 
-#: pinit/templates/home.html:235
-msgid "Works on Any Device"
-msgstr ""
+#: templates/copyrightPolicy.html:34
+msgid "Their name, address, and email"
+msgstr "이름, 주소, 이메일"
 
-#: pinit/templates/home.html:236
+#: templates/copyrightPolicy.html:35
+msgid "Description of content removed and its previous location"
+msgstr "삭제된 콘텐츠에 대한 설명 및 이전 위치"
+
+#: templates/copyrightPolicy.html:36
 msgid ""
-"Whether you're on Android, iOS, Windows, Mac, or even Xiaomi, the Pinterest "
-"video downloader works smoothly across all devices and systems."
-msgstr ""
+"Statement that under penalty of perjury, they believe the content was "
+"wrongly removed"
+msgstr "위증 시 처벌을 받을 수 있으며 콘텐츠가 잘못 삭제되었다고 생각한다는 진술서"
 
-#: pinit/templates/home.html:247
-msgid "What People Saying"
-msgstr ""
+#: templates/copyrightPolicy.html:37
+msgid "Consent to jurisdiction of a federal court (if in the  U.S.)"
+msgstr "연방법원 관할권에 대한 동의(미국에 있는 경우)"
 
-#: pinit/templates/home.html:248
+#: templates/copyrightPolicy.html:38
+msgid "Their signature"
+msgstr "그들의 시그니처"
+
+#: templates/copyrightPolicy.html:40
 msgid ""
-"Eusmod tempor dui incididunt utas labore dolore magna ipsum dique sed enim "
-"aud lorem ipsum dolor sit amet consectetur adipiscing elit."
+"If valid, we may restore the content after waiting the required time (e.g., "
+"10-14 business days) unless the copyright owner files a lawsuit."
 msgstr ""
+"유효한 경우 저작권 소유자가 소송을 제기하지 않는 한 필요한 시간(예: 영업일 기준 10~14일)을 기다린 후 콘텐츠를 복원할 수 "
+"있습니다."
 
-#: pinit/templates/home.html:253
+#: templates/copyrightPolicy.html:41
+msgid "Repeat Infringers"
+msgstr "반복 침해자"
+
+#: templates/copyrightPolicy.html:42
 msgid ""
-"Eusmod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem "
-"ipsum do dolor sit amet consectetur adipiscing elit sed eiusmod tempor "
-"incididunt."
-msgstr ""
+"We may terminate accounts or block users who repeatedly infringe copyrights."
+msgstr "반복적으로 저작권을 침해하는 사용자는 계정을 해지하거나 차단할 수 있습니다."
 
-#: pinit/templates/home.html:256 pinit/templates/home.html:264
-#: pinit/templates/home.html:272 pinit/templates/home.html:279
-msgid "Pinterest User"
-msgstr ""
+#: templates/copyrightPolicy.html:43
+msgid "Designated Copyright Agent"
+msgstr "저작권 대리인 지정"
 
-#: pinit/templates/home.html:261 pinit/templates/home.html:269
-#: pinit/templates/home.html:276
+#: templates/copyrightPolicy.html:44
 msgid ""
-"Enumod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem "
-"ipsum do dolor sit amet consectetur adipiscing elit sed eiusmod tempor "
-"incididunt."
+"If you wish, register a “Designated Copyright Agent” to receive notices "
+"legally. This helps your site comply with DMCA."
 msgstr ""
+"원하는 경우 '지정 저작권 대리인'을 등록하여 합법적으로 통지를 받을 수 있습니다. 이렇게 하면 사이트가 DMCA를 준수하는 데 도움이 "
+"됩니다."
 
-#: pinit/templates/home.html:288
-msgid "Knowledge Base"
-msgstr ""
+#: templates/copyrightPolicy.html:45
+msgid "False Claims"
+msgstr "허위 청구"
 
-#: pinit/templates/home.html:298 pinit/templates/home.html:313
-#: pinit/templates/home.html:328
-msgid "Why Small Businesses Win Big With Local Marketing"
-msgstr ""
-
-#: pinit/templates/home.html:340
-msgid "Frequently Asked Questions"
-msgstr ""
-
-#: pinit/templates/home.html:343
-msgid "Is pinterest downloader safe?"
-msgstr ""
-
-#: pinit/templates/home.html:349
+#: templates/copyrightPolicy.html:46
 msgid ""
-"Most orders ship within 1–2 business days and arrive in 3–7 days depending "
-"on location."
+"If someone knowingly misuses DMCA notices or counter-notices (for example, "
+"false claims), they may be liable for damages under the law."
 msgstr ""
+"누군가 고의로 DMCA 통지 또는 이의제기 통지를 오용하는 경우(예: 허위 청구), 해당 사용자는 법에 따라 손해배상 책임을 질 수 "
+"있습니다."
 
-#: pinit/templates/home.html:355
-msgid "How can I download Pinterest content on my PC?"
-msgstr ""
+#: templates/copyrightPolicy.html:47
+msgid "Other Jurisdictions"
+msgstr "기타 관할 지역"
 
-#: pinit/templates/home.html:361
+#: templates/copyrightPolicy.html:48
 msgid ""
-"Yes, we ship worldwide. Taxes and duties may apply based on destination."
+"Even though the DMCA is U.S. law, copyright laws exist in many countries. We"
+" aim to follow global rules and remove infringing content when we are "
+"notified, regardless of where the owner or user is."
 msgstr ""
-
-#: pinit/templates/home.html:367
-msgid "Is there a Pinterest downloader available for Mac?"
-msgstr ""
-
-#: pinit/templates/home.html:373 pinit/templates/home.html:384
-#: pinit/templates/home.html:395 pinit/templates/home.html:406
-#: pinit/templates/home.html:417 pinit/templates/home.html:428
-msgid ""
-"Items can be returned within 30 days in original packaging. Start a return "
-"in your account."
-msgstr ""
-
-#: pinit/templates/home.html:389
-msgid "Can i pinterest video downloader without watermark?"
-msgstr ""
-
-#: pinit/templates/home.html:400
-msgid "Where do pinterest downloads go on iphone?"
-msgstr ""
-
-#: pinit/templates/home.html:411
-msgid "Why is my pinterest not downloading pictures?"
-msgstr ""
-
-#: pinit/templates/home.html:422
-msgid "Can books be downloaded from pinterest?"
-msgstr ""
+"DMCA는 미국 법이지만 저작권법은 여러 국가에 존재합니다. Facebook은 소유자나 사용자의 위치에 관계없이 글로벌 규칙을 준수하고 "
+"저작권을 침해하는 콘텐츠에 대한 통지를 받으면 삭제하는 것을 목표로 합니다."
 
 #: templates/footer.html:6
-msgid "About PVD Tool"
-msgstr ""
+msgid "Quick Links"
+msgstr "빠른 링크"
 
-#: templates/footer.html:7
-msgid ""
-"PVD Tool is a free online service that allows you to download Pinterest "
-"videos, images, and GIFs quickly and easily. Our mission is to provide a "
-"seamless downloading experience for all Pinterest users."
-msgstr ""
+#: templates/footer.html:8 templates/header.html:20 templates/index.html:263
+msgid "Home"
+msgstr "홈"
+
+#: templates/footer.html:9
+msgid "About Us"
+msgstr "회사 소개"
+
+#: templates/footer.html:10 templates/header.html:23
+msgid "Blog"
+msgstr "블로그"
+
+#: templates/footer.html:14
+msgid "Support"
+msgstr "지원"
+
+#: templates/footer.html:16
+msgid "Contact Us"
+msgstr "문의하기"
 
 #: templates/footer.html:17
-msgid "Quick Links"
-msgstr ""
+msgid "Privacy Policy"
+msgstr "개인정보 보호정책"
 
-#: templates/footer.html:19 templates/header.html:21
-msgid "Home"
-msgstr ""
+#: templates/footer.html:18
+msgid "Terms And Conditions"
+msgstr "이용 약관"
 
-#: templates/footer.html:20
-msgid "How It Works"
-msgstr ""
-
-#: templates/footer.html:21
-msgid "Features"
-msgstr ""
-
-#: templates/footer.html:22
-msgid "Benefits"
-msgstr ""
+#: templates/footer.html:19
+msgid "Copyright Policy"
+msgstr "저작권 정책"
 
 #: templates/footer.html:23
-msgid "Testimonials"
-msgstr ""
+msgid "Disclaimer"
+msgstr "면책 조항"
 
 #: templates/footer.html:24
-msgid "FAQ"
-msgstr ""
-
-#: templates/footer.html:29
-msgid "Support"
-msgstr ""
-
-#: templates/footer.html:31
-msgid "Contact Us"
-msgstr ""
-
-#: templates/footer.html:32
-msgid "Help Center"
-msgstr ""
-
-#: templates/footer.html:35
-msgid "Cookie Policy"
-msgstr ""
-
-#: templates/footer.html:40
-msgid "Disclaimer"
-msgstr ""
-
-#: templates/footer.html:41
 msgid ""
 "PinCatch Tool is not affiliated with Pinterest. All trademarks, logos, and "
 "videos belong to their respective owners. This service is for personal use "
 "only."
 msgstr ""
+"PinCatch 도구는 Pinterest와 제휴 관계가 없습니다. 모든 상표, 로고 및 동영상은 해당 소유자의 자산입니다. 이 서비스는 "
+"개인 용도로만 사용할 수 있습니다."
 
-#: templates/footer.html:49
+#: templates/footer.html:28
 msgid "2025 PinCatch. All Rights Reserved. | Designed with"
-msgstr ""
+msgstr "2025 PinCatch. 모든 권리 보유. | 설계자"
 
-#: templates/footer.html:50
+#: templates/footer.html:29
 msgid "for Pinterest users"
-msgstr ""
+msgstr "Pinterest 사용자를 위한"
 
-#: templates/header.html:23
+#: templates/header.html:21
+msgid "Pinterest Image Downloader"
+msgstr "Pinterest 이미지 다운로더"
+
+#: templates/header.html:22
 msgid "Pinterest GIF Downloader"
-msgstr ""
+msgstr "Pinterest GIF 다운로더"
 
 #: templates/header.html:24
-msgid "Blogs"
-msgstr ""
-
-#: templates/header.html:25
 msgid "About"
-msgstr ""
+msgstr "정보"
 
-#: templates/header.html:39
-msgid "Change"
-msgstr ""
+#: templates/header.html:42
+msgid "Language"
+msgstr "언어"
 
-#: templates/index.html:8
-msgid "Pinterest Video Downloader - Image, GIFs & Without Watermark"
+#: templates/index.html:11
+msgid ""
+"pinterest video downloader, pinterest downloader, download pinterest videos,"
+" pinterest mp4, pinterest gif, pinterest image downloader, bulk download "
+"pinterest"
 msgstr ""
+"핀터 비디오 다운로더, 핀터 다운로더, 핀터 비디오 다운로드, 핀터 mp4, 핀터 gif, 핀터 이미지 다운로더, 대량 다운로드 핀터"
+
+#: templates/index.html:75
+msgid "PinCatch"
+msgstr "PinCatch"
+
+#: templates/index.html:88 templates/index.html:167
+msgid "PinCatch - Pinterest Video Downloader"
+msgstr "PinCatch - Pinterest 동영상 다운로더"
+
+#: templates/index.html:192
+msgid "Is this Pinterest downloader free to use?"
+msgstr "이 Pinterest 다운로더는 무료로 사용할 수 있나요?"
+
+#: templates/index.html:195
+msgid ""
+"Yes, PinCatch is entirely safe to use. We don't require a login, don't store"
+" your videos, and use secure connections. Our privacy-protected tool has "
+"been scanned by Norton Safe Web."
+msgstr ""
+"예, PinCatch는 전적으로 안전하게 사용할 수 있습니다. 로그인이 필요하지 않고, 동영상을 저장하지 않으며, 보안 연결을 "
+"사용합니다. 개인 정보 보호 도구는 Norton Safe Web에서 검사했습니다."
+
+#: templates/index.html:200
+msgid "How can I download Pinterest content on my PC?"
+msgstr "내 PC에 Pinterest 콘텐츠를 다운로드하려면 어떻게 해야 하나요?"
+
+#: templates/index.html:203
+msgid ""
+"Simply open PinCatch in your browser on Windows, Mac, or Linux. Copy the "
+"Pinterest link, paste it in our input field, and click download. The video "
+"or image will save directly to your computer, no software installation "
+"needed."
+msgstr ""
+"Windows, Mac 또는 Linux의 브라우저에서 PinCatch를 열기만 하면 됩니다. Pinterest 링크를 복사하여 입력 "
+"필드에 붙여넣고 다운로드를 클릭합니다. 동영상이나 이미지가 컴퓨터에 바로 저장되며, 별도의 소프트웨어 설치가 필요하지 않습니다."
+
+#: templates/index.html:208
+msgid "Is there a Pinterest downloader available for Mac?"
+msgstr "Mac에서 사용할 수 있는 Pinterest 다운로더가 있나요?"
+
+#: templates/index.html:211
+msgid ""
+"PinCatch works on Mac through any browser. It's an online downloader, just "
+"visit our site and start downloading without installing anything."
+msgstr ""
+"PinCatch는 모든 브라우저를 통해 Mac에서 작동합니다. 온라인 다운로더로, 저희 사이트를 방문하여 아무것도 설치하지 않고 "
+"다운로드를 시작하세요."
+
+#: templates/index.html:216
+msgid "What’s the best way to download Pinterest videos on iPhone?"
+msgstr "iPhone에서 Pinterest 동영상을 다운로드하는 가장 좋은 방법은 무엇인가요?"
+
+#: templates/index.html:219
+msgid ""
+"Open Pinterest in Safari, copy the video link, visit PinCatch, paste the "
+"URL, and tap download. Your video saves directly to Photos in full HD "
+"quality. Works perfectly on iOS without any app."
+msgstr ""
+"Safari에서 Pinterest를 열고 동영상 링크를 복사한 다음 PinCatch로 이동하여 URL을 붙여넣고 다운로드를 탭합니다. "
+"동영상이 풀 HD 화질로 사진에 바로 저장됩니다. 앱 없이 iOS에서 완벽하게 작동합니다."
+
+#: templates/index.html:224
+msgid "Can the Pinterest video downloader work without a watermark?"
+msgstr "Pinterest 동영상 다운로더가 워터마크 없이 작동할 수 있나요?"
+
+#: templates/index.html:227
+msgid ""
+"Yes! PinCatch downloads Pinterest videos without a watermark. You get clean,"
+" original-quality files ready to watch or share."
+msgstr ""
+"예! PinCatch는 워터마크 없이 Pinterest 동영상을 다운로드합니다. 깨끗한 원본 품질의 파일을 바로 시청하거나 공유할 수 "
+"있습니다."
+
+#: templates/index.html:232
+msgid "Where do Pinterest downloads go on iPhone?"
+msgstr "iPhone에서 Pinterest 다운로드는 어디로 이동하나요?"
+
+#: templates/index.html:235
+msgid ""
+"Downloaded videos save to your iPhone's Photos app, while images and GIFs "
+"also go to Photos. Check your Downloads folder in Files for other formats."
+msgstr ""
+"다운로드한 동영상은 iPhone의 사진 앱에 저장되며, 이미지와 GIF도 사진으로 이동합니다. 다른 형식은 파일의 다운로드 폴더에서 "
+"확인하세요."
+
+#: templates/index.html:240
+msgid "Why is my Pinterest not downloading pictures?"
+msgstr "내 Pinterest에서 사진이 다운로드되지 않는 이유는 무엇인가요?"
+
+#: templates/index.html:243
+msgid ""
+"This might be a browser permission issue. Make sure you've allowed downloads"
+" in your browser settings. Try copying the link again and ensure you have a "
+"stable internet connection."
+msgstr ""
+"브라우저 권한 문제일 수 있습니다. 브라우저 설정에서 다운로드를 허용했는지 확인하세요. 링크를 다시 복사하고 인터넷 연결이 안정적인지 "
+"확인하세요."
+
+#: templates/index.html:248
+msgid "Can books be downloaded from Pinterest?"
+msgstr "Pinterest에서 책을 다운로드할 수 있나요?"
+
+#: templates/index.html:251
+msgid ""
+"While Pinterest may have book-related pins, PinCatch specializes in "
+"downloading videos, images, and GIFs. For actual books, you'll need to visit"
+" the original source linked in the pin."
+msgstr ""
+"Pinterest에는 책 관련 핀이 있을 수 있지만, PinCatch는 동영상, 이미지, GIF 다운로드에 특화되어 있습니다. 실제 책을"
+" 보려면 핀에 링크된 원본 소스를 방문해야 합니다."
+
+#: templates/index.html:269
+msgid "blog"
+msgstr "블로그"
+
+#: templates/privacyPolicy.html:8
+msgid "PRIVACY POLICY"
+msgstr "개인정보 보호정책"
+
+#: templates/privacyPolicy.html:11
+msgid ""
+"This Privacy Policy explains what information PinCatch may collect, how we "
+"use it, and your rights. We take your privacy seriously."
+msgstr ""
+"본 개인정보 처리방침은 PinCatch가 수집할 수 있는 정보, 정보 사용 방법 및 귀하의 권리에 대해 설명합니다. 당사는 귀하의 "
+"개인정보를 중요하게 생각합니다."
+
+#: templates/privacyPolicy.html:12
+msgid "Information We Collect"
+msgstr "당사가 수집하는 정보"
+
+#: templates/privacyPolicy.html:13
+msgid ""
+"We collect limited information to run the site safely and show ads (like "
+"Google AdSense). The kinds of information include:"
+msgstr ""
+"당사는 사이트를 안전하게 운영하고 광고(예: Google 애드센스)를 표시하기 위해 제한된 정보를 수집합니다. 수집하는 정보의 종류는 "
+"다음과 같습니다:"
+
+#: templates/privacyPolicy.html:15
+msgid ""
+"Technical data: your browser type, your device kind, your IP address (or a "
+"part of it), and how you use our website (pages you visit, clicks, etc.)"
+msgstr "기술 데이터: 브라우저 유형, 기기 종류, IP 주소(또는 그 일부), 웹사이트 사용 방법(방문한 페이지, 클릭 수 등)."
+
+#: templates/privacyPolicy.html:16
+msgid ""
+"Cookies and tracking: we use cookies and similar tools to remember your "
+"preferences and to support advertisement networks."
+msgstr "쿠키 및 추적: 당사는 쿠키 및 유사한 도구를 사용하여 사용자의 기본 설정을 기억하고 광고 네트워크를 지원합니다."
+
+#: templates/privacyPolicy.html:17
+msgid ""
+"No personal profile unless you provide it: we do not require you to "
+"register. If you do contact us / send notices, we may have your email or "
+"other contact info."
+msgstr ""
+"사용자가 제공하지 않는 한 개인 프로필 없음: 당사는 사용자에게 등록을 요구하지 않습니다. 당사에 연락하거나 알림을 보내는 경우 이메일 "
+"또는 기타 연락처 정보를 보유할 수 있습니다."
+
+#: templates/privacyPolicy.html:19
+msgid "How We Use Information"
+msgstr "정보 사용 방법"
+
+#: templates/privacyPolicy.html:20
+msgid "We use your data to:"
+msgstr "당사는 귀하의 데이터를 다음과 같은 용도로 사용합니다:"
+
+#: templates/privacyPolicy.html:22
+msgid "Keep the website running properly and securely"
+msgstr "웹사이트를 적절하고 안전하게 운영하세요"
+
+#: templates/privacyPolicy.html:23
+msgid "Analyze and improve our service"
+msgstr "서비스 분석 및 개선"
+
+#: templates/privacyPolicy.html:24
+msgid "Show relevant ads (AdSense)"
+msgstr "관련성 높은 광고 표시(애드센스)"
+
+#: templates/privacyPolicy.html:25
+msgid "Detect abuse, fraud, or bad use"
+msgstr "남용, 사기 또는 부정 사용 감지"
+
+#: templates/privacyPolicy.html:26
+msgid "Process legal requests (for example, copyright takedown notices)"
+msgstr "법적 요청 처리(예: 저작권 게시 중단 통지)"
+
+#: templates/privacyPolicy.html:28
+msgid "Sharing Information"
+msgstr "정보 공유"
+
+#: templates/privacyPolicy.html:29
+msgid ""
+"We do not sell your personal data to third parties. But we may share "
+"limited, anonymized data (not your name or email) with:"
+msgstr ""
+"당사는 회원님의 개인정보를 제3자에게 판매하지 않습니다. 하지만 이름이나 이메일이 아닌 제한된 익명화된 데이터를 공유할 수 있습니다:"
+
+#: templates/privacyPolicy.html:31
+msgid "Ad networks (Google AdSense)"
+msgstr "광고 네트워크(Google 애드센스)"
+
+#: templates/privacyPolicy.html:32
+msgid "Analytics services (to understand website traffic)"
+msgstr "애널리틱스 서비스(웹사이트 트래픽 파악을 위한)"
+
+#: templates/privacyPolicy.html:33
+msgid "Legal authorities if required by law"
+msgstr "법률에 의해 요구되는 경우 사법 당국"
+
+#: templates/privacyPolicy.html:35
+msgid "Cookies & Similar Technologies"
+msgstr "쿠키 및 유사 기술"
+
+#: templates/privacyPolicy.html:36
+msgid "We use cookies to:"
+msgstr "당사는 쿠키를 다음과 같은 목적으로 사용합니다:"
+
+#: templates/privacyPolicy.html:38
+msgid "Remember your preferences"
+msgstr "기본 설정 기억하기"
+
+#: templates/privacyPolicy.html:39
+msgid "Help ads know which ads to show"
+msgstr "광고주가 어떤 광고를 표시할지 알 수 있도록 지원"
+
+#: templates/privacyPolicy.html:40
+msgid "Monitor usage patterns"
+msgstr "사용 패턴 모니터링"
+
+#: templates/privacyPolicy.html:42
+msgid ""
+"You can disable or block cookies from your browser settings, but some "
+"features of the site may not work well if cookies are disabled."
+msgstr ""
+"브라우저 설정에서 쿠키를 비활성화하거나 차단할 수 있지만 쿠키를 비활성화하면 사이트의 일부 기능이 제대로 작동하지 않을 수 있습니다."
+
+#: templates/privacyPolicy.html:43
+msgid "Children’s Privacy"
+msgstr "어린이 개인정보 보호"
+
+#: templates/privacyPolicy.html:44
+msgid ""
+"PinCatch does not knowingly collect personal information from children under"
+" age 13. If we become aware that a child under 13 gave us personal info, we "
+"will remove it."
+msgstr ""
+"핀캐치는 13세 미만 아동의 개인정보를 고의로 수집하지 않습니다. 13세 미만의 아동이 개인정보를 제공한 사실을 알게 되는 경우 해당 "
+"정보를 삭제합니다."
+
+#: templates/privacyPolicy.html:45
+msgid "Links to Other Sites"
+msgstr "다른 사이트로 연결되는 링크"
+
+#: templates/privacyPolicy.html:46
+msgid ""
+"PinCatch might show ads or links to third-party sites. These sites have "
+"their own privacy policies. We are not responsible for what they do. We "
+"encourage you to read their privacy policies."
+msgstr ""
+"PinCatch는 타사 사이트로 연결되는 광고 또는 링크를 표시할 수 있습니다. 이러한 사이트에는 자체 개인정보 보호정책이 있습니다. "
+"당사는 이러한 사이트의 개인정보 취급방침에 대해 책임을 지지 않습니다. 해당 사이트의 개인정보 처리방침을 읽어보시기 바랍니다."
+
+#: templates/privacyPolicy.html:47
+msgid "Changes to Privacy Policy"
+msgstr "개인정보 처리방침 변경"
+
+#: templates/privacyPolicy.html:48
+msgid ""
+"We may change this policy from time to time. When we do, we will post the "
+"updated version here with a “Last Updated” date. By using PinCatch after "
+"changes, you accept the new policy."
+msgstr ""
+"당사는 이 정책을 수시로 변경할 수 있습니다. 변경 시 업데이트된 버전은 여기에 '마지막 업데이트' 날짜와 함께 게시됩니다. 변경 후 "
+"PinCatch를 사용하면 새로운 정책에 동의하는 것으로 간주됩니다."
+
+#: templates/termsAndConditions.html:8
+msgid "TERMS AND CONDITIONS"
+msgstr "이용 약관"
+
+#: templates/termsAndConditions.html:11
+msgid ""
+"These Terms & Conditions (“Terms”) tell you the rules for using PinCatch. By"
+" using our website, you accept these rules."
+msgstr ""
+"본 이용약관(\"약관\")은 핀캐치 이용에 관한 규칙을 설명합니다. 당사 웹사이트를 이용함으로써 귀하는 이러한 규칙에 동의하게 됩니다."
+
+#: templates/termsAndConditions.html:12
+msgid "Use for Personal, Non-Commercial Purposes Only"
+msgstr "개인적, 비상업적 목적으로만 사용"
+
+#: templates/termsAndConditions.html:13
+msgid ""
+"You may use PinCatch only to download Pinterest videos for your personal, "
+"noncommercial use. You may not use it to download videos for sale or for "
+"posting somewhere else without permission."
+msgstr ""
+"PinCatch는 개인적, 비상업적 용도로만 Pinterest 동영상을 다운로드하는 데 사용할 수 있습니다. 판매용 동영상을 "
+"다운로드하거나 다른 곳에 게시하기 위해 허가 없이 사용할 수 없습니다."
+
+#: templates/termsAndConditions.html:14
+msgid "No Hosting or Redistribution by PinCatch"
+msgstr "PinCatch에 의한 호스팅 또는 재배포 금지"
+
+#: templates/termsAndConditions.html:15
+msgid ""
+"PinCatch does not store, host, or upload videos. We link/content fetch from "
+"Pinterest servers only when you request. We are not the origin of the media "
+"content."
+msgstr ""
+"PinCatch는 동영상을 저장, 호스팅 또는 업로드하지 않습니다. 당사는 사용자가 요청할 때만 Pinterest 서버에서 링크/콘텐츠 "
+"가져오기를 수행합니다. 당사는 미디어 콘텐츠의 출처가 아닙니다."
+
+#: templates/termsAndConditions.html:16
+msgid "Respect Copyright and Intellectual Property"
+msgstr "저작권 및 지적 재산권 존중"
+
+#: templates/termsAndConditions.html:18
+msgid ""
+"You must respect the rights of content creators. If a video is copyrighted, "
+"you must have permission to use it beyond personal viewing."
+msgstr "콘텐츠 제작자의 권리를 존중해야 합니다. 동영상에 저작권이 있는 경우 개인적인 시청을 넘어서는 사용 권한이 있어야 합니다."
+
+#: templates/termsAndConditions.html:19
+msgid ""
+"You may not use downloaded videos to infringe copyright. For example, do not"
+" upload or share videos you don’t have the right to."
+msgstr ""
+"다운로드한 동영상을 저작권을 침해하는 용도로 사용해서는 안 됩니다. 예를 들어, 권한이 없는 동영상을 업로드하거나 공유하지 마세요."
+
+#: templates/termsAndConditions.html:20
+msgid ""
+"If you use downloaded content in a way that violates copyright laws, you are"
+" solely responsible."
+msgstr "다운로드한 콘텐츠를 저작권법을 위반하는 방식으로 사용하는 경우 전적으로 귀하의 책임입니다."
+
+#: templates/termsAndConditions.html:22
+msgid "Prohibited Uses"
+msgstr "금지된 사용"
+
+#: templates/termsAndConditions.html:23
+msgid "You may not use PinCatch to:"
+msgstr "PinCatch를 사용할 수 없습니다:"
+
+#: templates/termsAndConditions.html:25
+msgid "Violate laws or regulations"
+msgstr "법률 또는 규정 위반"
+
+#: templates/termsAndConditions.html:26
+msgid "Harass, defame, or harm others"
+msgstr "타인을 괴롭히거나 명예를 훼손하거나 해를 끼치는 행위"
+
+#: templates/termsAndConditions.html:27
+msgid "Send spam or do malicious acts"
+msgstr "스팸을 보내거나 악의적인 행위를 하는 경우"
+
+#: templates/termsAndConditions.html:28
+msgid "Violate copyrights or intellectual property"
+msgstr "저작권 또는 지적 재산권 위반"
+
+#: templates/termsAndConditions.html:29
+msgid "Reverse engineer or misuse our service"
+msgstr "서비스 리버스 엔지니어링 또는 오용"
+
+#: templates/termsAndConditions.html:31
+msgid "Disclaimers & Limitations"
+msgstr "면책 조항 및 제한 사항"
+
+#: templates/termsAndConditions.html:33
+msgid "PinCatch is not endorsed, authorized, or affiliated with Pinterest."
+msgstr "PinCatch는 Pinterest를 보증, 승인 또는 제휴하지 않습니다."
+
+#: templates/termsAndConditions.html:34
+msgid ""
+"We don’t guarantee that our service will always or perfect. Sometimes videos"
+" may not download."
+msgstr "저희 서비스가 항상 완벽하다고 보장할 수는 없습니다. 간혹 동영상이 다운로드되지 않을 수 있습니다."
+
+#: templates/termsAndConditions.html:35
+msgid "We are not responsible for loss or damage from using the service."
+msgstr "당사는 서비스 이용으로 인한 손실이나 손해에 대해 책임을 지지 않습니다."
+
+#: templates/termsAndConditions.html:36
+msgid ""
+"We do not guarantee that the content is legal to download in your country. "
+"You must check local law."
+msgstr "당사는 해당 콘텐츠가 귀하의 국가에서 합법적으로 다운로드할 수 있음을 보장하지 않습니다. 현지 법률을 확인해야 합니다."
+
+#: templates/termsAndConditions.html:38
+msgid "Termination"
+msgstr "해지"
+
+#: templates/termsAndConditions.html:39
+msgid ""
+"We may suspend or terminate your access at any time if you break these "
+"Terms. We may remove content or block users who misuse the service."
+msgstr ""
+"당사는 귀하가 본 약관을 위반하는 경우 언제든지 귀하의 액세스를 일시 중지하거나 해지할 수 있습니다. 당사는 콘텐츠를 삭제하거나 서비스를"
+" 오용하는 사용자를 차단할 수 있습니다."
+
+#: templates/termsAndConditions.html:40
+msgid "Changes to Terms"
+msgstr "약관 변경"
+
+#: templates/termsAndConditions.html:41
+msgid ""
+"We may update these Terms. We will post a new version on this page with a "
+"“Last Updated” date. By continuing to use PinCatch after changes, you accept"
+" the new Terms."
+msgstr ""
+"당사는 본 약관을 업데이트할 수 있습니다. 당사는 이 페이지에 \"최종 업데이트\" 날짜와 함께 새 버전을 게시할 것입니다. 변경 후에도"
+" PinCatch를 계속 사용하면 새로운 약관에 동의하는 것으로 간주됩니다."
+
+#: templates/termsAndConditions.html:42
+msgid "Governing Law & Jurisdiction"
+msgstr "준거법 및 관할권"
+
+#: templates/termsAndConditions.html:43
+msgid ""
+"These Terms are governed by the laws of the jurisdiction where PinCatch is "
+"registered (for example, your country). Any legal claims must be brought "
+"before the courts in that jurisdiction."
+msgstr ""
+"본 약관은 핀캐치가 등록된 관할권(예: 귀하의 국가)의 법률의 적용을 받습니다. 모든 법적 청구는 해당 관할권의 법원에 제기해야 합니다."
+
+#: views.py:134
+msgid "Pinterest Image Downloader - Save HD Photos from Pins"
+msgstr "Pinterest 이미지 다운로더 - 핀에서 HD 사진 저장하기"
+
+#: views.py:135
+msgid ""
+"Download Pinterest images in HD quality without installing any apps using "
+"PinCatch."
+msgstr "PinCatch를 사용하여 앱을 설치하지 않고도 Pinterest 이미지를 HD 화질로 다운로드하세요."
+
+#: views.py:156
+msgid "Pinterest GIF Downloader - Save Animated Pins Online"
+msgstr "Pinterest GIF 다운로더 - 애니메이션 핀을 온라인으로 저장하기"
+
+#: views.py:157
+msgid ""
+"Convert and download Pinterest GIFs instantly in high quality with the free "
+"PinCatch GIF downloader."
+msgstr "무료 PinCatch GIF 다운로더를 사용하여 고품질의 Pinterest GIF를 즉시 변환하고 다운로드하세요."
+
+#: views.py:178
+msgid "Pinterest URL Downloader - Save Animated Pins Online"
+msgstr "Pinterest URL 다운로더 - 애니메이션 핀을 온라인으로 저장하기"
+
+#: views.py:179
+msgid ""
+"Convert and download Pinterest URLs instantly in high quality with the free "
+"PinCatch Url downloader."
+msgstr "무료 PinCatch Url 다운로더를 사용하여 Pinterest URL을 고품질로 즉시 변환하고 다운로드하세요."
+
+#: views.py:192
+msgid "About PinCatch - Pinterest Video Downloader"
+msgstr "PinCatch 소개 - Pinterest 동영상 다운로더"
+
+#: views.py:193
+msgid ""
+"Learn more about the PinCatch downloader, our mission, and how we help "
+"creators save their favorite Pinterest content."
+msgstr ""
+"PinCatch 다운로더와 우리의 미션, 크리에이터가 좋아하는 Pinterest 콘텐츠를 저장하도록 돕는 방법에 대해 자세히 알아보세요."
+
+#: views.py:202
+msgid "Contact PinCatch Support"
+msgstr "PinCatch 지원팀에 문의"
+
+#: views.py:203
+msgid ""
+"Have questions about downloading Pinterest videos or removing content? Get "
+"in touch with the PinCatch support team."
+msgstr "Pinterest 동영상 다운로드 또는 콘텐츠 삭제에 대해 궁금한 점이 있나요? PinCatch 지원팀에 문의하세요."
+
+#: views.py:212
+msgid "PinCatch Privacy Policy"
+msgstr "핀캐치 개인정보 보호정책"
+
+#: views.py:213
+msgid ""
+"Understand how PinCatch processes downloader requests, what information we "
+"store, and how we protect user privacy."
+msgstr "PinCatch가 다운로더 요청을 처리하는 방법, 저장하는 정보, 사용자 개인정보를 보호하는 방법을 이해합니다."
+
+#: views.py:222
+msgid "PinCatch Terms & Conditions"
+msgstr "PinCatch 이용약관"
+
+#: views.py:223
+msgid ""
+"Review the allowed usage of the PinCatch Pinterest downloader, copyright "
+"responsibilities, and legal terms."
+msgstr "PinCatch Pinterest 다운로더의 허용된 사용, 저작권 책임 및 법적 약관을 검토하세요."
+
+#: views.py:232
+msgid "PinCatch Copyright & Takedown Policy"
+msgstr "PinCatch 저작권 및 삭제 정책"
+
+#: views.py:233
+msgid ""
+"Report copyright concerns and see how PinCatch responds to DMCA takedowns "
+"for Pinterest videos, GIFs, and images."
+msgstr ""
+"저작권 문제를 신고하고 Pinterest 동영상, GIF 및 이미지에 대한 DMCA 삭제에 PinCatch가 어떻게 대응하는지 "
+"알아보세요."

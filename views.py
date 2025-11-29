@@ -14,6 +14,7 @@ def _render_page_instance(request, page):
     # Ensure template context reflects the page's language (lang/dir attributes, translations).
     translation.activate(page.language)
     request.LANGUAGE_CODE = page.language
+    context_language_code = translation.get_language()
     breadcrumbs = [{'title': 'Home', 'url': 'home'}]
     if page.slug_url == Page.HOME_SLUG:
         breadcrumbs[-1]['url'] = None
@@ -27,6 +28,8 @@ def _render_page_instance(request, page):
         'head_html': page.head_html,
         'content': page.content,
         'breadcrumbs': breadcrumbs,
+        'LANGUAGE_CODE': context_language_code,
+        'LANGUAGE_BIDI': translation.get_language_bidi(),
     }
     # Surface latest blogs for dynamic home pages so templates can render them.
     if page.slug_url == Page.HOME_SLUG:

@@ -16,130 +16,123 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: blog/admin.py:58
 msgid "Category not found."
-msgstr "Không tìm thấy danh mục."
+msgstr "未找到类别。"
 
 #: blog/admin.py:64 blog/admin.py:228
 #, python-format
 msgid "Successfully triggered translation for %(name)s."
-msgstr "Đã kích hoạt thành công dịch thuật cho %(name)s."
+msgstr "成功触发 %(姓名)的翻译。"
 
 #: blog/admin.py:70 blog/admin.py:88 blog/admin.py:234 blog/admin.py:251
 #, python-format
 msgid "Failed to translate %(name)s: %(error)s"
-msgstr "Không thể dịch %(name)s: %(error)s"
+msgstr "翻译 %（名称）失败： %（错误）s"
 
 #: blog/admin.py:94
 #, python-format
 msgid "Successfully queued translation for %(count)d categories."
-msgstr "Đã xếp hàng thành công việc dịch cho %(count)d danh mục."
+msgstr "成功为 %(count)d 类别排队翻译。"
 
 #: blog/admin.py:97
 msgid "Translate selected categories"
-msgstr "Dịch các danh mục đã chọn"
+msgstr "翻译选定类别"
 
 #: blog/admin.py:104 blog/admin.py:107 blog/admin.py:177 blog/admin.py:180
 #: blog/admin.py:269 blog/admin.py:272
 msgid "Translate"
-msgstr "Dịch"
+msgstr "翻译"
 
 #: blog/admin.py:131
 msgid "Post not found."
-msgstr "Bài viết không tìm thấy."
+msgstr "未找到帖子。"
 
 #: blog/admin.py:137
 #, python-format
 msgid "Successfully triggered translation for %(title)s."
-msgstr "Đã kích hoạt thành công dịch thuật cho %(title)s."
+msgstr "成功触发 %(title)s 的翻译。"
 
 #: blog/admin.py:143 blog/admin.py:161
 #, python-format
 msgid "Failed to translate %(title)s: %(error)s"
-msgstr "Không thể dịch %(title)s: %(error)s"
+msgstr "翻译 %(标题)失败：%(错误)s"
 
 #: blog/admin.py:167
 #, python-format
 msgid "Successfully queued translation for %(count)d posts."
-msgstr "Đã xếp hàng thành công việc dịch cho %(count)d bài đăng."
+msgstr "成功为 %(count)d 个职位排队翻译。"
 
 #: blog/admin.py:170
 msgid "Translate selected posts"
-msgstr "Dịch các bài viết đã chọn"
+msgstr "翻译选定的帖子"
 
 #: blog/admin.py:192
 msgid "Meta"
-msgstr "Meta"
+msgstr "梅塔"
 
 #: blog/admin.py:193
 msgid "Head"
-msgstr "Đầu"
+msgstr "负责人"
 
 #: blog/admin.py:194
 msgid "Content"
-msgstr "Nội dung"
+msgstr "内容"
 
 #: blog/admin.py:195
 msgid "Timestamps"
-msgstr "Dấu thời gian"
+msgstr "时间戳"
 
 #: blog/admin.py:215
 msgid "Page not found."
-msgstr "Trang không tìm thấy."
+msgstr "未找到页面。"
 
 #: blog/admin.py:220
 #, python-format
 msgid ""
 "Translation can only be triggered from the default language (%(lang)s)."
-msgstr "Dịch thuật chỉ có thể được kích hoạt từ ngôn ngữ mặc định (%(lang)s)."
+msgstr "只能从默认语言 (%(lang)s) 触发翻译。"
 
 #: blog/admin.py:257
 #, python-format
 msgid "Successfully queued translation for %(count)d pages."
-msgstr "Đã xếp hàng thành công việc dịch cho %(count)d trang."
+msgstr "成功为 %(count)d 页排队翻译。"
 
 #: blog/admin.py:260
 msgid "Translate selected pages"
-msgstr "Dịch các trang đã chọn"
+msgstr "翻译选定页面"
 
 #: blog/templates/blog/detail.html:30
 msgid "Published on"
-msgstr "Được xuất bản vào"
+msgstr "出版日期"
 
 #: blog/views.py:34
 msgid "Pinterest Blog - Latest Guides & Tutorials"
-msgstr "Blog Pinterest - Hướng dẫn và bài viết mới nhất"
+msgstr "Pinterest 博客 - 最新指南与教程"
 
 #: blog/views.py:35
 msgid ""
 "Read fresh tips about Pinterest marketing, video downloading, and product "
 "updates from the PinCatch blog."
-msgstr ""
-"Đọc những mẹo mới nhất về tiếp thị trên Pinterest, tải video và cập nhật sản"
-" phẩm từ blog PinCatch."
+msgstr "从 PinCatch 博客阅读有关 Pinterest 营销、视频下载和产品更新的新鲜技巧。"
 
 #: blog/views.py:66
 #, python-format
 msgid "Pinterest Blog: %(category)s"
-msgstr "Blog Pinterest: %(category)s"
+msgstr "Pinterest 博客：%（类别"
 
 #: blog/views.py:67
 #, python-format
 msgid ""
 "Browse %(category)s articles and tutorials for Pinterest downloads, growth, "
 "and PinCatch updates."
-msgstr ""
-"Xem các bài viết và hướng dẫn về Pinterest downloads, tăng trưởng và cập "
-"nhật PinCatch trong danh mục %(category)s."
+msgstr "浏览 %（类别）的文章和教程，了解 Pinterest 下载、增长和 PinCatch 更新。"
 
 #: pincatch/seo.py:3 templates/index.html:8 templates/index.html:19
 #: templates/index.html:26 templates/index.html:96 templates/index.html:97
 msgid "Pinterest Video Downloader - Image, GIFs & Without Watermark"
-msgstr ""
-"Pinterest Video Downloader - Tải xuống video, hình ảnh, GIF và không có "
-"watermark"
+msgstr "Pinterest 视频下载器 - 图片、GIF 和无水印"
 
 #: pincatch/seo.py:5 templates/index.html:10 templates/index.html:20
 #: templates/index.html:27 templates/index.html:98 templates/index.html:171
@@ -147,25 +140,24 @@ msgid ""
 "Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K "
 "videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web."
 msgstr ""
-"Trình tải video Pinterest miễn phí cho PC, Mac, iPhone. Tải video 4K sang "
-"định dạng MP4 mà không có watermark một cách nhanh chóng và dễ dàng. Được "
-"quét bởi Norton™ Safe Web."
+"适用于 PC、Mac 和 iPhone 的批量免费在线 Pinterest 视频下载器。快速轻松地将 4K 视频保存为无水印 MP4。经 Norton™"
+" Safe Web 扫描。"
 
 #: pincatch/settings.py:160
 msgid "English"
-msgstr "Tiếng Anh"
+msgstr "英语"
 
 #: pincatch/settings.py:169
 msgid "Arabic"
-msgstr "Tiếng Ả Rập"
+msgstr "阿拉伯语"
 
 #: templates/about.html:8
 msgid "ABOUT"
-msgstr "VỀ"
+msgstr "关于"
 
 #: templates/about.html:11
 msgid "Welcome to PinCatch!"
-msgstr "Chào mừng đến với PinCatch!"
+msgstr "欢迎来到 PinCatch！"
 
 #: templates/about.html:12
 msgid ""
@@ -174,117 +166,98 @@ msgid ""
 "videos for personal use only. For example, you might want to watch a "
 "favorite video offline, or keep it to view later when you have no internet."
 msgstr ""
-"PinCatch là một trang web cho phép bạn tải xuống các video từ Pinterest có "
-"sẵn công khai. Sứ mệnh của chúng tôi là cung cấp cho người dùng một cách để "
-"lưu trữ video từ Pinterest chỉ cho mục đích sử dụng cá nhân. Ví dụ, bạn có "
-"thể muốn xem một video yêu thích offline, hoặc lưu lại để xem sau khi không "
-"có kết nối internet."
+"PinCatch 是一个可以从 Pinterest 下载公开视频的网站。我们的使命是为人们提供一种保存 Pinterest "
+"视频的方式，仅供个人使用。例如，你可能想离线观看喜欢的视频，或者在没有网络的情况下保存视频以备日后观看。"
 
 #: templates/about.html:13
 msgid "We want to be open and clear:"
-msgstr "Chúng tôi muốn minh bạch và rõ ràng:"
+msgstr "我们希望公开、明确："
 
 #: templates/about.html:15
 msgid ""
 "PinCatch does not host or store any of the videos on our own servers. We "
 "only fetch the video from Pinterest’s server when you make a request."
-msgstr ""
-"PinCatch không lưu trữ hoặc lưu giữ bất kỳ video nào trên máy chủ của chúng "
-"tôi. Chúng tôi chỉ tải video từ máy chủ của Pinterest khi bạn yêu cầu."
+msgstr "PinCatch 不会在自己的服务器上托管或存储任何视频。我们只在你提出请求时从 Pinterest 服务器获取视频。"
 
 #: templates/about.html:16
 msgid ""
 "We do not change video content. We only provide a method to download what is"
 " already available publicly."
-msgstr ""
-"Chúng tôi không thay đổi nội dung video. Chúng tôi chỉ cung cấp một phương "
-"pháp để tải xuống những gì đã có sẵn công khai."
+msgstr "我们不会更改视频内容。我们只提供下载已公开内容的方法。"
 
 #: templates/about.html:17
 msgid ""
 "We respect the rights of the creators. If someone owns a video, and they "
 "want it removed from our service, we will remove it quickly when they show "
 "proof they own it."
-msgstr ""
-"Chúng tôi tôn trọng quyền của các nhà sáng tạo. Nếu ai đó sở hữu một video "
-"và muốn xóa nó khỏi dịch vụ của chúng tôi, chúng tôi sẽ xóa nó ngay lập tức "
-"khi họ cung cấp bằng chứng chứng minh quyền sở hữu của mình."
+msgstr "我们尊重创作者的权利。如果有人拥有某个视频，并希望将其从我们的服务中删除，只要他们出示拥有该视频的证据，我们就会迅速将其删除。"
 
 #: templates/about.html:18
 msgid ""
 "We try to follow Pinterest’s rules and copyright laws. If any rule or law "
 "changes, we will update our policies."
-msgstr ""
-"Chúng tôi cố gắng tuân thủ các quy tắc của Pinterest và luật bản quyền. Nếu "
-"có bất kỳ thay đổi nào về quy tắc hoặc luật, chúng tôi sẽ cập nhật chính "
-"sách của mình."
+msgstr "我们尽力遵守 Pinterest 的规则和版权法。如果任何规则或法律发生变化，我们将更新我们的政策。"
 
 #: templates/about.html:20
 msgid ""
 "Thank you for using PinCatch. We hope it helps you enjoy Pinterest videos "
 "more flexibly."
-msgstr ""
-"Cảm ơn bạn đã sử dụng PinCatch. Chúng tôi hy vọng ứng dụng này sẽ giúp bạn "
-"thưởng thức video trên Pinterest một cách linh hoạt hơn."
+msgstr "感谢您使用 PinCatch。希望它能帮助您更灵活地欣赏 Pinterest 视频。"
 
 #: templates/contactUs.html:8
 msgid "CONTACT US"
-msgstr "LIÊN HỆ VỚI CHÚNG TÔI"
+msgstr "联系我们"
 
 #: templates/contactUs.html:11
 msgid "If you want to get in touch with us, here is how: "
-msgstr "Nếu bạn muốn liên hệ với chúng tôi, đây là cách:"
+msgstr "如果您想与我们联系，请按以下方式："
 
 #: templates/contactUs.html:12
 msgid "Email: "
-msgstr "Email:"
+msgstr "电子邮件："
 
 #: templates/contactUs.html:13
 msgid "Website: "
-msgstr "Trang web:"
+msgstr "网站："
 
 #: templates/contactUs.html:14
 msgid "You can send us:"
-msgstr "Bạn có thể gửi cho chúng tôi:"
+msgstr "您可以发送给我们："
 
 #: templates/contactUs.html:16
 msgid "Questions or Feedback"
-msgstr "Câu hỏi hoặc Phản hồi"
+msgstr "问题或反馈"
 
 #: templates/contactUs.html:17
 msgid "Requests to remove content"
-msgstr "Yêu cầu xóa nội dung"
+msgstr "要求删除内容"
 
 #: templates/contactUs.html:18
 msgid "Privacy concerns"
-msgstr "Quan ngại về quyền riêng tư"
+msgstr "隐私问题"
 
 #: templates/contactUs.html:19
 msgid "Legal or copyright notices"
-msgstr "Thông báo pháp lý hoặc bản quyền"
+msgstr "法律或版权声明"
 
 #: templates/contactUs.html:21
 msgid "We aim to respond within 24 to 48 hours."
-msgstr "Chúng tôi cam kết sẽ phản hồi trong vòng 24 đến 48 giờ."
+msgstr "我们的目标是在 24 至 48 小时内做出答复。"
 
 #: templates/copyrightPolicy.html:8
 msgid "Copyright Infringement Policy"
-msgstr "Chính sách về vi phạm bản quyền"
+msgstr "版权侵犯政策"
 
 #: templates/copyrightPolicy.html:11
 msgid ""
 "This Anti-Copyright Policy is for compliance with the DMCA (Digital "
 "Millennium Copyright Act) in the U.S. and similar laws elsewhere. We aim to "
 "respond quickly to remove infringing content when owners assert rights."
-msgstr ""
-"Chính sách Chống Vi phạm Bản quyền này được áp dụng để tuân thủ Đạo luật Bản"
-" quyền Kỷ nguyên Số (DMCA) tại Hoa Kỳ và các luật tương tự ở các quốc gia "
-"khác. Chúng tôi cam kết phản hồi nhanh chóng để gỡ bỏ nội dung vi phạm khi "
-"chủ sở hữu quyền yêu cầu."
+msgstr "本反版权政策旨在遵守美国的《数字千年版权法》（DMCA）和其他地方的类似法律。我们的目标是在所有者主张权利时迅速做出反应，删除侵权内容。"
 
 #: templates/copyrightPolicy.html:12
 msgid "Our Role & Safe Harbor"
-msgstr "Vai trò của chúng tôi & Cảng an toàn"
+msgstr "我们的作用与安全港"
 
 #: templates/copyrightPolicy.html:13
 msgid ""
@@ -293,247 +266,215 @@ msgid ""
 "for “safe harbor” protection under DMCA if we follow the rules of takedown "
 "and counter notice."
 msgstr ""
-"PinCatch là một dịch vụ giúp người dùng tải nội dung từ Pinterest. Chúng tôi"
-" không phải là nguồn gốc của tài liệu có bản quyền. Theo luật Hoa Kỳ, chúng "
-"tôi có thể được hưởng sự bảo vệ \"safe harbor\" theo DMCA nếu tuân thủ các "
-"quy tắc về thông báo gỡ bỏ và phản đối."
+"PinCatch 是一项帮助用户从 Pinterest "
+"获取内容的服务。我们不是受版权保护材料的来源。根据美国法律，如果我们遵守移除和反通知规则，我们可能有资格获得 DMCA 规定的 \"安全港 \"保护。"
 
 #: templates/copyrightPolicy.html:14
 msgid "How to File a DMCA Notice (Takedown Request)"
-msgstr "Cách nộp Thông báo DMCA (Yêu cầu gỡ bỏ)"
+msgstr "如何提交 DMCA 通知（移除请求）"
 
 #: templates/copyrightPolicy.html:15
 msgid ""
 "If you own a copyrighted video or content and you believe it is accessible "
 "via PinCatch in violation of your rights, send us a written notice with:"
-msgstr ""
-"Nếu bạn sở hữu một video hoặc nội dung có bản quyền và bạn cho rằng nó có "
-"thể truy cập được qua PinCatch vi phạm quyền của bạn, vui lòng gửi cho chúng"
-" tôi một thông báo bằng văn bản kèm theo:"
+msgstr "如果您拥有受版权保护的视频或内容，并且您认为通过 PinCatch 获取这些视频或内容侵犯了您的权利，请向我们发送书面通知："
 
 #: templates/copyrightPolicy.html:17
 msgid "Your full name, address, phone number, and email address"
-msgstr "Họ và tên đầy đủ, địa chỉ, số điện thoại và địa chỉ email của bạn."
+msgstr "您的全名、地址、电话号码和电子邮件地址"
 
 #: templates/copyrightPolicy.html:18
 msgid "A description (title, URL, etc.) of your copyrighted work"
-msgstr "Mô tả (tiêu đề, URL, v.v.) của tác phẩm có bản quyền của bạn"
+msgstr "版权作品的描述（标题、URL 等"
 
 #: templates/copyrightPolicy.html:19
 msgid "The exact URL on PinCatch (or in our logs) where the content appears"
-msgstr ""
-"Đường dẫn URL chính xác trên PinCatch (hoặc trong nhật ký của chúng tôi) nơi"
-" nội dung xuất hiện."
+msgstr "内容出现在 PinCatch 上（或我们的日志中）的确切 URL"
 
 #: templates/copyrightPolicy.html:20
 msgid ""
 "A statement that you believe in good faith that the use is not allowed by "
 "the copyright owner"
-msgstr ""
-"Một tuyên bố rằng bạn tin tưởng một cách thành thật rằng việc sử dụng đó "
-"không được chủ sở hữu bản quyền cho phép."
+msgstr "声明您真诚地认为该使用未经版权所有者许可"
 
 #: templates/copyrightPolicy.html:21
 msgid ""
 "A statement under penalty of perjury that the information is accurate and "
 "that you are the copyright owner or authorized agent"
-msgstr ""
-"Một tuyên bố dưới hình thức tuyên thệ rằng thông tin là chính xác và rằng "
-"bạn là chủ sở hữu bản quyền hoặc đại diện được ủy quyền."
+msgstr "在伪证处罚下，声明信息准确无误，且您是版权所有者或授权代理人"
 
 #: templates/copyrightPolicy.html:22
 msgid "Your electronic signature (or physical signature)"
-msgstr "Chữ ký điện tử (hoặc chữ ký tay) của bạn"
+msgstr "您的电子签名（或实物签名）"
 
 #: templates/copyrightPolicy.html:24
 msgid "Send your notice via email to:"
-msgstr "Gửi thông báo của bạn qua email đến:"
+msgstr "请将您的通知通过电子邮件发送至"
 
 #: templates/copyrightPolicy.html:25
 msgid "Once we get a valid DMCA notice, we will:"
-msgstr "Sau khi nhận được thông báo DMCA hợp lệ, chúng tôi sẽ:"
+msgstr "一旦我们收到有效的 DMCA 通知，我们将："
 
 #: templates/copyrightPolicy.html:27
 msgid "Remove or disable access to the infringing content"
-msgstr "Xóa hoặc vô hiệu hóa quyền truy cập vào nội dung vi phạm."
+msgstr "删除或禁止访问侵权内容"
 
 #: templates/copyrightPolicy.html:28
 msgid "Notify the user who requested the content"
-msgstr "Thông báo cho người dùng đã yêu cầu nội dung."
+msgstr "通知请求内容的用户"
 
 #: templates/copyrightPolicy.html:29
 msgid "Keep records of the request"
-msgstr "Giữ lại hồ sơ về yêu cầu."
+msgstr "保存申请记录"
 
 #: templates/copyrightPolicy.html:31
 msgid " Counter-Notice by the User"
-msgstr " Thông báo phản đối của Người dùng"
+msgstr "用户的反通知"
 
 #: templates/copyrightPolicy.html:32
 msgid ""
 "If someone believes the content was wrongly removed (for example, they had "
 "the right to use it), they may send a counter-notice containing:"
-msgstr ""
-"Nếu ai đó cho rằng nội dung đã bị xóa sai (ví dụ: họ có quyền sử dụng nó), "
-"họ có thể gửi một thông báo phản đối bao gồm:"
+msgstr "如果有人认为内容被错误删除（例如，他们有权使用），他们可以发送包含内容的反通知："
 
 #: templates/copyrightPolicy.html:34
 msgid "Their name, address, and email"
-msgstr "Tên, địa chỉ và email của họ"
+msgstr "他们的姓名、地址和电子邮件"
 
 #: templates/copyrightPolicy.html:35
 msgid "Description of content removed and its previous location"
-msgstr "Mô tả nội dung đã bị xóa và vị trí trước đây của nó"
+msgstr "被删除内容的描述及其以前的位置"
 
 #: templates/copyrightPolicy.html:36
 msgid ""
 "Statement that under penalty of perjury, they believe the content was "
 "wrongly removed"
-msgstr ""
-"Tuyên bố dưới hình thức tuyên thệ, họ tin rằng nội dung đã bị xóa một cách "
-"sai trái."
+msgstr "声明在作伪证的情况下，他们认为内容被错误删除"
 
 #: templates/copyrightPolicy.html:37
 msgid "Consent to jurisdiction of a federal court (if in the  U.S.)"
-msgstr "Sự đồng ý về thẩm quyền của tòa án liên bang (nếu ở Hoa Kỳ)"
+msgstr "同意联邦法院的管辖权（如果在美国境内）"
 
 #: templates/copyrightPolicy.html:38
 msgid "Their signature"
-msgstr "Dấu ấn đặc trưng của họ"
+msgstr "他们的招牌"
 
 #: templates/copyrightPolicy.html:40
 msgid ""
 "If valid, we may restore the content after waiting the required time (e.g., "
 "10-14 business days) unless the copyright owner files a lawsuit."
-msgstr ""
-"Nếu hợp lệ, chúng tôi có thể khôi phục nội dung sau khi chờ đủ thời gian quy"
-" định (ví dụ: 10-14 ngày làm việc) trừ khi chủ sở hữu bản quyền nộp đơn "
-"kiện."
+msgstr "如果有效，除非版权所有者提起诉讼，否则我们可以在等待规定时间（如 10-14 个工作日）后恢复内容。"
 
 #: templates/copyrightPolicy.html:41
 msgid "Repeat Infringers"
-msgstr "Những người vi phạm nhiều lần"
+msgstr "重复侵权者"
 
 #: templates/copyrightPolicy.html:42
 msgid ""
 "We may terminate accounts or block users who repeatedly infringe copyrights."
-msgstr ""
-"Chúng tôi có thể chấm dứt tài khoản hoặc chặn người dùng vi phạm bản quyền "
-"nhiều lần."
+msgstr "对于屡次侵犯版权的用户，我们可能会终止其账户或对其进行封禁。"
 
 #: templates/copyrightPolicy.html:43
 msgid "Designated Copyright Agent"
-msgstr "Đại diện bản quyền được chỉ định"
+msgstr "指定版权代理"
 
 #: templates/copyrightPolicy.html:44
 msgid ""
 "If you wish, register a “Designated Copyright Agent” to receive notices "
 "legally. This helps your site comply with DMCA."
-msgstr ""
-"Nếu bạn muốn, hãy đăng ký một \"Đại diện bản quyền được chỉ định\" để nhận "
-"thông báo theo quy định pháp luật. Điều này giúp trang web của bạn tuân thủ "
-"DMCA."
+msgstr "如果愿意，请注册 \"指定版权代理\"，以便合法接收通知。这有助于您的网站遵守《数字千年版权法》。"
 
 #: templates/copyrightPolicy.html:45
 msgid "False Claims"
-msgstr "Các tuyên bố sai sự thật"
+msgstr "虚假索赔"
 
 #: templates/copyrightPolicy.html:46
 msgid ""
 "If someone knowingly misuses DMCA notices or counter-notices (for example, "
 "false claims), they may be liable for damages under the law."
-msgstr ""
-"Nếu ai đó cố ý lạm dụng các thông báo DMCA hoặc phản đối thông báo (ví dụ: "
-"đưa ra các cáo buộc sai sự thật), họ có thể phải chịu trách nhiệm bồi thường"
-" thiệt hại theo quy định của pháp luật."
+msgstr "如果有人故意滥用 DMCA 通知或反通知（例如，虚假索赔），则可能要依法承担损害赔偿责任。"
 
 #: templates/copyrightPolicy.html:47
 msgid "Other Jurisdictions"
-msgstr "Các khu vực pháp lý khác"
+msgstr "其他司法管辖区"
 
 #: templates/copyrightPolicy.html:48
 msgid ""
 "Even though the DMCA is U.S. law, copyright laws exist in many countries. We"
 " aim to follow global rules and remove infringing content when we are "
 "notified, regardless of where the owner or user is."
-msgstr ""
-"Mặc dù DMCA là luật của Hoa Kỳ, nhưng luật bản quyền tồn tại ở nhiều quốc "
-"gia. Chúng tôi cam kết tuân thủ các quy định toàn cầu và gỡ bỏ nội dung vi "
-"phạm khi nhận được thông báo, bất kể chủ sở hữu hoặc người dùng đang ở đâu."
+msgstr "尽管《数字千年版权法》是美国法律，但许多国家都有版权法。我们的目标是遵守全球规则，在收到通知后删除侵权内容，无论所有者或用户身在何处。"
 
 #: templates/footer.html:6
 msgid "Quick Links"
-msgstr "Liên kết nhanh"
+msgstr "快速链接"
 
 #: templates/footer.html:8 templates/header.html:20 templates/index.html:263
 msgid "Home"
-msgstr "Trang chủ"
+msgstr "首页"
 
 #: templates/footer.html:9
 msgid "About Us"
-msgstr "Giới thiệu về chúng tôi"
+msgstr "关于我们"
 
 #: templates/footer.html:10 templates/header.html:23
 msgid "Blog"
-msgstr "Blog"
+msgstr "博客"
 
 #: templates/footer.html:14
 msgid "Support"
-msgstr "Hỗ trợ"
+msgstr "支持"
 
 #: templates/footer.html:16
 msgid "Contact Us"
-msgstr "Liên hệ với chúng tôi"
+msgstr "联系我们"
 
 #: templates/footer.html:17
 msgid "Privacy Policy"
-msgstr "Chính sách bảo mật"
+msgstr "隐私政策"
 
 #: templates/footer.html:18
 msgid "Terms And Conditions"
-msgstr "Điều khoản và Điều kiện"
+msgstr "条款和条件"
 
 #: templates/footer.html:19
 msgid "Copyright Policy"
-msgstr "Chính sách bản quyền"
+msgstr "版权政策"
 
 #: templates/footer.html:23
 msgid "Disclaimer"
-msgstr "Lưu ý"
+msgstr "免责声明"
 
 #: templates/footer.html:24
 msgid ""
 "PinCatch Tool is not affiliated with Pinterest. All trademarks, logos, and "
 "videos belong to their respective owners. This service is for personal use "
 "only."
-msgstr ""
-"PinCatch Tool không liên quan đến Pinterest. Tất cả các nhãn hiệu, logo và "
-"video đều thuộc sở hữu của chủ sở hữu tương ứng. Dịch vụ này chỉ dành cho "
-"mục đích sử dụng cá nhân."
+msgstr "PinCatch Tool 与 Pinterest 无关。所有商标、徽标和视频均归各自所有者所有。本服务仅供个人使用。"
 
 #: templates/footer.html:28
 msgid "2025 PinCatch. All Rights Reserved. | Designed with"
-msgstr "2025 PinCatch. Bản quyền thuộc về PinCatch. | Thiết kế bởi"
+msgstr "2025 PinCatch。保留所有权利。| 设计使用"
 
 #: templates/footer.html:29
 msgid "for Pinterest users"
-msgstr "cho người dùng Pinterest"
+msgstr "针对 Pinterest 用户"
 
 #: templates/header.html:21
 msgid "Pinterest Image Downloader"
-msgstr "Trình tải xuống hình ảnh Pinterest"
+msgstr "Pinterest 图片下载器"
 
 #: templates/header.html:22
 msgid "Pinterest GIF Downloader"
-msgstr "Trình tải xuống GIF của Pinterest"
+msgstr "Pinterest GIF 下载器"
 
 #: templates/header.html:24
 msgid "About"
-msgstr "Về"
+msgstr "关于"
 
 #: templates/header.html:42
 msgid "Language"
-msgstr "Ngôn ngữ"
+msgstr "语言"
 
 #: templates/index.html:11
 msgid ""
@@ -541,9 +482,8 @@ msgid ""
 " pinterest mp4, pinterest gif, pinterest image downloader, bulk download "
 "pinterest"
 msgstr ""
-"Trình tải video Pinterest, Trình tải Pinterest, Tải video Pinterest, "
-"Pinterest MP4, Pinterest GIF, Trình tải hình ảnh Pinterest, Tải hàng loạt "
-"video Pinterest"
+"pinterest 视频下载器、pinterest 下载器、下载 pinterest 视频、pinterest mp4、pinterest "
+"gif、pinterest 图像下载器、批量下载 pinterest"
 
 #: templates/index.html:75
 msgid "PinCatch"
@@ -551,11 +491,11 @@ msgstr "PinCatch"
 
 #: templates/index.html:88 templates/index.html:167
 msgid "PinCatch - Pinterest Video Downloader"
-msgstr "PinCatch - Trình tải video từ Pinterest"
+msgstr "PinCatch - Pinterest 视频下载器"
 
 #: templates/index.html:192
 msgid "Is this Pinterest downloader free to use?"
-msgstr "Ứng dụng tải xuống Pinterest này có miễn phí để sử dụng không?"
+msgstr "这个 Pinterest 下载器可以免费使用吗？"
 
 #: templates/index.html:195
 msgid ""
@@ -563,13 +503,11 @@ msgid ""
 " your videos, and use secure connections. Our privacy-protected tool has "
 "been scanned by Norton Safe Web."
 msgstr ""
-"Đúng vậy, PinCatch hoàn toàn an toàn để sử dụng. Chúng tôi không yêu cầu "
-"đăng nhập, không lưu trữ video của bạn và sử dụng kết nối an toàn. Công cụ "
-"bảo vệ quyền riêng tư của chúng tôi đã được Norton Safe Web quét kiểm tra."
+"是的，使用 PinCatch 完全安全。我们不要求登录，不存储您的视频，并使用安全连接。我们的隐私保护工具已通过 Norton Safe Web 扫描。"
 
 #: templates/index.html:200
 msgid "How can I download Pinterest content on my PC?"
-msgstr "Làm thế nào để tải xuống nội dung Pinterest trên máy tính của tôi?"
+msgstr "如何在电脑上下载 Pinterest 内容？"
 
 #: templates/index.html:203
 msgid ""
@@ -578,27 +516,22 @@ msgid ""
 "or image will save directly to your computer, no software installation "
 "needed."
 msgstr ""
-"Chỉ cần mở PinCatch trong trình duyệt của bạn trên Windows, Mac hoặc Linux. "
-"Sao chép liên kết Pinterest, dán vào ô nhập liệu của chúng tôi và nhấp vào "
-"nút Tải xuống. Video hoặc hình ảnh sẽ được lưu trực tiếp vào máy tính của "
-"bạn, không cần cài đặt phần mềm."
+"只需在 Windows、Mac 或 Linux 浏览器中打开 PinCatch 即可。复制 Pinterest "
+"链接，粘贴到我们的输入框中，然后点击下载。视频或图片将直接保存到您的电脑中，无需安装软件。"
 
 #: templates/index.html:208
 msgid "Is there a Pinterest downloader available for Mac?"
-msgstr "Có phần mềm tải xuống Pinterest dành cho Mac không?"
+msgstr "是否有适用于 Mac 的 Pinterest 下载器？"
 
 #: templates/index.html:211
 msgid ""
 "PinCatch works on Mac through any browser. It's an online downloader, just "
 "visit our site and start downloading without installing anything."
-msgstr ""
-"PinCatch hoạt động trên Mac thông qua bất kỳ trình duyệt nào. Đây là một "
-"trình tải xuống trực tuyến, chỉ cần truy cập trang web của chúng tôi và bắt "
-"đầu tải xuống mà không cần cài đặt bất kỳ phần mềm nào."
+msgstr "PinCatch 可通过任何浏览器在 Mac 上运行。这是一款在线下载工具，只需访问我们的网站，无需安装任何软件即可开始下载。"
 
 #: templates/index.html:216
 msgid "What’s the best way to download Pinterest videos on iPhone?"
-msgstr "Cách tốt nhất để tải video từ Pinterest trên iPhone là gì?"
+msgstr "在 iPhone 上下载 Pinterest 视频的最佳方法是什么？"
 
 #: templates/index.html:219
 msgid ""
@@ -606,54 +539,43 @@ msgid ""
 "URL, and tap download. Your video saves directly to Photos in full HD "
 "quality. Works perfectly on iOS without any app."
 msgstr ""
-"Mở Pinterest trong Safari, sao chép liên kết video, truy cập PinCatch, dán "
-"URL và nhấn tải xuống. Video của bạn sẽ được lưu trực tiếp vào Ảnh với chất "
-"lượng Full HD. Hoạt động hoàn hảo trên iOS mà không cần ứng dụng nào."
+"在 Safari 中打开 Pinterest，复制视频链接，访问 PinCatch，粘贴 "
+"URL，然后点击下载。视频会以全高清画质直接保存到照片中。无需任何应用程序，即可在 iOS 上完美运行。"
 
 #: templates/index.html:224
 msgid "Can the Pinterest video downloader work without a watermark?"
-msgstr ""
-"Công cụ tải video từ Pinterest có thể hoạt động mà không có watermark không?"
+msgstr "Pinterest 视频下载器可以在没有水印的情况下工作吗？"
 
 #: templates/index.html:227
 msgid ""
 "Yes! PinCatch downloads Pinterest videos without a watermark. You get clean,"
 " original-quality files ready to watch or share."
-msgstr ""
-"Đúng vậy! PinCatch cho phép tải xuống video từ Pinterest mà không có "
-"watermark. Bạn sẽ nhận được các tệp tin sạch, chất lượng gốc, sẵn sàng để "
-"xem hoặc chia sẻ."
+msgstr "是的！PinCatch 可下载无水印的 Pinterest 视频。您将获得干净、原始质量的文件，随时可以观看或分享。"
 
 #: templates/index.html:232
 msgid "Where do Pinterest downloads go on iPhone?"
-msgstr "Tệp tải xuống từ Pinterest được lưu ở đâu trên iPhone?"
+msgstr "iPhone 上的 Pinterest 下载去哪儿了？"
 
 #: templates/index.html:235
 msgid ""
 "Downloaded videos save to your iPhone's Photos app, while images and GIFs "
 "also go to Photos. Check your Downloads folder in Files for other formats."
-msgstr ""
-"Video đã tải xuống sẽ được lưu vào ứng dụng Ảnh trên iPhone của bạn, trong "
-"khi hình ảnh và GIF cũng được lưu vào Ảnh. Kiểm tra thư mục Tải xuống trong "
-"Ứng dụng Tệp để xem các định dạng khác."
+msgstr "下载的视频会保存到 iPhone 的照片应用中，而图片和 GIF 也会保存到照片中。查看 \"文件 \"中的 \"下载 \"文件夹，查看其他格式。"
 
 #: templates/index.html:240
 msgid "Why is my Pinterest not downloading pictures?"
-msgstr "Tại sao Pinterest của tôi không tải ảnh xuống?"
+msgstr "为什么我的 Pinterest 无法下载图片？"
 
 #: templates/index.html:243
 msgid ""
 "This might be a browser permission issue. Make sure you've allowed downloads"
 " in your browser settings. Try copying the link again and ensure you have a "
 "stable internet connection."
-msgstr ""
-"Đây có thể là vấn đề liên quan đến quyền truy cập của trình duyệt. Hãy đảm "
-"bảo rằng bạn đã cho phép tải xuống trong cài đặt trình duyệt của mình. Hãy "
-"thử sao chép lại liên kết và đảm bảo rằng bạn có kết nối internet ổn định."
+msgstr "这可能是浏览器权限问题。请确保在浏览器设置中允许下载。再次尝试复制链接，并确保有稳定的网络连接。"
 
 #: templates/index.html:248
 msgid "Can books be downloaded from Pinterest?"
-msgstr "Có thể tải sách từ Pinterest không?"
+msgstr "可以从 Pinterest 下载图书吗？"
 
 #: templates/index.html:251
 msgid ""
@@ -661,221 +583,185 @@ msgid ""
 "downloading videos, images, and GIFs. For actual books, you'll need to visit"
 " the original source linked in the pin."
 msgstr ""
-"Mặc dù Pinterest có thể có các ghim liên quan đến sách, PinCatch chuyên về "
-"việc tải xuống video, hình ảnh và GIF. Đối với sách thực tế, bạn cần truy "
-"cập vào nguồn gốc được liên kết trong ghim."
+"虽然 Pinterest 可能有与图书相关的图钉，但 PinCatch 专注于下载视频、图片和 "
+"GIF。要下载真正的书籍，您需要访问图钉中链接的原始来源。"
 
 #: templates/index.html:269
 msgid "blog"
-msgstr "blog"
+msgstr "博客"
 
 #: templates/privacyPolicy.html:8
 msgid "PRIVACY POLICY"
-msgstr "CHÍNH SÁCH BẢO MẬT"
+msgstr "隐私政策"
 
 #: templates/privacyPolicy.html:11
 msgid ""
 "This Privacy Policy explains what information PinCatch may collect, how we "
 "use it, and your rights. We take your privacy seriously."
-msgstr ""
-"Chính sách Bảo mật này giải thích thông tin mà PinCatch có thể thu thập, "
-"cách chúng tôi sử dụng thông tin đó và quyền của bạn. Chúng tôi coi trọng "
-"quyền riêng tư của bạn."
+msgstr "本隐私政策解释了PinCatch可能收集哪些信息、我们如何使用这些信息以及您的权利。我们非常重视您的隐私。"
 
 #: templates/privacyPolicy.html:12
 msgid "Information We Collect"
-msgstr "Thông tin chúng tôi thu thập"
+msgstr "我们收集的信息"
 
 #: templates/privacyPolicy.html:13
 msgid ""
 "We collect limited information to run the site safely and show ads (like "
 "Google AdSense). The kinds of information include:"
-msgstr ""
-"Chúng tôi thu thập thông tin giới hạn để vận hành trang web an toàn và hiển "
-"thị quảng cáo (như Google AdSense). Các loại thông tin bao gồm:"
+msgstr "我们收集的信息有限，用于安全运行网站和显示广告（如 Google AdSense）。信息种类包括"
 
 #: templates/privacyPolicy.html:15
 msgid ""
 "Technical data: your browser type, your device kind, your IP address (or a "
 "part of it), and how you use our website (pages you visit, clicks, etc.)"
-msgstr ""
-"Thông tin kỹ thuật: Loại trình duyệt của bạn, loại thiết bị của bạn, địa chỉ"
-" IP của bạn (hoặc một phần của nó) và cách bạn sử dụng trang web của chúng "
-"tôi (các trang bạn truy cập, các lần nhấp chuột, v.v.)."
+msgstr "技术数据：您的浏览器类型、您的设备类型、您的 IP 地址（或部分 IP 地址）以及您使用我们网站的方式（您访问的页面、点击等）。"
 
 #: templates/privacyPolicy.html:16
 msgid ""
 "Cookies and tracking: we use cookies and similar tools to remember your "
 "preferences and to support advertisement networks."
-msgstr ""
-"Cookies và theo dõi: Chúng tôi sử dụng cookies và các công cụ tương tự để "
-"ghi nhớ sở thích của bạn và hỗ trợ các mạng quảng cáo."
+msgstr "Cookie 和跟踪：我们使用 Cookie 和类似工具来记住您的偏好并支持广告网络。"
 
 #: templates/privacyPolicy.html:17
 msgid ""
 "No personal profile unless you provide it: we do not require you to "
 "register. If you do contact us / send notices, we may have your email or "
 "other contact info."
-msgstr ""
-"Không yêu cầu thông tin cá nhân trừ khi bạn cung cấp: chúng tôi không yêu "
-"cầu bạn đăng ký. Nếu bạn liên hệ với chúng tôi hoặc gửi thông báo, chúng tôi"
-" có thể có địa chỉ email hoặc thông tin liên hệ khác của bạn."
+msgstr "除非您提供，否则不会有个人资料：我们不要求您注册。如果您与我们联系或发送通知，我们可能会有您的电子邮件或其他联系信息。"
 
 #: templates/privacyPolicy.html:19
 msgid "How We Use Information"
-msgstr "Cách chúng tôi sử dụng thông tin"
+msgstr "我们如何使用信息"
 
 #: templates/privacyPolicy.html:20
 msgid "We use your data to:"
-msgstr "Chúng tôi sử dụng dữ liệu của bạn để:"
+msgstr "我们将您的数据用于"
 
 #: templates/privacyPolicy.html:22
 msgid "Keep the website running properly and securely"
-msgstr "Đảm bảo website hoạt động ổn định và an toàn."
+msgstr "确保网站正常安全运行"
 
 #: templates/privacyPolicy.html:23
 msgid "Analyze and improve our service"
-msgstr "Phân tích và cải thiện dịch vụ của chúng tôi"
+msgstr "分析并改进我们的服务"
 
 #: templates/privacyPolicy.html:24
 msgid "Show relevant ads (AdSense)"
-msgstr "Hiển thị quảng cáo liên quan (AdSense)"
+msgstr "显示相关广告（AdSense）"
 
 #: templates/privacyPolicy.html:25
 msgid "Detect abuse, fraud, or bad use"
-msgstr "Phát hiện lạm dụng, gian lận hoặc sử dụng sai mục đích."
+msgstr "检测滥用、欺诈或不良使用"
 
 #: templates/privacyPolicy.html:26
 msgid "Process legal requests (for example, copyright takedown notices)"
-msgstr "Xử lý các yêu cầu pháp lý (ví dụ: thông báo gỡ bỏ bản quyền)"
+msgstr "处理法律请求（如版权取消通知）"
 
 #: templates/privacyPolicy.html:28
 msgid "Sharing Information"
-msgstr "Chia sẻ thông tin"
+msgstr "共享信息"
 
 #: templates/privacyPolicy.html:29
 msgid ""
 "We do not sell your personal data to third parties. But we may share "
 "limited, anonymized data (not your name or email) with:"
-msgstr ""
-"Chúng tôi không bán dữ liệu cá nhân của bạn cho bên thứ ba. Tuy nhiên, chúng"
-" tôi có thể chia sẻ dữ liệu giới hạn, đã được ẩn danh (không bao gồm tên "
-"hoặc email của bạn) với:"
+msgstr "我们不会将您的个人数据出售给第三方。但我们可能会与以下方面共享有限的匿名数据（不包括您的姓名或电子邮件）："
 
 #: templates/privacyPolicy.html:31
 msgid "Ad networks (Google AdSense)"
-msgstr "Mạng quảng cáo (Google AdSense)"
+msgstr "广告网络（Google AdSense）"
 
 #: templates/privacyPolicy.html:32
 msgid "Analytics services (to understand website traffic)"
-msgstr "Dịch vụ phân tích (để hiểu lưu lượng truy cập website)"
+msgstr "分析服务（了解网站流量）"
 
 #: templates/privacyPolicy.html:33
 msgid "Legal authorities if required by law"
-msgstr "Các cơ quan pháp luật nếu được yêu cầu theo quy định của pháp luật."
+msgstr "法律要求的法律机构"
 
 #: templates/privacyPolicy.html:35
 msgid "Cookies & Similar Technologies"
-msgstr "Cookies và các công nghệ tương tự"
+msgstr "Cookie 和类似技术"
 
 #: templates/privacyPolicy.html:36
 msgid "We use cookies to:"
-msgstr "Chúng tôi sử dụng cookie để:"
+msgstr "我们使用 cookie 的目的是"
 
 #: templates/privacyPolicy.html:38
 msgid "Remember your preferences"
-msgstr "Hãy nhớ các tùy chọn của bạn"
+msgstr "记住您的偏好"
 
 #: templates/privacyPolicy.html:39
 msgid "Help ads know which ads to show"
-msgstr "Giúp quảng cáo biết nên hiển thị quảng cáo nào."
+msgstr "帮助广告了解应显示哪些广告"
 
 #: templates/privacyPolicy.html:40
 msgid "Monitor usage patterns"
-msgstr "Theo dõi các mẫu sử dụng"
+msgstr "监控使用模式"
 
 #: templates/privacyPolicy.html:42
 msgid ""
 "You can disable or block cookies from your browser settings, but some "
 "features of the site may not work well if cookies are disabled."
-msgstr ""
-"Bạn có thể tắt hoặc chặn cookie từ cài đặt trình duyệt của mình, nhưng một "
-"số tính năng của trang web có thể không hoạt động tốt nếu cookie bị tắt."
+msgstr "您可以在浏览器设置中禁用或阻止 cookie，但如果禁用 cookie，网站的某些功能可能无法正常运行。"
 
 #: templates/privacyPolicy.html:43
 msgid "Children’s Privacy"
-msgstr "Quyền riêng tư của trẻ em"
+msgstr "儿童隐私"
 
 #: templates/privacyPolicy.html:44
 msgid ""
 "PinCatch does not knowingly collect personal information from children under"
 " age 13. If we become aware that a child under 13 gave us personal info, we "
 "will remove it."
-msgstr ""
-"PinCatch không thu thập thông tin cá nhân của trẻ em dưới 13 tuổi một cách "
-"cố ý. Nếu chúng tôi phát hiện ra rằng một trẻ em dưới 13 tuổi đã cung cấp "
-"thông tin cá nhân cho chúng tôi, chúng tôi sẽ xóa thông tin đó."
+msgstr "PinCatch不会有意收集13岁以下儿童的个人信息。如果我们发现有 13 岁以下儿童向我们提供了个人信息，我们会将其删除。"
 
 #: templates/privacyPolicy.html:45
 msgid "Links to Other Sites"
-msgstr "Liên kết đến các trang web khác"
+msgstr "其他网站链接"
 
 #: templates/privacyPolicy.html:46
 msgid ""
 "PinCatch might show ads or links to third-party sites. These sites have "
 "their own privacy policies. We are not responsible for what they do. We "
 "encourage you to read their privacy policies."
-msgstr ""
-"PinCatch có thể hiển thị quảng cáo hoặc liên kết đến các trang web của bên "
-"thứ ba. Các trang web này có chính sách bảo mật riêng. Chúng tôi không chịu "
-"trách nhiệm về những gì họ làm. Chúng tôi khuyến khích bạn đọc kỹ chính sách"
-" bảo mật của họ."
+msgstr "PinCatch可能会显示第三方网站的广告或链接。这些网站有自己的隐私政策。我们不对它们的行为负责。我们建议您阅读他们的隐私政策。"
 
 #: templates/privacyPolicy.html:47
 msgid "Changes to Privacy Policy"
-msgstr "Thay đổi trong Chính sách Bảo mật"
+msgstr "隐私政策变更"
 
 #: templates/privacyPolicy.html:48
 msgid ""
 "We may change this policy from time to time. When we do, we will post the "
 "updated version here with a “Last Updated” date. By using PinCatch after "
 "changes, you accept the new policy."
-msgstr ""
-"Chúng tôi có thể thay đổi chính sách này theo thời gian. Khi có thay đổi, "
-"chúng tôi sẽ đăng phiên bản cập nhật tại đây kèm theo ngày \"Cập nhật lần "
-"cuối\". Bằng việc tiếp tục sử dụng PinCatch sau khi có thay đổi, bạn đồng ý "
-"với chính sách mới."
+msgstr "我们可能会不时更改本政策。更改时，我们将在此发布更新版本，并注明 \"最后更新 \"日期。在更改后使用PinCatch，即表示您接受新政策。"
 
 #: templates/termsAndConditions.html:8
 msgid "TERMS AND CONDITIONS"
-msgstr "ĐIỀU KHOẢN VÀ ĐIỀU KIỆN"
+msgstr "条款和条件"
 
 #: templates/termsAndConditions.html:11
 msgid ""
 "These Terms & Conditions (“Terms”) tell you the rules for using PinCatch. By"
 " using our website, you accept these rules."
-msgstr ""
-"Các Điều khoản và Điều kiện (“Điều khoản”) này quy định các quy tắc sử dụng "
-"PinCatch. Bằng việc sử dụng trang web của chúng tôi, bạn đồng ý tuân thủ các"
-" quy tắc này."
+msgstr "这些条款和条件（\"条款\"）告诉您使用 PinCatch 的规则。使用我们的网站即表示您接受这些规则。"
 
 #: templates/termsAndConditions.html:12
 msgid "Use for Personal, Non-Commercial Purposes Only"
-msgstr "Chỉ sử dụng cho mục đích cá nhân, không mang tính thương mại."
+msgstr "仅供个人、非商业目的使用"
 
 #: templates/termsAndConditions.html:13
 msgid ""
 "You may use PinCatch only to download Pinterest videos for your personal, "
 "noncommercial use. You may not use it to download videos for sale or for "
 "posting somewhere else without permission."
-msgstr ""
-"Bạn chỉ được sử dụng PinCatch để tải xuống video từ Pinterest cho mục đích "
-"cá nhân, phi thương mại. Bạn không được sử dụng nó để tải xuống video nhằm "
-"mục đích bán hoặc đăng tải lên nơi khác mà không có sự cho phép."
+msgstr "您只能使用 PinCatch 下载 Pinterest 视频，用于个人、非商业用途。未经许可，不得下载视频用于销售或发布到其他地方。"
 
 #: templates/termsAndConditions.html:14
 msgid "No Hosting or Redistribution by PinCatch"
-msgstr "Không được phép lưu trữ hoặc phân phối lại bởi PinCatch"
+msgstr "PinCatch 不提供托管或再分发服务"
 
 #: templates/termsAndConditions.html:15
 msgid ""
@@ -883,229 +769,190 @@ msgid ""
 "Pinterest servers only when you request. We are not the origin of the media "
 "content."
 msgstr ""
-"PinCatch không lưu trữ, lưu giữ hoặc tải lên video. Chúng tôi chỉ liên "
-"kết/tải nội dung từ máy chủ Pinterest khi bạn yêu cầu. Chúng tôi không phải "
-"là nguồn gốc của nội dung phương tiện."
+"PinCatch 不存储、托管或上传视频。只有在您提出要求时，我们才会从 Pinterest 服务器获取链接/内容。我们不是媒体内容的来源。"
 
 #: templates/termsAndConditions.html:16
 msgid "Respect Copyright and Intellectual Property"
-msgstr "Tôn trọng bản quyền và quyền sở hữu trí tuệ"
+msgstr "尊重版权和知识产权"
 
 #: templates/termsAndConditions.html:18
 msgid ""
 "You must respect the rights of content creators. If a video is copyrighted, "
 "you must have permission to use it beyond personal viewing."
-msgstr ""
-"Bạn phải tôn trọng quyền của các nhà sáng tạo nội dung. Nếu một video có bản"
-" quyền, bạn phải có sự cho phép để sử dụng nó ngoài mục đích xem cá nhân."
+msgstr "您必须尊重内容创作者的权利。如果视频受版权保护，您必须获得许可才能在个人观看之外使用。"
 
 #: templates/termsAndConditions.html:19
 msgid ""
 "You may not use downloaded videos to infringe copyright. For example, do not"
 " upload or share videos you don’t have the right to."
-msgstr ""
-"Bạn không được sử dụng các video đã tải xuống để vi phạm bản quyền. Ví dụ, "
-"không được tải lên hoặc chia sẻ các video mà bạn không có quyền sử dụng."
+msgstr "不得使用下载的视频侵犯版权。例如，不得上传或分享无权使用的视频。"
 
 #: templates/termsAndConditions.html:20
 msgid ""
 "If you use downloaded content in a way that violates copyright laws, you are"
 " solely responsible."
-msgstr ""
-"Nếu bạn sử dụng nội dung đã tải xuống theo cách vi phạm luật bản quyền, bạn "
-"sẽ hoàn toàn chịu trách nhiệm."
+msgstr "如果您在使用下载内容时违反了版权法，您将承担全部责任。"
 
 #: templates/termsAndConditions.html:22
 msgid "Prohibited Uses"
-msgstr "Các trường hợp sử dụng bị cấm"
+msgstr "禁止用途"
 
 #: templates/termsAndConditions.html:23
 msgid "You may not use PinCatch to:"
-msgstr "Bạn không được sử dụng PinCatch để:"
+msgstr "您不得使用 PinCatch"
 
 #: templates/termsAndConditions.html:25
 msgid "Violate laws or regulations"
-msgstr "Vi phạm pháp luật hoặc quy định."
+msgstr "违反法律或法规"
 
 #: templates/termsAndConditions.html:26
 msgid "Harass, defame, or harm others"
-msgstr "Quấy rối, bôi nhọ hoặc gây hại cho người khác"
+msgstr "骚扰、诽谤或伤害他人"
 
 #: templates/termsAndConditions.html:27
 msgid "Send spam or do malicious acts"
-msgstr "Gửi spam hoặc thực hiện các hành vi độc hại."
+msgstr "发送垃圾邮件或实施恶意行为"
 
 #: templates/termsAndConditions.html:28
 msgid "Violate copyrights or intellectual property"
-msgstr "Vi phạm bản quyền hoặc quyền sở hữu trí tuệ"
+msgstr "侵犯版权或知识产权"
 
 #: templates/termsAndConditions.html:29
 msgid "Reverse engineer or misuse our service"
-msgstr "Phân tích ngược hoặc lạm dụng dịch vụ của chúng tôi"
+msgstr "反向工程或滥用我们的服务"
 
 #: templates/termsAndConditions.html:31
 msgid "Disclaimers & Limitations"
-msgstr "Miễn trừ trách nhiệm & Giới hạn"
+msgstr "免责声明与限制"
 
 #: templates/termsAndConditions.html:33
 msgid "PinCatch is not endorsed, authorized, or affiliated with Pinterest."
-msgstr "PinCatch không được Pinterest chứng nhận, ủy quyền hoặc liên kết."
+msgstr "PinCatch 没有得到 Pinterest 的认可、授权或附属。"
 
 #: templates/termsAndConditions.html:34
 msgid ""
 "We don’t guarantee that our service will always or perfect. Sometimes videos"
 " may not download."
-msgstr ""
-"Chúng tôi không đảm bảo rằng dịch vụ của chúng tôi luôn hoạt động hoàn hảo. "
-"Đôi khi video có thể không tải xuống được."
+msgstr "我们不保证我们的服务始终完美无缺。有时可能无法下载视频。"
 
 #: templates/termsAndConditions.html:35
 msgid "We are not responsible for loss or damage from using the service."
-msgstr ""
-"Chúng tôi không chịu trách nhiệm về bất kỳ tổn thất hoặc hư hỏng nào phát "
-"sinh từ việc sử dụng dịch vụ."
+msgstr "对于因使用该服务而造成的损失或损坏，我们概不负责。"
 
 #: templates/termsAndConditions.html:36
 msgid ""
 "We do not guarantee that the content is legal to download in your country. "
 "You must check local law."
-msgstr ""
-"Chúng tôi không đảm bảo rằng nội dung này hợp pháp để tải xuống tại quốc gia"
-" của bạn. Bạn phải kiểm tra luật pháp địa phương."
+msgstr "我们不保证这些内容在您所在的国家可以合法下载。您必须查看当地法律。"
 
 #: templates/termsAndConditions.html:38
 msgid "Termination"
-msgstr "Chấm dứt"
+msgstr "终止"
 
 #: templates/termsAndConditions.html:39
 msgid ""
 "We may suspend or terminate your access at any time if you break these "
 "Terms. We may remove content or block users who misuse the service."
-msgstr ""
-"Chúng tôi có thể tạm ngưng hoặc chấm dứt quyền truy cập của bạn bất cứ lúc "
-"nào nếu bạn vi phạm các Điều khoản này. Chúng tôi có thể xóa nội dung hoặc "
-"chặn người dùng lạm dụng dịch vụ."
+msgstr "如果您违反这些条款，我们可随时暂停或终止您的访问权限。我们可能会删除内容或阻止滥用服务的用户。"
 
 #: templates/termsAndConditions.html:40
 msgid "Changes to Terms"
-msgstr "Thay đổi Điều khoản"
+msgstr "条款变更"
 
 #: templates/termsAndConditions.html:41
 msgid ""
 "We may update these Terms. We will post a new version on this page with a "
 "“Last Updated” date. By continuing to use PinCatch after changes, you accept"
 " the new Terms."
-msgstr ""
-"Chúng tôi có thể cập nhật các Điều khoản này. Chúng tôi sẽ đăng phiên bản "
-"mới trên trang này kèm theo ngày \"Cập nhật lần cuối\". Bằng cách tiếp tục "
-"sử dụng PinCatch sau khi có thay đổi, bạn đồng ý với các Điều khoản mới."
+msgstr "我们可能会更新这些条款。我们将在本页发布新版本，并注明 \"最后更新 \"日期。更改后继续使用PinCatch，即表示您接受新的条款。"
 
 #: templates/termsAndConditions.html:42
 msgid "Governing Law & Jurisdiction"
-msgstr "Luật áp dụng và thẩm quyền xét xử"
+msgstr "准据法和管辖权"
 
 #: templates/termsAndConditions.html:43
 msgid ""
 "These Terms are governed by the laws of the jurisdiction where PinCatch is "
 "registered (for example, your country). Any legal claims must be brought "
 "before the courts in that jurisdiction."
-msgstr ""
-"Các Điều khoản này tuân theo pháp luật của quốc gia nơi PinCatch được đăng "
-"ký (ví dụ: quốc gia của bạn). Bất kỳ khiếu nại pháp lý nào cũng phải được "
-"đưa ra trước tòa án của quốc gia đó."
+msgstr "这些条款受PinCatch注册地（例如您的国家）的法律管辖。任何法律索赔必须向该司法管辖区的法院提出。"
 
 #: views.py:134
 msgid "Pinterest Image Downloader - Save HD Photos from Pins"
-msgstr "Pinterest Image Downloader - Tải xuống ảnh HD từ các ghim"
+msgstr "Pinterest 图片下载器 - 从图钉中保存高清照片"
 
 #: views.py:135
 msgid ""
 "Download Pinterest images in HD quality without installing any apps using "
 "PinCatch."
-msgstr ""
-"Tải xuống hình ảnh Pinterest với chất lượng HD mà không cần cài đặt bất kỳ "
-"ứng dụng nào bằng PinCatch."
+msgstr "使用 PinCatch 下载 Pinterest 高清图片，无需安装任何应用程序。"
 
 #: views.py:156
 msgid "Pinterest GIF Downloader - Save Animated Pins Online"
-msgstr "Pinterest GIF Downloader - Tải xuống các ghim động trực tuyến"
+msgstr "Pinterest GIF 下载器 - 在线保存动画图钉"
 
 #: views.py:157
 msgid ""
 "Convert and download Pinterest GIFs instantly in high quality with the free "
 "PinCatch GIF downloader."
-msgstr ""
-"Chuyển đổi và tải xuống GIF từ Pinterest ngay lập tức với chất lượng cao "
-"bằng công cụ tải xuống GIF miễn phí PinCatch."
+msgstr "使用免费的 PinCatch GIF 下载器即时转换和下载高质量的 Pinterest GIF。"
 
 #: views.py:178
 msgid "Pinterest URL Downloader - Save Animated Pins Online"
-msgstr "Trình tải xuống URL Pinterest - Lưu các ghim động trực tuyến"
+msgstr "Pinterest URL 下载器 - 在线保存动画图钉"
 
 #: views.py:179
 msgid ""
 "Convert and download Pinterest URLs instantly in high quality with the free "
 "PinCatch Url downloader."
-msgstr ""
-"Chuyển đổi và tải xuống các URL Pinterest ngay lập tức với chất lượng cao "
-"bằng công cụ tải xuống URL PinCatch miễn phí."
+msgstr "使用免费的 PinCatch URL 下载器，立即转换并下载高质量的 Pinterest URL。"
 
 #: views.py:192
 msgid "About PinCatch - Pinterest Video Downloader"
-msgstr "Giới thiệu về PinCatch - Trình tải video từ Pinterest"
+msgstr "关于 PinCatch - Pinterest 视频下载器"
 
 #: views.py:193
 msgid ""
 "Learn more about the PinCatch downloader, our mission, and how we help "
 "creators save their favorite Pinterest content."
-msgstr ""
-"Tìm hiểu thêm về trình tải xuống PinCatch, sứ mệnh của chúng tôi và cách "
-"chúng tôi giúp các nhà sáng tạo lưu trữ nội dung yêu thích trên Pinterest."
+msgstr "进一步了解 PinCatch 下载器、我们的使命以及我们如何帮助创作者保存他们最喜爱的 Pinterest 内容。"
 
 #: views.py:202
 msgid "Contact PinCatch Support"
-msgstr "Liên hệ với bộ phận Hỗ trợ PinCatch"
+msgstr "联系 PinCatch 支持"
 
 #: views.py:203
 msgid ""
 "Have questions about downloading Pinterest videos or removing content? Get "
 "in touch with the PinCatch support team."
-msgstr ""
-"Bạn có thắc mắc về việc tải video từ Pinterest hoặc xóa nội dung? Hãy liên "
-"hệ với đội ngũ hỗ trợ của PinCatch."
+msgstr "对下载 Pinterest 视频或删除内容有疑问？请联系 PinCatch 支持团队。"
 
 #: views.py:212
 msgid "PinCatch Privacy Policy"
-msgstr "Chính sách bảo mật của PinCatch"
+msgstr "PinCatch 隐私政策"
 
 #: views.py:213
 msgid ""
 "Understand how PinCatch processes downloader requests, what information we "
 "store, and how we protect user privacy."
-msgstr ""
-"Hiểu cách PinCatch xử lý yêu cầu tải xuống, thông tin nào chúng tôi lưu trữ "
-"và cách chúng tôi bảo vệ quyền riêng tư của người dùng."
+msgstr "了解 PinCatch 如何处理下载请求、存储哪些信息以及如何保护用户隐私。"
 
 #: views.py:222
 msgid "PinCatch Terms & Conditions"
-msgstr "Điều khoản và Điều kiện của PinCatch"
+msgstr "PinCatch 条款和条件"
 
 #: views.py:223
 msgid ""
 "Review the allowed usage of the PinCatch Pinterest downloader, copyright "
 "responsibilities, and legal terms."
-msgstr ""
-"Xem xét các quy định về việc sử dụng được phép của công cụ tải xuống "
-"PinCatch Pinterest, trách nhiệm bản quyền và các điều khoản pháp lý."
+msgstr "查看 PinCatch Pinterest 下载器的允许用途、版权责任和法律条款。"
 
 #: views.py:232
 msgid "PinCatch Copyright & Takedown Policy"
-msgstr "Chính sách bản quyền và gỡ bỏ nội dung của PinCatch"
+msgstr "PinCatch 版权和移除政策"
 
 #: views.py:233
 msgid ""
 "Report copyright concerns and see how PinCatch responds to DMCA takedowns "
 "for Pinterest videos, GIFs, and images."
-msgstr ""
-"Báo cáo các vấn đề liên quan đến bản quyền và xem cách PinCatch xử lý các "
-"yêu cầu gỡ bỏ theo DMCA đối với video, GIF và hình ảnh trên Pinterest."
+msgstr "报告版权问题，了解 PinCatch 如何应对 Pinterest 视频、GIF 和图片的 DMCA 侵权。"

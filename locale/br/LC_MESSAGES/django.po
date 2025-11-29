@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 12:48+0500\n"
+"POT-Creation-Date: 2025-11-28 19:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,501 +16,1098 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !"
-"=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n"
-"%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > "
-"19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 "
-"&& n % 1000000 == 0) ? 3 : 4);\n"
-#: pinit/settings.py:115
+"Plural-Forms: nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 && n % 1000000 == 0) ? 3 : 4);\n"
+
+#: blog/admin.py:58
+msgid "Category not found."
+msgstr "Categoria não encontrada."
+
+#: blog/admin.py:64 blog/admin.py:228
+#, python-format
+msgid "Successfully triggered translation for %(name)s."
+msgstr "Tradução acionada com sucesso para %(nome)s."
+
+#: blog/admin.py:70 blog/admin.py:88 blog/admin.py:234 blog/admin.py:251
+#, python-format
+msgid "Failed to translate %(name)s: %(error)s"
+msgstr "Falha ao traduzir %(nome)s: %(erro)s"
+
+#: blog/admin.py:94
+#, python-format
+msgid "Successfully queued translation for %(count)d categories."
+msgstr "Tradução enfileirada com sucesso para %(count)d categorias."
+
+#: blog/admin.py:97
+msgid "Translate selected categories"
+msgstr "Traduzir categorias selecionadas"
+
+#: blog/admin.py:104 blog/admin.py:107 blog/admin.py:177 blog/admin.py:180
+#: blog/admin.py:269 blog/admin.py:272
+msgid "Translate"
+msgstr "Traduzir"
+
+#: blog/admin.py:131
+msgid "Post not found."
+msgstr "Post não encontrado."
+
+#: blog/admin.py:137
+#, python-format
+msgid "Successfully triggered translation for %(title)s."
+msgstr "Tradução acionada com sucesso para %(title)s."
+
+#: blog/admin.py:143 blog/admin.py:161
+#, python-format
+msgid "Failed to translate %(title)s: %(error)s"
+msgstr "Falha ao traduzir %(título)s: %(erro)s"
+
+#: blog/admin.py:167
+#, python-format
+msgid "Successfully queued translation for %(count)d posts."
+msgstr "Tradução enfileirada com sucesso para %(count)d posts."
+
+#: blog/admin.py:170
+msgid "Translate selected posts"
+msgstr "Traduzir postagens selecionadas"
+
+#: blog/admin.py:192
+msgid "Meta"
+msgstr "Meta"
+
+#: blog/admin.py:193
+msgid "Head"
+msgstr "Cabeça"
+
+#: blog/admin.py:194
+msgid "Content"
+msgstr "Conteúdo"
+
+#: blog/admin.py:195
+msgid "Timestamps"
+msgstr "Carimbos de data/hora"
+
+#: blog/admin.py:215
+msgid "Page not found."
+msgstr "Página não encontrada."
+
+#: blog/admin.py:220
+#, python-format
+msgid ""
+"Translation can only be triggered from the default language (%(lang)s)."
+msgstr "A tradução só pode ser acionada a partir do idioma padrão (%(lang)s)."
+
+#: blog/admin.py:257
+#, python-format
+msgid "Successfully queued translation for %(count)d pages."
+msgstr "Tradução enfileirada com sucesso para %(contagem)d páginas."
+
+#: blog/admin.py:260
+msgid "Translate selected pages"
+msgstr "Traduzir páginas selecionadas"
+
+#: blog/templates/blog/detail.html:30
+msgid "Published on"
+msgstr "Publicado em"
+
+#: blog/views.py:34
+msgid "Pinterest Blog - Latest Guides & Tutorials"
+msgstr "Blog do Pinterest - Guias e tutoriais mais recentes"
+
+#: blog/views.py:35
+msgid ""
+"Read fresh tips about Pinterest marketing, video downloading, and product "
+"updates from the PinCatch blog."
+msgstr ""
+"Leia novas dicas sobre marketing no Pinterest, download de vídeos e "
+"atualizações de produtos no blog da PinCatch."
+
+#: blog/views.py:66
+#, python-format
+msgid "Pinterest Blog: %(category)s"
+msgstr "Blog do Pinterest: %(categoria)s"
+
+#: blog/views.py:67
+#, python-format
+msgid ""
+"Browse %(category)s articles and tutorials for Pinterest downloads, growth, "
+"and PinCatch updates."
+msgstr ""
+"Navegue pelos artigos e tutoriais da %(categoria) para downloads do "
+"Pinterest, crescimento e atualizações do PinCatch."
+
+#: pincatch/seo.py:3 templates/index.html:8 templates/index.html:19
+#: templates/index.html:26 templates/index.html:96 templates/index.html:97
+msgid "Pinterest Video Downloader - Image, GIFs & Without Watermark"
+msgstr "Pinterest Video Downloader - Imagem, GIFs e sem marca d'água"
+
+#: pincatch/seo.py:5 templates/index.html:10 templates/index.html:20
+#: templates/index.html:27 templates/index.html:98 templates/index.html:171
+msgid ""
+"Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K "
+"videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web."
+msgstr ""
+"Downloader de vídeos do Pinterest on-line gratuito e em massa para PC, Mac e"
+" iPhone. Salve vídeos 4K em MP4 sem marca d'água de forma rápida e fácil. "
+"Verificado pelo Norton™ Safe Web."
+
+#: pincatch/settings.py:160
 msgid "English"
-msgstr ""
+msgstr "Inglês"
 
-#: pinit/settings.py:116
-msgid "Bengali"
-msgstr ""
-
-#: pinit/settings.py:117
-msgid "Filipino"
-msgstr ""
-
-#: pinit/settings.py:118
-msgid "Azerbaijani"
-msgstr ""
-
-#: pinit/settings.py:119
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: pinit/settings.py:120
-msgid "German"
-msgstr ""
-
-#: pinit/settings.py:121
-msgid "Spanish"
-msgstr ""
-
-#: pinit/settings.py:122
-msgid "French"
-msgstr ""
-
-#: pinit/settings.py:123
-msgid "Russian"
-msgstr ""
-
-#: pinit/settings.py:124
+#: pincatch/settings.py:169
 msgid "Arabic"
-msgstr ""
+msgstr "Árabe"
 
-#: pinit/settings.py:125
-msgid "Vietnamese"
-msgstr ""
+#: templates/about.html:8
+msgid "ABOUT"
+msgstr "SOBRE"
 
-#: pinit/settings.py:126
-msgid "Portuguese"
-msgstr ""
+#: templates/about.html:11
+msgid "Welcome to PinCatch!"
+msgstr "Bem-vindo ao PinCatch!"
 
-#: pinit/settings.py:127
-msgid "Turkish"
-msgstr ""
-
-#: pinit/settings.py:128
-msgid "Indonesian"
-msgstr ""
-
-#: pinit/settings.py:129
-msgid "Italian"
-msgstr ""
-
-#: pinit/settings.py:130
-msgid "Ukrainian"
-msgstr ""
-
-#: pinit/settings.py:131
-msgid "Nepali"
-msgstr ""
-
-#: pinit/settings.py:132
-msgid "Korean"
-msgstr ""
-
-#: pinit/settings.py:133
-msgid "Japanese"
-msgstr ""
-
-#: pinit/settings.py:134
-msgid "Chinese Simplified"
-msgstr ""
-
-#: pinit/settings.py:135
-msgid "Chinese Traditional"
-msgstr ""
-
-#: pinit/templates/home.html:7
-msgid "Pinterest Video Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:8
+#: templates/about.html:12
 msgid ""
-"You can quickly download Pinterest videos, images, and GIFs online without a "
-"watermark in HD quality, including 1080p, 2K, and 4K, free on any device "
-"within seconds."
+"PinCatch is a website where you can download videos from Pinterest that are "
+"publicly available. Our mission is to give people a way to save Pinterest "
+"videos for personal use only. For example, you might want to watch a "
+"favorite video offline, or keep it to view later when you have no internet."
 msgstr ""
+"O PinCatch é um site onde você pode baixar vídeos do Pinterest que estão "
+"disponíveis publicamente. Nossa missão é oferecer às pessoas uma maneira de "
+"salvar vídeos do Pinterest apenas para uso pessoal. Por exemplo, talvez você"
+" queira assistir a um vídeo favorito off-line ou mantê-lo para assistir mais"
+" tarde quando não tiver internet."
 
-#: pinit/templates/home.html:12
-msgid "PASTE YOUR PINTEREST LINK HERE"
-msgstr ""
+#: templates/about.html:13
+msgid "We want to be open and clear:"
+msgstr "Queremos ser abertos e claros:"
 
-#: pinit/templates/home.html:16
-msgid "Download"
-msgstr ""
-
-#: pinit/templates/home.html:19
-msgid "By using our service you accept our"
-msgstr ""
-
-#: pinit/templates/home.html:19 templates/footer.html:34
-msgid "Terms of Service"
-msgstr ""
-
-#: pinit/templates/home.html:19
-msgid "and"
-msgstr ""
-
-#: pinit/templates/home.html:19 templates/footer.html:33
-msgid "Privacy Policy"
-msgstr ""
-
-#: pinit/templates/home.html:22
-msgid "How to download? Watch the tutorial"
-msgstr ""
-
-#: pinit/templates/home.html:28
-msgid "Scanned by Norton™ Safe Web"
-msgstr ""
-
-#: pinit/templates/home.html:47
-msgid "Download video"
-msgstr ""
-
-#: pinit/templates/home.html:65
-msgid "Download More Videos"
-msgstr ""
-
-#: pinit/templates/home.html:73
-msgid "All Pinterest Downloader Resources"
-msgstr ""
-
-#: pinit/templates/home.html:77 templates/header.html:22
-msgid "Pinterest Image Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:80
-msgid "Pinterest GIFs Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:83
-msgid "Pinterest Bulk Video Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:88
-msgid "Pinterest Profile Picture Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:91
-msgid "Pinterest URL Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:94
-msgid "Pinterest Mp4 Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:100
-msgid "How to Download Pinterest Videos?"
-msgstr ""
-
-#: pinit/templates/home.html:101
+#: templates/about.html:15
 msgid ""
-"Download your favorite Pinterest pins quickly and easily in just a few steps."
+"PinCatch does not host or store any of the videos on our own servers. We "
+"only fetch the video from Pinterest’s server when you make a request."
 msgstr ""
+"O PinCatch não hospeda ou armazena nenhum dos vídeos em nossos próprios "
+"servidores. Apenas buscamos o vídeo no servidor do Pinterest quando você faz"
+" uma solicitação."
 
-#: pinit/templates/home.html:108
-msgid "Copy Pinterest URL"
-msgstr ""
-
-#: pinit/templates/home.html:109
-msgid "Find the video on Pinterest and copy its URL"
-msgstr ""
-
-#: pinit/templates/home.html:116
-msgid "Paste URL"
-msgstr ""
-
-#: pinit/templates/home.html:117
-msgid "Paste the URL in the input field above"
-msgstr ""
-
-#: pinit/templates/home.html:124
-msgid "Download Video"
-msgstr ""
-
-#: pinit/templates/home.html:125
-msgid "Click download and save your video instantly"
-msgstr ""
-
-#: pinit/templates/home.html:132 pinit/templates/home.html:378
-msgid "What’s the best way to download Pinterest videos on iPhone?"
-msgstr ""
-
-#: pinit/templates/home.html:133
+#: templates/about.html:16
 msgid ""
-"Step-by-step with screenshots, learn how to quickly download Pinterest "
-"videos, images, and GIFs using our Pint Downloader tool in a simple and easy "
-"way."
+"We do not change video content. We only provide a method to download what is"
+" already available publicly."
 msgstr ""
+"Não alteramos o conteúdo do vídeo. Apenas fornecemos um método para baixar o"
+" que já está disponível publicamente."
 
-#: pinit/templates/home.html:139
-msgid "What are the features of Pinterest Video Downloader?"
-msgstr ""
-
-#: pinit/templates/home.html:140
+#: templates/about.html:17
 msgid ""
-"PVD Tool is dedicated to making your Pinterest video downloading experience "
-"smooth and effortless."
+"We respect the rights of the creators. If someone owns a video, and they "
+"want it removed from our service, we will remove it quickly when they show "
+"proof they own it."
 msgstr ""
+"Respeitamos os direitos dos criadores. Se alguém for proprietário de um "
+"vídeo e quiser que ele seja removido de nosso serviço, nós o removeremos "
+"rapidamente quando essa pessoa provar que é proprietária do vídeo."
 
-#: pinit/templates/home.html:148
-msgid "Easy To Use"
-msgstr ""
-
-#: pinit/templates/home.html:149
+#: templates/about.html:18
 msgid ""
-"Just three steps, download a Pinterest video to your computer in no time."
+"We try to follow Pinterest’s rules and copyright laws. If any rule or law "
+"changes, we will update our policies."
 msgstr ""
+"Tentamos seguir as regras do Pinterest e as leis de direitos autorais. Se "
+"alguma regra ou lei for alterada, atualizaremos nossas políticas."
 
-#: pinit/templates/home.html:158
-msgid "Powerful"
-msgstr ""
-
-#: pinit/templates/home.html:159
+#: templates/about.html:20
 msgid ""
-"Our Pinterest video downloader also supports download images, Story Pins."
+"Thank you for using PinCatch. We hope it helps you enjoy Pinterest videos "
+"more flexibly."
 msgstr ""
+"Obrigado por usar o PinCatch. Esperamos que ele o ajude a aproveitar os "
+"vídeos do Pinterest com mais flexibilidade."
 
-#: pinit/templates/home.html:168
-msgid "Full Free"
-msgstr ""
+#: templates/contactUs.html:8
+msgid "CONTACT US"
+msgstr "ENTRE EM CONTATO CONOSCO"
 
-#: pinit/templates/home.html:169
+#: templates/contactUs.html:11
+msgid "If you want to get in touch with us, here is how: "
+msgstr "Se quiser entrar em contato conosco, veja como:"
+
+#: templates/contactUs.html:12
+msgid "Email: "
+msgstr "E-mail:"
+
+#: templates/contactUs.html:13
+msgid "Website: "
+msgstr "Site:"
+
+#: templates/contactUs.html:14
+msgid "You can send us:"
+msgstr "Você pode nos enviar:"
+
+#: templates/contactUs.html:16
+msgid "Questions or Feedback"
+msgstr "Perguntas ou comentários"
+
+#: templates/contactUs.html:17
+msgid "Requests to remove content"
+msgstr "Solicitações de remoção de conteúdo"
+
+#: templates/contactUs.html:18
+msgid "Privacy concerns"
+msgstr "Preocupações com a privacidade"
+
+#: templates/contactUs.html:19
+msgid "Legal or copyright notices"
+msgstr "Avisos legais ou de direitos autorais"
+
+#: templates/contactUs.html:21
+msgid "We aim to respond within 24 to 48 hours."
+msgstr "Nosso objetivo é responder dentro de 24 a 48 horas."
+
+#: templates/copyrightPolicy.html:8
+msgid "Copyright Infringement Policy"
+msgstr "Política de violação de direitos autorais"
+
+#: templates/copyrightPolicy.html:11
 msgid ""
-"PVD Tool Pinterest video downloader is made with love and we promise it will "
-"always be free."
+"This Anti-Copyright Policy is for compliance with the DMCA (Digital "
+"Millennium Copyright Act) in the U.S. and similar laws elsewhere. We aim to "
+"respond quickly to remove infringing content when owners assert rights."
 msgstr ""
+"Esta Política Antidireitos Autorais visa à conformidade com o DMCA (Digital "
+"Millennium Copyright Act) nos EUA e com leis semelhantes em outros países. "
+"Nosso objetivo é responder rapidamente para remover o conteúdo infrator "
+"quando os proprietários reivindicam seus direitos."
 
-#: pinit/templates/home.html:178
-msgid "Efficient"
-msgstr ""
+#: templates/copyrightPolicy.html:12
+msgid "Our Role & Safe Harbor"
+msgstr "Nosso papel e porto seguro"
 
-#: pinit/templates/home.html:179
+#: templates/copyrightPolicy.html:13
 msgid ""
-"PVD Tool provides a Chrome extension to help you improve the efficiency of "
-"Pinterest video downloads."
+"PinCatch acts as a service that helps users fetch content from Pinterest. We"
+" are not the origin of copyrighted material. Under U.S. law, we may qualify "
+"for “safe harbor” protection under DMCA if we follow the rules of takedown "
+"and counter notice."
 msgstr ""
+"O PinCatch atua como um serviço que ajuda os usuários a buscar conteúdo do "
+"Pinterest. Não somos a origem do material protegido por direitos autorais. "
+"De acordo com a legislação dos EUA, podemos nos qualificar para a proteção "
+"de \"porto seguro\" nos termos da DMCA se seguirmos as regras de retirada e "
+"contra-aviso."
 
-#: pinit/templates/home.html:188
-msgid "No Account Needed"
-msgstr ""
+#: templates/copyrightPolicy.html:14
+msgid "How to File a DMCA Notice (Takedown Request)"
+msgstr "Como registrar uma notificação DMCA (solicitação de remoção)"
 
-#: pinit/templates/home.html:189
+#: templates/copyrightPolicy.html:15
 msgid ""
-"PVD Tool doesn't want you to register an account in order to use the "
-"Pinterest free downloader."
+"If you own a copyrighted video or content and you believe it is accessible "
+"via PinCatch in violation of your rights, send us a written notice with:"
 msgstr ""
+"Se você possui um vídeo ou conteúdo protegido por direitos autorais e "
+"acredita que ele pode ser acessado por meio do PinCatch em violação de seus "
+"direitos, envie-nos uma notificação por escrito:"
 
-#: pinit/templates/home.html:198
-msgid "All Platform Supported"
+#: templates/copyrightPolicy.html:17
+msgid "Your full name, address, phone number, and email address"
+msgstr "Seu nome completo, endereço, número de telefone e endereço de e-mail"
+
+#: templates/copyrightPolicy.html:18
+msgid "A description (title, URL, etc.) of your copyrighted work"
 msgstr ""
+"Uma descrição (título, URL, etc.) de seu trabalho protegido por direitos "
+"autorais"
 
-#: pinit/templates/home.html:199
+#: templates/copyrightPolicy.html:19
+msgid "The exact URL on PinCatch (or in our logs) where the content appears"
+msgstr ""
+"O URL exato no PinCatch (ou em nossos registros) onde o conteúdo aparece"
+
+#: templates/copyrightPolicy.html:20
 msgid ""
-"PVD Tool is an online service that works on all platforms like Android or "
-"iOS, windows, mac, or Linux."
+"A statement that you believe in good faith that the use is not allowed by "
+"the copyright owner"
 msgstr ""
+"Uma declaração de que você acredita de boa fé que o uso não é permitido pelo"
+" proprietário dos direitos autorais"
 
-#: pinit/templates/home.html:209
-msgid "What are the Benefits of Using Pinterest Video Downloader Online?"
-msgstr ""
-
-#: pinit/templates/home.html:216
-msgid "All-in-One Tool"
-msgstr ""
-
-#: pinit/templates/home.html:217
+#: templates/copyrightPolicy.html:21
 msgid ""
-"PVD Tool brings you a complete set of Pinterest download tools, including "
-"video, image, GIF, and Story Pin downloaders, making it the easiest way to "
-"save your favorite content."
+"A statement under penalty of perjury that the information is accurate and "
+"that you are the copyright owner or authorized agent"
 msgstr ""
+"Uma declaração, sob pena de perjúrio, de que as informações são precisas e "
+"que você é o proprietário dos direitos autorais ou agente autorizado"
 
-#: pinit/templates/home.html:225
-msgid "High-Quality Downloads"
-msgstr ""
+#: templates/copyrightPolicy.html:22
+msgid "Your electronic signature (or physical signature)"
+msgstr "Sua assinatura eletrônica (ou assinatura física)"
 
-#: pinit/templates/home.html:226
+#: templates/copyrightPolicy.html:24
+msgid "Send your notice via email to:"
+msgstr "Envie sua notificação por e-mail para:"
+
+#: templates/copyrightPolicy.html:25
+msgid "Once we get a valid DMCA notice, we will:"
+msgstr "Assim que recebermos uma notificação DMCA válida, nós a enviaremos:"
+
+#: templates/copyrightPolicy.html:27
+msgid "Remove or disable access to the infringing content"
+msgstr "Remover ou desativar o acesso ao conteúdo infrator"
+
+#: templates/copyrightPolicy.html:28
+msgid "Notify the user who requested the content"
+msgstr "Notificar o usuário que solicitou o conteúdo"
+
+#: templates/copyrightPolicy.html:29
+msgid "Keep records of the request"
+msgstr "Mantenha registros da solicitação"
+
+#: templates/copyrightPolicy.html:31
+msgid " Counter-Notice by the User"
+msgstr " Contra-notificação pelo usuário"
+
+#: templates/copyrightPolicy.html:32
 msgid ""
-"Download Pinterest videos in 4K or the best quality available, so you always "
-"enjoy clear and sharp visuals."
+"If someone believes the content was wrongly removed (for example, they had "
+"the right to use it), they may send a counter-notice containing:"
 msgstr ""
+"Se alguém acreditar que o conteúdo foi removido erroneamente (por exemplo, "
+"que tinha o direito de usá-lo), poderá enviar uma contranotificação "
+"contendo:"
 
-#: pinit/templates/home.html:235
-msgid "Works on Any Device"
-msgstr ""
+#: templates/copyrightPolicy.html:34
+msgid "Their name, address, and email"
+msgstr "Seu nome, endereço e e-mail"
 
-#: pinit/templates/home.html:236
+#: templates/copyrightPolicy.html:35
+msgid "Description of content removed and its previous location"
+msgstr "Descrição do conteúdo removido e sua localização anterior"
+
+#: templates/copyrightPolicy.html:36
 msgid ""
-"Whether you're on Android, iOS, Windows, Mac, or even Xiaomi, the Pinterest "
-"video downloader works smoothly across all devices and systems."
+"Statement that under penalty of perjury, they believe the content was "
+"wrongly removed"
 msgstr ""
+"Declaração de que, sob pena de perjúrio, acredita que o conteúdo foi "
+"removido erroneamente"
 
-#: pinit/templates/home.html:247
-msgid "What People Saying"
+#: templates/copyrightPolicy.html:37
+msgid "Consent to jurisdiction of a federal court (if in the  U.S.)"
 msgstr ""
+"Consentimento com a jurisdição de um tribunal federal (se estiver nos EUA)"
 
-#: pinit/templates/home.html:248
+#: templates/copyrightPolicy.html:38
+msgid "Their signature"
+msgstr "Sua assinatura"
+
+#: templates/copyrightPolicy.html:40
 msgid ""
-"Eusmod tempor dui incididunt utas labore dolore magna ipsum dique sed enim "
-"aud lorem ipsum dolor sit amet consectetur adipiscing elit."
+"If valid, we may restore the content after waiting the required time (e.g., "
+"10-14 business days) unless the copyright owner files a lawsuit."
 msgstr ""
+"Se for válido, poderemos restaurar o conteúdo após aguardar o tempo "
+"necessário (por exemplo, de 10 a 14 dias úteis), a menos que o proprietário "
+"dos direitos autorais entre com uma ação judicial."
 
-#: pinit/templates/home.html:253
+#: templates/copyrightPolicy.html:41
+msgid "Repeat Infringers"
+msgstr "Infratores reincidentes"
+
+#: templates/copyrightPolicy.html:42
 msgid ""
-"Eusmod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem "
-"ipsum do dolor sit amet consectetur adipiscing elit sed eiusmod tempor "
-"incididunt."
+"We may terminate accounts or block users who repeatedly infringe copyrights."
 msgstr ""
+"Podemos encerrar contas ou bloquear usuários que violam repetidamente os "
+"direitos autorais."
 
-#: pinit/templates/home.html:256 pinit/templates/home.html:264
-#: pinit/templates/home.html:272 pinit/templates/home.html:279
-msgid "Pinterest User"
-msgstr ""
+#: templates/copyrightPolicy.html:43
+msgid "Designated Copyright Agent"
+msgstr "Agente de direitos autorais designado"
 
-#: pinit/templates/home.html:261 pinit/templates/home.html:269
-#: pinit/templates/home.html:276
+#: templates/copyrightPolicy.html:44
 msgid ""
-"Enumod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem "
-"ipsum do dolor sit amet consectetur adipiscing elit sed eiusmod tempor "
-"incididunt."
+"If you wish, register a “Designated Copyright Agent” to receive notices "
+"legally. This helps your site comply with DMCA."
 msgstr ""
+"Se desejar, registre um \"Agente Designado de Direitos Autorais\" para "
+"receber avisos legalmente. Isso ajuda seu site a cumprir a DMCA."
 
-#: pinit/templates/home.html:288
-msgid "Knowledge Base"
-msgstr ""
+#: templates/copyrightPolicy.html:45
+msgid "False Claims"
+msgstr "Alegações falsas"
 
-#: pinit/templates/home.html:298 pinit/templates/home.html:313
-#: pinit/templates/home.html:328
-msgid "Why Small Businesses Win Big With Local Marketing"
-msgstr ""
-
-#: pinit/templates/home.html:340
-msgid "Frequently Asked Questions"
-msgstr ""
-
-#: pinit/templates/home.html:343
-msgid "Is pinterest downloader safe?"
-msgstr ""
-
-#: pinit/templates/home.html:349
+#: templates/copyrightPolicy.html:46
 msgid ""
-"Most orders ship within 1–2 business days and arrive in 3–7 days depending "
-"on location."
+"If someone knowingly misuses DMCA notices or counter-notices (for example, "
+"false claims), they may be liable for damages under the law."
 msgstr ""
+"Se alguém fizer uso intencionalmente indevido de avisos ou "
+"contranotificações da DMCA (por exemplo, alegações falsas), poderá ser "
+"responsabilizado por danos nos termos da lei."
 
-#: pinit/templates/home.html:355
-msgid "How can I download Pinterest content on my PC?"
-msgstr ""
+#: templates/copyrightPolicy.html:47
+msgid "Other Jurisdictions"
+msgstr "Outras jurisdições"
 
-#: pinit/templates/home.html:361
+#: templates/copyrightPolicy.html:48
 msgid ""
-"Yes, we ship worldwide. Taxes and duties may apply based on destination."
+"Even though the DMCA is U.S. law, copyright laws exist in many countries. We"
+" aim to follow global rules and remove infringing content when we are "
+"notified, regardless of where the owner or user is."
 msgstr ""
-
-#: pinit/templates/home.html:367
-msgid "Is there a Pinterest downloader available for Mac?"
-msgstr ""
-
-#: pinit/templates/home.html:373 pinit/templates/home.html:384
-#: pinit/templates/home.html:395 pinit/templates/home.html:406
-#: pinit/templates/home.html:417 pinit/templates/home.html:428
-msgid ""
-"Items can be returned within 30 days in original packaging. Start a return "
-"in your account."
-msgstr ""
-
-#: pinit/templates/home.html:389
-msgid "Can i pinterest video downloader without watermark?"
-msgstr ""
-
-#: pinit/templates/home.html:400
-msgid "Where do pinterest downloads go on iphone?"
-msgstr ""
-
-#: pinit/templates/home.html:411
-msgid "Why is my pinterest not downloading pictures?"
-msgstr ""
-
-#: pinit/templates/home.html:422
-msgid "Can books be downloaded from pinterest?"
-msgstr ""
+"Embora a DMCA seja uma lei dos EUA, existem leis de direitos autorais em "
+"muitos países. Nosso objetivo é seguir as regras globais e remover o "
+"conteúdo infrator quando formos notificados, independentemente de onde o "
+"proprietário ou usuário esteja."
 
 #: templates/footer.html:6
-msgid "About PVD Tool"
-msgstr ""
+msgid "Quick Links"
+msgstr "Links rápidos"
 
-#: templates/footer.html:7
-msgid ""
-"PVD Tool is a free online service that allows you to download Pinterest "
-"videos, images, and GIFs quickly and easily. Our mission is to provide a "
-"seamless downloading experience for all Pinterest users."
-msgstr ""
+#: templates/footer.html:8 templates/header.html:20 templates/index.html:263
+msgid "Home"
+msgstr "Início"
+
+#: templates/footer.html:9
+msgid "About Us"
+msgstr "Sobre nós"
+
+#: templates/footer.html:10 templates/header.html:23
+msgid "Blog"
+msgstr "Blog"
+
+#: templates/footer.html:14
+msgid "Support"
+msgstr "Suporte"
+
+#: templates/footer.html:16
+msgid "Contact Us"
+msgstr "Entre em contato conosco"
 
 #: templates/footer.html:17
-msgid "Quick Links"
-msgstr ""
+msgid "Privacy Policy"
+msgstr "Política de privacidade"
 
-#: templates/footer.html:19 templates/header.html:21
-msgid "Home"
-msgstr ""
+#: templates/footer.html:18
+msgid "Terms And Conditions"
+msgstr "Termos e condições"
 
-#: templates/footer.html:20
-msgid "How It Works"
-msgstr ""
-
-#: templates/footer.html:21
-msgid "Features"
-msgstr ""
-
-#: templates/footer.html:22
-msgid "Benefits"
-msgstr ""
+#: templates/footer.html:19
+msgid "Copyright Policy"
+msgstr "Política de direitos autorais"
 
 #: templates/footer.html:23
-msgid "Testimonials"
-msgstr ""
+msgid "Disclaimer"
+msgstr "Isenção de responsabilidade"
 
 #: templates/footer.html:24
-msgid "FAQ"
-msgstr ""
-
-#: templates/footer.html:29
-msgid "Support"
-msgstr ""
-
-#: templates/footer.html:31
-msgid "Contact Us"
-msgstr ""
-
-#: templates/footer.html:32
-msgid "Help Center"
-msgstr ""
-
-#: templates/footer.html:35
-msgid "Cookie Policy"
-msgstr ""
-
-#: templates/footer.html:40
-msgid "Disclaimer"
-msgstr ""
-
-#: templates/footer.html:41
 msgid ""
 "PinCatch Tool is not affiliated with Pinterest. All trademarks, logos, and "
 "videos belong to their respective owners. This service is for personal use "
 "only."
 msgstr ""
+"A PinCatch Tool não é afiliada ao Pinterest. Todas as marcas registradas, "
+"logotipos e vídeos pertencem a seus respectivos proprietários. Esse serviço "
+"é apenas para uso pessoal."
 
-#: templates/footer.html:49
+#: templates/footer.html:28
 msgid "2025 PinCatch. All Rights Reserved. | Designed with"
-msgstr ""
+msgstr "2025 PinCatch. Todos os direitos reservados. | Projetado com"
 
-#: templates/footer.html:50
+#: templates/footer.html:29
 msgid "for Pinterest users"
-msgstr ""
+msgstr "para usuários do Pinterest"
 
-#: templates/header.html:23
+#: templates/header.html:21
+msgid "Pinterest Image Downloader"
+msgstr "Downloader de imagens do Pinterest"
+
+#: templates/header.html:22
 msgid "Pinterest GIF Downloader"
-msgstr ""
+msgstr "Downloader de GIFs do Pinterest"
 
 #: templates/header.html:24
-msgid "Blogs"
-msgstr ""
-
-#: templates/header.html:25
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
-#: templates/header.html:39
-msgid "Change"
-msgstr ""
+#: templates/header.html:42
+msgid "Language"
+msgstr "Idioma"
 
-#: templates/index.html:8
-msgid "Pinterest Video Downloader - Image, GIFs & Without Watermark"
+#: templates/index.html:11
+msgid ""
+"pinterest video downloader, pinterest downloader, download pinterest videos,"
+" pinterest mp4, pinterest gif, pinterest image downloader, bulk download "
+"pinterest"
 msgstr ""
+"pinterest video downloader, pinterest downloader, download pinterest videos,"
+" pinterest mp4, pinterest gif, pinterest image downloader, bulk download "
+"pinterest"
+
+#: templates/index.html:75
+msgid "PinCatch"
+msgstr "PinCatch"
+
+#: templates/index.html:88 templates/index.html:167
+msgid "PinCatch - Pinterest Video Downloader"
+msgstr "PinCatch - Downloader de vídeos do Pinterest"
+
+#: templates/index.html:192
+msgid "Is this Pinterest downloader free to use?"
+msgstr "Esse downloader do Pinterest é gratuito?"
+
+#: templates/index.html:195
+msgid ""
+"Yes, PinCatch is entirely safe to use. We don't require a login, don't store"
+" your videos, and use secure connections. Our privacy-protected tool has "
+"been scanned by Norton Safe Web."
+msgstr ""
+"Sim, o PinCatch é totalmente seguro de usar. Não exigimos um login, não "
+"armazenamos seus vídeos e usamos conexões seguras. Nossa ferramenta "
+"protegida contra a privacidade foi verificada pelo Norton Safe Web."
+
+#: templates/index.html:200
+msgid "How can I download Pinterest content on my PC?"
+msgstr "Como posso baixar o conteúdo do Pinterest em meu PC?"
+
+#: templates/index.html:203
+msgid ""
+"Simply open PinCatch in your browser on Windows, Mac, or Linux. Copy the "
+"Pinterest link, paste it in our input field, and click download. The video "
+"or image will save directly to your computer, no software installation "
+"needed."
+msgstr ""
+"Basta abrir o PinCatch em seu navegador no Windows, Mac ou Linux. Copie o "
+"link do Pinterest, cole-o em nosso campo de entrada e clique em download. O "
+"vídeo ou a imagem será salvo diretamente em seu computador, sem necessidade "
+"de instalação de software."
+
+#: templates/index.html:208
+msgid "Is there a Pinterest downloader available for Mac?"
+msgstr "Existe um downloader do Pinterest disponível para Mac?"
+
+#: templates/index.html:211
+msgid ""
+"PinCatch works on Mac through any browser. It's an online downloader, just "
+"visit our site and start downloading without installing anything."
+msgstr ""
+"O PinCatch funciona no Mac por meio de qualquer navegador. É um downloader "
+"on-line, basta visitar nosso site e iniciar o download sem instalar nada."
+
+#: templates/index.html:216
+msgid "What’s the best way to download Pinterest videos on iPhone?"
+msgstr "Qual é a melhor maneira de baixar vídeos do Pinterest no iPhone?"
+
+#: templates/index.html:219
+msgid ""
+"Open Pinterest in Safari, copy the video link, visit PinCatch, paste the "
+"URL, and tap download. Your video saves directly to Photos in full HD "
+"quality. Works perfectly on iOS without any app."
+msgstr ""
+"Abra o Pinterest no Safari, copie o link do vídeo, visite o PinCatch, cole o"
+" URL e toque em download. Seu vídeo é salvo diretamente no Fotos com "
+"qualidade Full HD. Funciona perfeitamente no iOS sem nenhum aplicativo."
+
+#: templates/index.html:224
+msgid "Can the Pinterest video downloader work without a watermark?"
+msgstr ""
+"O downloader de vídeos do Pinterest pode funcionar sem uma marca d'água?"
+
+#: templates/index.html:227
+msgid ""
+"Yes! PinCatch downloads Pinterest videos without a watermark. You get clean,"
+" original-quality files ready to watch or share."
+msgstr ""
+"Sim! O PinCatch baixa vídeos do Pinterest sem marca d'água. Você obtém "
+"arquivos limpos, com qualidade original, prontos para assistir ou "
+"compartilhar."
+
+#: templates/index.html:232
+msgid "Where do Pinterest downloads go on iPhone?"
+msgstr "Para onde vão os downloads do Pinterest no iPhone?"
+
+#: templates/index.html:235
+msgid ""
+"Downloaded videos save to your iPhone's Photos app, while images and GIFs "
+"also go to Photos. Check your Downloads folder in Files for other formats."
+msgstr ""
+"Os vídeos baixados são salvos no aplicativo Photos do iPhone, enquanto as "
+"imagens e os GIFs também vão para o Photos. Verifique se há outros formatos "
+"na pasta Downloads em Arquivos."
+
+#: templates/index.html:240
+msgid "Why is my Pinterest not downloading pictures?"
+msgstr "Por que meu Pinterest não está baixando imagens?"
+
+#: templates/index.html:243
+msgid ""
+"This might be a browser permission issue. Make sure you've allowed downloads"
+" in your browser settings. Try copying the link again and ensure you have a "
+"stable internet connection."
+msgstr ""
+"Isso pode ser um problema de permissão do navegador. Verifique se você "
+"permitiu downloads nas configurações do navegador. Tente copiar o link "
+"novamente e certifique-se de ter uma conexão estável com a Internet."
+
+#: templates/index.html:248
+msgid "Can books be downloaded from Pinterest?"
+msgstr "Os livros podem ser baixados do Pinterest?"
+
+#: templates/index.html:251
+msgid ""
+"While Pinterest may have book-related pins, PinCatch specializes in "
+"downloading videos, images, and GIFs. For actual books, you'll need to visit"
+" the original source linked in the pin."
+msgstr ""
+"Embora o Pinterest possa ter pins relacionados a livros, o PinCatch é "
+"especializado no download de vídeos, imagens e GIFs. Para livros reais, você"
+" precisará visitar a fonte original vinculada ao pin."
+
+#: templates/index.html:269
+msgid "blog"
+msgstr "blog"
+
+#: templates/privacyPolicy.html:8
+msgid "PRIVACY POLICY"
+msgstr "POLÍTICA DE PRIVACIDADE"
+
+#: templates/privacyPolicy.html:11
+msgid ""
+"This Privacy Policy explains what information PinCatch may collect, how we "
+"use it, and your rights. We take your privacy seriously."
+msgstr ""
+"Esta Política de Privacidade explica quais informações a PinCatch pode "
+"coletar, como as usamos e seus direitos. Levamos sua privacidade a sério."
+
+#: templates/privacyPolicy.html:12
+msgid "Information We Collect"
+msgstr "Informações que coletamos"
+
+#: templates/privacyPolicy.html:13
+msgid ""
+"We collect limited information to run the site safely and show ads (like "
+"Google AdSense). The kinds of information include:"
+msgstr ""
+"Coletamos informações limitadas para administrar o site com segurança e "
+"exibir anúncios (como o Google AdSense). Os tipos de informações incluem:"
+
+#: templates/privacyPolicy.html:15
+msgid ""
+"Technical data: your browser type, your device kind, your IP address (or a "
+"part of it), and how you use our website (pages you visit, clicks, etc.)"
+msgstr ""
+"Dados técnicos: seu tipo de navegador, seu tipo de dispositivo, seu endereço"
+" IP (ou parte dele) e como você usa nosso site (páginas visitadas, cliques, "
+"etc.)"
+
+#: templates/privacyPolicy.html:16
+msgid ""
+"Cookies and tracking: we use cookies and similar tools to remember your "
+"preferences and to support advertisement networks."
+msgstr ""
+"Cookies e rastreamento: usamos cookies e ferramentas semelhantes para "
+"lembrar suas preferências e para dar suporte a redes de publicidade."
+
+#: templates/privacyPolicy.html:17
+msgid ""
+"No personal profile unless you provide it: we do not require you to "
+"register. If you do contact us / send notices, we may have your email or "
+"other contact info."
+msgstr ""
+"Nenhum perfil pessoal, a menos que você o forneça: não exigimos que você se "
+"registre. Se entrar em contato conosco ou enviar avisos, poderemos ter seu "
+"e-mail ou outras informações de contato."
+
+#: templates/privacyPolicy.html:19
+msgid "How We Use Information"
+msgstr "Como usamos as informações"
+
+#: templates/privacyPolicy.html:20
+msgid "We use your data to:"
+msgstr "Usamos seus dados para:"
+
+#: templates/privacyPolicy.html:22
+msgid "Keep the website running properly and securely"
+msgstr "Manter o site funcionando de forma adequada e segura"
+
+#: templates/privacyPolicy.html:23
+msgid "Analyze and improve our service"
+msgstr "Analisar e aprimorar nosso serviço"
+
+#: templates/privacyPolicy.html:24
+msgid "Show relevant ads (AdSense)"
+msgstr "Mostrar anúncios relevantes (AdSense)"
+
+#: templates/privacyPolicy.html:25
+msgid "Detect abuse, fraud, or bad use"
+msgstr "Detectar abuso, fraude ou mau uso"
+
+#: templates/privacyPolicy.html:26
+msgid "Process legal requests (for example, copyright takedown notices)"
+msgstr ""
+"Processar solicitações legais (por exemplo, avisos de retirada de direitos "
+"autorais)"
+
+#: templates/privacyPolicy.html:28
+msgid "Sharing Information"
+msgstr "Compartilhamento de informações"
+
+#: templates/privacyPolicy.html:29
+msgid ""
+"We do not sell your personal data to third parties. But we may share "
+"limited, anonymized data (not your name or email) with:"
+msgstr ""
+"Não vendemos seus dados pessoais a terceiros. Mas podemos compartilhar dados"
+" limitados e anônimos (não seu nome ou e-mail) com:"
+
+#: templates/privacyPolicy.html:31
+msgid "Ad networks (Google AdSense)"
+msgstr "Redes de anúncios (Google AdSense)"
+
+#: templates/privacyPolicy.html:32
+msgid "Analytics services (to understand website traffic)"
+msgstr "Serviços de análise (para entender o tráfego do site)"
+
+#: templates/privacyPolicy.html:33
+msgid "Legal authorities if required by law"
+msgstr "Autoridades legais, se exigido por lei"
+
+#: templates/privacyPolicy.html:35
+msgid "Cookies & Similar Technologies"
+msgstr "Cookies e tecnologias similares"
+
+#: templates/privacyPolicy.html:36
+msgid "We use cookies to:"
+msgstr "Usamos cookies para:"
+
+#: templates/privacyPolicy.html:38
+msgid "Remember your preferences"
+msgstr "Lembre-se de suas preferências"
+
+#: templates/privacyPolicy.html:39
+msgid "Help ads know which ads to show"
+msgstr "Ajudar os anúncios a saber quais anúncios devem ser exibidos"
+
+#: templates/privacyPolicy.html:40
+msgid "Monitor usage patterns"
+msgstr "Monitorar padrões de uso"
+
+#: templates/privacyPolicy.html:42
+msgid ""
+"You can disable or block cookies from your browser settings, but some "
+"features of the site may not work well if cookies are disabled."
+msgstr ""
+"Você pode desativar ou bloquear os cookies nas configurações do seu "
+"navegador, mas alguns recursos do site podem não funcionar bem se os cookies"
+" estiverem desativados."
+
+#: templates/privacyPolicy.html:43
+msgid "Children’s Privacy"
+msgstr "Privacidade das crianças"
+
+#: templates/privacyPolicy.html:44
+msgid ""
+"PinCatch does not knowingly collect personal information from children under"
+" age 13. If we become aware that a child under 13 gave us personal info, we "
+"will remove it."
+msgstr ""
+"A PinCatch não coleta intencionalmente informações pessoais de crianças "
+"menores de 13 anos. Se tomarmos conhecimento de que uma criança com menos de"
+" 13 anos nos forneceu informações pessoais, nós as removeremos."
+
+#: templates/privacyPolicy.html:45
+msgid "Links to Other Sites"
+msgstr "Links para outros sites"
+
+#: templates/privacyPolicy.html:46
+msgid ""
+"PinCatch might show ads or links to third-party sites. These sites have "
+"their own privacy policies. We are not responsible for what they do. We "
+"encourage you to read their privacy policies."
+msgstr ""
+"O PinCatch pode exibir anúncios ou links para sites de terceiros. Esses "
+"sites têm suas próprias políticas de privacidade. Não somos responsáveis "
+"pelo que eles fazem. Recomendamos que você leia suas políticas de "
+"privacidade."
+
+#: templates/privacyPolicy.html:47
+msgid "Changes to Privacy Policy"
+msgstr "Alterações na política de privacidade"
+
+#: templates/privacyPolicy.html:48
+msgid ""
+"We may change this policy from time to time. When we do, we will post the "
+"updated version here with a “Last Updated” date. By using PinCatch after "
+"changes, you accept the new policy."
+msgstr ""
+"Podemos alterar esta política de tempos em tempos. Quando o fizermos, "
+"publicaremos a versão atualizada aqui com uma data de \"Última "
+"atualização\". Ao usar o PinCatch após as alterações, você aceita a nova "
+"política."
+
+#: templates/termsAndConditions.html:8
+msgid "TERMS AND CONDITIONS"
+msgstr "TERMOS E CONDIÇÕES"
+
+#: templates/termsAndConditions.html:11
+msgid ""
+"These Terms & Conditions (“Terms”) tell you the rules for using PinCatch. By"
+" using our website, you accept these rules."
+msgstr ""
+"Estes Termos e Condições (\"Termos\") lhe informam as regras de utilização "
+"do PinCatch. Ao usar nosso site, você aceita essas regras."
+
+#: templates/termsAndConditions.html:12
+msgid "Use for Personal, Non-Commercial Purposes Only"
+msgstr "Uso apenas para fins pessoais e não comerciais"
+
+#: templates/termsAndConditions.html:13
+msgid ""
+"You may use PinCatch only to download Pinterest videos for your personal, "
+"noncommercial use. You may not use it to download videos for sale or for "
+"posting somewhere else without permission."
+msgstr ""
+"Você pode usar o PinCatch apenas para baixar vídeos do Pinterest para seu "
+"uso pessoal e não comercial. Você não pode usá-lo para baixar vídeos para "
+"venda ou para postar em outro lugar sem permissão."
+
+#: templates/termsAndConditions.html:14
+msgid "No Hosting or Redistribution by PinCatch"
+msgstr "Sem hospedagem ou redistribuição pela PinCatch"
+
+#: templates/termsAndConditions.html:15
+msgid ""
+"PinCatch does not store, host, or upload videos. We link/content fetch from "
+"Pinterest servers only when you request. We are not the origin of the media "
+"content."
+msgstr ""
+"O PinCatch não armazena, hospeda ou faz upload de vídeos. Nós buscamos "
+"links/conteúdo dos servidores do Pinterest somente quando você solicita. Não"
+" somos a origem do conteúdo de mídia."
+
+#: templates/termsAndConditions.html:16
+msgid "Respect Copyright and Intellectual Property"
+msgstr "Respeite os direitos autorais e a propriedade intelectual"
+
+#: templates/termsAndConditions.html:18
+msgid ""
+"You must respect the rights of content creators. If a video is copyrighted, "
+"you must have permission to use it beyond personal viewing."
+msgstr ""
+"Você deve respeitar os direitos dos criadores de conteúdo. Se um vídeo for "
+"protegido por direitos autorais, você deverá ter permissão para usá-lo além "
+"da visualização pessoal."
+
+#: templates/termsAndConditions.html:19
+msgid ""
+"You may not use downloaded videos to infringe copyright. For example, do not"
+" upload or share videos you don’t have the right to."
+msgstr ""
+"Você não pode usar os vídeos baixados para violar direitos autorais. Por "
+"exemplo, não carregue ou compartilhe vídeos sobre os quais não tenha "
+"direito."
+
+#: templates/termsAndConditions.html:20
+msgid ""
+"If you use downloaded content in a way that violates copyright laws, you are"
+" solely responsible."
+msgstr ""
+"Se você usar o conteúdo baixado de uma forma que viole as leis de direitos "
+"autorais, você será o único responsável."
+
+#: templates/termsAndConditions.html:22
+msgid "Prohibited Uses"
+msgstr "Usos proibidos"
+
+#: templates/termsAndConditions.html:23
+msgid "You may not use PinCatch to:"
+msgstr "Você não pode usar o PinCatch para:"
+
+#: templates/termsAndConditions.html:25
+msgid "Violate laws or regulations"
+msgstr "Violar leis ou regulamentos"
+
+#: templates/termsAndConditions.html:26
+msgid "Harass, defame, or harm others"
+msgstr "Assediar, difamar ou prejudicar outras pessoas"
+
+#: templates/termsAndConditions.html:27
+msgid "Send spam or do malicious acts"
+msgstr "Enviar spam ou praticar atos maliciosos"
+
+#: templates/termsAndConditions.html:28
+msgid "Violate copyrights or intellectual property"
+msgstr "Violar direitos autorais ou propriedade intelectual"
+
+#: templates/termsAndConditions.html:29
+msgid "Reverse engineer or misuse our service"
+msgstr "Fazer engenharia reversa ou usar indevidamente nosso serviço"
+
+#: templates/termsAndConditions.html:31
+msgid "Disclaimers & Limitations"
+msgstr "Isenções de responsabilidade e limitações"
+
+#: templates/termsAndConditions.html:33
+msgid "PinCatch is not endorsed, authorized, or affiliated with Pinterest."
+msgstr "O PinCatch não é endossado, autorizado ou afiliado ao Pinterest."
+
+#: templates/termsAndConditions.html:34
+msgid ""
+"We don’t guarantee that our service will always or perfect. Sometimes videos"
+" may not download."
+msgstr ""
+"Não garantimos que nosso serviço será sempre ou perfeito. Às vezes, os "
+"vídeos podem não ser baixados."
+
+#: templates/termsAndConditions.html:35
+msgid "We are not responsible for loss or damage from using the service."
+msgstr ""
+"Não nos responsabilizamos por perdas ou danos decorrentes do uso do serviço."
+
+#: templates/termsAndConditions.html:36
+msgid ""
+"We do not guarantee that the content is legal to download in your country. "
+"You must check local law."
+msgstr ""
+"Não garantimos que o conteúdo seja legal para download em seu país. Você "
+"deve verificar a legislação local."
+
+#: templates/termsAndConditions.html:38
+msgid "Termination"
+msgstr "Rescisão"
+
+#: templates/termsAndConditions.html:39
+msgid ""
+"We may suspend or terminate your access at any time if you break these "
+"Terms. We may remove content or block users who misuse the service."
+msgstr ""
+"Poderemos suspender ou encerrar seu acesso a qualquer momento se você violar"
+" estes Termos. Poderemos remover conteúdo ou bloquear usuários que façam mau"
+" uso do serviço."
+
+#: templates/termsAndConditions.html:40
+msgid "Changes to Terms"
+msgstr "Alterações nos termos"
+
+#: templates/termsAndConditions.html:41
+msgid ""
+"We may update these Terms. We will post a new version on this page with a "
+"“Last Updated” date. By continuing to use PinCatch after changes, you accept"
+" the new Terms."
+msgstr ""
+"Podemos atualizar estes Termos. Publicaremos uma nova versão nesta página "
+"com uma data de \"Última atualização\". Ao continuar a usar o PinCatch após "
+"as alterações, você aceita os novos Termos."
+
+#: templates/termsAndConditions.html:42
+msgid "Governing Law & Jurisdiction"
+msgstr "Lei Aplicável e Jurisdição"
+
+#: templates/termsAndConditions.html:43
+msgid ""
+"These Terms are governed by the laws of the jurisdiction where PinCatch is "
+"registered (for example, your country). Any legal claims must be brought "
+"before the courts in that jurisdiction."
+msgstr ""
+"Estes Termos são regidos pelas leis da jurisdição onde a PinCatch está "
+"registrada (por exemplo, seu país). Quaisquer reivindicações legais devem "
+"ser levadas aos tribunais dessa jurisdição."
+
+#: views.py:134
+msgid "Pinterest Image Downloader - Save HD Photos from Pins"
+msgstr "Pinterest Image Downloader - Salve fotos HD de pins"
+
+#: views.py:135
+msgid ""
+"Download Pinterest images in HD quality without installing any apps using "
+"PinCatch."
+msgstr ""
+"Baixe imagens do Pinterest em qualidade HD sem instalar nenhum aplicativo "
+"usando o PinCatch."
+
+#: views.py:156
+msgid "Pinterest GIF Downloader - Save Animated Pins Online"
+msgstr "Pinterest GIF Downloader - Salve Pins Animados Online"
+
+#: views.py:157
+msgid ""
+"Convert and download Pinterest GIFs instantly in high quality with the free "
+"PinCatch GIF downloader."
+msgstr ""
+"Converta e baixe GIFs do Pinterest instantaneamente em alta qualidade com o "
+"downloader gratuito PinCatch GIF."
+
+#: views.py:178
+msgid "Pinterest URL Downloader - Save Animated Pins Online"
+msgstr "Pinterest URL Downloader - Salve Pins Animados Online"
+
+#: views.py:179
+msgid ""
+"Convert and download Pinterest URLs instantly in high quality with the free "
+"PinCatch Url downloader."
+msgstr ""
+"Converta e baixe URLs do Pinterest instantaneamente em alta qualidade com o "
+"downloader gratuito PinCatch Url."
+
+#: views.py:192
+msgid "About PinCatch - Pinterest Video Downloader"
+msgstr "Sobre o PinCatch - Downloader de vídeos do Pinterest"
+
+#: views.py:193
+msgid ""
+"Learn more about the PinCatch downloader, our mission, and how we help "
+"creators save their favorite Pinterest content."
+msgstr ""
+"Saiba mais sobre o downloader PinCatch, nossa missão e como ajudamos os "
+"criadores a salvar seu conteúdo favorito do Pinterest."
+
+#: views.py:202
+msgid "Contact PinCatch Support"
+msgstr "Entre em contato com o suporte da PinCatch"
+
+#: views.py:203
+msgid ""
+"Have questions about downloading Pinterest videos or removing content? Get "
+"in touch with the PinCatch support team."
+msgstr ""
+"Tem dúvidas sobre o download de vídeos do Pinterest ou a remoção de "
+"conteúdo? Entre em contato com a equipe de suporte do PinCatch."
+
+#: views.py:212
+msgid "PinCatch Privacy Policy"
+msgstr "Política de privacidade da PinCatch"
+
+#: views.py:213
+msgid ""
+"Understand how PinCatch processes downloader requests, what information we "
+"store, and how we protect user privacy."
+msgstr ""
+"Entenda como a PinCatch processa as solicitações de downloader, quais "
+"informações armazenamos e como protegemos a privacidade do usuário."
+
+#: views.py:222
+msgid "PinCatch Terms & Conditions"
+msgstr "Termos e condições da PinCatch"
+
+#: views.py:223
+msgid ""
+"Review the allowed usage of the PinCatch Pinterest downloader, copyright "
+"responsibilities, and legal terms."
+msgstr ""
+"Analise o uso permitido do downloader PinCatch Pinterest, as "
+"responsabilidades de direitos autorais e os termos legais."
+
+#: views.py:232
+msgid "PinCatch Copyright & Takedown Policy"
+msgstr "Política de direitos autorais e de remoção da PinCatch"
+
+#: views.py:233
+msgid ""
+"Report copyright concerns and see how PinCatch responds to DMCA takedowns "
+"for Pinterest videos, GIFs, and images."
+msgstr ""
+"Informe preocupações com direitos autorais e veja como o PinCatch responde a"
+" remoções DMCA para vídeos, GIFs e imagens do Pinterest."

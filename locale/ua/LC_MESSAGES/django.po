@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 12:48+0500\n"
+"POT-Creation-Date: 2025-11-28 19:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,496 +17,1099 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pinit/settings.py:115
+#: blog/admin.py:58
+msgid "Category not found."
+msgstr "Категорію не знайдено."
+
+#: blog/admin.py:64 blog/admin.py:228
+#, python-format
+msgid "Successfully triggered translation for %(name)s."
+msgstr "Успішно запущено переклад для %(name)s."
+
+#: blog/admin.py:70 blog/admin.py:88 blog/admin.py:234 blog/admin.py:251
+#, python-format
+msgid "Failed to translate %(name)s: %(error)s"
+msgstr "Не вдалося перекласти %(ім'я)s: %(помилка)s"
+
+#: blog/admin.py:94
+#, python-format
+msgid "Successfully queued translation for %(count)d categories."
+msgstr "Успішно поставлено в чергу переклад для категорій %(count)d."
+
+#: blog/admin.py:97
+msgid "Translate selected categories"
+msgstr "Перекласти вибрані категорії"
+
+#: blog/admin.py:104 blog/admin.py:107 blog/admin.py:177 blog/admin.py:180
+#: blog/admin.py:269 blog/admin.py:272
+msgid "Translate"
+msgstr "Перекласти"
+
+#: blog/admin.py:131
+msgid "Post not found."
+msgstr "Повідомлення не знайдено."
+
+#: blog/admin.py:137
+#, python-format
+msgid "Successfully triggered translation for %(title)s."
+msgstr "Успішно запущено переклад для %(title)s."
+
+#: blog/admin.py:143 blog/admin.py:161
+#, python-format
+msgid "Failed to translate %(title)s: %(error)s"
+msgstr "Не вдалося перекласти %(заголовок)s: %(помилка)s"
+
+#: blog/admin.py:167
+#, python-format
+msgid "Successfully queued translation for %(count)d posts."
+msgstr "Успішно поставлено в чергу на переклад для %(count)d дописів."
+
+#: blog/admin.py:170
+msgid "Translate selected posts"
+msgstr "Перекласти вибрані дописи"
+
+#: blog/admin.py:192
+msgid "Meta"
+msgstr "Мета"
+
+#: blog/admin.py:193
+msgid "Head"
+msgstr "Голова"
+
+#: blog/admin.py:194
+msgid "Content"
+msgstr "Зміст"
+
+#: blog/admin.py:195
+msgid "Timestamps"
+msgstr "Мітки часу"
+
+#: blog/admin.py:215
+msgid "Page not found."
+msgstr "Сторінку не знайдено."
+
+#: blog/admin.py:220
+#, python-format
+msgid ""
+"Translation can only be triggered from the default language (%(lang)s)."
+msgstr "Переклад можна запустити лише з мови за замовчуванням (%(lang)s)."
+
+#: blog/admin.py:257
+#, python-format
+msgid "Successfully queued translation for %(count)d pages."
+msgstr "Успішно поставлено в чергу переклад для %(count)d сторінок."
+
+#: blog/admin.py:260
+msgid "Translate selected pages"
+msgstr "Перекласти вибрані сторінки"
+
+#: blog/templates/blog/detail.html:30
+msgid "Published on"
+msgstr "Опубліковано на"
+
+#: blog/views.py:34
+msgid "Pinterest Blog - Latest Guides & Tutorials"
+msgstr "Блог Pinterest - Останні інструкції та навчальні посібники"
+
+#: blog/views.py:35
+msgid ""
+"Read fresh tips about Pinterest marketing, video downloading, and product "
+"updates from the PinCatch blog."
+msgstr ""
+"Читайте свіжі поради про маркетинг у Pinterest, завантаження відео та "
+"оновлення продуктів у блозі PinCatch."
+
+#: blog/views.py:66
+#, python-format
+msgid "Pinterest Blog: %(category)s"
+msgstr "Блог на Pinterest: %(категорія)s"
+
+#: blog/views.py:67
+#, python-format
+msgid ""
+"Browse %(category)s articles and tutorials for Pinterest downloads, growth, "
+"and PinCatch updates."
+msgstr ""
+"Перегляньте статті та навчальні посібники %(категорії) про завантаження, "
+"зростання та оновлення PinCatch у Pinterest."
+
+#: pincatch/seo.py:3 templates/index.html:8 templates/index.html:19
+#: templates/index.html:26 templates/index.html:96 templates/index.html:97
+msgid "Pinterest Video Downloader - Image, GIFs & Without Watermark"
+msgstr ""
+"Pinterest Video Downloader - Зображення, GIF-файли та без водяного знаку"
+
+#: pincatch/seo.py:5 templates/index.html:10 templates/index.html:20
+#: templates/index.html:27 templates/index.html:98 templates/index.html:171
+msgid ""
+"Bulk free online Pinterest video downloader for PC, Mac, iPhone. Save 4K "
+"videos to MP4 without watermark fast and easy. Scanned by Norton™ Safe Web."
+msgstr ""
+"Завантажити масовий безкоштовний завантажувач відео з Pinterest для PC, Mac,"
+" iPhone. Швидко та легко збережіть 4K відео на MP4 без захисного екрану. "
+"Відскановано Norton™ Safe Web."
+
+#: pincatch/settings.py:160
 msgid "English"
-msgstr ""
+msgstr "Англійська мова"
 
-#: pinit/settings.py:116
-msgid "Bengali"
-msgstr ""
-
-#: pinit/settings.py:117
-msgid "Filipino"
-msgstr ""
-
-#: pinit/settings.py:118
-msgid "Azerbaijani"
-msgstr ""
-
-#: pinit/settings.py:119
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: pinit/settings.py:120
-msgid "German"
-msgstr ""
-
-#: pinit/settings.py:121
-msgid "Spanish"
-msgstr ""
-
-#: pinit/settings.py:122
-msgid "French"
-msgstr ""
-
-#: pinit/settings.py:123
-msgid "Russian"
-msgstr ""
-
-#: pinit/settings.py:124
+#: pincatch/settings.py:169
 msgid "Arabic"
-msgstr ""
+msgstr "Арабська"
 
-#: pinit/settings.py:125
-msgid "Vietnamese"
-msgstr ""
+#: templates/about.html:8
+msgid "ABOUT"
+msgstr "ПРО"
 
-#: pinit/settings.py:126
-msgid "Portuguese"
-msgstr ""
+#: templates/about.html:11
+msgid "Welcome to PinCatch!"
+msgstr "Ласкаво просимо до PinCatch!"
 
-#: pinit/settings.py:127
-msgid "Turkish"
-msgstr ""
-
-#: pinit/settings.py:128
-msgid "Indonesian"
-msgstr ""
-
-#: pinit/settings.py:129
-msgid "Italian"
-msgstr ""
-
-#: pinit/settings.py:130
-msgid "Ukrainian"
-msgstr ""
-
-#: pinit/settings.py:131
-msgid "Nepali"
-msgstr ""
-
-#: pinit/settings.py:132
-msgid "Korean"
-msgstr ""
-
-#: pinit/settings.py:133
-msgid "Japanese"
-msgstr ""
-
-#: pinit/settings.py:134
-msgid "Chinese Simplified"
-msgstr ""
-
-#: pinit/settings.py:135
-msgid "Chinese Traditional"
-msgstr ""
-
-#: pinit/templates/home.html:7
-msgid "Pinterest Video Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:8
+#: templates/about.html:12
 msgid ""
-"You can quickly download Pinterest videos, images, and GIFs online without a "
-"watermark in HD quality, including 1080p, 2K, and 4K, free on any device "
-"within seconds."
+"PinCatch is a website where you can download videos from Pinterest that are "
+"publicly available. Our mission is to give people a way to save Pinterest "
+"videos for personal use only. For example, you might want to watch a "
+"favorite video offline, or keep it to view later when you have no internet."
 msgstr ""
+"PinCatch - це веб-сайт, на якому ви можете завантажувати відео з Pinterest, "
+"що знаходяться у відкритому доступі. Наша місія - дати людям можливість "
+"зберігати відео з Pinterest лише для особистого користування. Наприклад, ви "
+"можете переглянути улюблене відео офлайн або зберегти його, щоб переглянути "
+"пізніше, коли у вас не буде інтернету."
 
-#: pinit/templates/home.html:12
-msgid "PASTE YOUR PINTEREST LINK HERE"
-msgstr ""
+#: templates/about.html:13
+msgid "We want to be open and clear:"
+msgstr "Ми хочемо бути відкритими та зрозумілими:"
 
-#: pinit/templates/home.html:16
-msgid "Download"
-msgstr ""
-
-#: pinit/templates/home.html:19
-msgid "By using our service you accept our"
-msgstr ""
-
-#: pinit/templates/home.html:19 templates/footer.html:34
-msgid "Terms of Service"
-msgstr ""
-
-#: pinit/templates/home.html:19
-msgid "and"
-msgstr ""
-
-#: pinit/templates/home.html:19 templates/footer.html:33
-msgid "Privacy Policy"
-msgstr ""
-
-#: pinit/templates/home.html:22
-msgid "How to download? Watch the tutorial"
-msgstr ""
-
-#: pinit/templates/home.html:28
-msgid "Scanned by Norton™ Safe Web"
-msgstr ""
-
-#: pinit/templates/home.html:47
-msgid "Download video"
-msgstr ""
-
-#: pinit/templates/home.html:65
-msgid "Download More Videos"
-msgstr ""
-
-#: pinit/templates/home.html:73
-msgid "All Pinterest Downloader Resources"
-msgstr ""
-
-#: pinit/templates/home.html:77 templates/header.html:22
-msgid "Pinterest Image Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:80
-msgid "Pinterest GIFs Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:83
-msgid "Pinterest Bulk Video Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:88
-msgid "Pinterest Profile Picture Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:91
-msgid "Pinterest URL Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:94
-msgid "Pinterest Mp4 Downloader"
-msgstr ""
-
-#: pinit/templates/home.html:100
-msgid "How to Download Pinterest Videos?"
-msgstr ""
-
-#: pinit/templates/home.html:101
+#: templates/about.html:15
 msgid ""
-"Download your favorite Pinterest pins quickly and easily in just a few steps."
+"PinCatch does not host or store any of the videos on our own servers. We "
+"only fetch the video from Pinterest’s server when you make a request."
 msgstr ""
+"PinCatch не розміщує і не зберігає відео на власних серверах. Ми лише "
+"завантажуємо відео з сервера Pinterest, коли ви робите запит."
 
-#: pinit/templates/home.html:108
-msgid "Copy Pinterest URL"
-msgstr ""
-
-#: pinit/templates/home.html:109
-msgid "Find the video on Pinterest and copy its URL"
-msgstr ""
-
-#: pinit/templates/home.html:116
-msgid "Paste URL"
-msgstr ""
-
-#: pinit/templates/home.html:117
-msgid "Paste the URL in the input field above"
-msgstr ""
-
-#: pinit/templates/home.html:124
-msgid "Download Video"
-msgstr ""
-
-#: pinit/templates/home.html:125
-msgid "Click download and save your video instantly"
-msgstr ""
-
-#: pinit/templates/home.html:132 pinit/templates/home.html:378
-msgid "What’s the best way to download Pinterest videos on iPhone?"
-msgstr ""
-
-#: pinit/templates/home.html:133
+#: templates/about.html:16
 msgid ""
-"Step-by-step with screenshots, learn how to quickly download Pinterest "
-"videos, images, and GIFs using our Pint Downloader tool in a simple and easy "
-"way."
+"We do not change video content. We only provide a method to download what is"
+" already available publicly."
 msgstr ""
+"Ми не змінюємо відеоконтент. Ми лише надаємо спосіб завантажити те, що вже є"
+" у відкритому доступі."
 
-#: pinit/templates/home.html:139
-msgid "What are the features of Pinterest Video Downloader?"
-msgstr ""
-
-#: pinit/templates/home.html:140
+#: templates/about.html:17
 msgid ""
-"PVD Tool is dedicated to making your Pinterest video downloading experience "
-"smooth and effortless."
+"We respect the rights of the creators. If someone owns a video, and they "
+"want it removed from our service, we will remove it quickly when they show "
+"proof they own it."
 msgstr ""
+"Ми поважаємо права авторів. Якщо хтось є власником відео і хоче видалити "
+"його з нашого сервісу, ми швидко видалимо його, коли він надасть докази, що "
+"він є власником."
 
-#: pinit/templates/home.html:148
-msgid "Easy To Use"
-msgstr ""
-
-#: pinit/templates/home.html:149
+#: templates/about.html:18
 msgid ""
-"Just three steps, download a Pinterest video to your computer in no time."
+"We try to follow Pinterest’s rules and copyright laws. If any rule or law "
+"changes, we will update our policies."
 msgstr ""
+"Ми намагаємося дотримуватися правил Pinterest і законів про авторське право."
+" Якщо будь-яке правило або закон зміниться, ми оновимо нашу політику."
 
-#: pinit/templates/home.html:158
-msgid "Powerful"
-msgstr ""
-
-#: pinit/templates/home.html:159
+#: templates/about.html:20
 msgid ""
-"Our Pinterest video downloader also supports download images, Story Pins."
+"Thank you for using PinCatch. We hope it helps you enjoy Pinterest videos "
+"more flexibly."
 msgstr ""
+"Дякуємо за використання PinCatch. Ми сподіваємося, що він допоможе вам "
+"насолоджуватися відео з Pinterest більш гнучко."
 
-#: pinit/templates/home.html:168
-msgid "Full Free"
-msgstr ""
+#: templates/contactUs.html:8
+msgid "CONTACT US"
+msgstr "ЗВ'ЯЗАТИСЯ З НАМИ"
 
-#: pinit/templates/home.html:169
+#: templates/contactUs.html:11
+msgid "If you want to get in touch with us, here is how: "
+msgstr "Якщо ви хочете зв'язатися з нами, ось як це зробити:"
+
+#: templates/contactUs.html:12
+msgid "Email: "
+msgstr "Електронна пошта:"
+
+#: templates/contactUs.html:13
+msgid "Website: "
+msgstr "Веб-сайт:"
+
+#: templates/contactUs.html:14
+msgid "You can send us:"
+msgstr "Ви можете відправити нас:"
+
+#: templates/contactUs.html:16
+msgid "Questions or Feedback"
+msgstr "Запитання або зворотній зв'язок"
+
+#: templates/contactUs.html:17
+msgid "Requests to remove content"
+msgstr "Запити на видалення контенту"
+
+#: templates/contactUs.html:18
+msgid "Privacy concerns"
+msgstr "Занепокоєння щодо конфіденційності"
+
+#: templates/contactUs.html:19
+msgid "Legal or copyright notices"
+msgstr "Юридичні або авторські застереження"
+
+#: templates/contactUs.html:21
+msgid "We aim to respond within 24 to 48 hours."
+msgstr "Ми прагнемо відповісти протягом 24-48 годин."
+
+#: templates/copyrightPolicy.html:8
+msgid "Copyright Infringement Policy"
+msgstr "Політика щодо порушення авторських прав"
+
+#: templates/copyrightPolicy.html:11
 msgid ""
-"PVD Tool Pinterest video downloader is made with love and we promise it will "
-"always be free."
+"This Anti-Copyright Policy is for compliance with the DMCA (Digital "
+"Millennium Copyright Act) in the U.S. and similar laws elsewhere. We aim to "
+"respond quickly to remove infringing content when owners assert rights."
 msgstr ""
+"Ця Антикопірайтна політика розроблена для дотримання DMCA (Закон про "
+"авторське право в цифрову епоху) в США та аналогічних законів в інших "
+"країнах. Ми прагнемо швидко реагувати та видаляти контент, що порушує "
+"авторські права, коли власники заявляють про свої права."
 
-#: pinit/templates/home.html:178
-msgid "Efficient"
-msgstr ""
+#: templates/copyrightPolicy.html:12
+msgid "Our Role & Safe Harbor"
+msgstr "Наша роль та безпечна гавань"
 
-#: pinit/templates/home.html:179
+#: templates/copyrightPolicy.html:13
 msgid ""
-"PVD Tool provides a Chrome extension to help you improve the efficiency of "
-"Pinterest video downloads."
+"PinCatch acts as a service that helps users fetch content from Pinterest. We"
+" are not the origin of copyrighted material. Under U.S. law, we may qualify "
+"for “safe harbor” protection under DMCA if we follow the rules of takedown "
+"and counter notice."
 msgstr ""
+"PinCatch - це сервіс, який допомагає користувачам отримувати контент з "
+"Pinterest. Ми не є джерелом матеріалів, захищених авторським правом. Згідно "
+"із законодавством США, ми можемо претендувати на захист \"безпечної гавані\""
+" згідно з DMCA, якщо дотримуємося правил видалення та зустрічного "
+"повідомлення."
 
-#: pinit/templates/home.html:188
-msgid "No Account Needed"
-msgstr ""
+#: templates/copyrightPolicy.html:14
+msgid "How to File a DMCA Notice (Takedown Request)"
+msgstr "Як подати DMCA-повідомлення (запит на видалення)"
 
-#: pinit/templates/home.html:189
+#: templates/copyrightPolicy.html:15
 msgid ""
-"PVD Tool doesn't want you to register an account in order to use the "
-"Pinterest free downloader."
+"If you own a copyrighted video or content and you believe it is accessible "
+"via PinCatch in violation of your rights, send us a written notice with:"
 msgstr ""
+"Якщо ви володієте відео або контентом, захищеним авторським правом, і "
+"вважаєте, що доступ до нього через PinCatch порушує ваші права, надішліть "
+"нам письмове повідомлення:"
 
-#: pinit/templates/home.html:198
-msgid "All Platform Supported"
+#: templates/copyrightPolicy.html:17
+msgid "Your full name, address, phone number, and email address"
+msgstr "Ваше повне ім'я, адреса, номер телефону та адреса електронної пошти"
+
+#: templates/copyrightPolicy.html:18
+msgid "A description (title, URL, etc.) of your copyrighted work"
+msgstr "Опис (назва, URL тощо) вашого твору, захищеного авторським правом"
+
+#: templates/copyrightPolicy.html:19
+msgid "The exact URL on PinCatch (or in our logs) where the content appears"
 msgstr ""
+"Точна URL-адреса на PinCatch (або в наших журналах), де з'являється контент"
 
-#: pinit/templates/home.html:199
+#: templates/copyrightPolicy.html:20
 msgid ""
-"PVD Tool is an online service that works on all platforms like Android or "
-"iOS, windows, mac, or Linux."
+"A statement that you believe in good faith that the use is not allowed by "
+"the copyright owner"
 msgstr ""
+"Заява про те, що ви добросовісно вважаєте, що використання не дозволено "
+"власником авторських прав"
 
-#: pinit/templates/home.html:209
-msgid "What are the Benefits of Using Pinterest Video Downloader Online?"
-msgstr ""
-
-#: pinit/templates/home.html:216
-msgid "All-in-One Tool"
-msgstr ""
-
-#: pinit/templates/home.html:217
+#: templates/copyrightPolicy.html:21
 msgid ""
-"PVD Tool brings you a complete set of Pinterest download tools, including "
-"video, image, GIF, and Story Pin downloaders, making it the easiest way to "
-"save your favorite content."
+"A statement under penalty of perjury that the information is accurate and "
+"that you are the copyright owner or authorized agent"
 msgstr ""
+"Заява під страхом покарання за неправдиві свідчення про те, що інформація є "
+"достовірною і що ви є власником авторських прав або уповноваженим агентом"
 
-#: pinit/templates/home.html:225
-msgid "High-Quality Downloads"
+#: templates/copyrightPolicy.html:22
+msgid "Your electronic signature (or physical signature)"
+msgstr "Ваш електронний підпис (або фізичний підпис)"
+
+#: templates/copyrightPolicy.html:24
+msgid "Send your notice via email to:"
+msgstr "Надішліть своє повідомлення електронною поштою на адресу:"
+
+#: templates/copyrightPolicy.html:25
+msgid "Once we get a valid DMCA notice, we will:"
+msgstr "Як тільки ми отримаємо дійсне повідомлення DMCA, ми зробимо це:"
+
+#: templates/copyrightPolicy.html:27
+msgid "Remove or disable access to the infringing content"
 msgstr ""
+"Видаліть або заблокуйте доступ до контенту, що порушує права інтелектуальної"
+" власності"
 
-#: pinit/templates/home.html:226
+#: templates/copyrightPolicy.html:28
+msgid "Notify the user who requested the content"
+msgstr "Сповістити користувача, який запитував контент"
+
+#: templates/copyrightPolicy.html:29
+msgid "Keep records of the request"
+msgstr "Зберігайте записи про запит"
+
+#: templates/copyrightPolicy.html:31
+msgid " Counter-Notice by the User"
+msgstr " Зустрічне повідомлення Користувача"
+
+#: templates/copyrightPolicy.html:32
 msgid ""
-"Download Pinterest videos in 4K or the best quality available, so you always "
-"enjoy clear and sharp visuals."
+"If someone believes the content was wrongly removed (for example, they had "
+"the right to use it), they may send a counter-notice containing:"
 msgstr ""
+"Якщо хтось вважає, що контент було видалено неправомірно (наприклад, він мав"
+" право на його використання), він може надіслати контрповідомлення, яке "
+"містить відповідну інформацію:"
 
-#: pinit/templates/home.html:235
-msgid "Works on Any Device"
-msgstr ""
+#: templates/copyrightPolicy.html:34
+msgid "Their name, address, and email"
+msgstr "Їх ім'я, адреса та електронна пошта"
 
-#: pinit/templates/home.html:236
+#: templates/copyrightPolicy.html:35
+msgid "Description of content removed and its previous location"
+msgstr "Опис видаленого контенту та його попереднє місцезнаходження"
+
+#: templates/copyrightPolicy.html:36
 msgid ""
-"Whether you're on Android, iOS, Windows, Mac, or even Xiaomi, the Pinterest "
-"video downloader works smoothly across all devices and systems."
+"Statement that under penalty of perjury, they believe the content was "
+"wrongly removed"
 msgstr ""
+"Заява про те, що під страхом покарання за неправдиві свідчення вони "
+"вважають, що контент було видалено неправомірно"
 
-#: pinit/templates/home.html:247
-msgid "What People Saying"
-msgstr ""
+#: templates/copyrightPolicy.html:37
+msgid "Consent to jurisdiction of a federal court (if in the  U.S.)"
+msgstr "Згода на юрисдикцію федерального суду (якщо ви перебуваєте в США)"
 
-#: pinit/templates/home.html:248
+#: templates/copyrightPolicy.html:38
+msgid "Their signature"
+msgstr "Їхній підпис"
+
+#: templates/copyrightPolicy.html:40
 msgid ""
-"Eusmod tempor dui incididunt utas labore dolore magna ipsum dique sed enim "
-"aud lorem ipsum dolor sit amet consectetur adipiscing elit."
+"If valid, we may restore the content after waiting the required time (e.g., "
+"10-14 business days) unless the copyright owner files a lawsuit."
 msgstr ""
+"Якщо це можливо, ми можемо відновити вміст після очікування необхідного часу"
+" (наприклад, 10-14 робочих днів), якщо власник авторських прав не подасть "
+"позов до суду."
 
-#: pinit/templates/home.html:253
+#: templates/copyrightPolicy.html:41
+msgid "Repeat Infringers"
+msgstr "Повторні порушники"
+
+#: templates/copyrightPolicy.html:42
 msgid ""
-"Eusmod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem "
-"ipsum do dolor sit amet consectetur adipiscing elit sed eiusmod tempor "
-"incididunt."
+"We may terminate accounts or block users who repeatedly infringe copyrights."
 msgstr ""
+"Ми можемо закрити акаунти або заблокувати користувачів, які неодноразово "
+"порушують авторські права."
 
-#: pinit/templates/home.html:256 pinit/templates/home.html:264
-#: pinit/templates/home.html:272 pinit/templates/home.html:279
-msgid "Pinterest User"
-msgstr ""
+#: templates/copyrightPolicy.html:43
+msgid "Designated Copyright Agent"
+msgstr "Уповноважений агент з авторських прав"
 
-#: pinit/templates/home.html:261 pinit/templates/home.html:269
-#: pinit/templates/home.html:276
+#: templates/copyrightPolicy.html:44
 msgid ""
-"Enumod tempor incididunt utas labore dolor magna aliqua sed enim quid. Lorem "
-"ipsum do dolor sit amet consectetur adipiscing elit sed eiusmod tempor "
-"incididunt."
+"If you wish, register a “Designated Copyright Agent” to receive notices "
+"legally. This helps your site comply with DMCA."
 msgstr ""
+"Якщо ви бажаєте, зареєструйте \"Призначеного агента з авторських прав\", щоб"
+" отримувати повідомлення на законних підставах. Це допоможе вашому сайту "
+"відповідати вимогам DMCA."
 
-#: pinit/templates/home.html:288
-msgid "Knowledge Base"
-msgstr ""
+#: templates/copyrightPolicy.html:45
+msgid "False Claims"
+msgstr "Неправдиві твердження"
 
-#: pinit/templates/home.html:298 pinit/templates/home.html:313
-#: pinit/templates/home.html:328
-msgid "Why Small Businesses Win Big With Local Marketing"
-msgstr ""
-
-#: pinit/templates/home.html:340
-msgid "Frequently Asked Questions"
-msgstr ""
-
-#: pinit/templates/home.html:343
-msgid "Is pinterest downloader safe?"
-msgstr ""
-
-#: pinit/templates/home.html:349
+#: templates/copyrightPolicy.html:46
 msgid ""
-"Most orders ship within 1–2 business days and arrive in 3–7 days depending "
-"on location."
+"If someone knowingly misuses DMCA notices or counter-notices (for example, "
+"false claims), they may be liable for damages under the law."
 msgstr ""
+"Якщо хтось свідомо зловживає повідомленнями або контрповідомленнями DMCA "
+"(наприклад, подає неправдиві заяви), він може нести відповідальність за "
+"збитки згідно із законом."
 
-#: pinit/templates/home.html:355
-msgid "How can I download Pinterest content on my PC?"
-msgstr ""
+#: templates/copyrightPolicy.html:47
+msgid "Other Jurisdictions"
+msgstr "Інші юрисдикції"
 
-#: pinit/templates/home.html:361
+#: templates/copyrightPolicy.html:48
 msgid ""
-"Yes, we ship worldwide. Taxes and duties may apply based on destination."
+"Even though the DMCA is U.S. law, copyright laws exist in many countries. We"
+" aim to follow global rules and remove infringing content when we are "
+"notified, regardless of where the owner or user is."
 msgstr ""
-
-#: pinit/templates/home.html:367
-msgid "Is there a Pinterest downloader available for Mac?"
-msgstr ""
-
-#: pinit/templates/home.html:373 pinit/templates/home.html:384
-#: pinit/templates/home.html:395 pinit/templates/home.html:406
-#: pinit/templates/home.html:417 pinit/templates/home.html:428
-msgid ""
-"Items can be returned within 30 days in original packaging. Start a return "
-"in your account."
-msgstr ""
-
-#: pinit/templates/home.html:389
-msgid "Can i pinterest video downloader without watermark?"
-msgstr ""
-
-#: pinit/templates/home.html:400
-msgid "Where do pinterest downloads go on iphone?"
-msgstr ""
-
-#: pinit/templates/home.html:411
-msgid "Why is my pinterest not downloading pictures?"
-msgstr ""
-
-#: pinit/templates/home.html:422
-msgid "Can books be downloaded from pinterest?"
-msgstr ""
+"Незважаючи на те, що DMCA - це закон США, закони про авторське право існують"
+" у багатьох країнах. Ми прагнемо дотримуватися глобальних правил і видаляти "
+"контент, що порушує авторські права, коли нас про це повідомляють, незалежно"
+" від того, де знаходиться власник або користувач."
 
 #: templates/footer.html:6
-msgid "About PVD Tool"
-msgstr ""
+msgid "Quick Links"
+msgstr "Швидкі посилання"
 
-#: templates/footer.html:7
-msgid ""
-"PVD Tool is a free online service that allows you to download Pinterest "
-"videos, images, and GIFs quickly and easily. Our mission is to provide a "
-"seamless downloading experience for all Pinterest users."
-msgstr ""
+#: templates/footer.html:8 templates/header.html:20 templates/index.html:263
+msgid "Home"
+msgstr "Головна сторінка"
+
+#: templates/footer.html:9
+msgid "About Us"
+msgstr "Про нас"
+
+#: templates/footer.html:10 templates/header.html:23
+msgid "Blog"
+msgstr "Блог"
+
+#: templates/footer.html:14
+msgid "Support"
+msgstr "Підтримка"
+
+#: templates/footer.html:16
+msgid "Contact Us"
+msgstr "Зв'яжіться з нами"
 
 #: templates/footer.html:17
-msgid "Quick Links"
-msgstr ""
+msgid "Privacy Policy"
+msgstr "Політика конфіденційності"
 
-#: templates/footer.html:19 templates/header.html:21
-msgid "Home"
-msgstr ""
+#: templates/footer.html:18
+msgid "Terms And Conditions"
+msgstr "Умови та положення"
 
-#: templates/footer.html:20
-msgid "How It Works"
-msgstr ""
-
-#: templates/footer.html:21
-msgid "Features"
-msgstr ""
-
-#: templates/footer.html:22
-msgid "Benefits"
-msgstr ""
+#: templates/footer.html:19
+msgid "Copyright Policy"
+msgstr "Політика щодо авторських прав"
 
 #: templates/footer.html:23
-msgid "Testimonials"
-msgstr ""
+msgid "Disclaimer"
+msgstr "Відмова від відповідальності"
 
 #: templates/footer.html:24
-msgid "FAQ"
-msgstr ""
-
-#: templates/footer.html:29
-msgid "Support"
-msgstr ""
-
-#: templates/footer.html:31
-msgid "Contact Us"
-msgstr ""
-
-#: templates/footer.html:32
-msgid "Help Center"
-msgstr ""
-
-#: templates/footer.html:35
-msgid "Cookie Policy"
-msgstr ""
-
-#: templates/footer.html:40
-msgid "Disclaimer"
-msgstr ""
-
-#: templates/footer.html:41
 msgid ""
 "PinCatch Tool is not affiliated with Pinterest. All trademarks, logos, and "
 "videos belong to their respective owners. This service is for personal use "
 "only."
 msgstr ""
+"PinCatch Tool не пов'язаний з Pinterest. Всі торгові марки, логотипи та "
+"відео належать відповідним власникам. Цей сервіс призначений лише для "
+"особистого користування."
 
-#: templates/footer.html:49
+#: templates/footer.html:28
 msgid "2025 PinCatch. All Rights Reserved. | Designed with"
-msgstr ""
+msgstr "2025 PinCatch. Всі права захищені. | Розроблено за участю"
 
-#: templates/footer.html:50
+#: templates/footer.html:29
 msgid "for Pinterest users"
-msgstr ""
+msgstr "для користувачів Pinterest"
 
-#: templates/header.html:23
+#: templates/header.html:21
+msgid "Pinterest Image Downloader"
+msgstr "Завантажувач зображень Pinterest"
+
+#: templates/header.html:22
 msgid "Pinterest GIF Downloader"
-msgstr ""
+msgstr "Завантажувач GIF-файлів Pinterest"
 
 #: templates/header.html:24
-msgid "Blogs"
-msgstr ""
-
-#: templates/header.html:25
 msgid "About"
-msgstr ""
+msgstr "Про"
 
-#: templates/header.html:39
-msgid "Change"
-msgstr ""
+#: templates/header.html:42
+msgid "Language"
+msgstr "Мова"
 
-#: templates/index.html:8
-msgid "Pinterest Video Downloader - Image, GIFs & Without Watermark"
+#: templates/index.html:11
+msgid ""
+"pinterest video downloader, pinterest downloader, download pinterest videos,"
+" pinterest mp4, pinterest gif, pinterest image downloader, bulk download "
+"pinterest"
 msgstr ""
+"pinterest завантажувач відео, pinterest завантажувач, завантажити pinterest "
+"відео, pinterest mp4, pinterest gif, pinterest завантажувач зображень, "
+"завантажити pinterest, завантажити pinterest"
+
+#: templates/index.html:75
+msgid "PinCatch"
+msgstr "PinCatch"
+
+#: templates/index.html:88 templates/index.html:167
+msgid "PinCatch - Pinterest Video Downloader"
+msgstr "PinCatch - завантажувач відео з Pinterest"
+
+#: templates/index.html:192
+msgid "Is this Pinterest downloader free to use?"
+msgstr "Цей завантажувач Pinterest безкоштовний?"
+
+#: templates/index.html:195
+msgid ""
+"Yes, PinCatch is entirely safe to use. We don't require a login, don't store"
+" your videos, and use secure connections. Our privacy-protected tool has "
+"been scanned by Norton Safe Web."
+msgstr ""
+"Так, PinCatch повністю безпечний у використанні. Ми не вимагаємо входу в "
+"систему, не зберігаємо ваші відео та використовуємо безпечні з'єднання. Наш "
+"інструмент із захистом конфіденційності був перевірений Norton Safe Web."
+
+#: templates/index.html:200
+msgid "How can I download Pinterest content on my PC?"
+msgstr "Як завантажити вміст Pinterest на свій комп'ютер?"
+
+#: templates/index.html:203
+msgid ""
+"Simply open PinCatch in your browser on Windows, Mac, or Linux. Copy the "
+"Pinterest link, paste it in our input field, and click download. The video "
+"or image will save directly to your computer, no software installation "
+"needed."
+msgstr ""
+"Просто відкрийте PinCatch у своєму браузері на Windows, Mac або Linux. "
+"Скопіюйте посилання на Pinterest, вставте його в поле введення і натисніть "
+"\"Завантажити\". Відео або зображення буде збережено безпосередньо на ваш "
+"комп'ютер, без необхідності встановлення програмного забезпечення."
+
+#: templates/index.html:208
+msgid "Is there a Pinterest downloader available for Mac?"
+msgstr "Чи є програма для завантаження Pinterest для Mac?"
+
+#: templates/index.html:211
+msgid ""
+"PinCatch works on Mac through any browser. It's an online downloader, just "
+"visit our site and start downloading without installing anything."
+msgstr ""
+"PinCatch працює на Mac через будь-який браузер. Це онлайн-завантажувач, "
+"просто відвідайте наш сайт і почніть завантажувати, нічого не встановлюючи."
+
+#: templates/index.html:216
+msgid "What’s the best way to download Pinterest videos on iPhone?"
+msgstr "Як найкраще завантажити відео з Pinterest на iPhone?"
+
+#: templates/index.html:219
+msgid ""
+"Open Pinterest in Safari, copy the video link, visit PinCatch, paste the "
+"URL, and tap download. Your video saves directly to Photos in full HD "
+"quality. Works perfectly on iOS without any app."
+msgstr ""
+"Відкрийте Pinterest у Safari, скопіюйте посилання на відео, перейдіть до "
+"PinCatch, вставте URL-адресу і натисніть \"Завантажити\". Ваше відео "
+"зберігається безпосередньо у Фото у якості Full HD. Ідеально працює на iOS "
+"без жодних додатків."
+
+#: templates/index.html:224
+msgid "Can the Pinterest video downloader work without a watermark?"
+msgstr "Чи може завантажувач відео Pinterest працювати без водяного знаку?"
+
+#: templates/index.html:227
+msgid ""
+"Yes! PinCatch downloads Pinterest videos without a watermark. You get clean,"
+" original-quality files ready to watch or share."
+msgstr ""
+"Так! PinCatch завантажує відео з Pinterest без водяних знаків. Ви отримуєте "
+"чисті файли оригінальної якості, готові до перегляду або публікації."
+
+#: templates/index.html:232
+msgid "Where do Pinterest downloads go on iPhone?"
+msgstr "Куди йдуть завантаження з Pinterest на iPhone?"
+
+#: templates/index.html:235
+msgid ""
+"Downloaded videos save to your iPhone's Photos app, while images and GIFs "
+"also go to Photos. Check your Downloads folder in Files for other formats."
+msgstr ""
+"Завантажені відео зберігаються у програмі \"Фотографії\" на вашому iPhone, а"
+" зображення та GIF-файли також потрапляють до програми \"Фотографії\". "
+"Перевірте папку \"Завантаження\" у програмі \"Файли\" на наявність інших "
+"форматів."
+
+#: templates/index.html:240
+msgid "Why is my Pinterest not downloading pictures?"
+msgstr "Чому мій Pinterest не завантажує зображення?"
+
+#: templates/index.html:243
+msgid ""
+"This might be a browser permission issue. Make sure you've allowed downloads"
+" in your browser settings. Try copying the link again and ensure you have a "
+"stable internet connection."
+msgstr ""
+"Це може бути проблема з дозволами браузера. Переконайтеся, що ви дозволили "
+"завантаження у налаштуваннях вашого браузера. Спробуйте скопіювати посилання"
+" ще раз і переконайтеся, що у вас стабільне інтернет-з'єднання."
+
+#: templates/index.html:248
+msgid "Can books be downloaded from Pinterest?"
+msgstr "Чи можна завантажувати книги з Pinterest?"
+
+#: templates/index.html:251
+msgid ""
+"While Pinterest may have book-related pins, PinCatch specializes in "
+"downloading videos, images, and GIFs. For actual books, you'll need to visit"
+" the original source linked in the pin."
+msgstr ""
+"У той час як Pinterest може містити піни, пов'язані з книгами, PinCatch "
+"спеціалізується на завантаженні відео, зображень і GIF-файлів. Щоб знайти "
+"справжню книгу, вам потрібно відвідати першоджерело, на яке є посилання в "
+"піні."
+
+#: templates/index.html:269
+msgid "blog"
+msgstr "блог"
+
+#: templates/privacyPolicy.html:8
+msgid "PRIVACY POLICY"
+msgstr "ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ"
+
+#: templates/privacyPolicy.html:11
+msgid ""
+"This Privacy Policy explains what information PinCatch may collect, how we "
+"use it, and your rights. We take your privacy seriously."
+msgstr ""
+"Ця Політика конфіденційності пояснює, яку інформацію PinCatch може збирати, "
+"як ми її використовуємо та ваші права. Ми серйозно ставимося до вашої "
+"конфіденційності."
+
+#: templates/privacyPolicy.html:12
+msgid "Information We Collect"
+msgstr "Інформація, яку ми збираємо"
+
+#: templates/privacyPolicy.html:13
+msgid ""
+"We collect limited information to run the site safely and show ads (like "
+"Google AdSense). The kinds of information include:"
+msgstr ""
+"Ми збираємо обмежену інформацію для безпечної роботи сайту та показу реклами"
+" (наприклад, Google AdSense). До таких видів інформації відносяться"
+
+#: templates/privacyPolicy.html:15
+msgid ""
+"Technical data: your browser type, your device kind, your IP address (or a "
+"part of it), and how you use our website (pages you visit, clicks, etc.)"
+msgstr ""
+"Технічні дані: тип вашого браузера, тип вашого пристрою, ваша IP-адреса (або"
+" її частина), а також те, як ви використовуєте наш веб-сайт (сторінки, які "
+"ви відвідуєте, кліки тощо)."
+
+#: templates/privacyPolicy.html:16
+msgid ""
+"Cookies and tracking: we use cookies and similar tools to remember your "
+"preferences and to support advertisement networks."
+msgstr ""
+"Файли cookie та відстеження: ми використовуємо файли cookie та подібні "
+"інструменти, щоб запам'ятовувати ваші уподобання та підтримувати рекламні "
+"мережі."
+
+#: templates/privacyPolicy.html:17
+msgid ""
+"No personal profile unless you provide it: we do not require you to "
+"register. If you do contact us / send notices, we may have your email or "
+"other contact info."
+msgstr ""
+"Немає особистого профілю, якщо ви його не надасте: ми не вимагаємо від вас "
+"реєстрації. Якщо ви зв'яжетеся з нами / надішлете повідомлення, нам може "
+"знадобитися ваша електронна пошта або інша контактна інформація."
+
+#: templates/privacyPolicy.html:19
+msgid "How We Use Information"
+msgstr "Як ми використовуємо інформацію"
+
+#: templates/privacyPolicy.html:20
+msgid "We use your data to:"
+msgstr "Ми використовуємо ваші дані для:"
+
+#: templates/privacyPolicy.html:22
+msgid "Keep the website running properly and securely"
+msgstr "Забезпечте належну та безпечну роботу веб-сайту"
+
+#: templates/privacyPolicy.html:23
+msgid "Analyze and improve our service"
+msgstr "Аналізуйте та покращуйте наш сервіс"
+
+#: templates/privacyPolicy.html:24
+msgid "Show relevant ads (AdSense)"
+msgstr "Показувати релевантну рекламу (AdSense)"
+
+#: templates/privacyPolicy.html:25
+msgid "Detect abuse, fraud, or bad use"
+msgstr "Виявляйте зловживання, шахрайство або неналежне використання"
+
+#: templates/privacyPolicy.html:26
+msgid "Process legal requests (for example, copyright takedown notices)"
+msgstr ""
+"Опрацьовувати юридичні запити (наприклад, повідомлення про порушення "
+"авторських прав)"
+
+#: templates/privacyPolicy.html:28
+msgid "Sharing Information"
+msgstr "Обмін інформацією"
+
+#: templates/privacyPolicy.html:29
+msgid ""
+"We do not sell your personal data to third parties. But we may share "
+"limited, anonymized data (not your name or email) with:"
+msgstr ""
+"Ми не продаємо ваші персональні дані третім особам. Але ми можемо ділитися "
+"обмеженими, анонімними даними (не вашим ім'ям чи електронною поштою):"
+
+#: templates/privacyPolicy.html:31
+msgid "Ad networks (Google AdSense)"
+msgstr "Рекламні мережі (Google AdSense)"
+
+#: templates/privacyPolicy.html:32
+msgid "Analytics services (to understand website traffic)"
+msgstr "Аналітичні сервіси (для розуміння відвідуваності сайту)"
+
+#: templates/privacyPolicy.html:33
+msgid "Legal authorities if required by law"
+msgstr "Юридичні органи, якщо це передбачено законом"
+
+#: templates/privacyPolicy.html:35
+msgid "Cookies & Similar Technologies"
+msgstr "Файли cookie та подібні технології"
+
+#: templates/privacyPolicy.html:36
+msgid "We use cookies to:"
+msgstr "Ми використовуємо файли cookie, щоб:"
+
+#: templates/privacyPolicy.html:38
+msgid "Remember your preferences"
+msgstr "Пам'ятайте про свої уподобання"
+
+#: templates/privacyPolicy.html:39
+msgid "Help ads know which ads to show"
+msgstr "Допоможіть рекламодавцям знати, яку рекламу показувати"
+
+#: templates/privacyPolicy.html:40
+msgid "Monitor usage patterns"
+msgstr "Відстежуйте шаблони використання"
+
+#: templates/privacyPolicy.html:42
+msgid ""
+"You can disable or block cookies from your browser settings, but some "
+"features of the site may not work well if cookies are disabled."
+msgstr ""
+"Ви можете вимкнути або заблокувати файли cookie в налаштуваннях вашого "
+"браузера, але деякі функції сайту можуть не працювати належним чином, якщо "
+"файли cookie вимкнені."
+
+#: templates/privacyPolicy.html:43
+msgid "Children’s Privacy"
+msgstr "Конфіденційність дітей"
+
+#: templates/privacyPolicy.html:44
+msgid ""
+"PinCatch does not knowingly collect personal information from children under"
+" age 13. If we become aware that a child under 13 gave us personal info, we "
+"will remove it."
+msgstr ""
+"PinCatch свідомо не збирає особисту інформацію від дітей молодше 13 років. "
+"Якщо нам стане відомо, що дитина до 13 років надала нам особисту інформацію,"
+" ми видалимо її."
+
+#: templates/privacyPolicy.html:45
+msgid "Links to Other Sites"
+msgstr "Посилання на інші сайти"
+
+#: templates/privacyPolicy.html:46
+msgid ""
+"PinCatch might show ads or links to third-party sites. These sites have "
+"their own privacy policies. We are not responsible for what they do. We "
+"encourage you to read their privacy policies."
+msgstr ""
+"PinCatch може показувати рекламу або посилання на сторонні сайти. Ці сайти "
+"мають власну політику конфіденційності. Ми не несемо відповідальності за те,"
+" що вони роблять. Ми рекомендуємо вам ознайомитися з їх політикою "
+"конфіденційності."
+
+#: templates/privacyPolicy.html:47
+msgid "Changes to Privacy Policy"
+msgstr "Зміни до Політики конфіденційності"
+
+#: templates/privacyPolicy.html:48
+msgid ""
+"We may change this policy from time to time. When we do, we will post the "
+"updated version here with a “Last Updated” date. By using PinCatch after "
+"changes, you accept the new policy."
+msgstr ""
+"Ми можемо час від часу змінювати цю політику. Коли ми це зробимо, ми "
+"опублікуємо оновлену версію тут з датою \"Останнє оновлення\". "
+"Використовуючи PinCatch після змін, ви приймаєте нову політику."
+
+#: templates/termsAndConditions.html:8
+msgid "TERMS AND CONDITIONS"
+msgstr "УМОВИ ТА ПОЛОЖЕННЯ"
+
+#: templates/termsAndConditions.html:11
+msgid ""
+"These Terms & Conditions (“Terms”) tell you the rules for using PinCatch. By"
+" using our website, you accept these rules."
+msgstr ""
+"Ці Умови та положення (\"Умови\") описують правила використання PinCatch. "
+"Використовуючи наш веб-сайт, ви приймаєте ці правила."
+
+#: templates/termsAndConditions.html:12
+msgid "Use for Personal, Non-Commercial Purposes Only"
+msgstr "Використовуйте тільки в особистих, некомерційних цілях"
+
+#: templates/termsAndConditions.html:13
+msgid ""
+"You may use PinCatch only to download Pinterest videos for your personal, "
+"noncommercial use. You may not use it to download videos for sale or for "
+"posting somewhere else without permission."
+msgstr ""
+"Ви можете використовувати PinCatch лише для завантаження відео з Pinterest "
+"для особистого некомерційного використання. Ви не можете використовувати "
+"його для завантаження відео для продажу або для розміщення деінде без "
+"дозволу."
+
+#: templates/termsAndConditions.html:14
+msgid "No Hosting or Redistribution by PinCatch"
+msgstr "Ніякого хостингу та розповсюдження PinCatch"
+
+#: templates/termsAndConditions.html:15
+msgid ""
+"PinCatch does not store, host, or upload videos. We link/content fetch from "
+"Pinterest servers only when you request. We are not the origin of the media "
+"content."
+msgstr ""
+"PinCatch не зберігає, не розміщує і не завантажує відео. Ми отримуємо "
+"посилання/контент з серверів Pinterest лише за вашим запитом. Ми не є "
+"джерелом медіа-контенту."
+
+#: templates/termsAndConditions.html:16
+msgid "Respect Copyright and Intellectual Property"
+msgstr "Поважайте авторське право та інтелектуальну власність"
+
+#: templates/termsAndConditions.html:18
+msgid ""
+"You must respect the rights of content creators. If a video is copyrighted, "
+"you must have permission to use it beyond personal viewing."
+msgstr ""
+"Ви повинні поважати права авторів контенту. Якщо відео захищене авторським "
+"правом, ви повинні мати дозвіл на його використання за межами особистого "
+"перегляду."
+
+#: templates/termsAndConditions.html:19
+msgid ""
+"You may not use downloaded videos to infringe copyright. For example, do not"
+" upload or share videos you don’t have the right to."
+msgstr ""
+"Ви не можете використовувати завантажені відео, порушуючи авторські права. "
+"Наприклад, не завантажуйте і не діліться відео, на які ви не маєте права."
+
+#: templates/termsAndConditions.html:20
+msgid ""
+"If you use downloaded content in a way that violates copyright laws, you are"
+" solely responsible."
+msgstr ""
+"Якщо ви використовуєте завантажений контент у спосіб, що порушує закони про "
+"авторське право, ви несете повну відповідальність."
+
+#: templates/termsAndConditions.html:22
+msgid "Prohibited Uses"
+msgstr "Заборонені види використання"
+
+#: templates/termsAndConditions.html:23
+msgid "You may not use PinCatch to:"
+msgstr "Ви не можете використовувати PinCatch для:"
+
+#: templates/termsAndConditions.html:25
+msgid "Violate laws or regulations"
+msgstr "Порушувати закони або правила"
+
+#: templates/termsAndConditions.html:26
+msgid "Harass, defame, or harm others"
+msgstr "Переслідувати, дискредитувати або завдавати шкоди іншим"
+
+#: templates/termsAndConditions.html:27
+msgid "Send spam or do malicious acts"
+msgstr "Надсилати спам або вчиняти зловмисні дії"
+
+#: templates/termsAndConditions.html:28
+msgid "Violate copyrights or intellectual property"
+msgstr "Порушувати авторські права або інтелектуальну власність"
+
+#: templates/termsAndConditions.html:29
+msgid "Reverse engineer or misuse our service"
+msgstr "Здійснювати зворотний інжиніринг або зловживати нашим сервісом"
+
+#: templates/termsAndConditions.html:31
+msgid "Disclaimers & Limitations"
+msgstr "Відмова від відповідальності та обмеження"
+
+#: templates/termsAndConditions.html:33
+msgid "PinCatch is not endorsed, authorized, or affiliated with Pinterest."
+msgstr "PinCatch не підтримує, не уповноважений і не пов'язаний з Pinterest."
+
+#: templates/termsAndConditions.html:34
+msgid ""
+"We don’t guarantee that our service will always or perfect. Sometimes videos"
+" may not download."
+msgstr ""
+"Ми не гарантуємо, що наш сервіс буде завжди досконалим або бездоганним. "
+"Іноді відео може не завантажуватися."
+
+#: templates/termsAndConditions.html:35
+msgid "We are not responsible for loss or damage from using the service."
+msgstr ""
+"Ми не несемо відповідальності за втрату або пошкодження, пов'язані з "
+"використанням сервісу."
+
+#: templates/termsAndConditions.html:36
+msgid ""
+"We do not guarantee that the content is legal to download in your country. "
+"You must check local law."
+msgstr ""
+"Ми не гарантуємо, що цей контент є законним для завантаження у вашій країні."
+" Ви повинні перевірити місцеве законодавство."
+
+#: templates/termsAndConditions.html:38
+msgid "Termination"
+msgstr "Припинення"
+
+#: templates/termsAndConditions.html:39
+msgid ""
+"We may suspend or terminate your access at any time if you break these "
+"Terms. We may remove content or block users who misuse the service."
+msgstr ""
+"Ми можемо призупинити або припинити ваш доступ у будь-який час, якщо ви "
+"порушите ці Умови. Ми можемо видалити контент або заблокувати користувачів, "
+"які зловживають сервісом."
+
+#: templates/termsAndConditions.html:40
+msgid "Changes to Terms"
+msgstr "Зміни до Умов"
+
+#: templates/termsAndConditions.html:41
+msgid ""
+"We may update these Terms. We will post a new version on this page with a "
+"“Last Updated” date. By continuing to use PinCatch after changes, you accept"
+" the new Terms."
+msgstr ""
+"Ми можемо оновлювати ці Умови. Ми опублікуємо нову версію на цій сторінці з "
+"датою \"Останнє оновлення\". Продовжуючи користуватися PinCatch після "
+"внесення змін, ви приймаєте нові Умови."
+
+#: templates/termsAndConditions.html:42
+msgid "Governing Law & Jurisdiction"
+msgstr "Регулююче право та юрисдикція"
+
+#: templates/termsAndConditions.html:43
+msgid ""
+"These Terms are governed by the laws of the jurisdiction where PinCatch is "
+"registered (for example, your country). Any legal claims must be brought "
+"before the courts in that jurisdiction."
+msgstr ""
+"Ці Умови регулюються законодавством юрисдикції, в якій зареєстрований "
+"PinCatch (наприклад, вашої країни). Будь-які юридичні претензії повинні "
+"розглядатися в судах цієї юрисдикції."
+
+#: views.py:134
+msgid "Pinterest Image Downloader - Save HD Photos from Pins"
+msgstr "Завантажувач зображень Pinterest - зберігайте HD-фото зі шпильок"
+
+#: views.py:135
+msgid ""
+"Download Pinterest images in HD quality without installing any apps using "
+"PinCatch."
+msgstr ""
+"Завантажуйте зображення Pinterest у HD якості без встановлення додатків за "
+"допомогою PinCatch."
+
+#: views.py:156
+msgid "Pinterest GIF Downloader - Save Animated Pins Online"
+msgstr "Pinterest GIF Завантажувач - зберігайте анімовані піни онлайн"
+
+#: views.py:157
+msgid ""
+"Convert and download Pinterest GIFs instantly in high quality with the free "
+"PinCatch GIF downloader."
+msgstr ""
+"Конвертуйте та завантажуйте Pinterest GIF-файли миттєво у високій якості за "
+"допомогою безкоштовного завантажувача PinCatch GIF."
+
+#: views.py:178
+msgid "Pinterest URL Downloader - Save Animated Pins Online"
+msgstr "Завантажувач URL-адрес Pinterest - зберігайте анімовані піни онлайн"
+
+#: views.py:179
+msgid ""
+"Convert and download Pinterest URLs instantly in high quality with the free "
+"PinCatch Url downloader."
+msgstr ""
+"Миттєво перетворіть і завантажте URL-адреси Pinterest у високій якості за "
+"допомогою безкоштовного завантажувача PinCatch Url."
+
+#: views.py:192
+msgid "About PinCatch - Pinterest Video Downloader"
+msgstr "Про PinCatch - завантажувач відео у форматі Pinterest"
+
+#: views.py:193
+msgid ""
+"Learn more about the PinCatch downloader, our mission, and how we help "
+"creators save their favorite Pinterest content."
+msgstr ""
+"Дізнайтеся більше про завантажувач PinCatch, нашу місію та про те, як ми "
+"допомагаємо авторам зберігати їхній улюблений контент на Pinterest."
+
+#: views.py:202
+msgid "Contact PinCatch Support"
+msgstr "Зверніться до служби підтримки PinCatch"
+
+#: views.py:203
+msgid ""
+"Have questions about downloading Pinterest videos or removing content? Get "
+"in touch with the PinCatch support team."
+msgstr ""
+"Маєте запитання щодо завантаження відео з Pinterest або видалення контенту? "
+"Зверніться до служби підтримки PinCatch."
+
+#: views.py:212
+msgid "PinCatch Privacy Policy"
+msgstr "Політика конфіденційності PinCatch"
+
+#: views.py:213
+msgid ""
+"Understand how PinCatch processes downloader requests, what information we "
+"store, and how we protect user privacy."
+msgstr ""
+"Зрозумійте, як PinCatch обробляє запити завантажувачів, яку інформацію ми "
+"зберігаємо і як ми захищаємо конфіденційність користувачів."
+
+#: views.py:222
+msgid "PinCatch Terms & Conditions"
+msgstr "Умови та положення PinCatch"
+
+#: views.py:223
+msgid ""
+"Review the allowed usage of the PinCatch Pinterest downloader, copyright "
+"responsibilities, and legal terms."
+msgstr ""
+"Ознайомтеся з дозволеним використанням завантажувача PinCatch для Pinterest,"
+" авторськими правами та юридичними умовами."
+
+#: views.py:232
+msgid "PinCatch Copyright & Takedown Policy"
+msgstr "Політика PinCatch щодо захисту авторських прав та вилучення"
+
+#: views.py:233
+msgid ""
+"Report copyright concerns and see how PinCatch responds to DMCA takedowns "
+"for Pinterest videos, GIFs, and images."
+msgstr ""
+"Повідомляйте про проблеми з авторським правом і дивіться, як PinCatch реагує"
+" на видалення DMCA для відео, GIF-файлів і зображень Pinterest."
