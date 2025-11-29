@@ -45,23 +45,29 @@ def download_gif(request):
             return response
     return HttpResponse('Invalid request method', status=405)
 
-def extract_gif_url_from_soup(soup):
+def extract_gif_url_from_soup(soup, page_html: str = ""):
     """
     Extract GIF URL from Pinterest pin page HTML.
     Looks for og:image, .gif URLs, and video tags that might be animated.
     Returns the first found GIF/animated URL, or None if not found.
     """
+    meta_video = soup.find('meta', property='og:video')
+    if meta_video and meta_video.get('content'):
+        src = meta_video['content']
+        if src and not src.startswith('blob:'):
+            return src
+
     meta = soup.find('meta', property='og:image')
     if meta and meta.get('content'):
         src = meta['content']
         if src and not src.startswith('blob:'):
-            if src.endswith('.gif'):
+            if any(src.endswith(ext) for ext in ('.gif', '.mp4', '.webm')):
                 return src
     
     img_tags = soup.find_all('img')
     for img in img_tags:
         src = img.get('src')
-        if src and src.endswith('.gif') and ('pinimg' in src or 'pinterest' in src):
+        if src and any(src.endswith(ext) for ext in ('.gif', '.mp4', '.webm')) and ('pinimg' in src or 'pinterest' in src):
             if not src.startswith('blob:'):
                 return src
     
@@ -81,13 +87,19 @@ def extract_gif_url_from_soup(soup):
     
     scripts = soup.find_all('script')
     for script in scripts:
-        if script.string:
-            gif_urls = re.findall(r'(https://[^\s"\']+\.pinimg\.com/[^\s"\']+\.gif)', script.string)
-            if gif_urls:
-                return gif_urls[0]
-            video_urls = re.findall(r'(https://v1\.pinimg\.com/videos/[^\s"\']+\.(?:mp4|m3u8))', script.string)
-            if video_urls:
-                return video_urls[0]
+        content = script.string or script.get_text() or ""
+        gif_urls = re.findall(r'(https://[^\s"\']+\.pinimg\.com/[^\s"\']+\.(?:gif|mp4|webm|m3u8))', content)
+        if gif_urls:
+            return gif_urls[0]
+        video_urls = re.findall(r'(https://v1\.pinimg\.com/videos/[^\s"\']+\.(?:mp4|m3u8))', content)
+        if video_urls:
+            return video_urls[0]
+
+    if page_html:
+        blob = page_html
+        any_urls = re.findall(r'(https://[^\s"\']+pinimg\.com/[^\s"\']+\.(?:gif|mp4|webm|m3u8))', blob)
+        if any_urls:
+            return any_urls[0]
     
     return None
 
@@ -115,7 +127,7 @@ def get_gif_url(page_url):
         resp = requests.get(page_url, headers=headers, timeout=8)
         if resp.status_code == 200:
             soup = BeautifulSoup(resp.text, 'html.parser')
-            url = extract_gif_url_from_soup(soup)
+            url = extract_gif_url_from_soup(soup, resp.text)
             print("Extracted URL:", url);
             # Return the first extracted URL even if the HEAD validation fails,
             # since Pinterest often blocks HEAD requests.
@@ -133,7 +145,7 @@ def get_gif_url(page_url):
         driver.get(page_url)
         time.sleep(0.5)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-        url = extract_gif_url_from_soup(soup)
+        url = extract_gif_url_from_soup(soup, driver.page_source)
         driver.quit()
         # Same here: accept the extracted URL without HEAD validation to avoid
         # false negatives from Pinterest blocking HEAD requests.
@@ -150,5 +162,11 @@ def download_pinterest_gif(request):
         return JsonResponse({'error': 'Invalid or empty JSON body.'}, status=400)
     page_url = data.get('url')
     gif_url = get_gif_url(page_url)
-    data = {'gif_url': gif_url}
-    return JsonResponse(data)
+
+    if not gif_url:
+        return JsonResponse(
+            {"gif_url": None, "error": "Could not extract a GIF from this link. Please check the URL or try again."},
+            status=200,
+        )
+
+    return JsonResponse({"gif_url": gif_url})

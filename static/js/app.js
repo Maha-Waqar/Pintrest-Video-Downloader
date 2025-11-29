@@ -144,6 +144,11 @@ if (pinterestUrl && downloadBtn) {
         })
         .then(response => response.json())
         .then(data => {
+            if (data.error) {
+                loader.style.display = 'none';
+                showToast(data.error, 'error');
+                return;
+            }
             var video = document.getElementById('videoPreview');
             var source = document.createElement('source');
             source.setAttribute('src', data.video_url);
@@ -301,7 +306,7 @@ if (pinterestGifUrl && downloadGifButton) {
                     showToast('GIF preview element not found', 'error');
                 }
             } else {
-                showToast('Failed to extract GIF URL from Pinterest', 'error');
+                showToast(data.error || 'Failed to extract GIF URL from Pinterest', 'error');
             }
         })
         .catch(error => {

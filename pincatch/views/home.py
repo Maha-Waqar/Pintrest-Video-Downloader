@@ -150,11 +150,31 @@ def get_video_url(page_url):
         driver.quit()
 
 def download_pinterest_video(request):
-    data = json.loads(request.body)
+    try:
+        data = json.loads(request.body)
+    except (json.JSONDecodeError, TypeError):
+        return JsonResponse({'error': 'Invalid or empty JSON body.'}, status=400)
+
     page_url = data.get('url')
     video_url = get_video_url(page_url)
-    data = {'video_url': video_url}
-    return JsonResponse(data)
+
+    if not video_url:
+        return JsonResponse(
+            {"video_url": None, "error": "Could not extract a video from this link. Please check the URL or try again."},
+            status=200,
+        )
+
+    lowered = video_url.lower()
+    if lowered.endswith(".gif"):
+        return JsonResponse(
+            {
+                "video_url": None,
+                "error": "This link points to a GIF. Please use the GIF downloader for this pin.",
+            },
+            status=200,
+        )
+
+    return JsonResponse({'video_url': video_url})
 
 def is_valid_url(url):
     return re.match(r'^https?://(www\.)?pinterest\.com/', url)
