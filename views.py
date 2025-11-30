@@ -6,6 +6,8 @@ from django.views.decorators.csrf import csrf_protect
 from django_ratelimit.decorators import ratelimit
 from django.utils import translation
 from django.utils.translation import gettext as _
+from django.template import TemplateDoesNotExist
+from django.template.loader import select_template
 from blog.models import Post
 from pincatch.models import Page
 from pincatch.seo import build_seo_context
@@ -36,8 +38,23 @@ def _render_page_instance(request, page):
         context['blogs'] = Post.objects.all().order_by("-created_on").prefetch_related('translations')[:3]
     context.update(build_seo_context(request, page.meta_title, page.meta_description))
     lang_slug = page.get_language_slug() or settings.LANGUAGE_CODE
-    template_name = f'{page.slug_url}/{lang_slug}.html'
-    return render(request, template_name, context)
+    primary_template = f'{page.slug_url}/{lang_slug}.html'
+
+    # Provide safe fallbacks so a missing localized template doesn't break the site.
+    fallback_templates = [
+        primary_template,
+        f'{page.slug_url}/{settings.LANGUAGE_CODE}.html',
+    ]
+    # Always allow a generic home.html fallback for the homepage.
+    if page.slug_url == Page.HOME_SLUG:
+        fallback_templates.append('home.html')
+
+    try:
+        template = select_template(fallback_templates)
+        return render(request, template.template.name, context)
+    except TemplateDoesNotExist:
+        # Surface the original path in the error for debugging.
+        raise TemplateDoesNotExist(primary_template)
 
 
 def _find_home_page_by_slug(language_slug):
