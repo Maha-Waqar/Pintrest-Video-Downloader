@@ -66,11 +66,6 @@ def _normalize_lists(original_soup: BeautifulSoup, translated_soup: BeautifulSou
                 extra.decompose()
             items = translated_list.find_all("li", recursive=False)
 
-        if desired_count and len(items) < desired_count:
-            for _ in range(desired_count - len(items)):
-                translated_list.append(translated_soup.new_tag("li"))
-            items = translated_list.find_all("li", recursive=False)
-
         # Ensure every list item wraps its textual content in <p> if that
         # matches the source structure (helps keep formatting consistent)
         original_items = original_list.find_all("li", recursive=False)

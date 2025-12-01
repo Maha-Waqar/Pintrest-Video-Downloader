@@ -16,11 +16,9 @@
             </button>
         </div>
         <p class="policy">By using our service you accept our <a href="{% url 'termsAndConditions' %}">Terms of Service</a> and <a href="{% url 'privacyPolicy' %}">Privacy Policy</a></p>
-
         <div class="tutorial">
             <a href="#">How to download? Watch the tutorial</a>
         </div>
-
         <div class="security-badge">
             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNzVkMSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bS0yIDE1bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6Ii8+PC9zdmc+"
                 alt="Security Badge">
@@ -28,9 +26,9 @@
         </div>
     </section>
     <div class="loader" id="loader" style="display: none;"></div>
-    <div id="player-overlay">
-            <video width="100%" height="300px" controls id="gifPreview" style="display:none; margin: 20px;">         
-        </video>        
+    <div id="player-overlay" style="text-align: center;">
+        <video width="100%" height="300px" controls id="gifPreviewVideo" style="display:none; margin: 20px auto;"></video>
+        <img id="gifPreviewImage" alt="GIF preview" style="display:none; max-width:100%; margin: 20px auto;" />
     </div>
     <div style="text-align: center; width: 100%; margin: 2%;" class ="downloadSection">
         <div class="button-row" id="downloadGifBtnSection" style="display: none;">

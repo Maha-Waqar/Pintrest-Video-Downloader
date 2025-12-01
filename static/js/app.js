@@ -288,14 +288,40 @@ if (pinterestGifUrl && downloadGifButton) {
             },
             body: JSON.stringify({'url': pinterestGifUrl.value})
         })
-        .then(response => response.json())
+        .then(response => {
+            // Always return the parsed body so downstream handlers get data
+            return response.json().catch(() => {
+                throw new Error('Invalid JSON response from server');
+            });
+        })
         .then(data => {
+            console.log("data:", data);
             loader.style.display = 'none';
             if (data.gif_url) {
-                const gifPreview = document.getElementById('gifPreview');
-                if (gifPreview) {
-                    gifPreview.src = data.gif_url;
-                    gifPreview.style.display = 'block';
+                const gifPreviewVideo = document.getElementById('gifPreviewVideo');
+                const gifPreviewImage = document.getElementById('gifPreviewImage');
+                const urlLower = data.gif_url.toLowerCase();
+                const isVideo = urlLower.endsWith('.mp4') || urlLower.endsWith('.webm');
+
+                if (isVideo && gifPreviewVideo) {
+                    gifPreviewVideo.src = data.gif_url;
+                    gifPreviewVideo.style.display = 'block';
+                    if (gifPreviewImage) {
+                        gifPreviewImage.style.display = 'none';
+                        gifPreviewImage.src = '';
+                    }
+                } else if (gifPreviewImage) {
+                    gifPreviewImage.src = data.gif_url;
+                    gifPreviewImage.style.display = 'block';
+                    if (gifPreviewVideo) {
+                        gifPreviewVideo.pause();
+                        gifPreviewVideo.removeAttribute('src');
+                        gifPreviewVideo.load();
+                        gifPreviewVideo.style.display = 'none';
+                    }
+                }
+
+                if (gifPreviewVideo || gifPreviewImage) {
                     downloadSection.setAttribute('style', 'display: none;');
                     document.getElementById('downloadGifBtnSection').style.display = 'block';
                     const hiddenGifUrl = document.getElementById('hiddenGifUrl');
@@ -321,10 +347,14 @@ if (pinterestGifUrl && downloadGifButton) {
 
         const loader = document.getElementById('loader');
         loader.style.display = 'block';
-        const gifPreview = document.getElementById('gifPreview');
         const hiddenGifUrl = document.getElementById('hiddenGifUrl');
-        if (gifPreview && gifPreview.src) {
-            hiddenGifUrl.value = gifPreview.src;
+        const gifPreviewVideo = document.getElementById('gifPreviewVideo');
+        const gifPreviewImage = document.getElementById('gifPreviewImage');
+        const activeSrc = (gifPreviewVideo && gifPreviewVideo.style.display !== 'none' && gifPreviewVideo.src)
+            || (gifPreviewImage && gifPreviewImage.style.display !== 'none' && gifPreviewImage.src);
+
+        if (activeSrc) {
+            hiddenGifUrl.value = activeSrc;
         } else {
             e.preventDefault();
             showToast('No GIF loaded to download.', 'error');
