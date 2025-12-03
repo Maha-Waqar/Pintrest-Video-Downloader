@@ -121,7 +121,7 @@ def translate_url(context, language_code, target=None):
     except Resolver404:
         return target_path
 
-    if match.view_name in {"home", "home_language", "home_language_no_slash"}:
+    if match.view_name in {"home", "home_language"}:
         translation.activate(language_code)
         try:
             if language_code == settings.LANGUAGE_CODE:

@@ -36,23 +36,31 @@ def blogs(request):
     ))
     return render(request, "blog/index.html", context)
 
-def blog_category(request, category):
+def blog_category(request, category_slug):
     language = translation.get_language()
 
     matching_category = None
+    display_name = None
     for cate in Category.objects.all():
-        if cate.get_translated_name(language) == category:
+        translated_name = cate.get_translated_name(language)
+        translated_slug = slugify(translated_name, allow_unicode=True)
+        default_slug = slugify(cate.name, allow_unicode=True)
+        if category_slug in {translated_slug, default_slug}:
             matching_category = cate
+            display_name = translated_name
             break
 
     if not matching_category:
         raise Http404("Category not found")
 
+    if display_name is None:
+        display_name = matching_category.get_translated_name(language)
+
     posts = matching_category.posts.prefetch_related('translations').order_by("-created_on")
     breadcrumbs = [
         {'title': 'Home', 'url': 'home'},
         {'title': 'Blog', 'url': 'blog'},
-        {'title': category, 'url': None}
+        {'title': display_name, 'url': None}
     ]
 
     context = {
@@ -63,8 +71,8 @@ def blog_category(request, category):
     }
     context.update(build_seo_context(
         request,
-        _("Pinterest Blog: %(category)s") % {"category": category},
-        _("Browse %(category)s articles and tutorials for Pinterest downloads, growth, and PinCatch updates.") % {"category": category},
+        _("Pinterest Blog: %(category)s") % {"category": display_name},
+        _("Browse %(category)s articles and tutorials for Pinterest downloads, growth, and PinCatch updates.") % {"category": display_name},
     ))
     return render(request, "blog/category.html", context)
 
