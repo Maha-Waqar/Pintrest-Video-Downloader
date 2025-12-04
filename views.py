@@ -8,9 +8,29 @@ from django.utils import translation
 from django.utils.translation import gettext as _
 from django.template import TemplateDoesNotExist
 from django.template.loader import select_template
+from django.template import engines, RequestContext
+from django.utils.safestring import mark_safe
 from blog.models import Post
 from pincatch.models import Page
 from pincatch.seo import build_seo_context
+
+
+def _render_rich_content(request, context, content):
+    """
+    Render stored rich content through the Django template engine so that
+    template tags embedded in Page.content (e.g., page_url) are executed.
+    """
+    if not content:
+        return ""
+
+    template_source = "{% load page_links i18n static %}" + str(content)
+    try:
+        template_obj = engines["django"].from_string(template_source)
+        return mark_safe(template_obj.render(RequestContext(request, context)))
+    except Exception:
+        # Fall back to raw content if rendering fails; better to show something
+        # than break the page for users.
+        return mark_safe(content)
 
 def _render_page_instance(request, page):
     # Ensure template context reflects the page's language (lang/dir attributes, translations).
@@ -37,6 +57,11 @@ def _render_page_instance(request, page):
     if page.slug_url == Page.HOME_SLUG:
         context['blogs'] = Post.objects.all().order_by("-created_on").prefetch_related('translations')[:3]
     context.update(build_seo_context(request, page.meta_title, page.meta_description))
+    rendered_content = _render_rich_content(request, context, page.content)
+    context['raw_content'] = page.content
+    context['rendered_content'] = rendered_content
+    # Preserve compatibility with templates that still reference {{ content }} directly.
+    context['content'] = rendered_content
     lang_slug = page.get_language_slug() or settings.LANGUAGE_CODE
     primary_template = f'{page.slug_url}/{lang_slug}.html'
 

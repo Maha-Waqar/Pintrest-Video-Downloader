@@ -1,7 +1,9 @@
 from django import template
+from django.conf import settings
+from django.template import engines
 from django.urls import reverse
 from django.utils import translation
-from django.conf import settings
+from django.utils.safestring import mark_safe
 
 from pincatch.models import Page
 
@@ -43,3 +45,25 @@ def page_url(slug_url, fallback_name=None):
         except Exception:
             pass
     return "#"
+
+
+@register.simple_tag(takes_context=True)
+def render_page_content(context, content):
+    """
+    Render stored Page.content through the Django template engine so template
+    tags like `page_url` inside rich text are evaluated.
+    """
+    if not content:
+        return ""
+
+    # Preload commonly used libraries so rich text snippets can call them
+    # without needing explicit `{% load %}` statements.
+    template_source = "{% load page_links i18n static %}" + str(content)
+    try:
+        template_obj = engines["django"].from_string(template_source)
+        rendered = template_obj.render(context.flatten())
+        return mark_safe(rendered)
+    except Exception:
+        # If anything goes wrong, fall back to the original content rather
+        # than breaking the page rendering.
+        return mark_safe(content)
