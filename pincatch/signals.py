@@ -103,7 +103,7 @@ def _generate_page_template(page_instance):
 
     # Template content
     template_content = """{% extends "index.html" %}
-{% load i18n %}
+{% load i18n page_links %}
 
 {% block title %}{{ meta_title }}{% endblock %}
 
@@ -113,7 +113,7 @@ def _generate_page_template(page_instance):
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto">
         <div class="prose prose-lg max-w-none">
-            {{ content|safe }}
+            {{ rendered_content|safe }}
         </div>
     </div>
 </div>
