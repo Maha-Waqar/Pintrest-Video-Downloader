@@ -100,16 +100,23 @@ def translate_model_instance(instance, model_class, reset_existing=False):
 
                 original_value = getattr(instance, field_name, '')
 
-                if reset_existing and translation_obj:
-                    if original_value:
-                        if translation_obj.field_value:
-                            logger.info(f"Resetting translation for {field_name} in {target_language}")
-                            translation_obj.field_value = ''
-                            translation_obj.save(update_fields=['field_value'])
-                        else:
-                            logger.info(f"Translation for {field_name} in {target_language} already pending translation")
-                    else:
+                if translation_obj:
+                    # If reset is requested or the translation matches the source text,
+                    # clear it so the provider will translate again.
+                    same_as_source = bool(translation_obj.field_value) and translation_obj.field_value.strip() == str(original_value).strip()
+                    if original_value and (reset_existing or same_as_source):
+                        action = "Resetting" if reset_existing else "Re-queuing (same as source)"
+                        logger.info(f"{action} translation for {field_name} in {target_language}")
+                        translation_obj.field_value = ''
+                        translation_obj.save(update_fields=['field_value'])
+                        continue
+                    if not original_value:
                         logger.warning(f"Field {field_name} has no value")
+                        continue
+                    if translation_obj.field_value:
+                        logger.info(f"Translation already exists for {field_name} in {target_language}")
+                    else:
+                        logger.info(f"Translation for {field_name} in {target_language} already pending translation")
                     continue
 
                 if not translation_obj:
@@ -127,11 +134,6 @@ def translate_model_instance(instance, model_class, reset_existing=False):
                     else:
                         logger.warning(f"Field {field_name} has no value")
                     continue
-
-                if translation_obj.field_value:
-                    logger.info(f"Translation already exists for {field_name} in {target_language}")
-                else:
-                    logger.info(f"Translation for {field_name} in {target_language} already pending translation")
 
     except Exception as e:
         logger.error(f"Error during translate_model_instance: {e}", exc_info=True)
