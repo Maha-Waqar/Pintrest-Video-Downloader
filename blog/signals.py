@@ -3,7 +3,6 @@ import logging
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.db import transaction
-from concurrent.futures import ThreadPoolExecutor
 
 from blog.models import Post, Category
 from blog.translation_cleanup import build_slug_lookup, clean_translation_html
@@ -12,7 +11,6 @@ from django_restful_translator.models import Translation
 from django_restful_translator.processors.model import TranslationModelProcessor
 from django_restful_translator.processors.translation_service import TranslationService
 from django_restful_translator.translation_providers import TranslationProviderFactory
-from django_restful_translator.utils import handle_futures
 
 logger = logging.getLogger(__name__)
 
@@ -194,33 +192,38 @@ class NormalizedTranslationService(TranslationService):
 
 def translate_with_provider(instance, model_class, provider_name='deepl'):
     """
-    Translate the model instance using the specified provider
+    Translate the model instance using the specified provider.
+    Process translations sequentially to avoid throttling and ensure every
+    configured language is attempted (similar to the dynamic Page flow).
     """
     try:
-        logger.info(f"translate_with_provider called for {model_class.__name__} {instance.pk} with provider: {provider_name}")
-        
+        logger.info(
+            "translate_with_provider called for %s %s with provider: %s",
+            model_class.__name__,
+            instance.pk,
+            provider_name,
+        )
+
         default_language = settings.LANGUAGE_CODE
         available_languages = [lang[0] for lang in settings.LANGUAGES]
         translatable_fields = getattr(model_class, 'translatable_fields', [])
-        
+
         if not translatable_fields:
-            logger.warning(f"No translatable fields for {model_class.__name__}")
+            logger.warning("No translatable fields for %s", model_class.__name__)
             return
-        
+
         content_type = ContentType.objects.get_for_model(model_class)
-        
-        # Get the provider
-        logger.info(f"Getting provider: {provider_name}")
+
+        logger.info("Getting provider: %s", provider_name)
         provider = TranslationProviderFactory.get_provider(provider_name)
-        logger.info(f"Provider obtained: {provider}")
-        
-        # Collect translations to translate
+        logger.info("Provider obtained: %s", provider)
+
         translations_to_translate = []
-        
+
         for target_language in available_languages:
             if target_language == default_language:
                 continue
-            
+
             for field_name in translatable_fields:
                 translation_obj = Translation.objects.filter(
                     content_type=content_type,
@@ -228,52 +231,76 @@ def translate_with_provider(instance, model_class, provider_name='deepl'):
                     language=target_language,
                     field_name=field_name
                 ).first()
-                
+
                 if translation_obj and not translation_obj.field_value:
                     translations_to_translate.append(translation_obj)
-                    logger.info(f"Found translation to translate: {field_name} in {target_language}")
-        
-        logger.info(f"Total translations to translate: {len(translations_to_translate)}")
-        
-        if translations_to_translate:
-            logger.info(f"Starting translation with provider")
-            
-            futures = []
-            services_by_language = {}
-            
-            with ThreadPoolExecutor(max_workers=4) as executor:
-                for translation in translations_to_translate:
-                    target_lang = translation.language
-                    
-                    # Check if this language is supported by DeepL
-                    normalized_lang = normalize_language_code(target_lang)
-                    if normalized_lang is None:
-                        logger.warning(f"Skipping translation for {translation.field_name} in {target_lang} (not supported by DeepL)")
-                        continue
-                    
-                    # Create a new service instance for this target language if we don't have one
-                    if target_lang not in services_by_language:
-                        logger.info(f"Creating translation service for target language: {target_lang}")
-                        services_by_language[target_lang] = NormalizedTranslationService(provider, target_lang)
-                    
-                    service = services_by_language[target_lang]
-                    logger.info(f"Submitting translation job for {translation.field_name} in {translation.language}")
-                    futures.append(
-                        executor.submit(service.translate_item, translation)
-                    )
-            
-            # Wait for all translations to complete
-            for i, future in enumerate(futures, 1):
+                    logger.info("Queued translation for %s in %s", field_name, target_language)
+
+        logger.info("Total translations to translate: %s", len(translations_to_translate))
+
+        if not translations_to_translate:
+            logger.info("No translations to translate")
+            return
+
+        services_by_language = {}
+        completed = 0
+
+        for translation_obj in translations_to_translate:
+            target_lang = translation_obj.language
+
+            if getattr(provider, "_disable_after_error", False):
+                logger.warning(
+                    "Provider disabled after previous error; writing source text for %s/%s",
+                    translation_obj.field_name,
+                    target_lang,
+                )
+                translation_obj.field_value = translation_obj.get_original_text()
+                translation_obj.save(update_fields=["field_value"])
+                continue
+
+            normalized_lang = normalize_language_code(target_lang)
+            if normalized_lang is None:
+                logger.warning(
+                    "Skipping translation for %s in %s (not supported by provider)",
+                    translation_obj.field_name,
+                    target_lang,
+                )
+                translation_obj.field_value = translation_obj.get_original_text()
+                translation_obj.save(update_fields=["field_value"])
+                continue
+
+            if target_lang not in services_by_language:
+                logger.info("Creating translation service for target language: %s", target_lang)
+                services_by_language[target_lang] = NormalizedTranslationService(provider, target_lang)
+
+            service = services_by_language[target_lang]
+            try:
+                service.translate_item(translation_obj)
+                completed += 1
+                logger.info(
+                    "Translated %s in %s (%s/%s)",
+                    translation_obj.field_name,
+                    target_lang,
+                    completed,
+                    len(translations_to_translate),
+                )
+            except Exception as exc:
+                logger.error(
+                    "Translation error for %s in %s: %s",
+                    translation_obj.field_name,
+                    target_lang,
+                    exc,
+                    exc_info=True,
+                )
                 try:
-                    result = future.result()
-                    logger.info(f"Translation job {i} completed successfully")
-                except Exception as e:
-                    logger.error(f"Translation error on job {i}: {e}", exc_info=True)
-        else:
-            logger.info(f"No translations to translate")
-    
+                    provider._disable_after_error = True
+                except Exception:
+                    pass
+                translation_obj.field_value = translation_obj.get_original_text()
+                translation_obj.save(update_fields=["field_value"])
+
     except Exception as e:
-        logger.error(f"Error during translate_with_provider: {e}", exc_info=True)
+        logger.error("Error during translate_with_provider: %s", e, exc_info=True)
 
 
 def _ensure_translated_slugs(post: Post) -> None:
