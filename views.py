@@ -157,6 +157,21 @@ def index(request, language_slug=None):
 def localized_home(request, language_slug):
     return index(request, language_slug=language_slug)
 
+
+def _render_page_or_fallback(request, slug_url, fallback_template, breadcrumbs, seo_title, seo_description):
+    """
+    For default-language routes without a language prefix, serve a dynamic Page
+    if one exists; otherwise fall back to the static template.
+    """
+    page = Page.objects.filter(slug_url=slug_url, language=settings.LANGUAGE_CODE).first()
+    if page:
+        return _render_page_instance(request, page)
+
+    context = {'breadcrumbs': breadcrumbs}
+    context.update(build_seo_context(request, seo_title, seo_description))
+    return render(request, fallback_template, context)
+
+
 def imageDownload(request):
     # CSRF protection is enabled by default with csrf_protect
     @csrf_protect
@@ -166,17 +181,15 @@ def imageDownload(request):
         user_agent = request.META.get('HTTP_USER_AGENT', '')
         if 'python' in user_agent.lower() or not user_agent:
             return HttpResponse('Forbidden', status=403)
-        # ...existing logic...
         breadcrumbs = [{'title': 'Home', 'url': 'home'}, {'title': 'Image Downloader', 'url': None}]
-        context = {
-            'breadcrumbs': breadcrumbs,
-        }
-        context.update(build_seo_context(
+        return _render_page_or_fallback(
             request,
-            _("Pinterest Image Downloader - Save HD Photos from Pins"),
-            _("Download Pinterest images in HD quality without installing any apps using PinCatch.")
-        ))
-        return render(request, 'image.html', context)
+            slug_url="pinterest-image-downloader",
+            fallback_template='image.html',
+            breadcrumbs=breadcrumbs,
+            seo_title=_("Pinterest Image Downloader - Save HD Photos from Pins"),
+            seo_description=_("Download Pinterest images in HD quality without installing any apps using PinCatch."),
+        )
     return protected_home(request)
 
 def gifDownload(request):
@@ -188,17 +201,15 @@ def gifDownload(request):
         user_agent = request.META.get('HTTP_USER_AGENT', '')
         if 'python' in user_agent.lower() or not user_agent:
             return HttpResponse('Forbidden', status=403)
-        # ...existing logic...
         breadcrumbs = [{'title': 'Home', 'url': 'home'}, {'title': 'Gif Downloader', 'url': None}]
-        context = {
-            'breadcrumbs': breadcrumbs,
-        }
-        context.update(build_seo_context(
+        return _render_page_or_fallback(
             request,
-            _("Pinterest GIF Downloader - Save Animated Pins Online"),
-            _("Convert and download Pinterest GIFs instantly in high quality with the free PinCatch GIF downloader.")
-        ))
-        return render(request, 'gif.html', context)
+            slug_url="pinterest-gif-downloader",
+            fallback_template='gif.html',
+            breadcrumbs=breadcrumbs,
+            seo_title=_("Pinterest GIF Downloader - Save Animated Pins Online"),
+            seo_description=_("Convert and download Pinterest GIFs instantly in high quality with the free PinCatch GIF downloader."),
+        )
     return protected_home(request)
 
 def profileDownload(request):
@@ -210,17 +221,15 @@ def profileDownload(request):
         user_agent = request.META.get('HTTP_USER_AGENT', '')
         if 'python' in user_agent.lower() or not user_agent:
             return HttpResponse('Forbidden', status=403)
-        # ...existing logic...
         breadcrumbs = [{'title': 'Home', 'url': 'home'}, {'title': 'Profile Picture Downloader', 'url': None}]
-        context = {
-            'breadcrumbs': breadcrumbs,
-        }
-        context.update(build_seo_context(
+        return _render_page_or_fallback(
             request,
-            _("Pinterest URL Downloader - Save Animated Pins Online"),
-            _("Convert and download Pinterest URLs instantly in high quality with the free PinCatch Url downloader.")
-        ))
-        return render(request, 'profile.html', context)
+            slug_url="pinterest-profile-picture-downloader",
+            fallback_template='profile.html',
+            breadcrumbs=breadcrumbs,
+            seo_title=_("Pinterest URL Downloader - Save Animated Pins Online"),
+            seo_description=_("Convert and download Pinterest URLs instantly in high quality with the free PinCatch Url downloader."),
+        )
     return protected_home(request)
 
 def is_valid_url(url):
