@@ -244,62 +244,41 @@ def translate_with_provider(instance, model_class, provider_name='deepl'):
             logger.info("No translations to translate")
             return
 
-        services_by_language = {}
         completed = 0
 
-        for translation_obj in translations_to_translate:
-            target_lang = translation_obj.language
-
-            if getattr(provider, "_disable_after_error", False):
-                logger.warning(
-                    "Provider disabled after previous error; writing source text for %s/%s",
-                    translation_obj.field_name,
-                    target_lang,
-                )
-                translation_obj.field_value = translation_obj.get_original_text()
-                translation_obj.save(update_fields=["field_value"])
-                continue
-
-            normalized_lang = normalize_language_code(target_lang)
-            if normalized_lang is None:
-                logger.warning(
-                    "Skipping translation for %s in %s (not supported by provider)",
-                    translation_obj.field_name,
-                    target_lang,
-                )
-                translation_obj.field_value = translation_obj.get_original_text()
-                translation_obj.save(update_fields=["field_value"])
-                continue
-
-            if target_lang not in services_by_language:
-                logger.info("Creating translation service for target language: %s", target_lang)
-                services_by_language[target_lang] = NormalizedTranslationService(provider, target_lang)
-
-            service = services_by_language[target_lang]
+        def _translate_value(text, target_language):
+            normalized_lang = normalize_language_code(target_language)
+            if not normalized_lang:
+                logger.warning("Unsupported target language %s; using source text", target_language)
+                return text
+            if not text:
+                return text
             try:
-                service.translate_item(translation_obj)
-                completed += 1
-                logger.info(
-                    "Translated %s in %s (%s/%s)",
-                    translation_obj.field_name,
-                    target_lang,
-                    completed,
-                    len(translations_to_translate),
-                )
+                return provider.translate_text(text, settings.LANGUAGE_CODE, normalized_lang)
             except Exception as exc:
                 logger.error(
-                    "Translation error for %s in %s: %s",
-                    translation_obj.field_name,
-                    target_lang,
+                    "Translation error for %s -> %s: %s; using source text",
+                    settings.LANGUAGE_CODE,
+                    normalized_lang,
                     exc,
                     exc_info=True,
                 )
-                try:
-                    provider._disable_after_error = True
-                except Exception:
-                    pass
-                translation_obj.field_value = translation_obj.get_original_text()
-                translation_obj.save(update_fields=["field_value"])
+                return text
+
+        for translation_obj in translations_to_translate:
+            target_lang = translation_obj.language
+            source_text = translation_obj.get_original_text()
+            translated = _translate_value(source_text, target_lang)
+            translation_obj.field_value = translated
+            translation_obj.save(update_fields=["field_value"])
+            completed += 1
+            logger.info(
+                "Translated %s in %s (%s/%s)",
+                translation_obj.field_name,
+                target_lang,
+                completed,
+                len(translations_to_translate),
+            )
 
     except Exception as e:
         logger.error("Error during translate_with_provider: %s", e, exc_info=True)
