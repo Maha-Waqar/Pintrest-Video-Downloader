@@ -88,6 +88,22 @@ def generate_page_templates(sender, instance, created, **kwargs):
         old_language_slug = getattr(instance, "_old_language_slug", None)
         if not moved and old_slug and old_language_slug and (old_slug != instance.slug_url or old_language_slug != new_language_slug):
             _remove_template_file(old_slug, old_language_slug)
+    else:
+        # If nothing changed but the template file is missing (e.g., not checked into VCS on prod),
+        # ensure it gets (re)generated so dynamic content renders.
+        language_slug = new_language_slug or settings.LANGUAGE_CODE
+        _, template_path = _get_template_paths(instance.slug_url, language_slug)
+        if not os.path.isfile(template_path):
+            try:
+                _generate_page_template(instance)
+            except Exception as e:  # pragma: no cover - safety net for missing templates
+                logger.error(
+                    "Error regenerating missing template for page %s/%s: %s",
+                    instance.slug_url,
+                    instance.language,
+                    e,
+                    exc_info=True,
+                )
     # Translation to other languages is triggered explicitly via admin actions, not automatically on save.
 
 def _generate_page_template(page_instance):
