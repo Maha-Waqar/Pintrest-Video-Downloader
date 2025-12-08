@@ -76,7 +76,10 @@ def _render_page_instance(request, page):
 
     try:
         template = select_template(fallback_templates)
-        return render(request, template.template.name, context)
+        response = render(request, template.template.name, context)
+        # Avoid CDN/proxy caching so admin edits appear immediately in production.
+        response["Cache-Control"] = "no-store"
+        return response
     except TemplateDoesNotExist:
         # Surface the original path in the error for debugging.
         raise TemplateDoesNotExist(primary_template)
@@ -169,7 +172,10 @@ def _render_page_or_fallback(request, slug_url, fallback_template, breadcrumbs, 
 
     context = {'breadcrumbs': breadcrumbs}
     context.update(build_seo_context(request, seo_title, seo_description))
-    return render(request, fallback_template, context)
+    response = render(request, fallback_template, context)
+    # Avoid CDN/proxy caching so admin edits appear immediately in production.
+    response["Cache-Control"] = "no-store"
+    return response
 
 
 def imageDownload(request):
