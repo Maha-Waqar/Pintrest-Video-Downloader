@@ -106,6 +106,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
                 "js_asset.context_processors.importmap",
             ],
             'libraries': {
@@ -160,22 +161,22 @@ LANGUAGES = [
     # ('bn', _('Bengali')),   #Not supported by DeepL
     # ('fil', _('Filipino')),   #Not supported by DeepL
     # ('az', _('Azerbaijani')), #Not supported by DeepL
-    # ('br', _('Brazilian Portuguese')),
-    # ('de', _('German')),
-    # ('es', _('Spanish')),
-    # ('fr', _('French')),
-    ('ru', _('Russian')),
+    ('br', _('Brazilian Portuguese')),
+    ('de', _('German')),
+    #('es', _('Spanish')),
+    #('fr', _('French')),
+    #('ru', _('Russian')),
     ('ar', _('Arabic')),
     # ('vi', _('Vietnamese')),  #Not supported by DeepL
     ('pt', _('Portuguese')),
-    # ('tr', _('Turkish')),
-    # ('id', _('Indonesian')),
-    # ('it', _('Italian')),
-    # ('uk', _('Ukrainian')),
+    ('tr', _('Turkish')),
+    #('id', _('Indonesian')),
+    #('it', _('Italian')),
+    ('uk', _('Ukrainian')),
     # ('ne', _('Nepali')),    #Not supported by DeepL
-    # ('ko', _('Korean')),
-    # ('ja', _('Japanese')),
-    # ('zh-hans', _('Chinese Simplified')),
+    ('ko', _('Korean')),
+    #('ja', _('Japanese')),
+    ('zh-hans', _('Chinese Simplified')),
     # ('zh-hant', _('Chinese Traditional')),  #Not supported by DeepL
 ]
 LOCALE_PATHS = [
@@ -212,7 +213,7 @@ MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-DEEPL_AUTH_KEY = "8cbe9884-5525-432a-af44-74ced2b3e3d3:fx"
+DEEPL_AUTH_KEY = "b0f4e722-9985-4c86-90df-497c4cf9b041"
 if not DEEPL_AUTH_KEY and not DEBUG:
     raise ImproperlyConfigured("DEEPL_AUTH_KEY is required")
 
@@ -236,3 +237,11 @@ CKEDITOR_CONFIGS = {
         "height": 400,
     }
 }
+
+# Proxy rotation settings (optional)
+PROXY_POOL = [proxy.strip() for proxy in get_env("PROXY_POOL", "").split(",") if proxy.strip()]
+PROXY_RETRY_STATUSES = {
+    int(code.strip()) for code in get_env("PROXY_RETRY_STATUSES", "403,429,503").split(",") if code.strip().isdigit()
+}
+PROXY_MAX_FAILURES = int(get_env("PROXY_MAX_FAILURES", "3"))
+PROXY_COOLDOWN_SECONDS = int(get_env("PROXY_COOLDOWN_SECONDS", "60"))

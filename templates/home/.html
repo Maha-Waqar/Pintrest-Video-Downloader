@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% load i18n %}
+
+{% block title %}{{ meta_title }}{% endblock %}
+
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="prose prose-lg max-w-none">
+            {{ content|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

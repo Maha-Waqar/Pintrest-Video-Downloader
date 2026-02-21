@@ -1,18 +1,26 @@
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-import requests, json
-from bs4 import BeautifulSoup
+import json
 import os
+import re
 import tempfile
-from django.views.decorators.csrf import csrf_exempt, csrf_protect
-from django.utils.encoding import smart_str
 import time
 from datetime import datetime
+
+from bs4 import BeautifulSoup
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
+from django_ratelimit.decorators import ratelimit
+from django.utils.encoding import smart_str
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from django_ratelimit.decorators import ratelimit
-import re
+
+from pincatch.proxy_pool import (
+    add_proxy_to_chrome_options,
+    mark_proxy_failure,
+    mark_proxy_success,
+    proxy_request,
+)
 
 def index(request):
     return render(request, 'index.html', { 'video_url': '' })
@@ -20,7 +28,7 @@ def index(request):
 # helper function to download video
 def _download_video_file(video_url, filename):
     try:
-        response = requests.get(video_url, stream=True)
+        response = proxy_request("get", video_url, stream=True, timeout=10)
         if response.status_code == 200:
             temp_dir = tempfile.gettempdir()
             filepath = os.path.join(temp_dir, filename)
@@ -89,7 +97,7 @@ def try_convert_m3u8_to_mp4(url):
     if url and url.endswith('.m3u8') and 'hls' in url:
         mp4_url = url.replace('hls', '720p').replace('m3u8', 'mp4')
         try:
-            resp = requests.head(mp4_url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=4)
+            resp = proxy_request("head", mp4_url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=4, allow_redirects=True)
             if resp.status_code == 200:
                 return mp4_url
         except Exception:
@@ -106,7 +114,7 @@ def get_video_url(page_url):
     def is_valid_mp4(url):
         """Checks if the given URL is a valid mp4 file (HTTP 200 and ends with .mp4)."""
         try:
-            resp = requests.head(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=4)
+            resp = proxy_request("head", url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=4, allow_redirects=True)
             return resp.status_code == 200 and url.endswith('.mp4')
         except Exception:
             return False
@@ -114,7 +122,7 @@ def get_video_url(page_url):
     # Fast method: requests + BeautifulSoup
     try:
         headers = {'User-Agent': 'Mozilla/5.0'}
-        resp = requests.get(page_url, headers=headers, timeout=8)
+        resp = proxy_request("get", page_url, headers=headers, timeout=8)
         if resp.status_code == 200:
             soup = BeautifulSoup(resp.text, 'html.parser')
             url = extract_video_url_from_soup(soup)
@@ -133,21 +141,35 @@ def get_video_url(page_url):
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    proxy_used = add_proxy_to_chrome_options(options)
+    driver = None
     try:
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
         driver.get(page_url)
         time.sleep(0.5)  # Minimal wait for JS to load dynamic content
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         url = extract_video_url_from_soup(soup)
         if url and url.endswith('.mp4') and is_valid_mp4(url):
+            if proxy_used:
+                mark_proxy_success(proxy_used)
             return url
         if url and url.endswith('.m3u8') and 'hls' in url:
             mp4_url = url.replace('hls', '720p').replace('m3u8', 'mp4')
             if is_valid_mp4(mp4_url):
+                if proxy_used:
+                    mark_proxy_success(proxy_used)
                 return mp4_url
         return None
+    except Exception:
+        if proxy_used:
+            mark_proxy_failure(proxy_used)
+        return None
     finally:
-        driver.quit()
+        try:
+            if driver:
+                driver.quit()
+        except Exception:
+            pass
 
 def download_pinterest_video(request):
     try:

@@ -1,21 +1,30 @@
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-import requests, json
-from bs4 import BeautifulSoup
-import os, re
+import json
+import os
+import re
 import tempfile
-from django.views.decorators.csrf import csrf_exempt, csrf_protect
-from django.utils.encoding import smart_str
 import time
 from datetime import datetime
+
+from bs4 import BeautifulSoup
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
+from django_ratelimit.decorators import ratelimit
+from django.utils.encoding import smart_str
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from django_ratelimit.decorators import ratelimit
+
+from pincatch.proxy_pool import (
+    add_proxy_to_chrome_options,
+    mark_proxy_failure,
+    mark_proxy_success,
+    proxy_request,
+)
 
 def _download_image_file(image_url, filename):
     try:
-        response = requests.get(image_url, stream=True, headers={'User-Agent': 'Mozilla/5.0'})
+        response = proxy_request("get", image_url, stream=True, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
         if response.status_code == 200:
             temp_dir = tempfile.gettempdir()
             filepath = os.path.join(temp_dir, filename)
@@ -76,7 +85,7 @@ def extract_image_url_from_soup(soup):
 def is_valid_image_url(url):
     """Check if the given URL is a valid image URL."""
     try:
-        resp = requests.head(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=4, allow_redirects=True)
+        resp = proxy_request("head", url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=4, allow_redirects=True)
         if resp.status_code == 200:
             content_type = resp.headers.get('content-type', '').lower()
             return 'image' in content_type
@@ -94,7 +103,7 @@ def get_image_url(page_url):
     headers = {'User-Agent': 'Mozilla/5.0'}
     
     try:
-        resp = requests.get(page_url, headers=headers, timeout=8)
+        resp = proxy_request("get", page_url, headers=headers, timeout=8)
         if resp.status_code == 200:
             soup = BeautifulSoup(resp.text, 'html.parser')
             url = extract_image_url_from_soup(soup)
@@ -108,6 +117,8 @@ def get_image_url(page_url):
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
         options.add_argument('--no-sandbox')
+        proxy_used = add_proxy_to_chrome_options(options)
+        driver = None
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
         driver.get(page_url)
         time.sleep(0.5)
@@ -115,9 +126,18 @@ def get_image_url(page_url):
         url = extract_image_url_from_soup(soup)
         driver.quit()
         if url and is_valid_image_url(url):
+            if proxy_used:
+                mark_proxy_success(proxy_used)
             return url
         return None
     except Exception:
+        try:
+            if 'driver' in locals() and driver:
+                driver.quit()
+        except Exception:
+            pass
+        if 'proxy_used' in locals() and proxy_used:
+            mark_proxy_failure(proxy_used)
         return None
 
 def download_pinterest_image(request):

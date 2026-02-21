@@ -45,9 +45,9 @@ urlpatterns = i18n_patterns(
 )
 urlpatterns += [
     path("", views.index, name="home"),
-    #path("pinterest-image-downloader", views.imageDownload, name="imageDownloader"),
-    #path("pinterest-gif-downloader", views.gifDownload, name="gifDownloader"),
-    #path("pinterest-profile-picture-downloader", views.profileDownload, name="profileDownloader"),
+    path("pinterest-image-downloader", views.imageDownload, name="imageDownloader"),
+    path("pinterest-gif-downloader", views.gifDownload, name="gifDownloader"),
+    path("pinterest-profile-picture-downloader", views.profileDownload, name="profileDownloader"),
     path('pin/', include('pincatch.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('robots.txt', views.robot , name='robot'),

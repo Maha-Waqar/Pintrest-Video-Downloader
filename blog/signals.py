@@ -1,8 +1,10 @@
 import html
 import logging
+import re
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.db import transaction
+from django.core.exceptions import ImproperlyConfigured
 
 from blog.models import Post, Category
 from blog.translation_cleanup import build_slug_lookup, clean_translation_html
@@ -13,6 +15,10 @@ from django_restful_translator.processors.translation_service import Translation
 from django_restful_translator.translation_providers import TranslationProviderFactory
 
 logger = logging.getLogger(__name__)
+
+RTL_LANGS = {
+    'ar', 'ar-ye', 'ar-eg', 'ar-sa', 'fa', 'he', 'ur', 'ps'
+}
 
 
 # Mapping for Django language codes to DeepL language codes
@@ -63,6 +69,100 @@ def normalize_language_code(lang_code):
     # Fallback: return None for unmapped codes (assume unsupported)
     logger.warning(f"Language code '{lang_code}' not in map and will be skipped")
     return None
+
+
+def _get_provider_safely(provider_name):
+    """
+    Align provider initialization with the dynamic Page flow: never raise,
+    just log and fall back to source text when the provider is unavailable.
+    """
+    try:
+        return TranslationProviderFactory.get_provider(provider_name)
+    except ImproperlyConfigured:
+        logger.warning("Translation provider '%s' misconfigured; falling back to source text", provider_name)
+    except Exception as exc:
+        logger.error("Failed to init translation provider %s: %s", provider_name, exc, exc_info=True)
+    return None
+
+
+def _safe_translate(provider, text, source_lang, target_lang, normalized_target=None):
+    """
+    Translate text while preserving HTML structure and whitespace.
+    Mirrors the defensive behavior used for dynamic Page translations.
+    """
+    if not text:
+        return text
+    if provider is None:
+        return text
+
+    normalized = normalized_target or normalize_language_code(target_lang)
+    if not normalized:
+        logger.warning("Unsupported target language %s; using source text", target_lang)
+        return text
+
+    def _translate_html(html_text):
+        try:
+            from bs4 import BeautifulSoup, Comment
+        except Exception:
+            return None
+
+        def _apply_rtl(soup_obj):
+            block_tags = {"p", "li", "ul", "ol", "h1", "h2", "h3", "h4", "h5", "h6", "div", "section", "article", "details", "summary"}
+            for tag in soup_obj.find_all(block_tags):
+                if not tag.has_attr("dir"):
+                    tag["dir"] = "rtl"
+                current_style = tag.get("style", "")
+                if "text-align" not in current_style:
+                    tag["style"] = (current_style + "; text-align: right;").strip("; ")
+
+        def _preserve_whitespace(original, translated):
+            match = re.match(r"(\s*)(.*?)(\s*)$", original, flags=re.DOTALL)
+            if not match:
+                return translated
+            prefix, _, suffix = match.groups()
+            return f"{prefix}{translated}{suffix}"
+
+        try:
+            soup = BeautifulSoup(html_text, "html.parser")
+        except Exception:
+            return None
+
+        for node in soup.find_all(string=True):
+            if isinstance(node, Comment):
+                continue
+            if getattr(node, "parent", None) and node.parent.name in {"script", "style"}:
+                continue
+            original = str(node)
+            if not original.strip():
+                continue
+            try:
+                translated = provider.translate_text(original, source_lang, normalized)
+            except Exception:
+                translated = original
+            node.replace_with(_preserve_whitespace(original, translated))
+
+        if normalized.lower() in RTL_LANGS:
+            _apply_rtl(soup)
+
+        if soup.body:
+            return soup.body.decode_contents(formatter="minimal")
+        return "".join(str(element) for element in soup.contents)
+
+    translated_html = _translate_html(text)
+    if translated_html is not None:
+        return translated_html
+
+    try:
+        return provider.translate_text(text, source_lang, normalized)
+    except Exception as exc:
+        logger.error(
+            "Translation error for %s -> %s: %s; using source text",
+            source_lang,
+            normalized,
+            exc,
+            exc_info=True,
+        )
+        return text
 
 
 def translate_model_instance(instance, model_class, reset_existing=False):
@@ -217,7 +317,7 @@ def translate_with_provider(instance, model_class, provider_name='deepl'):
         content_type = ContentType.objects.get_for_model(model_class)
 
         logger.info("Getting provider: %s", provider_name)
-        provider = TranslationProviderFactory.get_provider(provider_name)
+        provider = _get_provider_safely(provider_name)
         logger.info("Provider obtained: %s", provider)
 
         translations_to_translate = []
@@ -246,20 +346,31 @@ def translate_with_provider(instance, model_class, provider_name='deepl'):
 
         completed = 0
 
-        def _translate_value(text, target_language):
+        def _translate_value(text, target_language, field_name):
+            if not text:
+                return text
             normalized_lang = normalize_language_code(target_language)
             if not normalized_lang:
                 logger.warning("Unsupported target language %s; using source text", target_language)
                 return text
-            if not text:
-                return text
             try:
-                return provider.translate_text(text, settings.LANGUAGE_CODE, normalized_lang)
+                if field_name == "slug":
+                    translated = _safe_translate(
+                        provider,
+                        text.replace("-", " "),
+                        settings.LANGUAGE_CODE,
+                        target_language,
+                        normalized_lang,
+                    )
+                    normalized = slugify(str(translated).replace(" ", "-"), allow_unicode=True)
+                    return normalized or slugify(text, allow_unicode=True) or text
+                return _safe_translate(provider, text, settings.LANGUAGE_CODE, target_language, normalized_lang)
             except Exception as exc:
                 logger.error(
-                    "Translation error for %s -> %s: %s; using source text",
+                    "Translation error for %s -> %s (%s): %s; using source text",
                     settings.LANGUAGE_CODE,
                     normalized_lang,
+                    field_name,
                     exc,
                     exc_info=True,
                 )
@@ -268,7 +379,7 @@ def translate_with_provider(instance, model_class, provider_name='deepl'):
         for translation_obj in translations_to_translate:
             target_lang = translation_obj.language
             source_text = translation_obj.get_original_text()
-            translated = _translate_value(source_text, target_lang)
+            translated = _translate_value(source_text, target_lang, translation_obj.field_name)
             translation_obj.field_value = translated
             translation_obj.save(update_fields=["field_value"])
             completed += 1

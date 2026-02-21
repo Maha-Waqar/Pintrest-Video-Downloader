@@ -1,19 +1,28 @@
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-import requests, json
-from bs4 import BeautifulSoup
-import os, re
+import html
+import json
+import os
+import re
 import tempfile
-from django.views.decorators.csrf import csrf_exempt, csrf_protect
-from django.utils.encoding import smart_str
 import time
 from datetime import datetime
+from urllib.parse import urlparse
+
+from bs4 import BeautifulSoup
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
+from django_ratelimit.decorators import ratelimit
+from django.utils.encoding import smart_str
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from django_ratelimit.decorators import ratelimit
-import html
-from urllib.parse import urlparse
+
+from pincatch.proxy_pool import (
+    add_proxy_to_chrome_options,
+    mark_proxy_failure,
+    mark_proxy_success,
+    proxy_request,
+)
 
 MEDIA_EXTENSIONS = ('.gif', '.mp4', '.webm', '.m3u8')
 PINIMG_MEDIA_RE = re.compile(
@@ -74,7 +83,7 @@ def _walk_json_for_urls(node, found):
 
 def _probe_url_ok(url):
     try:
-        resp = requests.head(url, headers=REQUEST_HEADERS, timeout=4, allow_redirects=True)
+        resp = proxy_request("head", url, headers=REQUEST_HEADERS, timeout=4, allow_redirects=True)
         return 200 <= resp.status_code < 400
     except Exception:
         return False
@@ -126,7 +135,7 @@ def _infer_filename_and_mime(gif_url):
 
 def _download_gif_file(gif_url, filename):
     try:
-        response = requests.get(gif_url, stream=True, headers={'User-Agent': 'Mozilla/5.0'})
+        response = proxy_request("get", gif_url, stream=True, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
         if response.status_code == 200:
             temp_dir = tempfile.gettempdir()
             filepath = os.path.join(temp_dir, filename)
@@ -232,7 +241,7 @@ def extract_gif_url_from_soup(soup, page_html: str = ""):
 def is_valid_gif_url(url):
     """Check if the given URL is a valid GIF/animated file URL."""
     try:
-        resp = requests.head(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=4, allow_redirects=True)
+        resp = proxy_request("head", url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=4, allow_redirects=True)
         if resp.status_code == 200:
             content_type = resp.headers.get('content-type', '').lower()
             return 'image' in content_type or 'video' in content_type
@@ -248,7 +257,7 @@ def get_gif_url(page_url):
     Returns a valid GIF URL or None if not possible.
     """
     try:
-        resp = requests.get(page_url, headers=REQUEST_HEADERS, timeout=8)
+        resp = proxy_request("get", page_url, headers=REQUEST_HEADERS, timeout=8)
         if resp.status_code == 200:
             soup = BeautifulSoup(resp.text, 'html.parser')
             url = extract_gif_url_from_soup(soup, resp.text)
@@ -266,6 +275,8 @@ def get_gif_url(page_url):
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
         options.add_argument('--no-sandbox')
+        proxy_used = add_proxy_to_chrome_options(options)
+        driver = None
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
         driver.get(page_url)
         time.sleep(0.5)
@@ -275,9 +286,18 @@ def get_gif_url(page_url):
         # Same here: accept the extracted URL without HEAD validation to avoid
         # false negatives from Pinterest blocking HEAD requests.
         if url:
+            if proxy_used:
+                mark_proxy_success(proxy_used)
             return url
         return None
     except Exception:
+        try:
+            if 'driver' in locals() and driver:
+                driver.quit()
+        except Exception:
+            pass
+        if 'proxy_used' in locals() and proxy_used:
+            mark_proxy_failure(proxy_used)
         return None
 
 def download_pinterest_gif(request):
